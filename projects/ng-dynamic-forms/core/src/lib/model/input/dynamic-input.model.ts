@@ -4,7 +4,7 @@ import { serializable } from "../../decorator/serializable.decorator";
 import { isBoolean, isNumber } from "../../utils/core.utils";
 import { Observable, isObservable, of } from "rxjs";
 import { tap } from "rxjs/operators";
-import { IConfig, initialConfig } from "ngx-mask";
+import { NgxMaskConfig, initialConfig } from "ngx-mask";
 
 export const DYNAMIC_FORM_CONTROL_TYPE_INPUT = "INPUT";
 
@@ -30,7 +30,7 @@ export interface DynamicInputModelConfig extends DynamicInputControlModelConfig<
     inputType?: string;
     list?: any[] | Observable<any[]>;
     mask?: string;
-    maskConfig?: Partial<IConfig>;
+    maskConfig?: Partial<NgxMaskConfig>;
     max?: number | string | Date;
     min?: number | string | Date;
     multiple?: boolean;
@@ -44,7 +44,7 @@ export class DynamicInputModel extends DynamicInputControlModel<string | number 
     files: FileList | null = null;
     list$: Observable<any[]> | null = null;
     @serializable() mask: string;
-    @serializable() maskConfig: IConfig;
+    @serializable() maskConfig: NgxMaskConfig;
     @serializable() max: number | string | Date | null;
     @serializable() min: number | string | Date | null;
     @serializable() multiple: boolean | null;
