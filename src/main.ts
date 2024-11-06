@@ -11,6 +11,7 @@ import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, DYNAMIC_MATCHER_PROVID
 import { appRoutes } from "./app/app.routes";
 import { customValidator, customDateRangeValidator, customAsyncValidator, customForbiddenValidator } from "./app/app.validators";
 import { environment } from "./environments/environment";
+import { provideNgxMask } from "ngx-mask";
 
 if (environment.production) {
     enableProdMode();
@@ -55,7 +56,8 @@ bootstrapApplication(AppComponent, {
             useValue: {
                 separatorKeyCodes: [13, 188]
             }
-        }
+        },
+        provideNgxMask({})
     ]
 })
     .catch(err => console.error(err));
