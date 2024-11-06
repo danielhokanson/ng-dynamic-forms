@@ -9,15 +9,15 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService
 } from "@ng-dynamic-forms/core";
-import { NgbButtonsModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgClass, NgFor } from "@angular/common";
+import { ButtonsModule } from "ngx-bootstrap/buttons";
 
 @Component({
     selector: "dynamic-ng-bootstrap-checkbox-group",
     templateUrl: "./dynamic-ng-bootstrap-checkbox-group.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, NgFor, NgbButtonsModule]
+    imports: [ReactiveFormsModule, NgClass, NgFor, ButtonsModule]
 })
 export class DynamicNGBootstrapCheckboxGroupComponent extends DynamicFormControlComponent {
     @Input() formLayout?: DynamicFormLayout;
