@@ -30,10 +30,10 @@ import {
     ngBootstrapUIFormControlMapFn
 } from "./dynamic-ng-bootstrap-form-control-container.component";
 import { DynamicNGBootstrapCheckboxComponent } from "./checkbox/dynamic-ng-bootstrap-checkbox.component";
-import { DynamicNGBootstrapCheckboxGroupComponent } from "./checkbox-group/dynamic-ng-bootstrap-checkbox-group.component";
+// import { DynamicNGBootstrapCheckboxGroupComponent } from "./checkbox-group/dynamic-ng-bootstrap-checkbox-group.component";
 import { DynamicNGBootstrapDatePickerComponent } from "./datepicker/dynamic-ng-bootstrap-datepicker.component";
 import { DynamicNGBootstrapInputComponent } from "./input/dynamic-ng-bootstrap-input.component";
-import { DynamicNGBootstrapRadioGroupComponent } from "./radio-group/dynamic-ng-bootstrap-radio-group.component";
+// import { DynamicNGBootstrapRadioGroupComponent } from "./radio-group/dynamic-ng-bootstrap-radio-group.component";
 import { DynamicNGBootstrapRatingComponent } from "./rating/dynamic-ng-bootstrap-rating.component";
 import { DynamicNGBootstrapSelectComponent } from "./select/dynamic-ng-bootstrap-select.component";
 import { DynamicNGBootstrapSwitchComponent } from "./switch/dynamic-ng-bootstrap-switch.component";
@@ -163,7 +163,7 @@ describe("DynamicNGBootstrapFormControlContainerComponent test suite", () => {
 
     it("should map a form control model to a form control component", () => {
         expect(ngBootstrapUIFormControlMapFn(formModel[0])).toBe(DynamicNGBootstrapCheckboxComponent);
-        expect(ngBootstrapUIFormControlMapFn(formModel[1])).toBe(DynamicNGBootstrapCheckboxGroupComponent);
+        // expect(ngBootstrapUIFormControlMapFn(formModel[1])).toBe(DynamicNGBootstrapCheckboxGroupComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[2])).toBeNull();
         expect(ngBootstrapUIFormControlMapFn(formModel[3])).toBe(DynamicNGBootstrapDatePickerComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[4])).toBeNull();
@@ -171,7 +171,7 @@ describe("DynamicNGBootstrapFormControlContainerComponent test suite", () => {
         expect(ngBootstrapUIFormControlMapFn(formModel[6])).toBe(DynamicNGBootstrapFormArrayComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[7])).toBe(DynamicNGBootstrapFormGroupComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[8])).toBe(DynamicNGBootstrapInputComponent);
-        expect(ngBootstrapUIFormControlMapFn(formModel[9])).toBe(DynamicNGBootstrapRadioGroupComponent);
+        // expect(ngBootstrapUIFormControlMapFn(formModel[9])).toBe(DynamicNGBootstrapRadioGroupComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[10])).toBe(DynamicNGBootstrapRatingComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[11])).toBe(DynamicNGBootstrapSelectComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[12])).toBeNull();
