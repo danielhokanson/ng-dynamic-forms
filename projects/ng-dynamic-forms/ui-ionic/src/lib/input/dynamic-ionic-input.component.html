@@ -5,7 +5,6 @@
                [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></ion-label>
 
     <ion-input #ionInput
-               [accept]="model.accept || undefined"
                [autocapitalize]="model.getAdditional('autocapitalize', 'off')"
                [autocomplete]="model.autoComplete"
                [autocorrect]="model.getAdditional('autocorrect', 'off')"
@@ -20,7 +19,6 @@
                [pattern]="model.pattern"
                [placeholder]="model.placeholder"
                [readonly]="model.readOnly"
-               [size]="model.getAdditional('size', undefined)"
                [spellcheck]="model.spellCheck"
                [step]="model.step"
                [type]="model.inputType"
