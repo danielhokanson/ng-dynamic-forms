@@ -35,7 +35,7 @@ describe("DynamicPrimeNGAutoCompleteComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-autoComplete[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-autoComplete[ng-reflect-id="${testModel.id}"]`));
     }));
 
     it("should initialize correctly", () => {
