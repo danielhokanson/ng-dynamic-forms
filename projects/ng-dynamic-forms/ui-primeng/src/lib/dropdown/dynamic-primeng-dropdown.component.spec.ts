@@ -35,7 +35,7 @@ describe("DynamicPrimeNGDropdownComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-dropdown[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-dropdown[ng-reflect-id="${testModel.id}"]`));
     }));
 
     it("should initialize correctly", () => {
