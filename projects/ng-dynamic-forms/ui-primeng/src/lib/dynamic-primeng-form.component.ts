@@ -17,7 +17,7 @@ import {
     DynamicFormLayout,
     DynamicFormModel,
     DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGFormControlContainerComponent } from "./dynamic-primeng-form-control-container.component";
 import { NgFor } from "@angular/common";
 

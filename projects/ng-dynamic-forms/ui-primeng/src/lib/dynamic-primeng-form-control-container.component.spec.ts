@@ -21,7 +21,7 @@ import {
     DynamicSwitchModel,
     DynamicTextAreaModel,
     DynamicTimePickerModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import {
     DynamicPrimeNGFormArrayComponent,
     DynamicPrimeNGFormControlContainerComponent,

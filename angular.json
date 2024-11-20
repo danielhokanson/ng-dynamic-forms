@@ -143,7 +143,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/core": {
+    "@danielhokanson/ng-dynamic-forms-core": {
       "root": "projects/ng-dynamic-forms/core",
       "sourceRoot": "projects/ng-dynamic-forms/core/src",
       "projectType": "library",
@@ -183,7 +183,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-basic": {
+    "@danielhokanson/ng-dynamic-forms-ui-basic": {
       "root": "projects/ng-dynamic-forms/ui-basic",
       "sourceRoot": "projects/ng-dynamic-forms/ui-basic/src",
       "projectType": "library",
@@ -223,7 +223,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-bootstrap": {
+    "@danielhokanson/ng-dynamic-forms-ui-bootstrap": {
       "root": "projects/ng-dynamic-forms/ui-bootstrap",
       "sourceRoot": "projects/ng-dynamic-forms/ui-bootstrap/src",
       "projectType": "library",
@@ -263,7 +263,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-foundation": {
+    "@danielhokanson/ng-dynamic-forms-ui-foundation": {
       "root": "projects/ng-dynamic-forms/ui-foundation",
       "sourceRoot": "projects/ng-dynamic-forms/ui-foundation/src",
       "projectType": "library",
@@ -303,7 +303,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-ionic": {
+    "@danielhokanson/ng-dynamic-forms-ui-ionic": {
       "root": "projects/ng-dynamic-forms/ui-ionic",
       "sourceRoot": "projects/ng-dynamic-forms/ui-ionic/src",
       "projectType": "library",
@@ -343,7 +343,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-material": {
+    "@danielhokanson/ng-dynamic-forms-ui-material": {
       "root": "projects/ng-dynamic-forms/ui-material",
       "sourceRoot": "projects/ng-dynamic-forms/ui-material/src",
       "projectType": "library",
@@ -383,7 +383,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-ng-bootstrap": {
+    "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap": {
       "root": "projects/ng-dynamic-forms/ui-ng-bootstrap",
       "sourceRoot": "projects/ng-dynamic-forms/ui-ng-bootstrap/src",
       "projectType": "library",
@@ -423,7 +423,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-primeng": {
+    "@danielhokanson/ng-dynamic-forms-ui-primeng": {
       "root": "projects/ng-dynamic-forms/ui-primeng",
       "sourceRoot": "projects/ng-dynamic-forms/ui-primeng/src",
       "projectType": "library",
@@ -463,7 +463,7 @@
         }
       }
     },
-    "@ng-dynamic-forms/ui-ngx-bootstrap": {
+    "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap": {
       "projectType": "library",
       "root": "projects/ng-dynamic-forms/ui-ngx-bootstrap",
       "sourceRoot": "projects/ng-dynamic-forms/ui-ngx-bootstrap/src",

@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatAutocomplete } from "@angular/material/autocomplete";
 import { MatInput } from "@angular/material/input";
-import { DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialInputComponent } from "./dynamic-material-input.component";
 
 describe("DynamicMaterialInputComponent test suite", () => {

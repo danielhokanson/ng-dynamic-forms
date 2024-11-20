@@ -1,6 +1,6 @@
 {
-  "name": "@ng-dynamic-forms/ui-primeng",
-  "version": "18.0.0",
+  "name": "@danielhokanson/ng-dynamic-forms-ui-primeng",
+  "version": "19.0.3",
   "description": "PrimeNG UI package for NG Dynamic Forms",
   "keywords": [
     "angular",
@@ -29,11 +29,11 @@
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@ng-dynamic-forms/core": "^18.0.0",
-    "primeng": "^16.0.0"
+    "@danielhokanson/ng-dynamic-forms-core": "^19.0.3",
+    "primeng": "^17.8.12"
   },
   "optionalDependencies": {
-    "quill": "^1.2.3"
+    "quill": "^2.0.2"
   },
   "es2015": "./fesm2015/ui-primeng.js",
   "esm2015": "./esm2015/ui-primeng.js",
@@ -42,6 +42,6 @@
   "fesm5": "./fesm5/ui-primeng.js",
   "sideEffects": false,
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.8.1"
   }
 }

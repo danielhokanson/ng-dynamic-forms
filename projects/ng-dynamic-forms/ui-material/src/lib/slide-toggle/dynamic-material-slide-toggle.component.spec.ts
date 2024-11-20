@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { MatSlideToggle } from "@angular/material/slide-toggle";
-import { DynamicFormService, DynamicSwitchModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSwitchModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialSlideToggleComponent } from "./dynamic-material-slide-toggle.component";
 
 describe("DynamicMaterialSlideToggleComponent test suite", () => {

@@ -10,7 +10,7 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { MatFormFieldDefaultOptions } from "@angular/material/form-field";
 import { NgClass, NgIf, NgFor } from "@angular/common";
 

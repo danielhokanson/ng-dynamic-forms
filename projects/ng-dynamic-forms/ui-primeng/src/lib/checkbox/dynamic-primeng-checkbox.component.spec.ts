@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { Checkbox } from "primeng/checkbox";
-import { DynamicCheckboxModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicCheckboxModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGCheckboxComponent } from "./dynamic-primeng-checkbox.component";
 
 describe("DynamicPrimeNGCheckboxComponent test suite", () => {

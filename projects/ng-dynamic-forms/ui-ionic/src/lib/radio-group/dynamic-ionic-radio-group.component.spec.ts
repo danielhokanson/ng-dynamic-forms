@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { IonRadioGroup } from "@ionic/angular";
-import { DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicRadioGroupModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicIonicRadioGroupComponent } from "./dynamic-ionic-radio-group.component";
 
 describe("DynamicIonicRadioGroupComponent test suite", () => {

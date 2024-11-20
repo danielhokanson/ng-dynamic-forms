@@ -17,7 +17,7 @@ import {
     DynamicFormLayout,
     DynamicFormModel,
     DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGxBootstrapFormControlContainerComponent } from "./dynamic-ngx-bootstrap-form-control-container.component";
 import { NgFor } from "@angular/common";
 

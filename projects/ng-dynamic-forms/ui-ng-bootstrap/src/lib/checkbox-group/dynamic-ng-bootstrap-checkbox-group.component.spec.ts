@@ -4,7 +4,7 @@
 // import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 // import { By } from "@angular/platform-browser";
 // import { ButtonsModule } from "ngx-bootstrap/buttons";
-// import { DynamicCheckboxGroupModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+// import { DynamicCheckboxGroupModel, DynamicFormsCoreModule, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 // import { DynamicNGBootstrapCheckboxGroupComponent } from "./dynamic-ng-bootstrap-checkbox-group.component";
 
 // describe("DynamicNGBootstrapCheckboxGroupComponent test suite", () => {

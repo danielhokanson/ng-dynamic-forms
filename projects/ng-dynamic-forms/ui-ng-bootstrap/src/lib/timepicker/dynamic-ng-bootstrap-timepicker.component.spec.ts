@@ -4,7 +4,7 @@ import { ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from "@angu
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { NgbTimepicker, NgbTimepickerModule } from "@ng-bootstrap/ng-bootstrap";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicTimePickerModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicTimePickerModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGBootstrapTimePickerComponent } from "./dynamic-ng-bootstrap-timepicker.component";
 
 describe("DynamicNGBootstrapTimePickerComponent test suite", () => {

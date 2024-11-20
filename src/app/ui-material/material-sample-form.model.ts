@@ -9,7 +9,7 @@ import {
     DynamicTextAreaModel,
     MATCH_DISABLED,
     MATCH_REQUIRED
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { BehaviorSubject } from "rxjs";
 
 export const STATES_AUTOCOMPLETE_LIST = [

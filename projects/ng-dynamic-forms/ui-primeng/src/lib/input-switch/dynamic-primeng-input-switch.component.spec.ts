@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { InputSwitch } from "primeng/inputswitch";
-import { DynamicFormService, DynamicSwitchModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSwitchModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGInputSwitchComponent } from "./dynamic-primeng-input-switch.component";
 
 describe("DynamicPrimeNGInputSwitchComponent test suite", () => {

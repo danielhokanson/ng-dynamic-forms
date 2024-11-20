@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/t
 import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
-import { DynamicFormService, DynamicRatingModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicRatingModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGBootstrapRatingComponent } from "./dynamic-ng-bootstrap-rating.component";
 import { NgbRating } from "@ng-bootstrap/ng-bootstrap";
 

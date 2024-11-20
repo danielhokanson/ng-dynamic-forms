@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { TimepickerComponent } from "ngx-bootstrap/timepicker";
-import { DynamicFormService, DynamicTimePickerModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicTimePickerModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGxBootstrapTimePickerComponent } from "./dynamic-ngx-bootstrap-timepicker.component";
 
 describe("DynamicNGxBootstrapTimePickerComponent test suite", () => {

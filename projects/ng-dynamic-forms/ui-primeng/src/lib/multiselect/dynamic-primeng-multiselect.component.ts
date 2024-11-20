@@ -8,7 +8,7 @@ import {
     DynamicFormControlComponent,
     DynamicSelectModel,
     DynamicFormControlLayout
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass, AsyncPipe } from "@angular/common";
 
 @Component({

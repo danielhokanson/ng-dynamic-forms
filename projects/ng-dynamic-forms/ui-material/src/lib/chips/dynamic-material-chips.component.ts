@@ -19,7 +19,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicInputModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { MatIconModule } from "@angular/material/icon";
 import { NgClass, NgFor, AsyncPipe } from "@angular/common";
 

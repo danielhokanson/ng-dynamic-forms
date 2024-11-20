@@ -8,7 +8,7 @@ import {
     DynamicFormValidationService,
     DynamicInputModel,
     DynamicFormsCoreModule
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgxMaskDirective } from "ngx-mask";
 import { NgIf, NgClass, NgFor, AsyncPipe } from "@angular/common";
 

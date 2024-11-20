@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { Slider } from "primeng/slider";
-import { DynamicFormService, DynamicSliderModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSliderModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGSliderComponent } from "./dynamic-primeng-slider.component";
 
 describe("DynamicPrimeNGSliderComponent test suite", () => {

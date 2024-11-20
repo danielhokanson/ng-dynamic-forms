@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { MatSlider } from "@angular/material/slider";
-import { DynamicFormService, DynamicSliderModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSliderModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialSliderComponent } from "./dynamic-material-slider.component";
 
 describe("DynamicMaterialSliderComponent test suite", () => {

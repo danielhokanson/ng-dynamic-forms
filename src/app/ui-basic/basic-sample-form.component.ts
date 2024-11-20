@@ -6,8 +6,8 @@ import {
     DynamicFormArrayModel,
     DynamicFormControlEvent,
     DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
-import { DynamicBasicFormControlContainerComponent } from "@ng-dynamic-forms/ui-basic";
+} from "@danielhokanson/ng-dynamic-forms-core";
+import { DynamicBasicFormControlContainerComponent } from "@danielhokanson/ng-dynamic-forms-ui-basic";
 import { BASIC_SAMPLE_FORM_MODEL, BASIC_SAMPLE_FORM_ARRAY_MODEL } from "./basic-sample-form.model";
 
 

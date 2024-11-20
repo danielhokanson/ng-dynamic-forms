@@ -44,7 +44,7 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicBootstrapCheckboxComponent } from "./checkbox/dynamic-bootstrap-checkbox.component";
 import { DynamicBootstrapDatePickerComponent } from "./datepicker/dynamic-bootstrap-datepicker.component";
 import { DynamicBootstrapInputComponent } from "./input/dynamic-bootstrap-input.component";

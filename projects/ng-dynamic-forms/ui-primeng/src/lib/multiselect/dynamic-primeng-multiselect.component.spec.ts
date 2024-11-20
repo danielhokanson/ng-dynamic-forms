@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { MultiSelect } from "primeng/multiselect";
-import { DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSelectModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGMultiSelectComponent } from "./dynamic-primeng-multiselect.component";
 
 describe("DynamicPrimeNGMultiSelectComponent test suite", () => {

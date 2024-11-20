@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { IonRange } from "@ionic/angular";
-import { DynamicFormService, DynamicSliderModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSliderModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicIonicRangeComponent } from "./dynamic-ionic-range.component";
 
 describe("DynamicIonicRangeComponent test suite", () => {

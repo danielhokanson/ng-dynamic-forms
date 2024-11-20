@@ -42,7 +42,7 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicBasicCheckboxComponent } from "./checkbox/dynamic-basic-checkbox.component";
 import { DynamicBasicInputComponent } from "./input/dynamic-basic-input.component";
 import { DynamicBasicRadioGroupComponent } from "./radio-group/dynamic-basic-radio-group.component";

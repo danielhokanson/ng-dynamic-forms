@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { IonToggle } from "@ionic/angular";
-import { DynamicFormService, DynamicSwitchModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSwitchModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicIonicToggleComponent } from "./dynamic-ionic-toggle.component";
 
 describe("DynamicIonicToggleComponent test suite", () => {

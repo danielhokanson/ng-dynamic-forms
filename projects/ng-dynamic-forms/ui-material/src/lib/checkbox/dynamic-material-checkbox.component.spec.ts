@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { MatCheckbox } from "@angular/material/checkbox";
-import { DynamicCheckboxModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicCheckboxModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialCheckboxComponent } from "./dynamic-material-checkbox.component";
 
 describe("DynamicMaterialCheckboxComponent test suite", () => {

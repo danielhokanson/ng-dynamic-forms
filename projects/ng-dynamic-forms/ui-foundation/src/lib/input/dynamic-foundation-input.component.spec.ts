@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { provideNgxMask } from "ngx-mask";
-import { DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicFoundationInputComponent } from "./dynamic-foundation-input.component";
 
 describe("DynamicFoundationInputComponent test suite", () => {

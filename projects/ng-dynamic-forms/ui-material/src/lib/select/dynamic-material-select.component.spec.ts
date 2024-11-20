@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatSelect } from "@angular/material/select";
-import { DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSelectModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialSelectComponent } from "./dynamic-material-select.component";
 
 describe("DynamicMaterialSelectComponent test suite", () => {

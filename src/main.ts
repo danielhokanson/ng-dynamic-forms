@@ -7,7 +7,7 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { NG_VALIDATORS, NG_ASYNC_VALIDATORS } from "@angular/forms";
 import { provideRouter } from "@angular/router";
 import { MAT_CHIPS_DEFAULT_OPTIONS } from "@angular/material/chips";
-import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, DYNAMIC_MATCHER_PROVIDERS } from "@ng-dynamic-forms/core";
+import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, DYNAMIC_MATCHER_PROVIDERS } from "@danielhokanson/ng-dynamic-forms-core";
 import { appRoutes } from "./app/app.routes";
 import { customValidator, customDateRangeValidator, customAsyncValidator, customForbiddenValidator } from "./app/app.validators";
 import { environment } from "./environments/environment";

@@ -8,7 +8,7 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
 import { NgClass, NgFor } from "@angular/common";
 

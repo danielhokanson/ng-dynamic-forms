@@ -11,7 +11,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSelectModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
 
 @Component({

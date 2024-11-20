@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-npm i @ng-dynamic-forms/ui-primeng -S
+npm i @danielhokanson/ng-dynamic-forms-ui-primeng -S
 ```
 
 ## Import

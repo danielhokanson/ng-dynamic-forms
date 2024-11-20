@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { ColorPicker } from "primeng/colorpicker";
-import { DynamicColorPickerModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicColorPickerModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGColorPickerComponent } from "./dynamic-primeng-colorpicker.component";
 
 describe("DynamicPrimeNGColorPickerComponent test suite", () => {

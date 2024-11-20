@@ -9,7 +9,7 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass, NgIf } from "@angular/common";
 
 @Component({
