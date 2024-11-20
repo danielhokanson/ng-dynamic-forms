@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { Dropdown } from "primeng/dropdown";
-import { DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicSelectModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGDropdownComponent } from "./dynamic-primeng-dropdown.component";
 
 describe("DynamicPrimeNGDropdownComponent test suite", () => {

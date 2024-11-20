@@ -6,10 +6,10 @@ import {
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicFormService, DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { FOUNDATION_SAMPLE_FORM_MODEL } from "./foundation-sample-form.model";
 import { FOUNDATION_SAMPLE_FORM_LAYOUT } from "./foundation-sample-form.layout";
-import { DynamicFoundationFormComponent } from "@ng-dynamic-forms/ui-foundation";
+import { DynamicFoundationFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-foundation";
 import { JsonPipe } from "@angular/common";
 
 @Component({

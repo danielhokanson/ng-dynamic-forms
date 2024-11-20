@@ -7,7 +7,7 @@ import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material
 import { MatChipInputEvent, MatChipGrid } from "@angular/material/chips";
 import { MatOption } from "@angular/material/core";
 import { MatInput } from "@angular/material/input";
-import { DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialChipsComponent } from "./dynamic-material-chips.component";
 
 describe("DynamicMaterialChipsComponent test suite", () => {

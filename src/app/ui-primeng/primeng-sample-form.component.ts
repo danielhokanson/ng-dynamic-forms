@@ -5,12 +5,12 @@ import {
     DynamicFormLayout,
     DynamicFormControlEvent,
     DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { PRIME_NG_SAMPLE_FORM_MODEL } from "./primeng-sample-form.model";
 import { PRIME_NG_SAMPLE_FORM_LAYOUT } from "./primeng-sample-form.layout";
 import { JsonPipe } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
-import { DynamicPrimeNGFormComponent } from "@ng-dynamic-forms/ui-primeng";
+import { DynamicPrimeNGFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-primeng";
 
 @Component({
     selector: "dynamic-primeng-sample-form",

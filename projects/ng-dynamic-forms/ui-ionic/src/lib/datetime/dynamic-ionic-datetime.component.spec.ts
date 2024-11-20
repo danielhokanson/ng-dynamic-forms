@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { IonDatetime } from "@ionic/angular";
-import { DynamicDatePickerModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicIonicDateTimeComponent } from "./dynamic-ionic-datetime.component";
 
 describe("DynamicIonicDateTimeComponent test suite", () => {

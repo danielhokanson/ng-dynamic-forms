@@ -6,7 +6,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicRadioGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass, NgFor, AsyncPipe } from "@angular/common";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
 

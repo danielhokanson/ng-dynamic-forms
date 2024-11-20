@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { InputMask } from "primeng/inputmask";
-import { DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGInputMaskComponent } from "./dynamic-primeng-input-mask.component";
 
 describe("DynamicPrimeNGInputMaskComponent test suite", () => {

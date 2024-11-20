@@ -2,7 +2,7 @@
 // import { DebugElement } from "@angular/core";
 // import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 // import { By } from "@angular/platform-browser";
-// import { DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+// import { DynamicFormService, DynamicRadioGroupModel } from "@danielhokanson/ng-dynamic-forms-core";
 // import { DynamicNGBootstrapRadioGroupComponent } from "./dynamic-ng-bootstrap-radio-group.component";
 
 // describe("DynamicNGBootstrapRadioGroupComponent test suite", () => {

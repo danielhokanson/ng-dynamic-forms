@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/t
 import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
-import { DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicRadioGroupModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGRadioGroupComponent } from "./dynamic-primeng-radio-group.component";
 
 describe("DynamicPrimeNGRadioGroupComponent test suite", () => {

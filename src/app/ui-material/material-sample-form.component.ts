@@ -3,14 +3,14 @@ import { JsonPipe } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatNativeDateModule } from "@angular/material/core";
-import { DynamicMaterialFormComponent } from "@ng-dynamic-forms/ui-material";
+import { DynamicMaterialFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-material";
 import {
     DynamicFormService,
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicFormControlEvent,
     DynamicTemplateDirective
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { MATERIAL_SAMPLE_FORM_MODEL } from "./material-sample-form.model";
 import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
 

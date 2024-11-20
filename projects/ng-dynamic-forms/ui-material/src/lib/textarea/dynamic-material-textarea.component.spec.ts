@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatInput } from "@angular/material/input";
-import { DynamicFormService, DynamicTextAreaModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicTextAreaModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialTextAreaComponent } from "./dynamic-material-textarea.component";
 
 describe("DynamicMaterialTextAreaComponent test suite", () => {

@@ -15,7 +15,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicInputModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialFormInputControlComponent } from "../dynamic-material-form-input-control.component";
 import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
 

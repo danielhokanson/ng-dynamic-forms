@@ -7,7 +7,7 @@ import {
     DynamicSelectModel,
     DynamicSwitchModel,
     DynamicTextAreaModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { customValidator } from "../app.validators";
 
 export const FOUNDATION_SAMPLE_FORM_MODEL = [

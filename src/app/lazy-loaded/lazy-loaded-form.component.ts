@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
-import { DynamicFormService, DynamicFormControlModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicFormControlModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { LAZY_LOADED_FORM_MODEL } from "./lazy-loaded-form.model";
 import { ReactiveFormsModule } from "@angular/forms";
-import { DynamicBootstrapFormControlContainerComponent } from "@ng-dynamic-forms/ui-bootstrap";
+import { DynamicBootstrapFormControlContainerComponent } from "@danielhokanson/ng-dynamic-forms-ui-bootstrap";
 import { NgFor } from "@angular/common";
 
 @Component({

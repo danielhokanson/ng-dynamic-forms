@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/t
 import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
-import { DynamicDatePickerModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGBootstrapDatePickerComponent } from "./dynamic-ng-bootstrap-datepicker.component";
 
 describe("DynamicNGBootstrapDatePickerComponent test suite", () => {

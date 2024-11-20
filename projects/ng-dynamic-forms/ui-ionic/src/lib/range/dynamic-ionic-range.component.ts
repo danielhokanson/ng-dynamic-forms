@@ -8,7 +8,7 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicSliderModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgIf, NgClass } from "@angular/common";
 
 @Component({

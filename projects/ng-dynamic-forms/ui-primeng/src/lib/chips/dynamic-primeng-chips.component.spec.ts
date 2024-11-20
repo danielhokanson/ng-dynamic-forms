@@ -3,7 +3,7 @@ import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { Chips } from "primeng/chips";
-import { DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicPrimeNGChipsComponent } from "./dynamic-primeng-chips.component";
 
 describe("DynamicPrimeNGChipsComponent test suite", () => {

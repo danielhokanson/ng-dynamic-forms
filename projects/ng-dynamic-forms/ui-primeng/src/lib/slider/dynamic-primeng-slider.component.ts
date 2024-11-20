@@ -9,7 +9,7 @@ import {
     DynamicFormControlComponent,
     DynamicSliderModel,
     DynamicFormControlLayout
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass } from "@angular/common";
 
 @Component({

@@ -45,7 +45,7 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicIonicCheckboxComponent } from "./checkbox/dynamic-ionic-checkbox.component";
 import { DynamicIonicDateTimeComponent } from "./datetime/dynamic-ionic-datetime.component";
 import { DynamicIonicInputComponent } from "./input/dynamic-ionic-input.component";

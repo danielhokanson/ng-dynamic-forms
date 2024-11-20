@@ -19,7 +19,7 @@
 //     DynamicTextAreaModel,
 //     DynamicTimePickerModel,
 //     DynamicFormService
-// } from "@ng-dynamic-forms/core";
+// } from "@danielhokanson/ng-dynamic-forms-core";
 // import { DynamicIonicFormControlContainerComponent } from "./dynamic-ionic-form-control-container.component";
 // import { DynamicIonicInputComponent } from "./input/dynamic-ionic-input.component";
 

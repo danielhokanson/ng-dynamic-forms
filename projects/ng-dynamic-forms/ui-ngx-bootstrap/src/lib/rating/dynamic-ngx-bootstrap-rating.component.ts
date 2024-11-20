@@ -7,7 +7,7 @@ import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
     DynamicRatingModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass } from "@angular/common";
 import { RatingModule } from "ngx-bootstrap/rating";
 

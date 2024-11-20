@@ -8,7 +8,7 @@
 //     DynamicFormLayout,
 //     DynamicFormLayoutService,
 //     DynamicFormValidationService
-// } from "@ng-dynamic-forms/core";
+// } from "@danielhokanson/ng-dynamic-forms-core";
 // import { NgClass, NgFor } from "@angular/common";
 // import { ButtonsModule } from "ngx-bootstrap/buttons";
 

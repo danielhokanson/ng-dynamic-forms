@@ -7,7 +7,7 @@ import {
     DynamicFormControlComponent,
     DynamicRadioGroupModel,
     DynamicFormControlLayout
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { RadioButtonModule } from "primeng/radiobutton";
 import { NgClass, NgFor, AsyncPipe } from "@angular/common";
 

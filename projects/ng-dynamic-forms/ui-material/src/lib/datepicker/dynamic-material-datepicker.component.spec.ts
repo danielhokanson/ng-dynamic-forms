@@ -6,7 +6,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDatepicker } from "@angular/material/datepicker";
 import { MatInput } from "@angular/material/input";
 import { MatNativeDateModule } from "@angular/material/core";
-import { DynamicDatePickerModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicMaterialDatePickerComponent } from "./dynamic-material-datepicker.component";
 
 describe("DynamicMaterialDatePickerComponent test suite", () => {

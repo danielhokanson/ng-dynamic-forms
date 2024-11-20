@@ -4,7 +4,7 @@
 [![CI](https://github.com/udos86/ng-dynamic-forms/workflows/NG%20Dynamic%20Forms%20CI/badge.svg)](https://github.com/udos86/ng-dynamic-forms/actions)
 [![codecov](https://codecov.io/gh/udos86/ng-dynamic-forms/branch/master/graph/badge.svg)](https://codecov.io/gh/udos86/ng-dynamic-forms)
 [![DeepScan Grade](https://deepscan.io/api/projects/562/branches/912/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=562&bid=912)
-[![Downloads](http://img.shields.io/npm/dm/@ng-dynamic-forms/core.svg)](https://npmjs.org/package/@ng-dynamic-forms/core)
+[![Downloads](http://img.shields.io/npm/dm/@danielhokanson/ng-dynamic-forms-core.svg)](https://npmjs.org/package/@danielhokanson/ng-dynamic-forms-core)
 
 ***
 
@@ -46,12 +46,12 @@ Explore the [**live sample**](http://ng2-dynamic-forms.udos86.de/sample/index.ht
 
 **1. Install the core package**:
 ```
-npm i @ng-dynamic-forms/core -S
+npm i @danielhokanson/ng-dynamic-forms-core -S
 ```
   
 **2. Install a [UI package](#ui-modules) and its peer dependencies**:
 ```
-npm i @ng-dynamic-forms/ui-material -S
+npm i @danielhokanson/ng-dynamic-forms-ui-material -S
 ```
 
 
@@ -83,7 +83,7 @@ ng serve
 
 **1. Import the UI module**:
 ```typescript
-import { DynamicFormsMaterialUIModule } from "@ng-dynamic-forms/ui-material";
+import { DynamicFormsMaterialUIModule } from "@danielhokanson/ng-dynamic-forms-ui-material";
 
 @NgModule({
     imports: [
@@ -102,7 +102,7 @@ import {
     DynamicCheckboxModel,
     DynamicInputModel,
     DynamicRadioGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 
 export const MY_FORM_MODEL: DynamicFormModel = [
 
@@ -134,7 +134,7 @@ export const MY_FORM_MODEL: DynamicFormModel = [
 **3. Create a** `FormGroup` **via** `DynamicFormService`:
 ```typescript
 import { MY_FORM_MODEL } from "./my-dynamic-form.model";
-import { DynamicFormModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicFormModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 
 export class MyDynamicFormComponent {
     formModel: DynamicFormModel = MY_FORM_MODEL;
@@ -169,7 +169,7 @@ NG Dynamic Forms is built to provide **solid yet unobtrusive** support for a var
 You can instantly plug in your favorite form controls by **installing the appropriate
 package and its peer dependencies**:
 ```
-npm i @ng-dynamic-forms/ui-<library-name> -S
+npm i @danielhokanson/ng-dynamic-forms-ui-<library-name> -S
 ```
 
 **Now just import the UI module**:
@@ -870,7 +870,7 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService,
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 import { MyCustomFormControlComponent } from "...";
 
 @Component({
@@ -1210,7 +1210,7 @@ That's why NG Dynamic Forms keeps you covered here, as well!
 Following HTML5 [standard behavior](http://www.w3schools.com/tags/att_form_autocomplete.asp), the `autocomplete` attribute is always bound to `on` for any `DynamicFormTextInputControl` form element by default. 
 Nevertheless you can completely disable this feature by explicitly setting the corresponding model property to `off`:
 ```typescript
-import { AUTOCOMPLETE_OFF } from "@ng-dynamic-forms/core";
+import { AUTOCOMPLETE_OFF } from "@danielhokanson/ng-dynamic-forms-core";
 
 const model = new DynamicInputModel({
     id: "myInput",
@@ -1231,7 +1231,7 @@ import {
     AUTOFILL_TOKEN_BILLING, 
     AUTOFILL_FIELD_NAME, 
     AUTOCOMPLETE_ON
-} from "@ng-dynamic-forms/core";
+} from "@danielhokanson/ng-dynamic-forms-core";
 
 export class MySample {
 

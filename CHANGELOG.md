@@ -182,8 +182,8 @@ this.formService.detectChanges();
 
 ### **Features**
 
-A new UI package `@ng-dynamic-forms/ui-ngx-bootstrap` has been released. This allows using ngx-bootstrap with Bootstrap 4 now.
-Thus the package `@ng-dynamic-forms/ui-bootstrap` from now on is only recommended if still need to support Bootstrap 3.correctly
+A new UI package `@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap` has been released. This allows using ngx-bootstrap with Bootstrap 4 now.
+Thus the package `@danielhokanson/ng-dynamic-forms-ui-bootstrap` from now on is only recommended if still need to support Bootstrap 3.correctly
 
 * `appendTo` input now works in PrimeNG Dropdown and Multiselect
 * `decimalSeparator`, `thousandSeparator`, `formatInput` and `size` inputs now works in PrimeNG Spinner
@@ -587,7 +587,7 @@ You can still track changes via newly introduced `valueChanges` and `disabledCha
 
 ### **Features** 
 
-* **initial support for** [**ngx-bootstrap**](https://valor-software.com/ngx-bootstrap/#/) (`ngx-bootstrap` is now a peer dependency of `@ng-dynamic-forms/ui-bootstrap`)
+* **initial support for** [**ngx-bootstrap**](https://valor-software.com/ngx-bootstrap/#/) (`ngx-bootstrap` is now a peer dependency of `@danielhokanson/ng-dynamic-forms-ui-bootstrap`)
 * **initial support for Prime NG color picker via new** `DynamicColorPickerModel`
 
 ***
@@ -729,12 +729,12 @@ There'll be a major version incrementation to `5.0.0` to fully stay in sync with
 
 ### **Announcement** 
 
-:bangbang:**@ng2-dynamic-forms has been renamed to @ng-dynamic-forms**:bangbang:
+:bangbang:**@ng2-dynamic-forms has been renamed to @danielhokanson/ng-dynamic-forms**:bangbang:
 ***
 **Please update your dependencies**:
 ```
 npm uninstall @ng2-dynamic-forms/core @ng2-dynamic-forms/ui-<package_name> -S
-npm install @ng-dynamic-forms/core @ng-dynamic-forms/ui-<package_name> -S
+npm install @danielhokanson/ng-dynamic-forms-core @danielhokanson/ng-dynamic-forms-ui-<package_name> -S
 ```
 ***
 

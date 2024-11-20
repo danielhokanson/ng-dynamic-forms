@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/t
 import { DebugElement } from "@angular/core";
 import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { By } from "@angular/platform-browser";
-import { DynamicCheckboxModel, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicCheckboxModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGxBootstrapCheckboxComponent } from "./dynamic-ngx-bootstrap-checkbox.component";
 
 describe("DynamicNgxBootstrapCheckboxComponent test suite", () => {
