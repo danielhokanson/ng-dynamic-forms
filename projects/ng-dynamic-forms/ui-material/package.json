@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-ui-material",
-  "version": "19.0.2",
+  "version": "19.0.3",
   "description": "Material UI package for NG Dynamic Forms",
   "keywords": [
     "angular",
@@ -29,8 +29,8 @@
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@angular/material": "^16.0.0",
-    "@danielhokanson/ng-dynamic-forms-core": "^18.0.0"
+    "@angular/material": "^19.0.0",
+    "@danielhokanson/ng-dynamic-forms-core": "^19.0.3"
   },
   "es2015": "./fesm2015/ui-material.js",
   "esm2015": "./esm2015/ui-material.js",
@@ -39,6 +39,6 @@
   "fesm5": "./fesm5/ui-material.js",
   "sideEffects": false,
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.8.1"
   }
 }

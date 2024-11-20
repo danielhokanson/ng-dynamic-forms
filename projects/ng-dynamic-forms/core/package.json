@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-core",
-  "version": "19.0.2",
+  "version": "19.0.3",
   "description": "A rapid form development library for Angular",
   "keywords": [
     "angular",
@@ -28,11 +28,11 @@
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0",
-    "@angular/forms": "^16.0.0",
-    "core-js": "^3.31.0",
-    "rxjs": "^7.5.7"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "core-js": "^3.39.0",
+    "rxjs": "^7.8.1"
   },
   "es2015": "./fesm2015/core.js",
   "esm2015": "./esm2015/core.js",
@@ -41,6 +41,6 @@
   "fesm5": "./fesm5/core.js",
   "sideEffects": false,
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.8.1"
   }
 }

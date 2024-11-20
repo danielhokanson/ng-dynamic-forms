@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-ui-foundation",
-  "version": "19.0.2",
+  "version": "19.0.3",
   "description": "Foundation UI package for NG Dynamic Forms",
   "keywords": [
     "angular",
@@ -29,9 +29,9 @@
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@danielhokanson/ng-dynamic-forms-core": "^18.0.0",
-    "foundation-sites": "^6.3.1",
-    "ngx-mask": "^16.0.0"
+    "@danielhokanson/ng-dynamic-forms-core": "^19.0.3",
+    "foundation-sites": "^6.9.0",
+    "ngx-mask": "^18.0.4"
   },
   "es2015": "./fesm2015/ui-foundation.js",
   "esm2015": "./esm2015/ui-foundation.js",
@@ -40,6 +40,6 @@
   "fesm5": "./fesm5/ui-foundation.js",
   "sideEffects": false,
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.8.1"
   }
 }
