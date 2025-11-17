@@ -2,7 +2,7 @@ import { isBoolean, isFunction, isNumber, isObject, isString } from "./core.util
 
 describe("core utils test suite", () => {
 
-    let testValue1: undefined = undefined,
+    const testValue1: undefined = undefined,
         testValue2: null = null,
         testValue3 = 42,
         testValue4 = true,

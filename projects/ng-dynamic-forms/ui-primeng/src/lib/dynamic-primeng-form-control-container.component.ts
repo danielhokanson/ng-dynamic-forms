@@ -96,14 +96,14 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
     // tslint:disable-next-line:no-output-rename
     @Output("pEvent") customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild("componentViewContainer", { read: ViewContainerRef, static: true }) componentViewContainerRef!: ViewContainerRef;
 
     constructor(protected changeDetectorRef: ChangeDetectorRef,
-                protected componentFactoryResolver: ComponentFactoryResolver,
-                protected layoutService: DynamicFormLayoutService,
-                protected validationService: DynamicFormValidationService,
-                protected componentService: DynamicFormComponentService,
-                protected relationService: DynamicFormRelationService) {
+        protected componentFactoryResolver: ComponentFactoryResolver,
+        protected layoutService: DynamicFormLayoutService,
+        protected validationService: DynamicFormValidationService,
+        protected componentService: DynamicFormComponentService,
+        protected relationService: DynamicFormRelationService) {
         super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
     }
 
@@ -135,7 +135,7 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
         case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
             return DynamicPrimeNGFormGroupComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+        case DYNAMIC_FORM_CONTROL_TYPE_INPUT: {
             const inputModel = model as DynamicInputModel;
 
             if (inputModel.inputType === DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER) {
@@ -153,6 +153,7 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
             } else {
                 return DynamicPrimeNGInputComponent;
             }
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
             return DynamicPrimeNGRadioGroupComponent;
@@ -160,9 +161,10 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
         case DYNAMIC_FORM_CONTROL_TYPE_RATING:
             return DynamicPrimeNGRatingComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_SELECT:
+        case DYNAMIC_FORM_CONTROL_TYPE_SELECT: {
             const selectModel = model as DynamicSelectModel<string>;
             return selectModel.multiple ? DynamicPrimeNGMultiSelectComponent : DynamicPrimeNGDropdownComponent;
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_SLIDER:
             return DynamicPrimeNGSliderComponent;

@@ -3,8 +3,7 @@ import {
     DynamicFormService,
     DynamicFormControlModel,
     DynamicFormLayout,
-    DynamicFormControlEvent,
-    DynamicTemplateDirective
+    DynamicFormControlEvent
 } from "@danielhokanson/ng-dynamic-forms-core";
 import { PRIME_NG_SAMPLE_FORM_MODEL } from "./primeng-sample-form.model";
 import { PRIME_NG_SAMPLE_FORM_LAYOUT } from "./primeng-sample-form.layout";
@@ -21,7 +20,7 @@ import { DynamicPrimeNGFormComponent } from "@danielhokanson/ng-dynamic-forms-ui
     templateUrl: "./primeng-sample-form.component.html",
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [JsonPipe, ReactiveFormsModule, DynamicPrimeNGFormComponent, DynamicTemplateDirective]
+    imports: [JsonPipe, ReactiveFormsModule, DynamicPrimeNGFormComponent]
 })
 export class PrimeNGSampleFormComponent {
     formModel: DynamicFormControlModel[] = PRIME_NG_SAMPLE_FORM_MODEL;
@@ -32,10 +31,10 @@ export class PrimeNGSampleFormComponent {
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`PrimeNG change event on ${$event.model.id}: `, $event);
+        console.warn(`PrimeNG change event on ${$event.model.id}: `, $event);
     }
 
     onPEvent($event: DynamicFormControlEvent) {
-        console.log(`PrimeNG ${$event.type} event on ${$event.model.id}: `, $event);
+        console.warn(`PrimeNG ${$event.type} event on ${$event.model.id}: `, $event);
     }
 }

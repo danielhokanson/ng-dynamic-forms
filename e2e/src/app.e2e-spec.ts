@@ -1,16 +1,16 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { AppPage } from "./app.po";
+import { browser, logging } from "protractor";
 
-describe('workspace-project App', () => {
+describe("workspace-project App", () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display value in input', () => {
+  it("should display value in input", () => {
     page.navigateTo();
-    expect(page.getInputText()).toEqual('Test');
+    expect(page.getInputText()).toEqual("Test");
   });
 
   afterEach(async () => {

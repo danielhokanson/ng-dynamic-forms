@@ -4,8 +4,7 @@ import { serializable } from "../../decorator/serializable.decorator";
 
 export const DYNAMIC_FORM_CONTROL_TYPE_EDITOR = "EDITOR";
 
-export interface DynamicEditorModelConfig extends DynamicInputControlModelConfig<string> {
-}
+export type DynamicEditorModelConfig = DynamicInputControlModelConfig<string>;
 
 export class DynamicEditorModel extends DynamicInputControlModel<string> {
     @serializable() readonly type: string = DYNAMIC_FORM_CONTROL_TYPE_EDITOR;

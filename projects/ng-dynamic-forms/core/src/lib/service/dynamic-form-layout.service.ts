@@ -87,9 +87,9 @@ export class DynamicFormLayoutService {
     getClass(layout: DynamicFormControlLayout | null | undefined, context: DynamicFormControlLayoutContext,
              place: DynamicFormControlLayoutPlace): string {
 
-        if (isObject(layout) && layout.hasOwnProperty(context)) {
+        if (isObject(layout) && Object.prototype.hasOwnProperty.call(layout, context)) {
             const config = layout[context] as DynamicFormControlLayoutConfig;
-            if (config.hasOwnProperty(place)) {
+            if (Object.prototype.hasOwnProperty.call(config, place)) {
                 return config[place] as string;
             }
         }

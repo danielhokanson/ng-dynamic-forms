@@ -37,7 +37,7 @@ export class DynamicFormValidationService {
 
         let validatorFn: ValidatorFactory | Validator | undefined;
 
-        if (Validators.hasOwnProperty(validatorName)) { // Built-in Angular Validators
+        if (Object.prototype.hasOwnProperty.call(Validators, validatorName)) { // Built-in Angular Validators
             validatorFn = (Validators as any)[validatorName];
 
         } else { // Custom Validators
@@ -166,7 +166,7 @@ export class DynamicFormValidationService {
                     messageKey = messageKey.replace("length", "Length");
                 }
 
-                if (messagesConfig.hasOwnProperty(messageKey)) {
+                if (Object.prototype.hasOwnProperty.call(messagesConfig, messageKey)) {
                     const validationError = control.getError(validationErrorKey);
                     const messageTemplate = messagesConfig[messageKey] as string;
 
@@ -184,7 +184,7 @@ export class DynamicFormValidationService {
 
     isValidatorDescriptor(value: any): boolean {
         if (isObject(value)) {
-            return value.hasOwnProperty("name") && value.hasOwnProperty("args");
+            return Object.prototype.hasOwnProperty.call(value, "name") && Object.prototype.hasOwnProperty.call(value, "args");
         }
 
         return false;

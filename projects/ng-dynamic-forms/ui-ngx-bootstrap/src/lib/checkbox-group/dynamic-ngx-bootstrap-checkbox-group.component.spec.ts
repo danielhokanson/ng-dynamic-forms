@@ -34,7 +34,7 @@ describe("DynamicNGxBootstrapCheckboxGroupComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`div.btn-group`));
+        testElement = debugElement.query(By.css("div.btn-group"));
     }));
 
     it("should initialize correctly", () => {

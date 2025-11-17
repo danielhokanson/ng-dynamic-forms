@@ -43,7 +43,7 @@ describe("DynamicMaterialChipsComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`mat-chip-grid`));
+        testElement = debugElement.query(By.css("mat-chip-grid"));
     }));
 
     it("should initialize correctly", () => {

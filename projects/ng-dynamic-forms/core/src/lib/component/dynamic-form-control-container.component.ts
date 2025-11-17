@@ -252,7 +252,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     onModelDisabledUpdates(disabled: boolean): void {
-        disabled ? this.control.disable() : this.control.enable();
+        if (disabled) {
+            this.control.disable();
+        } else {
+            this.control.enable();
+        }
     }
 
     onLayoutOrModelChange(): void {

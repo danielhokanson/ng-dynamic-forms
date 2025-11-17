@@ -59,8 +59,8 @@ export class DynamicFormService {
     }
 
     private createAbstractControlOptions(validatorsConfig: DynamicValidatorsConfig | null = null,
-                                         asyncValidatorsConfig: DynamicValidatorsConfig | null = null,
-                                         updateOn: DynamicFormHook | null = null): AbstractControlOptions {
+        asyncValidatorsConfig: DynamicValidatorsConfig | null = null,
+        updateOn: DynamicFormHook | null = null): AbstractControlOptions {
         return {
             asyncValidators: asyncValidatorsConfig !== null ? this.validationService.getAsyncValidators(asyncValidatorsConfig) : null,
             validators: validatorsConfig !== null ? this.validationService.getValidators(validatorsConfig) : null,
@@ -85,7 +85,7 @@ export class DynamicFormService {
     }
 
     createFormGroup(formModel: DynamicFormModel, options: AbstractControlOptions | null = null,
-                    parent: DynamicPathable | null = null): UntypedFormGroup {
+        parent: DynamicPathable | null = null): UntypedFormGroup {
         const controls: { [controlId: string]: AbstractControl; } = {};
 
         formModel.forEach(model => {
@@ -93,26 +93,29 @@ export class DynamicFormService {
 
             switch (model.type) {
 
-                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
+                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY: {
                     controls[model.id] = this.createFormArray(model as DynamicFormArrayModel);
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
-                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
+                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP: {
                     const groupModel = model as DynamicFormGroupModel;
                     const groupOptions = this.createAbstractControlOptions(groupModel.validators,
                         groupModel.asyncValidators, groupModel.updateOn);
 
                     controls[model.id] = this.createFormGroup(groupModel.group, groupOptions, groupModel);
                     break;
+                }
 
-                default:
+                default: {
                     const controlModel = model as DynamicFormValueControlModel<any>;
-                    const controlState = {value: controlModel.value, disabled: controlModel.disabled};
+                    const controlState = { value: controlModel.value, disabled: controlModel.disabled };
                     const controlOptions = this.createAbstractControlOptions(controlModel.validators,
                         controlModel.asyncValidators, controlModel.updateOn);
 
                     controls[model.id] = new UntypedFormControl(controlState, controlOptions);
+                }
             }
         });
 
@@ -155,7 +158,9 @@ export class DynamicFormService {
         }
     }
 
-    insertFormGroupControl(index: number, formGroup: UntypedFormGroup, formModel: DynamicUnionFormModel, ...models: DynamicFormModel): void {
+    insertFormGroupControl(
+        index: number, formGroup: UntypedFormGroup, formModel: DynamicUnionFormModel, ...models: DynamicFormModel
+    ): void {
         const parent = formModel instanceof DynamicFormGroupModel ? formModel : null;
         const controls = this.createFormGroup(models, null, parent).controls;
 
@@ -221,7 +226,7 @@ export class DynamicFormService {
             formArrayModel.moveGroup(index, step);
 
         } else {
-            throw new Error(`form array group cannot be moved due to index or new index being out of bounds`);
+            throw new Error("form array group cannot be moved due to index or new index being out of bounds");
         }
     }
 
@@ -286,7 +291,7 @@ export class DynamicFormService {
 
             switch (model.type) {
 
-                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
+                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY: {
                     const formArrayModel = model as DynamicFormArrayModel;
 
                     if (Array.isArray(formArrayModel.groups)) {
@@ -299,6 +304,7 @@ export class DynamicFormService {
 
                     formModel.push(new DynamicFormArrayModel(model, layout));
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX:
                     formModel.push(new DynamicCheckboxModel(model, layout));

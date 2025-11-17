@@ -26,10 +26,13 @@ export class DynamicFormRelationService {
         const conditionReducer = (controls: DynamicRelatedFormControls, condition: DynamicFormControlCondition) => {
             const path = condition.rootPath ?? condition.id;
 
-            if (isString(path) && !controls.hasOwnProperty(path)) {
+            if (isString(path) && !Object.prototype.hasOwnProperty.call(controls, path)) {
                 const control = condition.rootPath ? group.root.get(condition.rootPath) : group.get(condition.id!);
-                control instanceof UntypedFormControl ?
-                    controls[path] = control : console.warn(`No related form control with id ${condition.id} could be found`);
+                if (control instanceof UntypedFormControl) {
+                    controls[path] = control;
+                } else {
+                    console.warn(`No related form control with id ${condition.id} could be found`);
+                }
             }
 
             return controls;
@@ -42,13 +45,13 @@ export class DynamicFormRelationService {
     }
 
     findRelationByMatcher(relations: DynamicFormControlRelation[],
-                          matcher: DynamicFormControlMatcher): DynamicFormControlRelation | undefined {
+        matcher: DynamicFormControlMatcher): DynamicFormControlRelation | undefined {
         return relations.find(relation => [matcher.match, matcher.opposingMatch].includes(relation.match));
     }
 
     matchesCondition(relation: DynamicFormControlRelation,
-                     relatedFormControls: DynamicRelatedFormControls,
-                     matcher: DynamicFormControlMatcher): boolean {
+        relatedFormControls: DynamicRelatedFormControls,
+        matcher: DynamicFormControlMatcher): boolean {
         const operator = relation.operator ?? OR_OPERATOR;
 
         return relation.when.reduce<boolean>((hasMatched, condition, index) => {

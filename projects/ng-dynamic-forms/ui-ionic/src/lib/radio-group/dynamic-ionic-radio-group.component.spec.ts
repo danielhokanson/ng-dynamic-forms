@@ -35,7 +35,7 @@ describe("DynamicIonicRadioGroupComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`ion-list`));
+        testElement = debugElement.query(By.css("ion-list"));
     }));
 
     it("should initialize correctly", () => {

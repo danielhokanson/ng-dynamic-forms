@@ -18,11 +18,9 @@ import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX,
-    DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP,
     DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER,
     DYNAMIC_FORM_CONTROL_TYPE_GROUP,
     DYNAMIC_FORM_CONTROL_TYPE_INPUT,
-    DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP,
     DYNAMIC_FORM_CONTROL_TYPE_RATING,
     DYNAMIC_FORM_CONTROL_TYPE_SELECT,
     DYNAMIC_FORM_CONTROL_TYPE_SWITCH,
@@ -114,9 +112,10 @@ export function ngBootstrapUIFormControlMapFn(model: DynamicFormControlModel): T
         // case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
         //     return DynamicNGBootstrapCheckboxGroupComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER:
+        case DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER: {
             const datePickerModel = model as DynamicDatePickerModel;
             return datePickerModel.inline ? DynamicNGBootstrapCalendarComponent : DynamicNGBootstrapDatePickerComponent;
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
             return DynamicNGBootstrapFormGroupComponent;

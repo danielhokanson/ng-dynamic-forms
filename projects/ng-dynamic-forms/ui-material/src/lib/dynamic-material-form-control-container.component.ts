@@ -128,9 +128,10 @@ export function materialUIFormControlMapFn(model: DynamicFormControlModel): Type
         case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
             return DynamicMaterialFormGroupComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+        case DYNAMIC_FORM_CONTROL_TYPE_INPUT: {
             const inputModel = model as DynamicInputModel;
             return inputModel.multiple ? DynamicMaterialChipsComponent : DynamicMaterialInputComponent;
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
             return DynamicMaterialRadioGroupComponent;

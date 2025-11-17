@@ -41,18 +41,18 @@ export class NGBootstrapSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
+        console.warn(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
+        console.warn(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
+        console.warn(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
     }
 
     onNgbEvent($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
+        console.warn(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
     }
 }

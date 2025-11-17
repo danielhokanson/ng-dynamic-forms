@@ -12,8 +12,7 @@ import {
 } from "@danielhokanson/ng-dynamic-forms-core";
 import { NGX_BOOTSTRAP_SAMPLE_FORM_MODEL } from "./ngx-bootstrap-sample-form.model";
 import { NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from "./ngx-bootstrap-sample-form.layout";
-import { DynamicFormControlEvent } from "../../../projects/ng-dynamic-forms/core/src/lib/component/dynamic-form-control-event";
-import { JsonPipe } from "@angular/common";
+import { DynamicFormControlEvent } from "@danielhokanson/ng-dynamic-forms-core";
 import { DynamicNGxBootstrapFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap";
 
 @Component({
@@ -21,7 +20,7 @@ import { DynamicNGxBootstrapFormComponent } from "@danielhokanson/ng-dynamic-for
     templateUrl: "./ngx-bootstrap-sample-form.component.html",
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [JsonPipe, ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
+    imports: [ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
 })
 export class NgxBootstrapSampleFormComponent {
     formModel: DynamicFormControlModel[] = NGX_BOOTSTRAP_SAMPLE_FORM_MODEL;
@@ -57,15 +56,15 @@ export class NgxBootstrapSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.warn(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.warn(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.warn(`FOCUS event on ${$event.model.id}: `, $event);
     }
 
     test() {
@@ -81,14 +80,14 @@ export class NgxBootstrapSampleFormComponent {
             this.formModel,
             new DynamicFormGroupModel({
                 id: "bsFormGroup3",
-                group: [new DynamicInputModel({id: "newInput"})]
+                group: [new DynamicInputModel({ id: "newInput" })]
             })
         );
 
         this.formService.addFormGroupControl(
             this.formGroup.get("bsFormGroup3") as UntypedFormGroup,
             this.formModel[2] as DynamicFormGroupModel,
-            new DynamicInputModel({id: "newInput"})
+            new DynamicInputModel({ id: "newInput" })
         );
 
         this.formService.detectChanges();

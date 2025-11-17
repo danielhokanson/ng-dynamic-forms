@@ -8,8 +8,7 @@ import {
     DynamicFormService,
     DynamicFormControlModel,
     DynamicFormLayout,
-    DynamicFormControlEvent,
-    DynamicTemplateDirective
+    DynamicFormControlEvent
 } from "@danielhokanson/ng-dynamic-forms-core";
 import { MATERIAL_SAMPLE_FORM_MODEL } from "./material-sample-form.model";
 import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
@@ -20,7 +19,7 @@ import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
     templateUrl: "./material-sample-form.component.html",
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [JsonPipe, MatNativeDateModule, MatCardModule, ReactiveFormsModule, DynamicMaterialFormComponent, DynamicTemplateDirective]
+    imports: [JsonPipe, MatNativeDateModule, MatCardModule, ReactiveFormsModule, DynamicMaterialFormComponent]
 })
 export class MaterialSampleFormComponent {
     formModel: DynamicFormControlModel[] = MATERIAL_SAMPLE_FORM_MODEL;
@@ -31,18 +30,18 @@ export class MaterialSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`Material blur event on: ${$event.model.id}: `, $event);
+        console.warn(`Material blur event on: ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`Material change event on: ${$event.model.id}: `, $event);
+        console.warn(`Material change event on: ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`Material focus event on: ${$event.model.id}: `, $event);
+        console.warn(`Material focus event on: ${$event.model.id}: `, $event);
     }
 
     onMatEvent($event: DynamicFormControlEvent) {
-        console.log(`Material ${$event.type} event on: ${$event.model.id}: `, $event);
+        console.warn(`Material ${$event.type} event on: ${$event.model.id}: `, $event);
     }
 }

@@ -20,57 +20,75 @@
     ],
     "paths": {
       "@danielhokanson/ng-dynamic-forms-core": [
+        "projects/ng-dynamic-forms/core/src/public-api.ts",
         "dist/ng-dynamic-forms/core"
       ],
       "@danielhokanson/ng-dynamic-forms-core/*": [
+        "projects/ng-dynamic-forms/core/src/lib/*",
         "dist/ng-dynamic-forms/core/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-basic": [
+        "projects/ng-dynamic-forms/ui-basic/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-basic"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-basic/*": [
+        "projects/ng-dynamic-forms/ui-basic/src/lib/*",
         "dist/ng-dynamic-forms/ui-basic/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-bootstrap": [
+        "projects/ng-dynamic-forms/ui-bootstrap/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-bootstrap/*": [
+        "projects/ng-dynamic-forms/ui-bootstrap/src/lib/*",
         "dist/ng-dynamic-forms/ui-bootstrap/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-foundation": [
+        "projects/ng-dynamic-forms/ui-foundation/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-foundation"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-foundation/*": [
+        "projects/ng-dynamic-forms/ui-foundation/src/lib/*",
         "dist/ng-dynamic-forms/ui-foundation/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ionic": [
+        "projects/ng-dynamic-forms/ui-ionic/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-ionic"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ionic/*": [
+        "projects/ng-dynamic-forms/ui-ionic/src/lib/*",
         "dist/ng-dynamic-forms/ui-ionic/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-material": [
+        "projects/ng-dynamic-forms/ui-material/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-material"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-material/*": [
+        "projects/ng-dynamic-forms/ui-material/src/lib/*",
         "dist/ng-dynamic-forms/ui-material/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap": [
+        "projects/ng-dynamic-forms/ui-ng-bootstrap/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-ng-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap/*": [
+        "projects/ng-dynamic-forms/ui-ng-bootstrap/src/lib/*",
         "dist/ng-dynamic-forms/ui-ng-bootstrap/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-primeng": [
+        "projects/ng-dynamic-forms/ui-primeng/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-primeng"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-primeng/*": [
+        "projects/ng-dynamic-forms/ui-primeng/src/lib/*",
         "dist/ng-dynamic-forms/ui-primeng/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap": [
+        "projects/ng-dynamic-forms/ui-ngx-bootstrap/src/public-api.ts",
         "dist/ng-dynamic-forms/ui-ngx-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap/*": [
+        "projects/ng-dynamic-forms/ui-ngx-bootstrap/src/lib/*",
         "dist/ng-dynamic-forms/ui-ngx-bootstrap/*"
       ]
     },

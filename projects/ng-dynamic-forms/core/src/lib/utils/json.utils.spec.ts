@@ -4,7 +4,7 @@ describe("JSON utils test suite", () => {
 
     it("should convert a text mask to string correctly", () => {
 
-        let testValue1 = "test",
+        const testValue1 = "test",
             testValue2 = /[1-9]/,
             testValue3 = [testValue1, testValue2],
             testResult3 = maskToString(testValue3) as string[];
@@ -20,7 +20,7 @@ describe("JSON utils test suite", () => {
 
     it("should recreate a text mask from string correctly", () => {
 
-        let testValue1 = "test",
+        const testValue1 = "test",
             testValue2 = "/[1-9]/",
             testValue3 = [testValue1, testValue2],
             testResult3 = maskFromString(testValue3) as (string | RegExp)[];
@@ -36,7 +36,7 @@ describe("JSON utils test suite", () => {
 
     it("should recreate a date from string correctly", () => {
 
-        let testValue1 = "2011-10-05T14:48:00.000Z";
+        const testValue1 = "2011-10-05T14:48:00.000Z";
 
         expect(parseReviver("test", testValue1)).toEqual(new Date(testValue1));
     });

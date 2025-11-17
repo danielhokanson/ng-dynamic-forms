@@ -4,7 +4,7 @@ describe("Autofill utils test suite", () => {
 
     it("should validate autofill expressions correctly", () => {
 
-        let value1 = "section-test shipping mobile tel",
+        const value1 = "section-test shipping mobile tel",
             value2 = "billing section-test mobile tel",
             value3 = "section-test shipping tel",
             value4 = "section-test work given-name",

@@ -38,7 +38,7 @@ describe("DynamicPrimeNGRadioGroupComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`div[role="radiogroup"]`));
+        testElement = debugElement.query(By.css("div[role=\"radiogroup\"]"));
     }));
 
     it("should initialize correctly", () => {

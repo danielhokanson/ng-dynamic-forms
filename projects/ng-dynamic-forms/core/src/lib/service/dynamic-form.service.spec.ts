@@ -192,7 +192,7 @@ describe("DynamicFormService test suite", () => {
 
     it("should throw when unknown DynamicFormControlModel id is specified in JSON", () => {
         expect(() => service.fromJSON([{id: "test"}]))
-            .toThrow(new Error(`unknown form control model type defined on JSON object with id "test"`));
+            .toThrow(new Error("unknown form control model type defined on JSON object with id \"test\""));
     });
 
 
@@ -319,11 +319,10 @@ describe("DynamicFormService test suite", () => {
 
     it("should create a form array", () => {
         const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
-        let formArray;
 
         expect(service.createFormArray).toBeTruthy();
 
-        formArray = service.createFormArray(model);
+        const formArray = service.createFormArray(model);
 
         expect(formArray instanceof UntypedFormArray).toBe(true);
         expect(formArray.length).toBe(model.initialCount);
@@ -403,7 +402,7 @@ describe("DynamicFormService test suite", () => {
         const formArray = service.createFormArray(model);
 
         expect(() => service.moveFormArrayGroup(2, -5, formArray, model))
-            .toThrow(new Error(`form array group cannot be moved due to index or new index being out of bounds`));
+            .toThrow(new Error("form array group cannot be moved due to index or new index being out of bounds"));
     });
 
 

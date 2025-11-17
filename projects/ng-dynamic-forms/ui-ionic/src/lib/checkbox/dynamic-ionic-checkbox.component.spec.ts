@@ -35,7 +35,7 @@ describe("DynamicIonicCheckboxComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`ion-checkbox`));
+        testElement = debugElement.query(By.css("ion-checkbox"));
     }));
 
     it("should initialize correctly", () => {

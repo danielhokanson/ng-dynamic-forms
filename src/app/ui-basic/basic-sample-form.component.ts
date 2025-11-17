@@ -25,7 +25,9 @@ export class BasicSampleFormComponent {
     formGroup2 = this.formService.createFormGroup(this.formModel2);
 
     arrayModel = this.formService.findModelById<DynamicFormArrayModel>("basicFormArray", this.formModel2) as DynamicFormArrayModel;
-    arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel as DynamicFormArrayModel, this.formGroup2) as UntypedFormArray;
+    arrayControl = this.formService.findControlByModel<UntypedFormArray>(
+        this.arrayModel as DynamicFormArrayModel, this.formGroup2
+    ) as UntypedFormArray;
 
     constructor(private formService: DynamicFormService) {
     }
@@ -43,14 +45,14 @@ export class BasicSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.warn(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.warn(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.warn(`FOCUS event on ${$event.model.id}: `, $event);
     }
 }

@@ -38,7 +38,7 @@ describe("DynamicMaterialDatePickerComponent test suite", () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`mat-datepicker`));
+        testElement = debugElement.query(By.css("mat-datepicker"));
     }));
 
     it("should initialize correctly", () => {
