@@ -12,6 +12,7 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    files: [],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
