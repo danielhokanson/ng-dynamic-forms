@@ -7,7 +7,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicInputModel,
-    DynamicFormsCoreModule
+    DynamicListDirective
 } from "@danielhokanson/ng-dynamic-forms-core";
 import { NgxMaskDirective } from "ngx-mask";
 import { NgIf, NgClass, NgFor, AsyncPipe } from "@angular/common";
@@ -17,7 +17,7 @@ import { NgIf, NgClass, NgFor, AsyncPipe } from "@angular/common";
     templateUrl: "./dynamic-basic-input.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NgIf, DynamicFormsCoreModule, NgClass, NgxMaskDirective, NgFor, AsyncPipe]
+    imports: [FormsModule, ReactiveFormsModule, NgIf, NgClass, NgxMaskDirective, NgFor, AsyncPipe, DynamicListDirective]
 })
 export class DynamicBasicInputComponent extends DynamicFormControlComponent {
     @Input() formLayout?: DynamicFormLayout;

@@ -8,7 +8,7 @@ import {
     DynamicFormControlComponent,
     DynamicInputModel,
     DynamicFormControlLayout,
-    DynamicFormsCoreModule
+    DynamicListDirective
 } from "@danielhokanson/ng-dynamic-forms-core";
 import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
 
@@ -16,7 +16,7 @@ import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
     selector: "dynamic-primeng-input",
     templateUrl: "./dynamic-primeng-input.component.html",
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, InputTextModule, DynamicFormsCoreModule, NgIf, NgFor, AsyncPipe]
+    imports: [ReactiveFormsModule, NgClass, InputTextModule, DynamicListDirective, NgIf, NgFor, AsyncPipe]
 })
 export class DynamicPrimeNGInputComponent extends DynamicFormControlComponent {
     @Input() formLayout?: DynamicFormLayout;
