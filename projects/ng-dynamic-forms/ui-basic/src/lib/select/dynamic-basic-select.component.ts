@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
@@ -7,12 +7,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSelectModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-basic-select",
-    templateUrl: "./dynamic-basic-select.component.html",
+    selector: 'dynamic-basic-select',
+    templateUrl: './dynamic-basic-select.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgClass, NgFor, AsyncPipe]

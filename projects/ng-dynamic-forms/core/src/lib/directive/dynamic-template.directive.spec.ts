@@ -1,6 +1,6 @@
-import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { Component, TemplateRef } from "@angular/core";
-import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from "./dynamic-template.directive";
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Component, TemplateRef } from '@angular/core';
+import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from './dynamic-template.directive';
 
 @Component({
     template: `
@@ -12,7 +12,7 @@ import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from "
 class TestComponent {
 }
 
-describe("DynamicTemplateDirective test suite", () => {
+describe('DynamicTemplateDirective test suite', () => {
     let directive: DynamicTemplateDirective;
     let fixture: ComponentFixture<TestComponent>;
 
@@ -26,7 +26,7 @@ describe("DynamicTemplateDirective test suite", () => {
         fixture.detectChanges();
     });
 
-    it("should be initialized correctly", () => {
+    it('should be initialized correctly', () => {
         expect(directive.align === DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT.End).toBe(true);
         expect(directive.as).toBeNull();
         expect(directive.modelId).toBeUndefined();

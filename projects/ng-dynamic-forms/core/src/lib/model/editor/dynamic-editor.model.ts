@@ -1,8 +1,8 @@
-import { DynamicInputControlModel, DynamicInputControlModelConfig } from "../dynamic-input-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
+import { DynamicInputControlModel, DynamicInputControlModelConfig } from '../dynamic-input-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_EDITOR = "EDITOR";
+export const DYNAMIC_FORM_CONTROL_TYPE_EDITOR = 'EDITOR';
 
 export interface DynamicEditorModelConfig extends DynamicInputControlModelConfig<string> {
 }

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { Checkbox, CheckboxModule } from "primeng/checkbox";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Checkbox, CheckboxModule } from 'primeng/checkbox';
 import {
     DynamicCheckboxModel,
     DynamicFormLayout,
@@ -8,12 +8,12 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-checkbox",
-    templateUrl: "./dynamic-primeng-checkbox.component.html",
+    selector: 'dynamic-primeng-checkbox',
+    templateUrl: './dynamic-primeng-checkbox.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, CheckboxModule]
 })
@@ -27,7 +27,7 @@ export class DynamicPrimeNGCheckboxComponent extends DynamicFormControlComponent
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pCheckbox", {static: true}) pCheckbox!: Checkbox;
+    @ViewChild('pCheckbox', {static: true}) pCheckbox!: Checkbox;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

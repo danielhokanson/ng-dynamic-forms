@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { ColorPicker, ColorPickerModule } from "primeng/colorpicker";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 import {
     DynamicColorPickerModel,
     DynamicFormLayout,
@@ -8,12 +8,12 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-colorpicker",
-    templateUrl: "./dynamic-primeng-colorpicker.component.html",
+    selector: 'dynamic-primeng-colorpicker',
+    templateUrl: './dynamic-primeng-colorpicker.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, ColorPickerModule]
 })
@@ -27,7 +27,7 @@ export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlCompon
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pColorPicker", {static: true}) pColorPicker!: ColorPicker;
+    @ViewChild('pColorPicker', {static: true}) pColorPicker!: ColorPicker;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

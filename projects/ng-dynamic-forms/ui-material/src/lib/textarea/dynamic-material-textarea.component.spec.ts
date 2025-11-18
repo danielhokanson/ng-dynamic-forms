@@ -1,14 +1,14 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { By } from "@angular/platform-browser";
-import { MatInput } from "@angular/material/input";
-import { DynamicFormService, DynamicTextAreaModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicMaterialTextAreaComponent } from "./dynamic-material-textarea.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { MatInput } from '@angular/material/input';
+import { DynamicFormService, DynamicTextAreaModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicMaterialTextAreaComponent } from './dynamic-material-textarea.component';
 
-describe("DynamicMaterialTextAreaComponent test suite", () => {
-    const testModel = new DynamicTextAreaModel({id: "textarea"});
+describe('DynamicMaterialTextAreaComponent test suite', () => {
+    const testModel = new DynamicTextAreaModel({id: 'textarea'});
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -39,7 +39,7 @@ describe("DynamicMaterialTextAreaComponent test suite", () => {
         testElement = debugElement.query(By.css(`textarea[id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicTextAreaModel).toBe(true);
@@ -64,62 +64,62 @@ describe("DynamicMaterialTextAreaComponent test suite", () => {
         expect(component.showCharacterHint).toBe(false);
     });
 
-    it("should have an input element", () => {
+    it('should have an input element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should listen to native blur events", () => {
-        spyOn(component, "onBlur");
+    it('should listen to native blur events', () => {
+        spyOn(component, 'onBlur');
 
-        testElement.triggerEventHandler("blur", null);
+        testElement.triggerEventHandler('blur', null);
 
         expect(component.onBlur).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should listen to native change event", () => {
-        spyOn(component, "onChange");
+    it('should listen to native change event', () => {
+        spyOn(component, 'onChange');
 
-        testElement.triggerEventHandler("change", null);
+        testElement.triggerEventHandler('change', null);
 
         expect(component.onChange).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 
         expect(component.focus.emit).toHaveBeenCalled();
     });
 
-    it("should listen to native focus events", () => {
-        spyOn(component, "onFocus");
+    it('should listen to native focus events', () => {
+        spyOn(component, 'onFocus');
 
-        testElement.triggerEventHandler("focus", null);
+        testElement.triggerEventHandler('focus', null);
 
         expect(component.onFocus).toHaveBeenCalled();
     });
 
-    it("should emit custom event", () => {
-        spyOn(component.customEvent, "emit");
+    it('should emit custom event', () => {
+        spyOn(component.customEvent, 'emit');
 
-        component.onCustomEvent(null, "eventType");
+        component.onCustomEvent(null, 'eventType');
 
         expect(component.customEvent.emit).toHaveBeenCalled();
     });

@@ -1,11 +1,11 @@
-import { MatInput } from "@angular/material/input";
+import { MatInput } from '@angular/material/input';
 import {
     DynamicFormControlComponent,
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicInputControlModel,
     DynamicInputModel
-} from "@danielhokanson/ng-dynamic-forms-core";
+} from '@danielhokanson/ng-dynamic-forms-core';
 
 export abstract class DynamicMaterialFormInputControlComponent extends DynamicFormControlComponent {
     matInput!: MatInput;

@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Directive, EventEmitter, OnDestroy, OnInit, QueryList } from "@angular/core";
-import { UntypedFormGroup } from "@angular/forms";
-import { DynamicFormControlContainerComponent } from "./dynamic-form-control-container.component";
-import { DynamicFormControlEvent } from "./dynamic-form-control-event";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormModel } from "../model/dynamic-form.model";
-import { DynamicTemplateDirective } from "../directive/dynamic-template.directive";
-import { DynamicFormLayout } from "../service/dynamic-form-layout.service";
-import { DynamicFormComponentService } from "../service/dynamic-form-component.service";
+import { ChangeDetectorRef, Directive, EventEmitter, OnDestroy, OnInit, QueryList } from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
+import { DynamicFormControlContainerComponent } from './dynamic-form-control-container.component';
+import { DynamicFormControlEvent } from './dynamic-form-control-event';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormModel } from '../model/dynamic-form.model';
+import { DynamicTemplateDirective } from '../directive/dynamic-template.directive';
+import { DynamicFormLayout } from '../service/dynamic-form-layout.service';
+import { DynamicFormComponentService } from '../service/dynamic-form-component.service';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix

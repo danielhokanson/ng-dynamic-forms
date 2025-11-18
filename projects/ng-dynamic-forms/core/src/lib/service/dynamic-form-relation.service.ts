@@ -1,21 +1,21 @@
-import { Inject, Injectable, Injector, Optional } from "@angular/core";
-import { UntypedFormControl, UntypedFormGroup } from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
+import { Inject, Injectable, Injector, Optional } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
 import {
     AND_OPERATOR,
     DYNAMIC_MATCHERS,
     DynamicFormControlMatcher,
     OR_OPERATOR
-} from "./dynamic-form-relation-matchers";
-import { DynamicFormControlCondition, DynamicFormControlRelation } from "../model/misc/dynamic-form-control-relation.model";
-import { distinctUntilChanged, startWith } from "rxjs/operators";
-import { merge, Subscription } from "rxjs";
-import { isString } from "../utils/core.utils";
+} from './dynamic-form-relation-matchers';
+import { DynamicFormControlCondition, DynamicFormControlRelation } from '../model/misc/dynamic-form-control-relation.model';
+import { distinctUntilChanged, startWith } from 'rxjs/operators';
+import { merge, Subscription } from 'rxjs';
+import { isString } from '../utils/core.utils';
 
 export type DynamicRelatedFormControls = { [path: string]: UntypedFormControl };
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormRelationService {
 

@@ -8,8 +8,8 @@ import {
     Output,
     QueryList,
     ViewChildren
-} from "@angular/core";
-import { UntypedFormGroup } from "@angular/forms";
+} from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
 import {
     DynamicFormComponent,
     DynamicFormComponentService,
@@ -17,13 +17,13 @@ import {
     DynamicFormLayout,
     DynamicFormModel,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicMaterialFormControlContainerComponent } from "./dynamic-material-form-control-container.component";
-import { NgFor } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicMaterialFormControlContainerComponent } from './dynamic-material-form-control-container.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-form",
-    templateUrl: "./dynamic-material-form.component.html",
+    selector: 'dynamic-material-form',
+    templateUrl: './dynamic-material-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [NgFor, DynamicMaterialFormControlContainerComponent]

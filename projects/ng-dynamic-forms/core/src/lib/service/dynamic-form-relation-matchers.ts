@@ -1,20 +1,20 @@
-import { InjectionToken, Injector, ValueProvider } from "@angular/core";
-import { UntypedFormControl } from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormValidationService } from "./dynamic-form-validation.service";
-import { isObject } from "../utils/core.utils";
-import { DynamicValidatorsConfig } from "../model/misc/dynamic-form-control-validation.model";
-import { DynamicFormService } from "./dynamic-form.service";
+import { InjectionToken, Injector, ValueProvider } from '@angular/core';
+import { UntypedFormControl } from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormValidationService } from './dynamic-form-validation.service';
+import { isObject } from '../utils/core.utils';
+import { DynamicValidatorsConfig } from '../model/misc/dynamic-form-control-validation.model';
+import { DynamicFormService } from './dynamic-form.service';
 
-export const MATCH_DISABLED = "DISABLED";
-export const MATCH_ENABLED = "ENABLED";
-export const MATCH_HIDDEN = "HIDDEN";
-export const MATCH_OPTIONAL = "OPTIONAL";
-export const MATCH_REQUIRED = "REQUIRED";
-export const MATCH_VISIBLE = "VISIBLE";
+export const MATCH_DISABLED = 'DISABLED';
+export const MATCH_ENABLED = 'ENABLED';
+export const MATCH_HIDDEN = 'HIDDEN';
+export const MATCH_OPTIONAL = 'OPTIONAL';
+export const MATCH_REQUIRED = 'REQUIRED';
+export const MATCH_VISIBLE = 'VISIBLE';
 
-export const AND_OPERATOR = "AND";
-export const OR_OPERATOR = "OR";
+export const AND_OPERATOR = 'AND';
+export const OR_OPERATOR = 'OR';
 
 export interface DynamicFormControlMatcher {
     match: string;
@@ -23,7 +23,7 @@ export interface DynamicFormControlMatcher {
     onChange(hasMatch: boolean, model: DynamicFormControlModel, control: UntypedFormControl, injector: Injector): void;
 }
 
-export const DYNAMIC_MATCHERS = new InjectionToken<DynamicFormControlMatcher>("DYNAMIC_MATCHERS");
+export const DYNAMIC_MATCHERS = new InjectionToken<DynamicFormControlMatcher>('DYNAMIC_MATCHERS');
 
 export const DISABLED_MATCHER: DynamicFormControlMatcher = {
     match: MATCH_DISABLED,
@@ -52,7 +52,7 @@ export const REQUIRED_MATCHER: DynamicFormControlMatcher = {
 
         } else {
             if (isObject(model.validators)) {
-                delete (model.validators as Pick<DynamicValidatorsConfig, "required">).required;
+                delete (model.validators as Pick<DynamicValidatorsConfig, 'required'>).required;
                 validatorsConfig = {...model.validators};
             }
         }

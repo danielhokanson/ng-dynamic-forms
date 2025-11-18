@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { MatSlider, MatSliderModule } from "@angular/material/slider";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatSlider, MatSliderModule } from '@angular/material/slider';
 import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
@@ -9,12 +9,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSliderModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-slider",
-    templateUrl: "./dynamic-material-slider.component.html",
+    selector: 'dynamic-material-slider',
+    templateUrl: './dynamic-material-slider.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, MatSliderModule, NgClass]
 })
@@ -29,7 +29,7 @@ export class DynamicMaterialSliderComponent extends DynamicFormControlComponent 
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("matSlider", {static: true}) matSlider!: MatSlider;
+    @ViewChild('matSlider', {static: true}) matSlider!: MatSlider;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

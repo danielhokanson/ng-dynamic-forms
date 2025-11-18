@@ -1,23 +1,23 @@
-import { Component, ViewEncapsulation } from "@angular/core";
-import { JsonPipe } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatCardModule } from "@angular/material/card";
-import { MatNativeDateModule } from "@angular/material/core";
-import { DynamicMaterialFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-material";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { JsonPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DynamicMaterialFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-material';
 import {
     DynamicFormService,
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicFormControlEvent,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { MATERIAL_SAMPLE_FORM_MODEL } from "./material-sample-form.model";
-import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { MATERIAL_SAMPLE_FORM_MODEL } from './material-sample-form.model';
+import { MATERIAL_SAMPLE_FORM_LAYOUT } from './material-sample-form.layout';
 
 @Component({
-    selector: "dynamic-material-sample-form",
-    styleUrls: ["../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css"],
-    templateUrl: "./material-sample-form.component.html",
+    selector: 'dynamic-material-sample-form',
+    styleUrls: ['../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css'],
+    templateUrl: './material-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [JsonPipe, MatNativeDateModule, MatCardModule, ReactiveFormsModule, DynamicMaterialFormComponent, DynamicTemplateDirective]

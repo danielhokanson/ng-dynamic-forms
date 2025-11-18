@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { Calendar, CalendarModule } from "primeng/calendar";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Calendar, CalendarModule } from 'primeng/calendar';
 import {
     DynamicDatePickerModel,
     DynamicFormControlCustomEvent,
@@ -11,12 +11,12 @@ import {
     DynamicFormControlComponent,
     DynamicTimePickerModel,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-calendar",
-    templateUrl: "./dynamic-primeng-calendar.component.html",
+    selector: 'dynamic-primeng-calendar',
+    templateUrl: './dynamic-primeng-calendar.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, CalendarModule]
 })
@@ -31,7 +31,7 @@ export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pCalendar", {static: true}) pCalendar!: Calendar;
+    @ViewChild('pCalendar', {static: true}) pCalendar!: Calendar;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

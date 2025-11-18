@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { BsDatepickerDirective, BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerDirective, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {
     DynamicDatePickerModel,
     DynamicFormControlComponent,
@@ -9,12 +9,12 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-datepicker",
-    templateUrl: "./dynamic-ngx-bootstrap-datepicker.component.html",
+    selector: 'dynamic-ngx-bootstrap-datepicker',
+    templateUrl: './dynamic-ngx-bootstrap-datepicker.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, BsDatepickerModule, NgClass, NgIf]
 })

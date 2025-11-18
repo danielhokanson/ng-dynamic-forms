@@ -1,7 +1,7 @@
 <div [formGroup]="group" class="input-group">
 
     <input bsDatepicker class="form-control" #bsDatepicker="bsDatepicker"
-           [autofocus]="model.autoFocus"
+          
            [bsConfig]="model.getAdditional('bsConfig', {containerClass: model.getAdditional('containerClass', 'theme-green'), showWeekNumbers: model.getAdditional('showWeekNumbers', true)})"
            [datesDisabled]="model.getAdditional('datesDisabled', [])"
            [daysDisabled]="model.getAdditional('daysDisabled', [])"

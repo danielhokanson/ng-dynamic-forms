@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
-import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from "@angular/material/core";
+import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 import {
     DynamicCheckboxModel,
     DynamicFormControlComponent,
@@ -10,12 +10,12 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-checkbox",
-    templateUrl: "./dynamic-material-checkbox.component.html",
+    selector: 'dynamic-material-checkbox',
+    templateUrl: './dynamic-material-checkbox.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, MatCheckboxModule, NgClass]
 })
@@ -30,7 +30,7 @@ export class DynamicMaterialCheckboxComponent extends DynamicFormControlComponen
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("matCheckbox", {static: true}) matCheckbox!: MatCheckbox;
+    @ViewChild('matCheckbox', {static: true}) matCheckbox!: MatCheckbox;
 
     constructor(protected layoutService: DynamicFormLayoutService,
                 protected validationService: DynamicFormValidationService,

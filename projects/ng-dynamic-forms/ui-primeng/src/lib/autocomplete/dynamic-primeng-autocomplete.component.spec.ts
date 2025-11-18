@@ -1,13 +1,13 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { AutoComplete } from "primeng/autocomplete";
-import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicPrimeNGAutoCompleteComponent } from "./dynamic-primeng-autocomplete.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { AutoComplete } from 'primeng/autocomplete';
+import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicPrimeNGAutoCompleteComponent } from './dynamic-primeng-autocomplete.component';
 
-describe("DynamicPrimeNGAutoCompleteComponent test suite", () => {
-    const testModel = new DynamicInputModel({id: "input", list: ["One", "Two", "Three"]});
+describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
+    const testModel = new DynamicInputModel({id: 'input', list: ['One', 'Two', 'Three']});
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -38,7 +38,7 @@ describe("DynamicPrimeNGAutoCompleteComponent test suite", () => {
         testElement = debugElement.query(By.css(`p-autoComplete[ng-reflect-id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicInputModel).toBe(true);
@@ -60,38 +60,38 @@ describe("DynamicPrimeNGAutoCompleteComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an p-autoComplete element", () => {
+    it('should have an p-autoComplete element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 
         expect(component.focus.emit).toHaveBeenCalled();
     });
 
-    it("should emit custom event", () => {
-        spyOn(component.customEvent, "emit");
+    it('should emit custom event', () => {
+        spyOn(component.customEvent, 'emit');
 
-        component.onCustomEvent(null, "eventType");
+        component.onCustomEvent(null, 'eventType');
 
         expect(component.customEvent.emit).toHaveBeenCalled();
     });

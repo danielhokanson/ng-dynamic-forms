@@ -1,20 +1,20 @@
-import { EventEmitter } from "@angular/core";
-import { AbstractControl, UntypedFormGroup } from "@angular/forms";
-import { DynamicFormControl } from "./dynamic-form-control-interface";
-import { DynamicFormControlCustomEvent } from "./dynamic-form-control-event";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
+import { EventEmitter } from '@angular/core';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
+import { DynamicFormControl } from './dynamic-form-control-interface';
+import { DynamicFormControlCustomEvent } from './dynamic-form-control-event';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
 import {
     DynamicFormControlLayout,
     DynamicFormControlLayoutContext,
     DynamicFormControlLayoutPlace
-} from "../model/misc/dynamic-form-control-layout.model";
-import { DynamicFormValidationService } from "../service/dynamic-form-validation.service";
+} from '../model/misc/dynamic-form-control-layout.model';
+import { DynamicFormValidationService } from '../service/dynamic-form-validation.service';
 import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormControlTemplates
-} from "../service/dynamic-form-layout.service";
-import { isString } from "../utils/core.utils";
+} from '../service/dynamic-form-layout.service';
+import { isString } from '../utils/core.utils';
 
 export abstract class DynamicFormControlComponent implements DynamicFormControl {
     formLayout?: DynamicFormLayout;

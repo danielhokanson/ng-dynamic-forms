@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { NgbRating, NgbRatingConfig, NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgbRating, NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
@@ -9,12 +9,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicRatingModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ng-bootstrap-rating",
-    templateUrl: "./dynamic-ng-bootstrap-rating.component.html",
+    selector: 'dynamic-ng-bootstrap-rating',
+    templateUrl: './dynamic-ng-bootstrap-rating.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgbRatingModule, NgClass]

@@ -1,15 +1,15 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { MultiSelect } from "primeng/multiselect";
-import { DynamicFormService, DynamicSelectModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicPrimeNGMultiSelectComponent } from "./dynamic-primeng-multiselect.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { MultiSelect } from 'primeng/multiselect';
+import { DynamicFormService, DynamicSelectModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicPrimeNGMultiSelectComponent } from './dynamic-primeng-multiselect.component';
 
-describe("DynamicPrimeNGMultiSelectComponent test suite", () => {
+describe('DynamicPrimeNGMultiSelectComponent test suite', () => {
     const testModel = new DynamicSelectModel({
-        id: "select",
-        options: [{value: "One"}, {value: "Two"}],
+        id: 'select',
+        options: [{value: 'One'}, {value: 'Two'}],
         multiple: true
     });
     const formModel = [testModel];
@@ -42,7 +42,7 @@ describe("DynamicPrimeNGMultiSelectComponent test suite", () => {
         testElement = debugElement.query(By.css(`p-multiSelect[ng-reflect-id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicSelectModel).toBe(true);
@@ -62,28 +62,28 @@ describe("DynamicPrimeNGMultiSelectComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an p-multiSelect element", () => {
+    it('should have an p-multiSelect element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 

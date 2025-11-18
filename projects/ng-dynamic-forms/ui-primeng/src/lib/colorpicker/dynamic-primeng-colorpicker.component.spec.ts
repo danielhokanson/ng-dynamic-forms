@@ -1,13 +1,13 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { ColorPicker } from "primeng/colorpicker";
-import { DynamicColorPickerModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicPrimeNGColorPickerComponent } from "./dynamic-primeng-colorpicker.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { ColorPicker } from 'primeng/colorpicker';
+import { DynamicColorPickerModel, DynamicFormService } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicPrimeNGColorPickerComponent } from './dynamic-primeng-colorpicker.component';
 
-describe("DynamicPrimeNGColorPickerComponent test suite", () => {
-    const testModel = new DynamicColorPickerModel({id: "colorpicker"});
+describe('DynamicPrimeNGColorPickerComponent test suite', () => {
+    const testModel = new DynamicColorPickerModel({id: 'colorpicker'});
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -38,7 +38,7 @@ describe("DynamicPrimeNGColorPickerComponent test suite", () => {
         testElement = debugElement.query(By.css(`p-colorPicker[id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicColorPickerModel).toBe(true);
@@ -58,28 +58,28 @@ describe("DynamicPrimeNGColorPickerComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an p-colorPicker element", () => {
+    it('should have an p-colorPicker element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 

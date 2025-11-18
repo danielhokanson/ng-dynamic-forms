@@ -12,43 +12,43 @@ import {
     MATCH_DISABLED,
     MATCH_HIDDEN,
     MATCH_REQUIRED
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { of } from "rxjs";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { of } from 'rxjs';
 
 export const NGX_BOOTSTRAP_SAMPLE_FORM_MODEL = [
     new DynamicFormGroupModel({
-        id: "bsFormGroup1",
-        legend: "Form Group 1",
+        id: 'bsFormGroup1',
+        legend: 'Form Group 1',
         group: [
             new DynamicDatePickerModel({
-                id: "bsDatePicker",
-                label: "Datepicker",
-                toggleLabel: "Open",
-                placeholder: "Pick a date",
+                id: 'bsDatePicker',
+                label: 'Datepicker',
+                toggleLabel: 'Open',
+                placeholder: 'Pick a date',
                 value: new Date(),
                 additional: {
-                    containerClass: "theme-red"
+                    containerClass: 'theme-red'
                 }
             }),
             new DynamicSelectModel<string>({
-                id: "bsSelect",
-                label: "Select",
+                id: 'bsSelect',
+                label: 'Select',
                 options: of([
-                    {label: "Option 1", value: "option-1"},
-                    {label: "Option 2", value: "option-2"},
-                    {label: "Option 3", value: "option-3"},
-                    {label: "Option 4", value: "option-4"}
+                    {label: 'Option 1', value: 'option-1'},
+                    {label: 'Option 2', value: 'option-2'},
+                    {label: 'Option 3', value: 'option-3'},
+                    {label: 'Option 4', value: 'option-4'}
                 ]),
-                value: "option-3"
+                value: 'option-3'
             }),
             new DynamicInputModel({
-                hint: "Just a sample help text",
-                id: "bsInput",
-                label: "Input",
+                hint: 'Just a sample help text',
+                id: 'bsInput',
+                label: 'Input',
                 maxLength: 51,
-                placeholder: "Just some input",
-                prefix: "Prefix",
-                suffix: "Suffix",
+                placeholder: 'Just some input',
+                prefix: 'Prefix',
+                suffix: 'Suffix',
                 relations: [],
                 validators: {
                     maxLength: 5
@@ -57,25 +57,25 @@ export const NGX_BOOTSTRAP_SAMPLE_FORM_MODEL = [
                     customAsyncValidator: null
                 },
                 errorMessages: {
-                    maxLength: "Max character count is 5",
-                    customAsyncValidator: "Async validation error"
+                    maxLength: 'Max character count is 5',
+                    customAsyncValidator: 'Async validation error'
                 }
             }),
             new DynamicCheckboxGroupModel({
-                id: "bsCheckboxGroup",
-                label: "Checkbox Group",
+                id: 'bsCheckboxGroup',
+                label: 'Checkbox Group',
                 group: [
                     new DynamicCheckboxModel({
-                        id: "checkboxGroup1",
-                        label: "Checkbox 1",
+                        id: 'checkboxGroup1',
+                        label: 'Checkbox 1',
                         value: true,
                         relations: [
-                            {match: MATCH_DISABLED, when: [{rootPath: "bsFormGroup2.bsRadioGroup", value: "option-4"}]}
+                            {match: MATCH_DISABLED, when: [{rootPath: 'bsFormGroup2.bsRadioGroup', value: 'option-4'}]}
                         ]
                     }),
                     new DynamicCheckboxModel({
-                        id: "checkboxGroup2",
-                        label: "Checkbox 2",
+                        id: 'checkboxGroup2',
+                        label: 'Checkbox 2',
                         value: true
                     })
                 ]
@@ -83,68 +83,68 @@ export const NGX_BOOTSTRAP_SAMPLE_FORM_MODEL = [
         ]
     }),
     new DynamicFormGroupModel({
-        id: "bsFormGroup2",
-        legend: "Form Group 2",
+        id: 'bsFormGroup2',
+        legend: 'Form Group 2',
         group: [
             new DynamicRadioGroupModel<string>({
-                id: "bsRadioGroup",
-                label: "Radio Group",
+                id: 'bsRadioGroup',
+                label: 'Radio Group',
                 options: [
-                    {label: "Textarea is disabled", value: "option-1"},
-                    {label: "Textarea is hidden", value: "option-2"},
-                    {label: "Textarea is required", value: "option-3"},
-                    {label: "Option 4", value: "option-4"}
+                    {label: 'Textarea is disabled', value: 'option-1'},
+                    {label: 'Textarea is hidden', value: 'option-2'},
+                    {label: 'Textarea is required', value: 'option-3'},
+                    {label: 'Option 4', value: 'option-4'}
                 ],
-                value: "option-4"
+                value: 'option-4'
             }),
             new DynamicInputModel({
-                id: "bsInput2",
-                label: "Input",
+                id: 'bsInput2',
+                label: 'Input',
                 maxLength: 51,
-                placeholder: "example input",
+                placeholder: 'example input',
                 validators: {
                     maxLength: 5
                 },
                 errorMessages: {
-                    maxLength: "Max character count is 5"
+                    maxLength: 'Max character count is 5'
                 },
-                value: "Test"
+                value: 'Test'
             }),
             new DynamicTextAreaModel({
-                id: "bsTextArea",
-                label: "Textarea",
+                id: 'bsTextArea',
+                label: 'Textarea',
                 rows: 5,
-                placeholder: "example Textarea",
+                placeholder: 'example Textarea',
                 relations: [
-                    {match: MATCH_DISABLED, when: [{id: "bsRadioGroup", value: "option-1"}]},
-                    {match: MATCH_HIDDEN, when: [{id: "bsRadioGroup", value: "option-2"}]},
-                    {match: MATCH_REQUIRED, when: [{id: "bsRadioGroup", value: "option-3"}]}
+                    {match: MATCH_DISABLED, when: [{id: 'bsRadioGroup', value: 'option-1'}]},
+                    {match: MATCH_HIDDEN, when: [{id: 'bsRadioGroup', value: 'option-2'}]},
+                    {match: MATCH_REQUIRED, when: [{id: 'bsRadioGroup', value: 'option-3'}]}
                 ],
                 errorMessages: {
-                    required: "This field is required"
+                    required: 'This field is required'
                 }
             }),
             new DynamicTimePickerModel({
-                id: "bsTimePicker",
-                label: "Timepicker",
+                id: 'bsTimePicker',
+                label: 'Timepicker',
                 meridian: true,
                 showSeconds: false,
                 value: new Date()
             }),
             new DynamicCheckboxModel({
-                id: "bsCheckbox",
-                label: "I do agree"
+                id: 'bsCheckbox',
+                label: 'I do agree'
             }),
             new DynamicFormArrayModel({
-                id: "bsFormArray",
+                id: 'bsFormArray',
                 initialCount: 5,
-                label: "Form Array",
+                label: 'Form Array',
                 groupFactory: () => {
                     return [
                         new DynamicInputModel({
-                            id: "bsArrayInput",
+                            id: 'bsArrayInput',
                             // label: "Label",
-                            placeholder: "Just some input"
+                            placeholder: 'Just some input'
                         })
                     ];
                 }

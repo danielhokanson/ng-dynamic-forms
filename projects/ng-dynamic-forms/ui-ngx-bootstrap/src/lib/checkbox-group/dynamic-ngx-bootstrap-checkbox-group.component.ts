@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicCheckboxModel,
     DynamicCheckboxGroupModel,
@@ -8,13 +8,13 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { ButtonsModule } from "ngx-bootstrap/buttons";
-import { NgClass, NgFor } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { NgClass, NgFor } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-checkbox-group",
-    templateUrl: "./dynamic-ngx-bootstrap-checkbox-group.component.html",
+    selector: 'dynamic-ngx-bootstrap-checkbox-group',
+    templateUrl: './dynamic-ngx-bootstrap-checkbox-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, ButtonsModule]
 })

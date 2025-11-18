@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { TimepickerComponent, TimepickerModule } from "ngx-bootstrap/timepicker";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TimepickerComponent, TimepickerModule } from 'ngx-bootstrap/timepicker';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
@@ -8,12 +8,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicTimePickerModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-timepicker",
-    templateUrl: "./dynamic-ngx-bootstrap-timepicker.component.html",
+    selector: 'dynamic-ngx-bootstrap-timepicker',
+    templateUrl: './dynamic-ngx-bootstrap-timepicker.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, TimepickerModule, NgClass]
 })

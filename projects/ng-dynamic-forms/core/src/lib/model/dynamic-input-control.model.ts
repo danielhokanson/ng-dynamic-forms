@@ -1,7 +1,7 @@
-import { DynamicFormValueControlModel, DynamicFormValueControlModelConfig } from "./dynamic-form-value-control.model";
-import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
-import { serializable } from "../decorator/serializable.decorator";
-import { isBoolean, isNumber } from "../utils/core.utils";
+import { DynamicFormValueControlModel, DynamicFormValueControlModelConfig } from './dynamic-form-value-control.model';
+import { DynamicFormControlLayout } from './misc/dynamic-form-control-layout.model';
+import { serializable } from '../decorator/serializable.decorator';
+import { isBoolean, isNumber } from '../utils/core.utils';
 
 export interface DynamicInputControlModelConfig<T> extends DynamicFormValueControlModelConfig<T> {
     autoComplete?: string;
@@ -29,11 +29,11 @@ export abstract class DynamicInputControlModel<T> extends DynamicFormValueContro
     protected constructor(config: DynamicInputControlModelConfig<T>, layout?: DynamicFormControlLayout) {
         super(config, layout);
 
-        this.autoComplete = config.autoComplete ?? "on";
+        this.autoComplete = config.autoComplete ?? 'on';
         this.autoFocus = isBoolean(config.autoFocus) ? config.autoFocus : false;
         this.maxLength = isNumber(config.maxLength) ? config.maxLength : null;
         this.minLength = isNumber(config.minLength) ? config.minLength : null;
-        this.placeholder = config.placeholder ?? "";
+        this.placeholder = config.placeholder ?? '';
         this.prefix = config.prefix ?? null;
         this.readOnly = isBoolean(config.readOnly) ? config.readOnly : false;
         this.spellCheck = isBoolean(config.spellCheck) ? config.spellCheck : false;

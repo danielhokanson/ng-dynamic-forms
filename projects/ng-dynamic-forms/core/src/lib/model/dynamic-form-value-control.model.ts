@@ -1,8 +1,8 @@
-import { BehaviorSubject, Observable } from "rxjs";
-import { DynamicFormControlModel, DynamicFormControlModelConfig } from "./dynamic-form-control.model";
-import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
-import { serializable } from "../decorator/serializable.decorator";
-import { isBoolean, isObject } from "../utils/core.utils";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DynamicFormControlModel, DynamicFormControlModelConfig } from './dynamic-form-control.model';
+import { DynamicFormControlLayout } from './misc/dynamic-form-control-layout.model';
+import { serializable } from '../decorator/serializable.decorator';
+import { isBoolean, isObject } from '../utils/core.utils';
 
 export interface DynamicFormValueControlModelConfig<T> extends DynamicFormControlModelConfig {
     additional?: { [key: string]: any };
@@ -17,7 +17,7 @@ export abstract class DynamicFormValueControlModel<T> extends DynamicFormControl
     @serializable() hint: string | null;
     @serializable() required: boolean;
     @serializable() tabIndex: number | null;
-    @serializable("value") private _value: T | null;
+    @serializable('value') private _value: T | null;
 
     private readonly value$: BehaviorSubject<T | null>;
 

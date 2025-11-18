@@ -1,12 +1,12 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { DynamicFormService, DynamicTextAreaModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicNGBootstrapTextAreaComponent } from "./dynamic-ng-bootstrap-textarea.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { DynamicFormService, DynamicTextAreaModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicNGBootstrapTextAreaComponent } from './dynamic-ng-bootstrap-textarea.component';
 
-describe("DynamicNGBootstrapTextAreaComponent test suite", () => {
-    const testModel = new DynamicTextAreaModel({id: "textarea"});
+describe('DynamicNGBootstrapTextAreaComponent test suite', () => {
+    const testModel = new DynamicTextAreaModel({id: 'textarea'});
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -37,7 +37,7 @@ describe("DynamicNGBootstrapTextAreaComponent test suite", () => {
         testElement = debugElement.query(By.css(`textarea[id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicTextAreaModel).toBe(true);
@@ -56,33 +56,33 @@ describe("DynamicNGBootstrapTextAreaComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an textarea element", () => {
+    it('should have an textarea element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should listen to and emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should listen to and emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
-        testElement.triggerEventHandler("blur", null);
+        testElement.triggerEventHandler('blur', null);
 
         expect(component.blur.emit).toHaveBeenCalledTimes(2);
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
-        testElement.triggerEventHandler("change", null);
+        testElement.triggerEventHandler('change', null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should listen to and emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should listen to and emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
-        testElement.triggerEventHandler("focus", null);
+        testElement.triggerEventHandler('focus', null);
 
         expect(component.focus.emit).toHaveBeenCalledTimes(2);
     });

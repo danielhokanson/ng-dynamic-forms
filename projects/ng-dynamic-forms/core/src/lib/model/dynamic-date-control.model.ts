@@ -1,6 +1,6 @@
-import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from "./dynamic-form-value-control.model";
-import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
-import { serializable } from "../decorator/serializable.decorator";
+import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from './dynamic-form-value-control.model';
+import { DynamicFormControlLayout } from './misc/dynamic-form-control-layout.model';
+import { serializable } from '../decorator/serializable.decorator';
 
 export type DynamicDateControlValue = string | object | Date;
 

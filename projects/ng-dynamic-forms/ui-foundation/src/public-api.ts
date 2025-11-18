@@ -1,1 +1,1 @@
-export * from "./lib/ui-foundation";
+export * from './lib/ui-foundation';

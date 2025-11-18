@@ -1,12 +1,12 @@
-import { Route } from "@angular/router";
-import { LazyLoadedFormComponent } from "./lazy-loaded-form.component";
-import { NG_VALIDATORS } from "@angular/forms";
-import { customLazyLoadedValidator } from "./lazy-loaded-form.validators";
-import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory } from "@danielhokanson/ng-dynamic-forms-core";
+import { Route } from '@angular/router';
+import { LazyLoadedFormComponent } from './lazy-loaded-form.component';
+import { NG_VALIDATORS } from '@angular/forms';
+import { customLazyLoadedValidator } from './lazy-loaded-form.validators';
+import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory } from '@danielhokanson/ng-dynamic-forms-core';
 
 export const lazyFormRoutes: Route[] = [
     {
-        path: "",
+        path: '',
         providers: [
             {
                 provide: NG_VALIDATORS,
@@ -16,7 +16,7 @@ export const lazyFormRoutes: Route[] = [
             {
                 provide: DYNAMIC_VALIDATORS,
                 useValue: new Map<string, Validator | ValidatorFactory>([
-                    ["customLazyLoadedValidator", customLazyLoadedValidator]
+                    ['customLazyLoadedValidator', customLazyLoadedValidator]
                 ])
             }
 

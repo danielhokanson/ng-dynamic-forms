@@ -1,21 +1,21 @@
-import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlEvent,
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicInputModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NG_BOOTSTRAP_SAMPLE_FORM_MODEL } from "./ng-bootstrap-sample-form.model";
-import { NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from "./ng-bootstrap-sample-form.layout";
-import { DynamicNGBootstrapFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap";
-import { JsonPipe } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NG_BOOTSTRAP_SAMPLE_FORM_MODEL } from './ng-bootstrap-sample-form.model';
+import { NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from './ng-bootstrap-sample-form.layout';
+import { DynamicNGBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap';
+import { JsonPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-    selector: "dynamic-ng-bootstrap-sample-form",
+    selector: 'dynamic-ng-bootstrap-sample-form',
     styleUrls: [],
-    templateUrl: "./ng-bootstrap-sample-form.component.html",
+    templateUrl: './ng-bootstrap-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGBootstrapFormComponent]
@@ -31,12 +31,12 @@ export class NGBootstrapSampleFormComponent {
     }
 
     onClick() {
-        const model = this.formService.findModelById("firstName", this.formModel) as DynamicInputModel;
+        const model = this.formService.findModelById('firstName', this.formModel) as DynamicInputModel;
 
-        model.label = "Updated Label";
+        model.label = 'Updated Label';
         this.formService.detectChanges();
 
-        model.value = "Test Value";
+        model.value = 'Test Value';
         model.disabled = true;
     }
 

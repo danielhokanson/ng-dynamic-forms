@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 // import { Response, ResponseOptions } from "@angular/http";
 // import { MockBackend } from "@angular/http/testing";
-import { Router, NavigationEnd, RouterOutlet, RouterLink } from "@angular/router";
-import { NgStyle } from "@angular/common";
+import { Router, NavigationEnd, RouterOutlet, RouterLink } from '@angular/router';
+import { NgStyle } from '@angular/common';
 
 @Component({
-    selector: "app-root",
-    templateUrl: "./app.component.html",
+    selector: 'app-root',
+    templateUrl: './app.component.html',
     standalone: true,
     imports: [RouterOutlet, RouterLink, NgStyle]
 })
@@ -34,7 +34,7 @@ export class AppComponent {
 
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
-                if (this.url !== "/" && this.url !== event.url) {
+                if (this.url !== '/' && this.url !== event.url) {
                     location.reload(); // reload to avoid CSS side effects // DON'T DO this in production !!!
 
                 } else {

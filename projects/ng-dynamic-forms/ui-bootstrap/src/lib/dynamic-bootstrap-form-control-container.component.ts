@@ -13,8 +13,8 @@ import {
     ViewChild,
     ViewChildren,
     ViewContainerRef
-} from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+} from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX,
@@ -44,20 +44,20 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicBootstrapCheckboxComponent } from "./checkbox/dynamic-bootstrap-checkbox.component";
-import { DynamicBootstrapDatePickerComponent } from "./datepicker/dynamic-bootstrap-datepicker.component";
-import { DynamicBootstrapInputComponent } from "./input/dynamic-bootstrap-input.component";
-import { DynamicBootstrapRadioGroupComponent } from "./radio-group/dynamic-bootstrap-radio-group.component";
-import { DynamicBootstrapRatingComponent } from "./rating/dynamic-bootstrap-rating.component";
-import { DynamicBootstrapSelectComponent } from "./select/dynamic-bootstrap-select.component";
-import { DynamicBootstrapTextAreaComponent } from "./textarea/dynamic-bootstrap-textarea.component";
-import { DynamicBootstrapTimePickerComponent } from "./timepicker/dynamic-bootstrap-timepicker.component";
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicBootstrapCheckboxComponent } from './checkbox/dynamic-bootstrap-checkbox.component';
+import { DynamicBootstrapDatePickerComponent } from './datepicker/dynamic-bootstrap-datepicker.component';
+import { DynamicBootstrapInputComponent } from './input/dynamic-bootstrap-input.component';
+import { DynamicBootstrapRadioGroupComponent } from './radio-group/dynamic-bootstrap-radio-group.component';
+import { DynamicBootstrapRatingComponent } from './rating/dynamic-bootstrap-rating.component';
+import { DynamicBootstrapSelectComponent } from './select/dynamic-bootstrap-select.component';
+import { DynamicBootstrapTextAreaComponent } from './textarea/dynamic-bootstrap-textarea.component';
+import { DynamicBootstrapTimePickerComponent } from './timepicker/dynamic-bootstrap-timepicker.component';
+import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-bootstrap-form-control",
-    templateUrl: "./dynamic-bootstrap-form-control-container.component.html",
+    selector: 'dynamic-bootstrap-form-control',
+    templateUrl: './dynamic-bootstrap-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor]
@@ -65,14 +65,14 @@ import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
 export class DynamicBootstrapFormControlContainerComponent extends DynamicFormControlContainerComponent {
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
-    @HostBinding("class") klass?: string;
+    @HostBinding('class') klass?: string;
 
     @Input() asBootstrapFormGroup = true;
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
     // tslint:disable-next-line:no-input-rename
-    @Input("templates") inputTemplateList?: QueryList<DynamicTemplateDirective>;
+    @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
 
@@ -80,9 +80,9 @@ export class DynamicBootstrapFormControlContainerComponent extends DynamicFormCo
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     // tslint:disable-next-line:no-output-rename
-    @Output("bsEvent") customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
+    @Output('bsEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     get componentType(): Type<DynamicFormControl> | null {
         return this.componentService.getCustomComponentType(this.model) || bootstrapUIFormControlMapFn(this.model);
@@ -139,8 +139,8 @@ export function bootstrapUIFormControlMapFn(model: DynamicFormControlModel): Typ
 }
 
 @Component({
-    selector: "dynamic-bootstrap-form-array",
-    templateUrl: "./dynamic-bootstrap-form-array.component.html",
+    selector: 'dynamic-bootstrap-form-array',
+    templateUrl: './dynamic-bootstrap-form-array.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicBootstrapFormControlContainerComponent]
 })
@@ -164,8 +164,8 @@ export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponen
 }
 
 @Component({
-    selector: "dynamic-bootstrap-form-group",
-    templateUrl: "./dynamic-bootstrap-form-group.component.html",
+    selector: 'dynamic-bootstrap-form-group',
+    templateUrl: './dynamic-bootstrap-form-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicBootstrapFormControlContainerComponent]
 })

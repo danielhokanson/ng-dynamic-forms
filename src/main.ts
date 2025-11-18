@@ -1,17 +1,17 @@
-import { bootstrapApplication } from "@angular/platform-browser";
-import { enableProdMode } from "@angular/core";
-import { LocationStrategy, HashLocationStrategy } from "@angular/common";
-import { AppComponent } from "./app/app.component";
-import { withInterceptorsFromDi, provideHttpClient } from "@angular/common/http";
-import { provideAnimations } from "@angular/platform-browser/animations";
-import { NG_VALIDATORS, NG_ASYNC_VALIDATORS } from "@angular/forms";
-import { provideRouter } from "@angular/router";
-import { MAT_CHIPS_DEFAULT_OPTIONS } from "@angular/material/chips";
-import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, DYNAMIC_MATCHER_PROVIDERS } from "@danielhokanson/ng-dynamic-forms-core";
-import { appRoutes } from "./app/app.routes";
-import { customValidator, customDateRangeValidator, customAsyncValidator, customForbiddenValidator } from "./app/app.validators";
-import { environment } from "./environments/environment";
-import { provideNgxMask } from "ngx-mask";
+import { bootstrapApplication } from '@angular/platform-browser';
+import { enableProdMode } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AppComponent } from './app/app.component';
+import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { NG_VALIDATORS, NG_ASYNC_VALIDATORS } from '@angular/forms';
+import { provideRouter } from '@angular/router';
+import { MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material/chips';
+import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, DYNAMIC_MATCHER_PROVIDERS } from '@danielhokanson/ng-dynamic-forms-core';
+import { appRoutes } from './app/app.routes';
+import { customValidator, customDateRangeValidator, customAsyncValidator, customForbiddenValidator } from './app/app.validators';
+import { environment } from './environments/environment';
+import { provideNgxMask } from 'ngx-mask';
 
 if (environment.production) {
     enableProdMode();
@@ -44,10 +44,10 @@ bootstrapApplication(AppComponent, {
         {
             provide: DYNAMIC_VALIDATORS,
             useValue: new Map<string, Validator | ValidatorFactory>([
-                ["customValidator", customValidator],
-                ["customDateRangeValidator", customDateRangeValidator],
-                ["customForbiddenValidator", customForbiddenValidator],
-                ["customAsyncValidator", customAsyncValidator]
+                ['customValidator', customValidator],
+                ['customDateRangeValidator', customDateRangeValidator],
+                ['customForbiddenValidator', customForbiddenValidator],
+                ['customAsyncValidator', customAsyncValidator]
             ])
         },
         ...DYNAMIC_MATCHER_PROVIDERS,

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { IonDatetime, IonicModule } from "@ionic/angular";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { IonDatetime, IonicModule } from '@ionic/angular';
 import {
     DynamicDatePickerModel,
     DynamicFormControlCustomEvent,
@@ -9,12 +9,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicFormControlComponent
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgIf, NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ionic-datetime",
-    templateUrl: "./dynamic-ionic-datetime.component.html",
+    selector: 'dynamic-ionic-datetime',
+    templateUrl: './dynamic-ionic-datetime.component.html',
     standalone: true,
     imports: [IonicModule, ReactiveFormsModule, NgIf, NgClass]
 })
@@ -29,7 +29,7 @@ export class DynamicIonicDateTimeComponent extends DynamicFormControlComponent {
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("ionDatetime", {static: true}) ionDatetime!: IonDatetime;
+    @ViewChild('ionDatetime', {static: true}) ionDatetime!: IonDatetime;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

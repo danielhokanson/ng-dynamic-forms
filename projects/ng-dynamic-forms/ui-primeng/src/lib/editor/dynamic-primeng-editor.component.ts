@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { Editor, EditorModule } from "primeng/editor";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Editor, EditorModule } from 'primeng/editor';
 import {
     DynamicEditorModel,
     DynamicFormControlCustomEvent,
@@ -9,12 +9,12 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-editor",
-    templateUrl: "./dynamic-primeng-editor.component.html",
+    selector: 'dynamic-primeng-editor',
+    templateUrl: './dynamic-primeng-editor.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, EditorModule]
 })
@@ -29,7 +29,7 @@ export class DynamicPrimeNGEditorComponent extends DynamicFormControlComponent {
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pEditor", {static: true}) pEditor!: Editor;
+    @ViewChild('pEditor', {static: true}) pEditor!: Editor;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

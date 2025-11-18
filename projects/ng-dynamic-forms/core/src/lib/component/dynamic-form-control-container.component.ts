@@ -10,42 +10,42 @@ import {
     SimpleChanges,
     Type,
     ViewContainerRef
-} from "@angular/core";
-import { UntypedFormControl, UntypedFormGroup } from "@angular/forms";
-import { Subscription } from "rxjs";
+} from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import {
     DynamicFormControlCustomEvent,
     DynamicFormControlEvent,
     DynamicFormControlEventType,
     isDynamicFormControlEvent
-} from "./dynamic-form-control-event";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormValueControlModel } from "../model/dynamic-form-value-control.model";
+} from './dynamic-form-control-event';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormValueControlModel } from '../model/dynamic-form-value-control.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DynamicFormArrayGroupModel
-} from "../model/form-array/dynamic-form-array.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX } from "../model/checkbox/dynamic-checkbox.model";
+} from '../model/form-array/dynamic-form-array.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX } from '../model/checkbox/dynamic-checkbox.model';
 import {
     DYNAMIC_FORM_CONTROL_INPUT_TYPE_FILE,
     DYNAMIC_FORM_CONTROL_TYPE_INPUT,
     DynamicInputModel
-} from "../model/input/dynamic-input.model";
+} from '../model/input/dynamic-input.model';
 import {
     DynamicFormControlLayout,
     DynamicFormControlLayoutContext,
     DynamicFormControlLayoutPlace
-} from "../model/misc/dynamic-form-control-layout.model";
-import { DynamicFormControl } from "./dynamic-form-control-interface";
-import { DynamicTemplateDirective } from "../directive/dynamic-template.directive";
-import { DynamicFormLayout, DynamicFormLayoutService } from "../service/dynamic-form-layout.service";
-import { DynamicFormValidationService } from "../service/dynamic-form-validation.service";
-import { DynamicFormComponentService } from "../service/dynamic-form-component.service";
-import { isString } from "../utils/core.utils";
-import { DynamicFormRelationService } from "../service/dynamic-form-relation.service";
-import { DynamicFormGroupComponent } from "./dynamic-form-group.component";
-import { DynamicFormArrayComponent } from "./dynamic-form-array.component";
-import { bufferCount, filter, map } from "rxjs/operators";
+} from '../model/misc/dynamic-form-control-layout.model';
+import { DynamicFormControl } from './dynamic-form-control-interface';
+import { DynamicTemplateDirective } from '../directive/dynamic-template.directive';
+import { DynamicFormLayout, DynamicFormLayoutService } from '../service/dynamic-form-layout.service';
+import { DynamicFormValidationService } from '../service/dynamic-form-validation.service';
+import { DynamicFormComponentService } from '../service/dynamic-form-component.service';
+import { isString } from '../utils/core.utils';
+import { DynamicFormRelationService } from '../service/dynamic-form-relation.service';
+import { DynamicFormGroupComponent } from './dynamic-form-group.component';
+import { DynamicFormArrayComponent } from './dynamic-form-array.component';
+import { bufferCount, filter, map } from 'rxjs/operators';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
@@ -84,9 +84,9 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        const groupChange = (changes as Pick<SimpleChanges, "group">).group;
-        const layoutChange = (changes as Pick<SimpleChanges, "layout">).layout;
-        const modelChange = (changes as Pick<SimpleChanges, "model">).model;
+        const groupChange = (changes as Pick<SimpleChanges, 'group'>).group;
+        const layoutChange = (changes as Pick<SimpleChanges, 'layout'>).layout;
+        const modelChange = (changes as Pick<SimpleChanges, 'model'>).model;
 
         if (layoutChange || modelChange) {
             this.onLayoutOrModelChange();
@@ -105,7 +105,7 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
         this.subscriptions.push(this.control.statusChanges.pipe(
             bufferCount(2, 1),
             map(states => states[0]),
-            filter(previousState => previousState === "PENDING")
+            filter(previousState => previousState === 'PENDING')
         ).subscribe(_status => this.markForCheck()));
     }
 
@@ -257,7 +257,7 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
 
     onLayoutOrModelChange(): void {
         this.controlLayout = this.layoutService.findByModel(this.model, this.layout) ?? this.model.layout as DynamicFormControlLayout;
-        this.klass = `${Array.isArray(this.hostClass) ? this.hostClass.join(" ") : ""} ${this.layoutService.getHostClass(this.controlLayout)}`;
+        this.klass = `${Array.isArray(this.hostClass) ? this.hostClass.join(' ') : ''} ${this.layoutService.getHostClass(this.controlLayout)}`;
     }
 
     onModelChange(): void {

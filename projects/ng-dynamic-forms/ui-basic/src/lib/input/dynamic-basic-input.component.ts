@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
@@ -8,13 +8,13 @@ import {
     DynamicFormValidationService,
     DynamicInputModel,
     DynamicFormsCoreModule
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgxMaskDirective } from "ngx-mask";
-import { NgIf, NgClass, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgxMaskDirective } from 'ngx-mask';
+import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-basic-input",
-    templateUrl: "./dynamic-basic-input.component.html",
+    selector: 'dynamic-basic-input',
+    templateUrl: './dynamic-basic-input.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgIf, DynamicFormsCoreModule, NgClass, NgxMaskDirective, NgFor, AsyncPipe]

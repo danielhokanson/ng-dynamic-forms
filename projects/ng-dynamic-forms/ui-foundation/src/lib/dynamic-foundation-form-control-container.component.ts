@@ -13,8 +13,8 @@ import {
     ViewChild,
     ViewChildren,
     ViewContainerRef
-} from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+} from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX,
@@ -42,18 +42,18 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicFoundationTextAreaComponent } from "./textarea/dynamic-foundation-textarea.component";
-import { DynamicFoundationSwitchComponent } from "./switch/dynamic-foundation-switch.component";
-import { DynamicFoundationSelectComponent } from "./select/dynamic-foundation-select.component";
-import { DynamicFoundationRadioGroupComponent } from "./radio-group/dynamic-foundation-radio-group.component";
-import { DynamicFoundationInputComponent } from "./input/dynamic-foundation-input.component";
-import { DynamicFoundationCheckboxComponent } from "./checkbox/dynamic-foundation-checkbox.component";
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicFoundationTextAreaComponent } from './textarea/dynamic-foundation-textarea.component';
+import { DynamicFoundationSwitchComponent } from './switch/dynamic-foundation-switch.component';
+import { DynamicFoundationSelectComponent } from './select/dynamic-foundation-select.component';
+import { DynamicFoundationRadioGroupComponent } from './radio-group/dynamic-foundation-radio-group.component';
+import { DynamicFoundationInputComponent } from './input/dynamic-foundation-input.component';
+import { DynamicFoundationCheckboxComponent } from './checkbox/dynamic-foundation-checkbox.component';
+import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-foundation-form-control",
-    templateUrl: "./dynamic-foundation-form-control-container.component.html",
+    selector: 'dynamic-foundation-form-control',
+    templateUrl: './dynamic-foundation-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor]
@@ -61,13 +61,13 @@ import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
 export class DynamicFoundationFormControlContainerComponent extends DynamicFormControlContainerComponent {
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
-    @HostBinding("class") klass?: string;
+    @HostBinding('class') klass?: string;
 
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
     // tslint:disable-next-line:no-input-rename
-    @Input("templates") inputTemplateList?: QueryList<DynamicTemplateDirective>;
+    @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
 
@@ -75,7 +75,7 @@ export class DynamicFoundationFormControlContainerComponent extends DynamicFormC
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     constructor(protected changeDetectorRef: ChangeDetectorRef,
                 protected componentFactoryResolver: ComponentFactoryResolver,
@@ -126,8 +126,8 @@ export function foundationUIFormControlMapFn(model: DynamicFormControlModel): Ty
 }
 
 @Component({
-    selector: "dynamic-foundation-form-array",
-    templateUrl: "./dynamic-foundation-form-array.component.html",
+    selector: 'dynamic-foundation-form-array',
+    templateUrl: './dynamic-foundation-form-array.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicFoundationFormControlContainerComponent]
 })
@@ -151,8 +151,8 @@ export class DynamicFoundationFormArrayComponent extends DynamicFormArrayCompone
 }
 
 @Component({
-    selector: "dynamic-foundation-form-group",
-    templateUrl: "./dynamic-foundation-form-group.component.html",
+    selector: 'dynamic-foundation-form-group',
+    templateUrl: './dynamic-foundation-form-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicFoundationFormControlContainerComponent]
 })

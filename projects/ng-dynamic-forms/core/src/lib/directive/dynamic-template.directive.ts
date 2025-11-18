@@ -1,12 +1,12 @@
-import { Directive, Input, TemplateRef } from "@angular/core";
+import { Directive, Input, TemplateRef } from '@angular/core';
 
 export enum DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT {
-    Start = "START",
-    End = "END"
+    Start = 'START',
+    End = 'END'
 }
 
 @Directive({
-    selector: "ng-template[modelId],ng-template[modelType]",
+    selector: 'ng-template[modelId],ng-template[modelType]',
     standalone: true
 })
 export class DynamicTemplateDirective {

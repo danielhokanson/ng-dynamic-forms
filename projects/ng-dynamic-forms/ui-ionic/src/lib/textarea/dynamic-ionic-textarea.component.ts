@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { IonTextarea, IonicModule } from "@ionic/angular";
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { IonTextarea, IonicModule } from '@ionic/angular';
 import {
     DynamicFormControlLayout,
     DynamicFormLayout,
@@ -8,12 +8,12 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicTextAreaModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgIf, NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ionic-textarea",
-    templateUrl: "./dynamic-ionic-textarea.component.html",
+    selector: 'dynamic-ionic-textarea',
+    templateUrl: './dynamic-ionic-textarea.component.html',
     standalone: true,
     imports: [IonicModule, ReactiveFormsModule, NgIf, NgClass]
 })
@@ -27,7 +27,7 @@ export class DynamicIonicTextAreaComponent extends DynamicFormControlComponent {
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("ionTextArea", {static: true}) ionTextArea!: IonTextarea;
+    @ViewChild('ionTextArea', {static: true}) ionTextArea!: IonTextarea;
 
     constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);

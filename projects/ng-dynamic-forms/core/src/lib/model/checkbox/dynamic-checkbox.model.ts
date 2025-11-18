@@ -1,9 +1,9 @@
-import { DynamicCheckControlModel, DynamicCheckControlModelConfig } from "../dynamic-check-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean } from "../../utils/core.utils";
+import { DynamicCheckControlModel, DynamicCheckControlModelConfig } from '../dynamic-check-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX = "CHECKBOX";
+export const DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX = 'CHECKBOX';
 
 export interface DynamicCheckboxModelConfig extends DynamicCheckControlModelConfig {
     indeterminate?: boolean;

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicCheckboxModel,
     DynamicFormControlComponent,
@@ -7,12 +7,12 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-basic-checkbox",
-    templateUrl: "./dynamic-basic-checkbox.component.html",
+    selector: 'dynamic-basic-checkbox',
+    templateUrl: './dynamic-basic-checkbox.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgClass]

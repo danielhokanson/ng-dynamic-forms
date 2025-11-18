@@ -13,8 +13,8 @@ import {
     ViewChild,
     ViewChildren,
     ViewContainerRef
-} from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+} from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX,
@@ -46,22 +46,22 @@ import {
     DynamicFormValueControlModel,
     DynamicInputModel,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicMaterialDatePickerComponent } from "./datepicker/dynamic-material-datepicker.component";
-import { DynamicMaterialInputComponent } from "./input/dynamic-material-input.component";
-import { DynamicMaterialTextAreaComponent } from "./textarea/dynamic-material-textarea.component";
-import { DynamicMaterialSlideToggleComponent } from "./slide-toggle/dynamic-material-slide-toggle.component";
-import { DynamicMaterialCheckboxComponent } from "./checkbox/dynamic-material-checkbox.component";
-import { DynamicMaterialSliderComponent } from "./slider/dynamic-material-slider.component";
-import { DynamicMaterialRadioGroupComponent } from "./radio-group/dynamic-material-radio-group.component";
-import { DynamicMaterialChipsComponent } from "./chips/dynamic-material-chips.component";
-import { DynamicMaterialSelectComponent } from "./select/dynamic-material-select.component";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicMaterialDatePickerComponent } from './datepicker/dynamic-material-datepicker.component';
+import { DynamicMaterialInputComponent } from './input/dynamic-material-input.component';
+import { DynamicMaterialTextAreaComponent } from './textarea/dynamic-material-textarea.component';
+import { DynamicMaterialSlideToggleComponent } from './slide-toggle/dynamic-material-slide-toggle.component';
+import { DynamicMaterialCheckboxComponent } from './checkbox/dynamic-material-checkbox.component';
+import { DynamicMaterialSliderComponent } from './slider/dynamic-material-slider.component';
+import { DynamicMaterialRadioGroupComponent } from './radio-group/dynamic-material-radio-group.component';
+import { DynamicMaterialChipsComponent } from './chips/dynamic-material-chips.component';
+import { DynamicMaterialSelectComponent } from './select/dynamic-material-select.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-form-control",
-    templateUrl: "./dynamic-material-form-control-container.component.html",
+    selector: 'dynamic-material-form-control',
+    templateUrl: './dynamic-material-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor, MatFormFieldModule]
@@ -69,13 +69,13 @@ import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
 export class DynamicMaterialFormControlContainerComponent extends DynamicFormControlContainerComponent {
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
-    @HostBinding("class") klass?: string;
+    @HostBinding('class') klass?: string;
 
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
     // tslint:disable-next-line:no-input-rename
-    @Input("templates") inputTemplateList?: QueryList<DynamicTemplateDirective>;
+    @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
 
@@ -83,9 +83,9 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     // tslint:disable-next-line:no-output-rename
-    @Output("matEvent") customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
+    @Output('matEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     constructor(protected changeDetectorRef: ChangeDetectorRef,
                 protected componentFactoryResolver: ComponentFactoryResolver,
@@ -106,7 +106,7 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
 
         return matFormFieldTypes.some(type => this.model.type === type) || (
             this.model instanceof DynamicFormValueControlModel &&
-            this.model.getAdditional("isFormFieldControl")
+            this.model.getAdditional('isFormFieldControl')
         );
     }
 }
@@ -153,8 +153,8 @@ export function materialUIFormControlMapFn(model: DynamicFormControlModel): Type
 }
 
 @Component({
-    selector: "dynamic-material-form-array",
-    templateUrl: "./dynamic-material-form-array.component.html",
+    selector: 'dynamic-material-form-array',
+    templateUrl: './dynamic-material-form-array.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicMaterialFormControlContainerComponent]
 })
@@ -178,8 +178,8 @@ export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent
 }
 
 @Component({
-    selector: "dynamic-material-form-group",
-    templateUrl: "./dynamic-material-form-group.component.html",
+    selector: 'dynamic-material-form-group',
+    templateUrl: './dynamic-material-form-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, DynamicMaterialFormControlContainerComponent]
 })

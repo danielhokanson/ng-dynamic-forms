@@ -1,29 +1,29 @@
-import { DynamicInputControlModel, DynamicInputControlModelConfig } from "../dynamic-input-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isNumber } from "../../utils/core.utils";
-import { Observable, isObservable, of } from "rxjs";
-import { tap } from "rxjs/operators";
-import { NgxMaskConfig, initialConfig } from "ngx-mask";
+import { DynamicInputControlModel, DynamicInputControlModelConfig } from '../dynamic-input-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isNumber } from '../../utils/core.utils';
+import { Observable, isObservable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { NgxMaskConfig, initialConfig } from 'ngx-mask';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_INPUT = "INPUT";
+export const DYNAMIC_FORM_CONTROL_TYPE_INPUT = 'INPUT';
 
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_COLOR = "color";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_DATE = "date";
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_COLOR = 'color';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_DATE = 'date';
 // export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_DATETIME = "datetime";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_DATETIME_LOCAL = "datetime-local";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_EMAIL = "email";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_FILE = "file";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_MONTH = "month";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER = "number";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_PASSWORD = "password";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_RANGE = "range";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_SEARCH = "search";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEL = "tel";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEXT = "text";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TIME = "time";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_URL = "url";
-export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_WEEK = "week";
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_DATETIME_LOCAL = 'datetime-local';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_EMAIL = 'email';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_FILE = 'file';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_MONTH = 'month';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER = 'number';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_PASSWORD = 'password';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_RANGE = 'range';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_SEARCH = 'search';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEL = 'tel';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEXT = 'text';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_TIME = 'time';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_URL = 'url';
+export const DYNAMIC_FORM_CONTROL_INPUT_TYPE_WEEK = 'week';
 
 export interface DynamicInputModelConfig extends DynamicInputControlModelConfig<string | number | Date | string[]> {
     accept?: string;
@@ -51,7 +51,7 @@ export class DynamicInputModel extends DynamicInputControlModel<string | number 
     @serializable() pattern: string | null;
     @serializable() step: number | null;
 
-    @serializable("list") private _list: any[] | null = null;
+    @serializable('list') private _list: any[] | null = null;
     private readonly _listId: string | null = null;
 
     @serializable() readonly type: string = DYNAMIC_FORM_CONTROL_TYPE_INPUT;
@@ -61,7 +61,7 @@ export class DynamicInputModel extends DynamicInputControlModel<string | number 
 
         this.accept = config.accept ?? null;
         this.inputType = config.inputType ?? DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEXT;
-        this.mask = config.mask ?? "";
+        this.mask = config.mask ?? '';
         this.maskConfig = config.maskConfig ? {...initialConfig, ...config.maskConfig} : initialConfig;
         this.max = config.max !== undefined ? config.max : null;
         this.min = config.min !== undefined ? config.min : null;

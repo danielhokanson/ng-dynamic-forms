@@ -1,9 +1,9 @@
-import { DynamicFormGroupModel, DynamicFormGroupModelConfig } from "../form-group/dynamic-form-group.model";
-import { DynamicCheckboxModel } from "./dynamic-checkbox.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
+import { DynamicFormGroupModel, DynamicFormGroupModelConfig } from '../form-group/dynamic-form-group.model';
+import { DynamicCheckboxModel } from './dynamic-checkbox.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP = "CHECKBOX_GROUP";
+export const DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP = 'CHECKBOX_GROUP';
 
 export class DynamicCheckboxGroupModel extends DynamicFormGroupModel {
     @serializable() group!: DynamicCheckboxModel[];

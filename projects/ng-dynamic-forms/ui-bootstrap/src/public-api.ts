@@ -1,1 +1,1 @@
-export * from "./lib/ui-bootstrap";
+export * from './lib/ui-bootstrap';

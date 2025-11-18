@@ -1,17 +1,17 @@
-import { isBoolean, isFunction, isNumber, isObject, isString } from "./core.utils";
+import { isBoolean, isFunction, isNumber, isObject, isString } from './core.utils';
 
-describe("core utils test suite", () => {
+describe('core utils test suite', () => {
 
-    let testValue1: undefined = undefined,
-        testValue2: null = null,
+    const testValue1 = undefined,
+        testValue2 = null,
         testValue3 = 42,
         testValue4 = true,
         testValue5 = false,
-        testValue6 = "test",
+        testValue6 = 'test',
         testValue7 = {},
         testValue8 = () => {};
 
-    it("should check if a given value is of type boolean", () => {
+    it('should check if a given value is of type boolean', () => {
 
         expect(isBoolean(testValue1)).toBe(false);
         expect(isBoolean(testValue2)).toBe(false);
@@ -23,7 +23,7 @@ describe("core utils test suite", () => {
         expect(isBoolean(testValue8)).toBe(false);
     });
 
-    it("should check if a given value is of type function", () => {
+    it('should check if a given value is of type function', () => {
 
         expect(isFunction(testValue1)).toBe(false);
         expect(isFunction(testValue2)).toBe(false);
@@ -35,7 +35,7 @@ describe("core utils test suite", () => {
         expect(isFunction(testValue8)).toBe(true);
     });
 
-    it("should check if a given value is of type number", () => {
+    it('should check if a given value is of type number', () => {
 
         expect(isNumber(testValue1)).toBe(false);
         expect(isNumber(testValue2)).toBe(false);
@@ -47,7 +47,7 @@ describe("core utils test suite", () => {
         expect(isNumber(testValue8)).toBe(false);
     });
 
-    it("should check if a given value is of type object", () => {
+    it('should check if a given value is of type object', () => {
 
         expect(isObject(testValue1)).toBe(false);
         expect(isObject(testValue2)).toBe(false);
@@ -59,7 +59,7 @@ describe("core utils test suite", () => {
         expect(isObject(testValue8)).toBe(false);
     });
 
-    it("should check if a given value is of type string", () => {
+    it('should check if a given value is of type string', () => {
 
         expect(isString(testValue1)).toBe(false);
         expect(isString(testValue2)).toBe(false);

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { ErrorStateMatcher, MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions, MatOptionModule } from "@angular/material/core";
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions, MatFormFieldModule } from "@angular/material/form-field";
-import { MatSelect, MatSelectModule } from "@angular/material/select";
+import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ErrorStateMatcher, MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions, MatOptionModule } from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
@@ -11,12 +11,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSelectModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-select",
-    templateUrl: "./dynamic-material-select.component.html",
+    selector: 'dynamic-material-select',
+    templateUrl: './dynamic-material-select.component.html',
     standalone: true,
     imports: [MatFormFieldModule, NgClass, ReactiveFormsModule, NgIf, MatSelectModule, NgFor, MatOptionModule, AsyncPipe]
 })
@@ -31,7 +31,7 @@ export class DynamicMaterialSelectComponent extends DynamicFormControlComponent 
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("matSelect", {static: true}) matSelect!: MatSelect;
+    @ViewChild('matSelect', {static: true}) matSelect!: MatSelect;
 
     constructor(protected layoutService: DynamicFormLayoutService,
                 protected validationService: DynamicFormValidationService,

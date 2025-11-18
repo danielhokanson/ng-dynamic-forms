@@ -13,8 +13,8 @@ import {
     ViewChild,
     ViewChildren,
     ViewContainerRef
-} from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+} from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER,
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
@@ -51,28 +51,28 @@ import {
     DynamicInputModel,
     DynamicSelectModel,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicPrimeNGCheckboxComponent } from "./checkbox/dynamic-primeng-checkbox.component";
-import { DynamicPrimeNGColorPickerComponent } from "./colorpicker/dynamic-primeng-colorpicker.component";
-import { DynamicPrimeNGCalendarComponent } from "./calendar/dynamic-primeng-calendar.component";
-import { DynamicPrimeNGEditorComponent } from "./editor/dynamic-primeng-editor.component";
-import { DynamicPrimeNGSpinnerComponent } from "./spinner/dynamic-primeng-spinner.component";
-import { DynamicPrimeNGInputMaskComponent } from "./input-mask/dynamic-primeng-input-mask.component";
-import { DynamicPrimeNGAutoCompleteComponent } from "./autocomplete/dynamic-primeng-autocomplete.component";
-import { DynamicPrimeNGChipsComponent } from "./chips/dynamic-primeng-chips.component";
-import { DynamicPrimeNGInputComponent } from "./input/dynamic-primeng-input.component";
-import { DynamicPrimeNGRadioGroupComponent } from "./radio-group/dynamic-primeng-radio-group.component";
-import { DynamicPrimeNGRatingComponent } from "./rating/dynamic-primeng-rating.component";
-import { DynamicPrimeNGMultiSelectComponent } from "./multiselect/dynamic-primeng-multiselect.component";
-import { DynamicPrimeNGDropdownComponent } from "./dropdown/dynamic-primeng-dropdown.component";
-import { DynamicPrimeNGSliderComponent } from "./slider/dynamic-primeng-slider.component";
-import { DynamicPrimeNGInputSwitchComponent } from "./input-switch/dynamic-primeng-input-switch.component";
-import { DynamicPrimeNGTextAreaComponent } from "./textarea/dynamic-primeng-textarea.component";
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicPrimeNGCheckboxComponent } from './checkbox/dynamic-primeng-checkbox.component';
+import { DynamicPrimeNGColorPickerComponent } from './colorpicker/dynamic-primeng-colorpicker.component';
+import { DynamicPrimeNGCalendarComponent } from './calendar/dynamic-primeng-calendar.component';
+import { DynamicPrimeNGEditorComponent } from './editor/dynamic-primeng-editor.component';
+import { DynamicPrimeNGSpinnerComponent } from './spinner/dynamic-primeng-spinner.component';
+import { DynamicPrimeNGInputMaskComponent } from './input-mask/dynamic-primeng-input-mask.component';
+import { DynamicPrimeNGAutoCompleteComponent } from './autocomplete/dynamic-primeng-autocomplete.component';
+import { DynamicPrimeNGChipsComponent } from './chips/dynamic-primeng-chips.component';
+import { DynamicPrimeNGInputComponent } from './input/dynamic-primeng-input.component';
+import { DynamicPrimeNGRadioGroupComponent } from './radio-group/dynamic-primeng-radio-group.component';
+import { DynamicPrimeNGRatingComponent } from './rating/dynamic-primeng-rating.component';
+import { DynamicPrimeNGMultiSelectComponent } from './multiselect/dynamic-primeng-multiselect.component';
+import { DynamicPrimeNGDropdownComponent } from './dropdown/dynamic-primeng-dropdown.component';
+import { DynamicPrimeNGSliderComponent } from './slider/dynamic-primeng-slider.component';
+import { DynamicPrimeNGInputSwitchComponent } from './input-switch/dynamic-primeng-input-switch.component';
+import { DynamicPrimeNGTextAreaComponent } from './textarea/dynamic-primeng-textarea.component';
+import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-form-control",
-    templateUrl: "./dynamic-primeng-form-control-container.component.html",
+    selector: 'dynamic-primeng-form-control',
+    templateUrl: './dynamic-primeng-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor]
@@ -80,13 +80,13 @@ import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
 export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormControlContainerComponent {
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
-    @HostBinding("class") klass?: string;
+    @HostBinding('class') klass?: string;
 
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass!: string[];
     // tslint:disable-next-line:no-input-rename
-    @Input("templates") inputTemplateList?: QueryList<DynamicTemplateDirective>;
+    @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
 
@@ -94,9 +94,9 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     // tslint:disable-next-line:no-output-rename
-    @Output("pEvent") customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
+    @Output('pEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     constructor(protected changeDetectorRef: ChangeDetectorRef,
                 protected componentFactoryResolver: ComponentFactoryResolver,
@@ -182,8 +182,8 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
 }
 
 @Component({
-    selector: "dynamic-primeng-form-array",
-    templateUrl: "./dynamic-primeng-form-array.component.html",
+    selector: 'dynamic-primeng-form-array',
+    templateUrl: './dynamic-primeng-form-array.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicPrimeNGFormControlContainerComponent]
 })
@@ -207,8 +207,8 @@ export class DynamicPrimeNGFormArrayComponent extends DynamicFormArrayComponent 
 }
 
 @Component({
-    selector: "dynamic-primeng-form-group",
-    templateUrl: "./dynamic-primeng-form-group.component.html",
+    selector: 'dynamic-primeng-form-group',
+    templateUrl: './dynamic-primeng-form-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, DynamicPrimeNGFormControlContainerComponent]
 })

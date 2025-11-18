@@ -1,8 +1,8 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
 declare let Reflect: any;
 
-export const METADATA_KEY_SERIALIZABLE = "SERIALIZABLE";
+export const METADATA_KEY_SERIALIZABLE = 'SERIALIZABLE';
 
 export interface SerializableProperty {
     key: string;

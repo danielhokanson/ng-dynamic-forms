@@ -1,16 +1,16 @@
-import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Type } from "@angular/core";
-import { DynamicFormControl } from "../component/dynamic-form-control-interface";
-import { DynamicFormComponent } from "../component/dynamic-form.component";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { isFunction, isNumber } from "../utils/core.utils";
+import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Type } from '@angular/core';
+import { DynamicFormControl } from '../component/dynamic-form-control-interface';
+import { DynamicFormComponent } from '../component/dynamic-form.component';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { isFunction, isNumber } from '../utils/core.utils';
 
 export type DynamicFormControlRef = ComponentRef<DynamicFormControl>;
 export type DynamicFormControlMapFn = (model: DynamicFormControlModel) => Type<DynamicFormControl> | null;
 
-export const DYNAMIC_FORM_CONTROL_MAP_FN = new InjectionToken<DynamicFormControlMapFn>("DYNAMIC_FORM_CONTROL_MAP_FN");
+export const DYNAMIC_FORM_CONTROL_MAP_FN = new InjectionToken<DynamicFormControlMapFn>('DYNAMIC_FORM_CONTROL_MAP_FN');
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormComponentService {
     private forms: DynamicFormComponent[] = [];

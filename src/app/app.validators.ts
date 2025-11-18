@@ -1,14 +1,14 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function customValidator(control: AbstractControl): ValidationErrors | null {
-    const hasError = control.value ? (control.value as string).startsWith("abc") : false;
+    const hasError = control.value ? (control.value as string).startsWith('abc') : false;
 
     return hasError ? {customValidator: true} : null;
 }
 
 export function customDateRangeValidator(control: AbstractControl): ValidationErrors | null {
-    const dateArrival = control.get("arrivalDate")?.value as Date;
-    const dateDeparture = control.get("departureDate")?.value as Date;
+    const dateArrival = control.get('arrivalDate')?.value as Date;
+    const dateDeparture = control.get('departureDate')?.value as Date;
 
     let hasError = false;
 

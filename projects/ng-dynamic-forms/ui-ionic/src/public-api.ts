@@ -1,1 +1,1 @@
-export * from "./lib/ui-ionic";
+export * from './lib/ui-ionic';

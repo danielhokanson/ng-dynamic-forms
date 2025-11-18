@@ -1,10 +1,10 @@
-import { BehaviorSubject, Observable } from "rxjs";
-import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
-import { DynamicPathable } from "./misc/dynamic-form-control-path.model";
-import { DynamicFormControlRelation } from "./misc/dynamic-form-control-relation.model";
-import { DynamicFormHook, DynamicValidatorsConfig } from "./misc/dynamic-form-control-validation.model";
-import { serializable, serialize } from "../decorator/serializable.decorator";
-import { isBoolean, isObject, isString } from "../utils/core.utils";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DynamicFormControlLayout } from './misc/dynamic-form-control-layout.model';
+import { DynamicPathable } from './misc/dynamic-form-control-path.model';
+import { DynamicFormControlRelation } from './misc/dynamic-form-control-relation.model';
+import { DynamicFormHook, DynamicValidatorsConfig } from './misc/dynamic-form-control-validation.model';
+import { serializable, serialize } from '../decorator/serializable.decorator';
+import { isBoolean, isObject, isString } from '../utils/core.utils';
 
 export interface DynamicFormControlModelConfig {
     asyncValidators?: DynamicValidatorsConfig;
@@ -23,7 +23,7 @@ export interface DynamicFormControlModelConfig {
 
 export abstract class DynamicFormControlModel implements DynamicPathable {
     @serializable() asyncValidators: DynamicValidatorsConfig | null;
-    @serializable("disabled") _disabled: boolean;
+    @serializable('disabled') _disabled: boolean;
     @serializable() errorMessages: DynamicValidatorsConfig | null;
     @serializable() hidden: boolean;
     @serializable() id: string;

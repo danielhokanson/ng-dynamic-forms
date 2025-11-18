@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormLayout,
     DynamicFormLayoutService,
@@ -7,13 +7,13 @@ import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
     DynamicRatingModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
-import { RatingModule } from "ngx-bootstrap/rating";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-rating",
-    templateUrl: "./dynamic-ngx-bootstrap-rating.component.html",
+    selector: 'dynamic-ngx-bootstrap-rating',
+    templateUrl: './dynamic-ngx-bootstrap-rating.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, RatingModule, NgClass]
 })

@@ -1,12 +1,12 @@
-import { TestBed, inject } from "@angular/core/testing";
-import { ReactiveFormsModule, UntypedFormControl, NG_VALIDATORS, NG_ASYNC_VALIDATORS, ValidationErrors, Validators } from "@angular/forms";
-import { DynamicFormValidationService } from "./dynamic-form-validation.service";
-import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory } from "./dynamic-form-validators";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicInputModel } from "../model/input/dynamic-input.model";
-import { isFunction } from "../utils/core.utils";
+import { TestBed, inject } from '@angular/core/testing';
+import { ReactiveFormsModule, UntypedFormControl, NG_VALIDATORS, NG_ASYNC_VALIDATORS, ValidationErrors, Validators } from '@angular/forms';
+import { DynamicFormValidationService } from './dynamic-form-validation.service';
+import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory } from './dynamic-form-validators';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicInputModel } from '../model/input/dynamic-input.model';
+import { isFunction } from '../utils/core.utils';
 
-describe("DynamicFormValidationService test suite", () => {
+describe('DynamicFormValidationService test suite', () => {
     let service: DynamicFormValidationService;
 
     function testValidator(): ValidationErrors | null {
@@ -41,7 +41,7 @@ describe("DynamicFormValidationService test suite", () => {
                 {
                     provide: DYNAMIC_VALIDATORS,
                     useValue: new Map<string, Validator | ValidatorFactory>([
-                        ["testValidatorFactory", testValidatorFactory]
+                        ['testValidatorFactory', testValidatorFactory]
                     ])
                 }
             ]
@@ -52,19 +52,19 @@ describe("DynamicFormValidationService test suite", () => {
         (validationService: DynamicFormValidationService) => service = validationService));
 
 
-    it("should resolve a validator by name", () => {
-        expect(service.getValidator("required")).toBeTruthy();
-        expect(service.getValidator("testValidator")).toBeTruthy();
-        expect(service.getValidator("testValidatorFactory")).toBeTruthy();
+    it('should resolve a validator by name', () => {
+        expect(service.getValidator('required')).toBeTruthy();
+        expect(service.getValidator('testValidator')).toBeTruthy();
+        expect(service.getValidator('testValidatorFactory')).toBeTruthy();
     });
 
 
-    it("should resolve a async validator by name correctly", () => {
-        expect(service.getAsyncValidator("testAsyncValidator")).toBeTruthy();
+    it('should resolve a async validator by name correctly', () => {
+        expect(service.getAsyncValidator('testAsyncValidator')).toBeTruthy();
     });
 
 
-    it("should resolve validators from config", () => {
+    it('should resolve validators from config', () => {
         const config: any = {required: null, maxLength: 7, minLength: 3};
         const validators = service.getValidators(config);
 
@@ -72,15 +72,15 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should resolve custom validators from config", () => {
-        const config: any = {required: null, maxLength: 7, testValidator: null, testValidatorFactory: "test"};
+    it('should resolve custom validators from config', () => {
+        const config: any = {required: null, maxLength: 7, testValidator: null, testValidatorFactory: 'test'};
         const validators = service.getValidators(config);
 
         expect(validators.length === Object.keys(config).length).toBe(true);
     });
 
 
-    it("should resolve custom validators from detailed config", () => {
+    it('should resolve custom validators from detailed config', () => {
         const config: any = {testValidator: {name: testValidator.name, args: null}};
         const validators = service.getValidators(config);
 
@@ -88,7 +88,7 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should resolve custom async validators from config", () => {
+    it('should resolve custom async validators from config', () => {
         const config: any = {testAsyncValidator: null};
         const validators = service.getAsyncValidators(config);
 
@@ -96,16 +96,16 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should throw when validator is not provided via NG_VALIDATORS", () => {
-        expect(() => service.getValidator("test", null))
+    it('should throw when validator is not provided via NG_VALIDATORS', () => {
+        expect(() => service.getValidator('test', null))
             .toThrow(new Error(`validator "test" is not provided via NG_VALIDATORS, NG_ASYNC_VALIDATORS or DYNAMIC_FORM_VALIDATORS`));
     });
 
 
-    it("should update validators on control and model", () => {
+    it('should update validators on control and model', () => {
         const config: any = {testValidator: null};
         const control: UntypedFormControl = new UntypedFormControl();
-        const model: DynamicFormControlModel = new DynamicInputModel({id: "input"});
+        const model: DynamicFormControlModel = new DynamicInputModel({id: 'input'});
 
         expect(control.validator).toBeNull();
         expect(model.validators).toBeNull();
@@ -113,7 +113,7 @@ describe("DynamicFormValidationService test suite", () => {
         service.updateValidators(config, control, model);
 
         expect(isFunction(control.validator)).toBe(true);
-        expect((model.validators as object).hasOwnProperty("testValidator")).toBe(true);
+        expect((model.validators as object).hasOwnProperty('testValidator')).toBe(true);
 
         service.updateValidators(null, control, model);
 
@@ -122,10 +122,10 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should update async validators on control and model", () => {
+    it('should update async validators on control and model', () => {
         const config: any = {testAsyncValidator: null};
         const control: UntypedFormControl = new UntypedFormControl();
-        const model: DynamicFormControlModel = new DynamicInputModel({id: "input"});
+        const model: DynamicFormControlModel = new DynamicInputModel({id: 'input'});
 
         expect(control.asyncValidator).toBeNull();
         expect(model.asyncValidators).toBeNull();
@@ -133,7 +133,7 @@ describe("DynamicFormValidationService test suite", () => {
         service.updateAsyncValidators(config, control, model);
 
         expect(isFunction(control.asyncValidator)).toBe(true);
-        expect((model.asyncValidators as object).hasOwnProperty("testAsyncValidator")).toBe(true);
+        expect((model.asyncValidators as object).hasOwnProperty('testAsyncValidator')).toBe(true);
 
         service.updateAsyncValidators(null, control, model);
 
@@ -142,16 +142,16 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should create error messages", () => {
+    it('should create error messages', () => {
         const testControl: UntypedFormControl = new UntypedFormControl();
         const testModel: DynamicFormControlModel = new DynamicInputModel({
-            id: "testModel",
+            id: 'testModel',
             minLength: 5,
             errorMessages: {
-                required: "Field is required",
-                minLength: "Field must contain at least {{ minLength }} characters",
-                custom1: "Field {{ id }} has a custom error",
-                custom2: "Field has a custom error: {{ validator.param }}"
+                required: 'Field is required',
+                minLength: 'Field must contain at least {{ minLength }} characters',
+                custom1: 'Field {{ id }} has a custom error',
+                custom2: 'Field has a custom error: {{ validator.param }}'
             }
         });
 
@@ -165,7 +165,7 @@ describe("DynamicFormValidationService test suite", () => {
         errorMessages = service.createErrorMessages(testControl, testModel);
         expect(errorMessages.length).toBe(2);
         expect(errorMessages[0]).toEqual((testModel.errorMessages as any).required);
-        expect(errorMessages[1]).toEqual("Field must contain at least 5 characters");
+        expect(errorMessages[1]).toEqual('Field must contain at least 5 characters');
 
         testControl.setErrors({custom1: true});
 
@@ -177,16 +177,16 @@ describe("DynamicFormValidationService test suite", () => {
 
         errorMessages = service.createErrorMessages(testControl, testModel);
         expect(errorMessages.length).toBe(1);
-        expect(errorMessages[0]).toEqual("Field has a custom error: 42");
+        expect(errorMessages[0]).toEqual('Field has a custom error: 42');
     });
 
 
-    it("should check if error messages should be shown", () => {
+    it('should check if error messages should be shown', () => {
         const control: UntypedFormControl = new UntypedFormControl();
         const model: DynamicFormControlModel = new DynamicInputModel({
-            id: "testModel",
+            id: 'testModel',
             errorMessages: {
-                required: "Field is required"
+                required: 'Field is required'
             }
         });
 
@@ -202,11 +202,11 @@ describe("DynamicFormValidationService test suite", () => {
     });
 
 
-    it("should check form hooks", () => {
+    it('should check form hooks', () => {
         expect(service.isFormHook(null)).toBe(false);
-        expect(service.isFormHook("blur")).toBe(true);
-        expect(service.isFormHook("focus")).toBe(false);
-        expect(service.isFormHook("change")).toBe(true);
-        expect(service.isFormHook("submit")).toBe(true);
+        expect(service.isFormHook('blur')).toBe(true);
+        expect(service.isFormHook('focus')).toBe(false);
+        expect(service.isFormHook('change')).toBe(true);
+        expect(service.isFormHook('submit')).toBe(true);
     });
 });

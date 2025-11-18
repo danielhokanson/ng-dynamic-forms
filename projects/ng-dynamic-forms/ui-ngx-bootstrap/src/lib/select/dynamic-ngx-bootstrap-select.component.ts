@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
@@ -7,12 +7,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSelectModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-select",
-    templateUrl: "./dynamic-ngx-bootstrap-select.component.html",
+    selector: 'dynamic-ngx-bootstrap-select',
+    templateUrl: './dynamic-ngx-bootstrap-select.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, AsyncPipe]
 })

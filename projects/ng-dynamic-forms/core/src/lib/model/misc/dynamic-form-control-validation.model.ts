@@ -6,7 +6,7 @@ export interface DynamicValidatorDescriptor {
 export type DynamicValidatorsConfig = { [validatorKey: string]: any | DynamicValidatorDescriptor };
 
 export enum DynamicFormHook {
-    Blur = "blur",
-    Change = "change",
-    Submit = "submit"
+    Blur = 'blur',
+    Change = 'change',
+    Submit = 'submit'
 }

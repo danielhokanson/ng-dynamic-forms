@@ -1,4 +1,4 @@
-import { isString } from "./core.utils";
+import { isString } from './core.utils';
 
 export function maskToString(mask: string | RegExp | (string | RegExp)[]): string | string[] | null {
     if (isString(mask)) {
@@ -16,7 +16,7 @@ export function maskToString(mask: string | RegExp | (string | RegExp)[]): strin
 
 export function maskFromString(mask: string | string[]): string | RegExp | (string | RegExp)[] | null {
     if (isString(mask)) {
-        const isRegExp = (mask as string).startsWith("/") && (mask as string).endsWith("/");
+        const isRegExp = (mask as string).startsWith('/') && (mask as string).endsWith('/');
         return isRegExp ? new RegExp((mask as string).slice(1, mask.length - 1)) : mask;
 
     } else if (Array.isArray(mask)) {

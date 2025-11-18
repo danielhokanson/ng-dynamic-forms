@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormLayout,
     DynamicFormLayoutService,
@@ -7,13 +7,13 @@ import {
     DynamicFormControlComponent,
     DynamicRadioGroupModel,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { RadioButtonModule } from "primeng/radiobutton";
-import { NgClass, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-radio-group",
-    templateUrl: "./dynamic-primeng-radio-group.component.html",
+    selector: 'dynamic-primeng-radio-group',
+    templateUrl: './dynamic-primeng-radio-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, RadioButtonModule, AsyncPipe]
 })

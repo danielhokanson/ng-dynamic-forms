@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
@@ -7,12 +7,12 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicRadioGroupModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgIf, NgFor, AsyncPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-basic-radio-group",
-    templateUrl: "./dynamic-basic-radio-group.component.html",
+    selector: 'dynamic-basic-radio-group',
+    templateUrl: './dynamic-basic-radio-group.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgClass, NgIf, NgFor, AsyncPipe]
