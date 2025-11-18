@@ -79,7 +79,9 @@ describe('DynamicMaterialTextAreaComponent test suite', () => {
     it('should listen to native blur events', () => {
         spyOn(component, 'onBlur');
 
-        testElement.triggerEventHandler('blur', null);
+        // Create a mock event object that Material CDK can handle
+        const blurEvent = { type: 'blur', target: testElement.nativeElement, currentTarget: testElement.nativeElement } as any;
+        testElement.triggerEventHandler('blur', blurEvent);
 
         expect(component.onBlur).toHaveBeenCalled();
     });
@@ -111,7 +113,9 @@ describe('DynamicMaterialTextAreaComponent test suite', () => {
     it('should listen to native focus events', () => {
         spyOn(component, 'onFocus');
 
-        testElement.triggerEventHandler('focus', null);
+        // Create a mock event object that Material CDK can handle
+        const focusEvent = { type: 'focus', target: testElement.nativeElement, currentTarget: testElement.nativeElement } as any;
+        testElement.triggerEventHandler('focus', focusEvent);
 
         expect(component.onFocus).toHaveBeenCalled();
     });

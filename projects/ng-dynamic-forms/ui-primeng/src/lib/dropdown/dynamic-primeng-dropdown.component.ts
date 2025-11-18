@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import {
@@ -20,6 +20,9 @@ import { NgClass, AsyncPipe } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, DropdownModule, AsyncPipe]
 })
 export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     readonly templateDirectives = PRIME_NG_TEMPLATE_DIRECTIVES;
 
     @Input() formLayout?: DynamicFormLayout;
@@ -34,8 +37,17 @@ export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWi
 
     @ViewChild('pDropdown', {static: true}) pDropdown!: Dropdown;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 
     get viewChild(): Dropdown {

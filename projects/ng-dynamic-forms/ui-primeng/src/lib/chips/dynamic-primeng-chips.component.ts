@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Chips, ChipsModule } from 'primeng/chips';
 import {
@@ -21,6 +21,9 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, ChipsModule]
 })
 export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     readonly templateDirectives = PRIME_NG_TEMPLATE_DIRECTIVES;
 
     @Input() formLayout?: DynamicFormLayout;
@@ -36,8 +39,17 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
 
     @ViewChild('pChips', {static: true}) pChips!: Chips;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 
     get viewChild(): Chips {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import {
@@ -21,6 +21,10 @@ import { NgClass, NgIf, NgFor } from '@angular/common';
     imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, NgIf, MatInputModule, TextFieldModule, NgFor]
 })
 export class DynamicMaterialTextAreaComponent extends DynamicMaterialFormInputControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+    FORM_FIELD_OPTIONS = inject<MatFormFieldDefaultOptions>(MAT_FORM_FIELD_DEFAULT_OPTIONS, { optional: true });
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -33,9 +37,16 @@ export class DynamicMaterialTextAreaComponent extends DynamicMaterialFormInputCo
 
     @ViewChild(MatInput, {static: true}) matInput!: MatInput;
 
-    constructor(protected layoutService: DynamicFormLayoutService,
-                protected validationService: DynamicFormValidationService,
-                @Inject(MAT_FORM_FIELD_DEFAULT_OPTIONS) @Optional() public FORM_FIELD_OPTIONS: MatFormFieldDefaultOptions) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

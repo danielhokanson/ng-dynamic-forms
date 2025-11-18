@@ -34,7 +34,7 @@ describe('DynamicPrimeNGSpinnerComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-spinner[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-inputNumber[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
@@ -57,7 +57,7 @@ describe('DynamicPrimeNGSpinnerComponent test suite', () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it('should have an p-spinner element', () => {
+    it('should have an p-inputNumber element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 

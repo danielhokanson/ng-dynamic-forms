@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
 import {
@@ -19,6 +19,9 @@ import { NgClass, NgFor, AsyncPipe } from '@angular/common';
     imports: [ReactiveFormsModule, MatRadioModule, NgClass, NgFor, AsyncPipe]
 })
 export class DynamicMaterialRadioGroupComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -31,7 +34,16 @@ export class DynamicMaterialRadioGroupComponent extends DynamicFormControlCompon
 
     @ViewChild('matRadioGroup', {static: true}) matRadioGroup!: MatRadioGroup;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

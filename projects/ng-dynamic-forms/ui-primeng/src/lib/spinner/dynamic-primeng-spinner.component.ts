@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 // TODO: Spinner component removed in PrimeNG 19, need to replace with InputNumber or remove
 // import { Spinner, SpinnerModule } from 'primeng/spinner';
@@ -20,6 +20,9 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, InputNumberModule]
 })
 export class DynamicPrimeNGSpinnerComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -31,7 +34,16 @@ export class DynamicPrimeNGSpinnerComponent extends DynamicFormControlComponent 
 
     @ViewChild('pSpinner', {static: true}) pSpinner!: InputNumber;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { AbstractControlOptions } from '@angular/forms';
 import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
@@ -54,8 +54,14 @@ import { DynamicFormComponentService } from './dynamic-form-component.service';
     providedIn: 'root'
 })
 export class DynamicFormService {
+    private componentService = inject(DynamicFormComponentService);
+    private validationService = inject(DynamicFormValidationService);
 
-    constructor(private componentService: DynamicFormComponentService, private validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+
+    constructor() {
     }
 
     private createAbstractControlOptions(validatorsConfig: DynamicValidatorsConfig | null = null,

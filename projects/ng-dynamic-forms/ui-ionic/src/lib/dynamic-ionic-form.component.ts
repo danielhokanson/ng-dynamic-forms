@@ -1,14 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ContentChildren,
-    EventEmitter,
-    Input,
-    Output,
-    QueryList,
-    ViewChildren
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, inject } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import {
     DynamicFormComponent,
@@ -29,6 +19,9 @@ import { NgFor } from '@angular/common';
     imports: [NgFor, DynamicIonicFormControlContainerComponent]
 })
 export class DynamicIonicFormComponent extends DynamicFormComponent {
+    protected changeDetectorRef: ChangeDetectorRef;
+    protected componentService: DynamicFormComponentService;
+
     @Input() group!: UntypedFormGroup;
     @Input() model!: DynamicFormModel;
     @Input() layout?: DynamicFormLayout;
@@ -42,7 +35,16 @@ export class DynamicIonicFormComponent extends DynamicFormComponent {
 
     @ViewChildren(DynamicIonicFormControlContainerComponent) components!: QueryList<DynamicIonicFormControlContainerComponent>;
 
-    constructor(protected changeDetectorRef: ChangeDetectorRef, protected componentService: DynamicFormComponentService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const changeDetectorRef = inject(ChangeDetectorRef);
+        const componentService = inject(DynamicFormComponentService);
+
         super(changeDetectorRef, componentService);
+    
+        this.changeDetectorRef = changeDetectorRef;
+        this.componentService = componentService;
     }
 }

@@ -1,4 +1,4 @@
-import { Injectable, Inject, Optional } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
@@ -25,15 +25,20 @@ import {
     providedIn: 'root'
 })
 export class DynamicFormValidationService {
+    private _NG_VALIDATORS = inject(NG_VALIDATORS, { optional: true });
+    private _NG_ASYNC_VALIDATORS = inject(NG_ASYNC_VALIDATORS, { optional: true });
+    private _DYNAMIC_VALIDATORS = inject<Map<string, Validator | ValidatorFactory>>(DYNAMIC_VALIDATORS, { optional: true });
+    private _DYNAMIC_ERROR_MESSAGES_MATCHER = inject<DynamicErrorMessagesMatcher>(DYNAMIC_ERROR_MESSAGES_MATCHER, { optional: true });
 
-    constructor(@Optional() @Inject(NG_VALIDATORS) private _NG_VALIDATORS: ValidatorFn[],
-                @Optional() @Inject(NG_ASYNC_VALIDATORS) private _NG_ASYNC_VALIDATORS: AsyncValidatorFn[],
-                @Optional() @Inject(DYNAMIC_VALIDATORS) private _DYNAMIC_VALIDATORS: Map<string, Validator | ValidatorFactory>,
-                @Optional() @Inject(DYNAMIC_ERROR_MESSAGES_MATCHER) private _DYNAMIC_ERROR_MESSAGES_MATCHER: DynamicErrorMessagesMatcher) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+
+    constructor() {
     }
 
     private getValidatorFn(validatorName: string, validatorArgs: any = null,
-                           validatorsToken: ValidatorsToken = this._NG_VALIDATORS): Validator | never {
+                           validatorsToken: ValidatorsToken = (this._NG_VALIDATORS ? [...this._NG_VALIDATORS] as Validator[] : [])): Validator | never {
 
         let validatorFn: ValidatorFactory | Validator | undefined;
 
@@ -62,7 +67,7 @@ export class DynamicFormValidationService {
     }
 
     private getValidatorFns(validatorsConfig: DynamicValidatorsConfig,
-                            validatorsToken: ValidatorsToken = this._NG_VALIDATORS): Validator[] {
+                            validatorsToken: ValidatorsToken = (this._NG_VALIDATORS ? [...this._NG_VALIDATORS] as Validator[] : [])): Validator[] {
 
         let validatorFns: Validator[] = [];
 
@@ -89,7 +94,7 @@ export class DynamicFormValidationService {
     }
 
     getAsyncValidator(validatorName: string, validatorArgs: any = null): AsyncValidatorFn {
-        return this.getValidatorFn(validatorName, validatorArgs, this._NG_ASYNC_VALIDATORS) as AsyncValidatorFn;
+        return this.getValidatorFn(validatorName, validatorArgs, (this._NG_ASYNC_VALIDATORS ? [...this._NG_ASYNC_VALIDATORS] as Validator[] : [])) as AsyncValidatorFn;
     }
 
     getValidators(validatorsConfig: DynamicValidatorsConfig): ValidatorFn[] {
@@ -97,7 +102,7 @@ export class DynamicFormValidationService {
     }
 
     getAsyncValidators(asyncValidatorsConfig: DynamicValidatorsConfig): AsyncValidatorFn[] {
-        return this.getValidatorFns(asyncValidatorsConfig, this._NG_ASYNC_VALIDATORS) as AsyncValidatorFn[];
+        return this.getValidatorFns(asyncValidatorsConfig, (this._NG_ASYNC_VALIDATORS ? [...this._NG_ASYNC_VALIDATORS] as Validator[] : [])) as AsyncValidatorFn[];
     }
 
     updateValidators(validatorsConfig: DynamicValidatorsConfig | null, control: AbstractControl,

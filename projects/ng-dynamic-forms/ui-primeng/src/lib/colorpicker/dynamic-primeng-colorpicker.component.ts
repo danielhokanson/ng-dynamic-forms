@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 import {
@@ -18,6 +18,9 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, ColorPickerModule]
 })
 export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -29,7 +32,16 @@ export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlCompon
 
     @ViewChild('pColorPicker', {static: true}) pColorPicker!: ColorPicker;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }
