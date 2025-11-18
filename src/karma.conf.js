@@ -26,6 +26,29 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      Chrome: {
+        base: 'Chrome',
+        executable: process.env.CHROME_BIN || require('path').join(__dirname, '../.bin/chrome-headless-wrapper.sh'),
+        flags: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage'
+        ]
+      },
+      ChromeHeadless: {
+        base: 'Chrome',
+        executable: process.env.CHROME_BIN || require('path').join(__dirname, '../.bin/chrome-headless-wrapper.sh'),
+        flags: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
+        ]
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });

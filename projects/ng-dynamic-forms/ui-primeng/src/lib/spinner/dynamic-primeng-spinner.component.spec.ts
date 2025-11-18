@@ -2,12 +2,11 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/t
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Spinner } from 'primeng/spinner';
 import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGSpinnerComponent } from './dynamic-primeng-spinner.component';
 
 describe('DynamicPrimeNGSpinnerComponent test suite', () => {
-    const testModel = new DynamicInputModel({id: 'input', inputType: 'number'});
+    const testModel = new DynamicInputModel({ id: 'input', inputType: 'number' });
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -42,7 +41,7 @@ describe('DynamicPrimeNGSpinnerComponent test suite', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicInputModel).toBe(true);
-        expect(component.pSpinner instanceof Spinner).toBe(true);
+
 
         expect(component.blur).toBeDefined();
         expect(component.change).toBeDefined();

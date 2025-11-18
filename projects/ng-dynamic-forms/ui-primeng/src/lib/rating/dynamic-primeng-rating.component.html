@@ -1,9 +1,7 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
     <p-rating #pRating
-              [cancel]="model.getAdditional('cancel', true)"
               [formControlName]="model.id"
-              [iconCancelClass]="model.getAdditional('iconCancelClass', 'pi pi-ban')"
               [iconOffClass]="model.getAdditional('iconOffClass', 'pi pi-star-o')"
               [iconOnClass]="model.getAdditional('iconOnClass', 'pi pi-star')"
               [id]="id"
