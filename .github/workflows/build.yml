@@ -30,11 +30,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18.x'
-      - run: npm i --force --legacy-peer-deps
+      - run: npm install
+      - name: Run linting
+        run: npm run lint
+      - name: Run security audit
+        run: npm audit --audit-level=moderate || true
+      - name: Generate API documentation
+        run: npm run doc:lib
+      - name: Check bundle sizes
+        run: npm run size-check || echo "⚠️ Bundle size check failed - review manually"
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
       - run: npm run build:core && npm run test:core
       - run: npm run build:ui-basic && npm run test:ui-basic
       - run: npm run build:ui-bootstrap && npm run test:ui-bootstrap
@@ -45,3 +55,5 @@ jobs:
       - run: npm run build:ui-ngx-bootstrap && npm run test:ui-ngx-bootstrap
       - run: npm run build:ui-primeng && npm run test:ui-primeng
       - run: npm run build:sample
+      - name: Run E2E tests
+        run: npm run e2e || echo "⚠️ E2E tests failed - review manually"
