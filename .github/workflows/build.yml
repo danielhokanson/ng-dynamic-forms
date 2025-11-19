@@ -1,40 +1,46 @@
 name: NG Dynamic Forms CI
 on:
   push:
-    branches: [ master, development ]
+    branches: [master, development]
   pull_request:
-    branches: [ master, development ]
+    branches: [master, development]
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
+        description: "Log level"
         required: true
-        default: 'warning'
+        default: "warning"
         type: choice
         options:
-        - info
-        - warning
-        - debug
+          - info
+          - warning
+          - debug
       tags:
-        description: 'Test scenario tags'
+        description: "Test scenario tags"
         required: false
         type: boolean
       environment:
-        description: 'Environment to run tests against'
+        description: "Environment to run tests against"
         type: environment
         required: true
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-      - run: npm install
+          node-version: "20.x" # Angular 19 supports 18.19.1+, 20.11.1+, and 22.0.0+ - using LTS 20.x for stability
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
       - name: Run linting
         run: npm run lint
       - name: Run security audit
@@ -45,15 +51,37 @@ jobs:
         run: npm run size-check || echo "⚠️ Bundle size check failed - review manually"
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
-      - run: npm run build:core && npm run test:core
-      - run: npm run build:ui-basic && npm run test:ui-basic
-      - run: npm run build:ui-bootstrap && npm run test:ui-bootstrap
-      - run: npm run build:ui-foundation && npm run test:ui-foundation
-      - run: npm run build:ui-ionic #&& npm run test:ui-ionic -- ionic tests are commented out
-      - run: npm run build:ui-material && npm run test:ui-material
-      - run: npm run build:ui-ng-bootstrap && npm run test:ui-ng-bootstrap
-      - run: npm run build:ui-ngx-bootstrap && npm run test:ui-ngx-bootstrap
-      - run: npm run build:ui-primeng && npm run test:ui-primeng
-      - run: npm run build:sample
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 0
+      - name: Build and test core library
+        run: npm run build:core && npm run test:core
+
+      - name: Build and test UI Basic
+        run: npm run build:ui-basic && npm run test:ui-basic
+
+      - name: Build and test UI Bootstrap
+        run: npm run build:ui-bootstrap && npm run test:ui-bootstrap
+
+      - name: Build and test UI Foundation
+        run: npm run build:ui-foundation && npm run test:ui-foundation
+
+      - name: Build UI Ionic
+        run: npm run build:ui-ionic
+        # Note: Ionic tests are commented out due to compatibility issues
+
+      - name: Build and test UI Material
+        run: npm run build:ui-material && npm run test:ui-material
+
+      - name: Build and test UI NG Bootstrap
+        run: npm run build:ui-ng-bootstrap && npm run test:ui-ng-bootstrap
+
+      - name: Build and test UI NGX Bootstrap
+        run: npm run build:ui-ngx-bootstrap && npm run test:ui-ngx-bootstrap
+
+      - name: Build and test UI PrimeNG
+        run: npm run build:ui-primeng && npm run test:ui-primeng
+
+      - name: Build sample application
+        run: npm run build:sample
       - name: Run E2E tests
         run: npm run e2e || echo "⚠️ E2E tests failed - review manually"
