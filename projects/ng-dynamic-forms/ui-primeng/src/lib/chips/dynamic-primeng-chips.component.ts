@@ -2,7 +2,7 @@
 // This component needs to be reimplemented with a proper PrimeNG v20 replacement for multiple input values.
 // For now, this component is commented out and the form control container falls back to AutoComplete.
 
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList, /*ViewChild,*/inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 // import { Chip, ChipModule } from 'primeng/chip'; // Chip is display-only, not a form input
 import {
@@ -16,7 +16,7 @@ import {
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { PRIME_NG_TEMPLATE_DIRECTIVES } from '../dynamic-primeng-form.const';
 import { DynamicPrimeNGFormControlWithTemplateComponent } from '../dynamic-primeng-form-control-with-template.component';
-import { NgClass, AsyncPipe } from '@angular/common';
+import { NgClass/*, AsyncPipe*/ } from '@angular/common';
 
 // Component temporarily disabled - see TODO above
 @Component({

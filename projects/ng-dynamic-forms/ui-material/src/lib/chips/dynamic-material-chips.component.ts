@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, Output, /*ViewChild,*/ inject } from '@
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
-    // MatAutocomplete,
+    //MatAutocomplete,
     MatAutocompleteDefaultOptions,
     MatAutocompleteSelectedEvent,
     MatAutocompleteModule
 } from '@angular/material/autocomplete';
-import { MAT_CHIPS_DEFAULT_OPTIONS, MatChipInputEvent, MatChipGrid, MatChipsDefaultOptions, MatChipsModule } from '@angular/material/chips';
+import { MAT_CHIPS_DEFAULT_OPTIONS, MatChipInputEvent, /*MatChipGrid,*/ MatChipsDefaultOptions, MatChipsModule } from '@angular/material/chips';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions, MatOptionModule } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions, MatFormFieldModule } from '@angular/material/form-field';
 import { /*MatInput,*/ MatInputModule } from '@angular/material/input';
@@ -48,9 +48,9 @@ export class DynamicMaterialChipsComponent extends DynamicFormControlComponent {
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    //  @ViewChild('matAutocomplete', {static: true}) matAutocomplete!: MatAutocomplete;
-    //  @ViewChild('matChipGrid', {static: true}) matChipGrid!: MatChipGrid;
-    //  @ViewChild(MatInput, {static: true}) matInput!: MatInput;
+    // @ViewChild('matAutocomplete', { static: true }) matAutocomplete!: MatAutocomplete;
+    //@ViewChild('matChipGrid', { static: true }) matChipGrid!: MatChipGrid;
+    //@ViewChild(MatInput, { static: true }) matInput!: MatInput;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject

@@ -1,7 +1,6 @@
 import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { AutoComplete } from 'primeng/autocomplete';
 import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGAutoCompleteComponent } from './dynamic-primeng-autocomplete.component';
@@ -13,7 +12,7 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
     let formGroup: UntypedFormGroup;
     let fixture: ComponentFixture<DynamicPrimeNGAutoCompleteComponent>;
     let component: DynamicPrimeNGAutoCompleteComponent;
-    let debugElement: DebugElement;
+    //let debugElement: DebugElement;
     //let testElement: DebugElement;
 
     beforeEach(waitForAsync(() => {
@@ -23,7 +22,7 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
             fixture = TestBed.createComponent(DynamicPrimeNGAutoCompleteComponent);
 
             component = fixture.componentInstance;
-            debugElement = fixture.debugElement;
+            //debugElement = fixture.debugElement;
         });
     }));
 
