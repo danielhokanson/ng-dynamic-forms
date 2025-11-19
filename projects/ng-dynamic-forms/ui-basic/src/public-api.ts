@@ -1,1 +1,1 @@
-export * from "./lib/ui-basic";
+export * from './lib/ui-basic';

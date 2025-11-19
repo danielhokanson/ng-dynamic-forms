@@ -1,7 +1,7 @@
-import { InjectionToken } from "@angular/core";
-import { AbstractControl } from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormHook } from "../model/misc/dynamic-form-control-validation.model";
+import { InjectionToken } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormHook } from '../model/misc/dynamic-form-control-validation.model';
 
 export type DynamicErrorMessagesMatcher = (control: AbstractControl, model: DynamicFormControlModel, hasFocus: boolean) => boolean;
 
@@ -15,4 +15,4 @@ export const CHANGE_ERROR_STATE_MATCHER: DynamicErrorMessagesMatcher =
         return (model.updateOn === DynamicFormHook.Change || model.updateOn === null) ? control.dirty : control.touched && !hasFocus;
     };
 
-export const DYNAMIC_ERROR_MESSAGES_MATCHER = new InjectionToken<DynamicErrorMessagesMatcher>("DYNAMIC_ERROR_MESSAGES_MATCHER");
+export const DYNAMIC_ERROR_MESSAGES_MATCHER = new InjectionToken<DynamicErrorMessagesMatcher>('DYNAMIC_ERROR_MESSAGES_MATCHER');

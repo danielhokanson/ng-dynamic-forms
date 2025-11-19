@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { NgbDatepicker, NgbDatepickerConfig, NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgbDatepicker, NgbDatepickerConfig, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import {
     DynamicDatePickerModel,
     DynamicFormControlComponent,
@@ -8,17 +8,21 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-ng-bootstrap-calendar",
-    templateUrl: "./dynamic-ng-bootstrap-calendar.component.html",
+    selector: 'dynamic-ng-bootstrap-calendar',
+    templateUrl: './dynamic-ng-bootstrap-calendar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgbDatepickerModule, NgClass]
 })
 export class DynamicNGBootstrapCalendarComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+    config = inject(NgbDatepickerConfig);
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -30,9 +34,18 @@ export class DynamicNGBootstrapCalendarComponent extends DynamicFormControlCompo
 
     @ViewChild(NgbDatepicker, {static: true}) ngbCalendar!: NgbDatepicker;
 
-    constructor(protected layoutService: DynamicFormLayoutService,
-                protected validationService: DynamicFormValidationService,
-                public config: NgbDatepickerConfig) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

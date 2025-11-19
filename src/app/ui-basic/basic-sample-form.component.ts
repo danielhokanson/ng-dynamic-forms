@@ -1,19 +1,19 @@
-import { Component } from "@angular/core";
-import { JsonPipe, NgFor } from "@angular/common";
-import { ReactiveFormsModule, UntypedFormArray } from "@angular/forms";
+import { Component } from '@angular/core';
+import { JsonPipe, NgFor } from '@angular/common';
+import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
     DynamicFormService,
     DynamicFormArrayModel,
     DynamicFormControlEvent,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicBasicFormControlContainerComponent } from "@danielhokanson/ng-dynamic-forms-ui-basic";
-import { BASIC_SAMPLE_FORM_MODEL, BASIC_SAMPLE_FORM_ARRAY_MODEL } from "./basic-sample-form.model";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicBasicFormControlContainerComponent } from '@danielhokanson/ng-dynamic-forms-ui-basic';
+import { BASIC_SAMPLE_FORM_MODEL, BASIC_SAMPLE_FORM_ARRAY_MODEL } from './basic-sample-form.model';
 
 
 @Component({
-    selector: "dynamic-basic-sample-form",
-    templateUrl: "./basic-sample-form.component.html",
+    selector: 'dynamic-basic-sample-form',
+    templateUrl: './basic-sample-form.component.html',
     standalone: true,
     imports: [NgFor, JsonPipe, ReactiveFormsModule, DynamicBasicFormControlContainerComponent, DynamicTemplateDirective]
 })
@@ -24,9 +24,11 @@ export class BasicSampleFormComponent {
     formGroup1 = this.formService.createFormGroup(this.formModel1);
     formGroup2 = this.formService.createFormGroup(this.formModel2);
 
-    arrayModel = this.formService.findModelById<DynamicFormArrayModel>("basicFormArray", this.formModel2) as DynamicFormArrayModel;
+    arrayModel = this.formService.findModelById<DynamicFormArrayModel>('basicFormArray', this.formModel2) as DynamicFormArrayModel;
     arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel as DynamicFormArrayModel, this.formGroup2) as UntypedFormArray;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
@@ -43,14 +45,14 @@ export class BasicSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.debug(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.debug(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.debug(`FOCUS event on ${$event.model.id}: `, $event);
     }
 }

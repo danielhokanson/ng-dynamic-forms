@@ -1,21 +1,21 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { By } from "@angular/platform-browser";
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
-import { MatChipInputEvent, MatChipGrid } from "@angular/material/chips";
-import { MatOption } from "@angular/material/core";
-import { MatInput } from "@angular/material/input";
-import { DynamicFormService, DynamicInputModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicMaterialChipsComponent } from "./dynamic-material-chips.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipGrid } from '@angular/material/chips';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicMaterialChipsComponent } from './dynamic-material-chips.component';
 
-describe("DynamicMaterialChipsComponent test suite", () => {
+describe('DynamicMaterialChipsComponent test suite', () => {
     const testModel = new DynamicInputModel({
-        id: "input",
+        id: 'input',
         multiple: true,
-        list: ["Four", "Five", "Six"],
-        value: ["One", "Two", "Three"]
+        list: ['Four', 'Five', 'Six'],
+        value: ['One', 'Two', 'Three']
     });
     const formModel = [testModel];
 
@@ -46,7 +46,7 @@ describe("DynamicMaterialChipsComponent test suite", () => {
         testElement = debugElement.query(By.css(`mat-chip-grid`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicInputModel).toBe(true);
@@ -69,46 +69,46 @@ describe("DynamicMaterialChipsComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an mat-chip-list element", () => {
+    it('should have an mat-chip-list element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 
         expect(component.focus.emit).toHaveBeenCalled();
     });
 
-    it("should emit custom event", () => {
-        spyOn(component.customEvent, "emit");
+    it('should emit custom event', () => {
+        spyOn(component.customEvent, 'emit');
 
-        component.onCustomEvent(null, "eventType");
+        component.onCustomEvent(null, 'eventType');
 
         expect(component.customEvent.emit).toHaveBeenCalled();
     });
 
-    it("should add a chip to chip list on input token end", () => {
-        const value = "Test";
+    it('should add a chip to chip list on input token end', () => {
+        const value = 'Test';
         const length = component.chips.length;
-        const $event = {input: document.createElement("input"), value};
+        const $event = {input: document.createElement('input'), value};
 
         component.onChipInputTokenEnd($event as MatChipInputEvent);
 
@@ -116,8 +116,8 @@ describe("DynamicMaterialChipsComponent test suite", () => {
         expect(component.control.value[component.control.value.length - 1]).toEqual(value);
     });
 
-    it("should add a chip to chip list on chip selected from autocomplete panel", () => {
-        const value = "Test";
+    it('should add a chip to chip list on chip selected from autocomplete panel', () => {
+        const value = 'Test';
         const length = component.chips.length;
         const $event = new MatAutocompleteSelectedEvent(component.matAutocomplete, {value} as MatOption);
 
@@ -128,10 +128,10 @@ describe("DynamicMaterialChipsComponent test suite", () => {
     });
 
 
-    it("should remove a chip from chip list", () => {
+    it('should remove a chip from chip list', () => {
         const length = component.chips.length;
 
-        component.onChipRemoved("One", 0);
+        component.onChipRemoved('One', 0);
 
         expect(component.chips.length).toBe(length - 1);
     });

@@ -2,12 +2,12 @@ import {
     DynamicDateControlModel,
     DynamicDateControlModelConfig,
     DynamicDateControlValue
-} from "../dynamic-date-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isString } from "../../utils/core.utils";
+} from '../dynamic-date-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isString } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER = "DATEPICKER";
+export const DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER = 'DATEPICKER';
 
 export interface DynamicDatePickerModelConfig extends DynamicDateControlModelConfig {
     autoFocus?: boolean;

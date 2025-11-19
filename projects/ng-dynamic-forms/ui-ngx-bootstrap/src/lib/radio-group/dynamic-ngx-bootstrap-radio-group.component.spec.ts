@@ -1,15 +1,15 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { DynamicFormService, DynamicRadioGroupModel } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicNGxBootstrapRadioGroupComponent } from "./dynamic-ngx-bootstrap-radio-group.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { DynamicFormService, DynamicRadioGroupModel } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicNGxBootstrapRadioGroupComponent } from './dynamic-ngx-bootstrap-radio-group.component';
 
-describe("DynamicNGxBootstrapRadioGroupComponent test suite", () => {
+describe('DynamicNGxBootstrapRadioGroupComponent test suite', () => {
     const testModel = new DynamicRadioGroupModel({
-        id: "radioGroup",
-        options: [{value: "One"}, {value: "Two"}],
-        value: "One"
+        id: 'radioGroup',
+        options: [{value: 'One'}, {value: 'Two'}],
+        value: 'One'
     });
     const formModel = [testModel];
 
@@ -41,7 +41,7 @@ describe("DynamicNGxBootstrapRadioGroupComponent test suite", () => {
         testElement = debugElement.query(By.css(`[id="${testModel.id}"]`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicRadioGroupModel).toBe(true);
@@ -60,28 +60,28 @@ describe("DynamicNGxBootstrapRadioGroupComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an radio group element", () => {
+    it('should have an radio group element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 

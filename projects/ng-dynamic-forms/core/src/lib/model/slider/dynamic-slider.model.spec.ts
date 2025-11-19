@@ -1,9 +1,9 @@
-import { DYNAMIC_FORM_CONTROL_TYPE_SLIDER, DynamicSliderModel } from "./dynamic-slider.model";
+import { DYNAMIC_FORM_CONTROL_TYPE_SLIDER, DynamicSliderModel } from './dynamic-slider.model';
 
-describe("DynamicSliderModel test suite", () => {
+describe('DynamicSliderModel test suite', () => {
     let model: DynamicSliderModel;
     const config = {
-        id: "slider",
+        id: 'slider',
         min: 0,
         max: 100,
         step: 1,
@@ -15,7 +15,7 @@ describe("DynamicSliderModel test suite", () => {
 
     beforeEach(() => model = new DynamicSliderModel(config));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(model.disabled).toBe(false);
         expect(model.hidden).toBe(false);
         expect(model.id).toEqual(config.id);
@@ -30,12 +30,12 @@ describe("DynamicSliderModel test suite", () => {
         expect(model.valueChanges).toBeDefined();
     });
 
-    it("should get additional", () => {
+    it('should get additional', () => {
 
-        expect(model.getAdditional("test", null)).toBe(true);
+        expect(model.getAdditional('test', null)).toBe(true);
     });
 
-    it("should serialize correctly", () => {
+    it('should serialize correctly', () => {
         const json = JSON.parse(JSON.stringify(model));
 
         expect(json.id).toEqual(model.id);

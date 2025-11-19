@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { ColorPicker, ColorPickerModule } from "primeng/colorpicker";
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 import {
     DynamicColorPickerModel,
     DynamicFormLayout,
@@ -8,16 +8,19 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-colorpicker",
-    templateUrl: "./dynamic-primeng-colorpicker.component.html",
+    selector: 'dynamic-primeng-colorpicker',
+    templateUrl: './dynamic-primeng-colorpicker.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, ColorPickerModule]
 })
 export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -27,9 +30,20 @@ export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlCompon
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pColorPicker", {static: true}) pColorPicker!: ColorPicker;
+    @ViewChild('pColorPicker', {static: true}) pColorPicker!: ColorPicker;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

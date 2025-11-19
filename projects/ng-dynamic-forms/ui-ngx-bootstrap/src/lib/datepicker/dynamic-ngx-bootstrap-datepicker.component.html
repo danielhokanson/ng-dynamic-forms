@@ -1,7 +1,7 @@
 <div [formGroup]="group" class="input-group">
 
     <input bsDatepicker class="form-control" #bsDatepicker="bsDatepicker"
-           [autofocus]="model.autoFocus"
+          
            [bsConfig]="model.getAdditional('bsConfig', {containerClass: model.getAdditional('containerClass', 'theme-green'), showWeekNumbers: model.getAdditional('showWeekNumbers', true)})"
            [datesDisabled]="model.getAdditional('datesDisabled', [])"
            [daysDisabled]="model.getAdditional('daysDisabled', [])"
@@ -23,9 +23,11 @@
 
     <div *ngIf="model.toggleIcon || model.toggleLabel" class="input-group-append">
 
+        <!-- TODO: Add descriptive alt text based on model context -->
+        <!-- eslint-disable-next-line @angular-eslint/template/alt-text -->
         <button *ngIf="model.toggleIcon"
                 class="btn input-group-text" type="button"
-                (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon"/></button>
+                (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon" alt="Toggle datepicker"/></button>
         <button *ngIf="model.toggleLabel"
                 class="btn input-group-text" type="button"
                 (click)="bsDatepicker.toggle()">{{ model.toggleLabel }}</button>

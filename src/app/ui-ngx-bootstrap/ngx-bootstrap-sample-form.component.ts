@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from "@angular/core";
-import { UntypedFormGroup, UntypedFormArray, ReactiveFormsModule } from "@angular/forms";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { UntypedFormGroup, UntypedFormArray, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormArrayModel,
     DynamicFormControlModel,
@@ -9,16 +9,16 @@ import {
     DynamicFormValueControlModel,
     DynamicInputModel,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NGX_BOOTSTRAP_SAMPLE_FORM_MODEL } from "./ngx-bootstrap-sample-form.model";
-import { NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from "./ngx-bootstrap-sample-form.layout";
-import { DynamicFormControlEvent } from "../../../projects/ng-dynamic-forms/core/src/lib/component/dynamic-form-control-event";
-import { JsonPipe } from "@angular/common";
-import { DynamicNGxBootstrapFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NGX_BOOTSTRAP_SAMPLE_FORM_MODEL } from './ngx-bootstrap-sample-form.model';
+import { NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from './ngx-bootstrap-sample-form.layout';
+import { DynamicFormControlEvent } from '../../../projects/ng-dynamic-forms/core/src/lib/component/dynamic-form-control-event';
+import { JsonPipe } from '@angular/common';
+import { DynamicNGxBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-sample-form",
-    templateUrl: "./ngx-bootstrap-sample-form.component.html",
+    selector: 'dynamic-ngx-bootstrap-sample-form',
+    templateUrl: './ngx-bootstrap-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
@@ -28,11 +28,13 @@ export class NgxBootstrapSampleFormComponent {
     formLayout: DynamicFormLayout = NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
 
-    sampleFormControlModel = this.formService.findModelById<DynamicInputModel>("bsInput", this.formModel) as DynamicInputModel;
+    sampleFormControlModel = this.formService.findModelById<DynamicInputModel>('bsInput', this.formModel) as DynamicInputModel;
 
-    formArrayModel = this.formService.findModelById<DynamicFormArrayModel>("bsFormArray", this.formModel) as DynamicFormArrayModel;
+    formArrayModel = this.formService.findModelById<DynamicFormArrayModel>('bsFormArray', this.formModel) as DynamicFormArrayModel;
     formArray = this.formService.findControlByModel<UntypedFormArray>(this.formArrayModel, this.formGroup) as UntypedFormArray;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
@@ -57,22 +59,22 @@ export class NgxBootstrapSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.debug(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.debug(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.debug(`FOCUS event on ${$event.model.id}: `, $event);
     }
 
     test() {
         this.sampleFormControlModel.disabled = !this.sampleFormControlModel.disabled;
-        this.sampleFormControlModel.value = "Hello Hello";
+        this.sampleFormControlModel.value = 'Hello Hello';
 
-        (this.formArrayModel.get(1).group[0] as DynamicFormValueControlModel<any>).value = "This is just a test";
+        (this.formArrayModel.get(1).group[0] as DynamicFormValueControlModel<any>).value = 'This is just a test';
 
         this.formService.moveFormArrayGroup(2, -1, this.formArray, this.formArrayModel);
 
@@ -80,15 +82,15 @@ export class NgxBootstrapSampleFormComponent {
             this.formGroup,
             this.formModel,
             new DynamicFormGroupModel({
-                id: "bsFormGroup3",
-                group: [new DynamicInputModel({id: "newInput"})]
+                id: 'bsFormGroup3',
+                group: [new DynamicInputModel({id: 'newInput'})]
             })
         );
 
         this.formService.addFormGroupControl(
-            this.formGroup.get("bsFormGroup3") as UntypedFormGroup,
+            this.formGroup.get('bsFormGroup3') as UntypedFormGroup,
             this.formModel[2] as DynamicFormGroupModel,
-            new DynamicInputModel({id: "newInput"})
+            new DynamicInputModel({id: 'newInput'})
         );
 
         this.formService.detectChanges();

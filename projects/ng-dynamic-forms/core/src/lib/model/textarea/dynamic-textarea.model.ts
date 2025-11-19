@@ -1,12 +1,12 @@
-import { DynamicInputControlModel, DynamicInputControlModelConfig } from "../dynamic-input-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isNumber } from "../../utils/core.utils";
+import { DynamicInputControlModel, DynamicInputControlModelConfig } from '../dynamic-input-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isNumber } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA = "TEXTAREA";
+export const DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA = 'TEXTAREA';
 
-export const DYNAMIC_FORM_TEXTAREA_WRAP_HARD = "hard";
-export const DYNAMIC_FORM_TEXTAREA_WRAP_SOFT = "soft";
+export const DYNAMIC_FORM_TEXTAREA_WRAP_HARD = 'hard';
+export const DYNAMIC_FORM_TEXTAREA_WRAP_SOFT = 'soft';
 
 export interface DynamicTextAreaModelConfig extends DynamicInputControlModelConfig<string> {
     cols?: number;

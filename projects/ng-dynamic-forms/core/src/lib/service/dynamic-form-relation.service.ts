@@ -1,35 +1,47 @@
-import { Inject, Injectable, Injector, Optional } from "@angular/core";
-import { UntypedFormControl, UntypedFormGroup } from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
+import { Injectable, Injector, inject } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
 import {
     AND_OPERATOR,
     DYNAMIC_MATCHERS,
     DynamicFormControlMatcher,
     OR_OPERATOR
-} from "./dynamic-form-relation-matchers";
-import { DynamicFormControlCondition, DynamicFormControlRelation } from "../model/misc/dynamic-form-control-relation.model";
-import { distinctUntilChanged, startWith } from "rxjs/operators";
-import { merge, Subscription } from "rxjs";
-import { isString } from "../utils/core.utils";
+} from './dynamic-form-relation-matchers';
+import { DynamicFormControlCondition, DynamicFormControlRelation } from '../model/misc/dynamic-form-control-relation.model';
+import { distinctUntilChanged, startWith } from 'rxjs/operators';
+import { merge, Subscription } from 'rxjs';
+import { isString } from '../utils/core.utils';
 
 export type DynamicRelatedFormControls = { [path: string]: UntypedFormControl };
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormRelationService {
+    private MATCHERS = inject<DynamicFormControlMatcher[]>(DYNAMIC_MATCHERS, { optional: true });
+    private injector = inject(Injector);
 
-    constructor(@Optional() @Inject(DYNAMIC_MATCHERS) private MATCHERS: DynamicFormControlMatcher[], private injector: Injector) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
     }
 
     getRelatedFormControls(model: DynamicFormControlModel, group: UntypedFormGroup): DynamicRelatedFormControls {
         const conditionReducer = (controls: DynamicRelatedFormControls, condition: DynamicFormControlCondition) => {
             const path = condition.rootPath ?? condition.id;
 
-            if (isString(path) && !controls.hasOwnProperty(path)) {
-                const control = condition.rootPath ? group.root.get(condition.rootPath) : group.get(condition.id!);
-                control instanceof UntypedFormControl ?
-                    controls[path] = control : console.warn(`No related form control with id ${condition.id} could be found`);
+            if (isString(path) && !Object.prototype.hasOwnProperty.call(controls, path)) {
+                const control = condition.rootPath ? group.root.get(condition.rootPath) : (condition.id ? group.get(condition.id) : null);
+                if (control instanceof UntypedFormControl) {
+                    controls[path] = control;
+                } else {
+                    // eslint-disable-next-line no-console
+                    console.warn(`No related form control with id ${condition.id} could be found`);
+                }
             }
 
             return controls;
@@ -100,14 +112,16 @@ export class DynamicFormRelationService {
             const statusChanges = relatedControl.statusChanges.pipe(startWith(relatedControl.status), distinctUntilChanged());
 
             subscriptions.push(merge(valueChanges, statusChanges).subscribe(() => {
-                this.MATCHERS.forEach(matcher => {
-                    const relation = this.findRelationByMatcher(model.relations, matcher);
+                if (this.MATCHERS) {
+                    this.MATCHERS.forEach((matcher: DynamicFormControlMatcher) => {
+                        const relation = this.findRelationByMatcher(model.relations, matcher);
 
-                    if (relation !== undefined) {
-                        const hasMatch = this.matchesCondition(relation, relatedFormControls, matcher);
-                        matcher.onChange(hasMatch, model, control, this.injector);
-                    }
-                });
+                        if (relation !== undefined) {
+                            const hasMatch = this.matchesCondition(relation, relatedFormControls, matcher);
+                            matcher.onChange(hasMatch, model, control, this.injector);
+                        }
+                    });
+                }
             }));
         });
 

@@ -1,61 +1,69 @@
-import { Injectable } from "@angular/core";
-import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup } from "@angular/forms";
-import { AbstractControlOptions } from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormValueControlModel } from "../model/dynamic-form-value-control.model";
+import { Injectable, inject } from '@angular/core';
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { AbstractControlOptions } from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormValueControlModel } from '../model/dynamic-form-value-control.model';
 import {
     DynamicFormArrayModel,
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DynamicFormArrayGroupModel
-} from "../model/form-array/dynamic-form-array.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_GROUP, DynamicFormGroupModel } from "../model/form-group/dynamic-form-group.model";
+} from '../model/form-array/dynamic-form-array.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_GROUP, DynamicFormGroupModel } from '../model/form-group/dynamic-form-group.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP,
     DynamicCheckboxGroupModel
-} from "../model/checkbox/dynamic-checkbox-group.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX, DynamicCheckboxModel } from "../model/checkbox/dynamic-checkbox.model";
+} from '../model/checkbox/dynamic-checkbox-group.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX, DynamicCheckboxModel } from '../model/checkbox/dynamic-checkbox.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_COLORPICKER,
     DynamicColorPickerModel
-} from "../model/colorpicker/dynamic-colorpicker.model";
+} from '../model/colorpicker/dynamic-colorpicker.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER,
     DynamicDatePickerModel
-} from "../model/datepicker/dynamic-datepicker.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_EDITOR, DynamicEditorModel } from "../model/editor/dynamic-editor.model";
+} from '../model/datepicker/dynamic-datepicker.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_EDITOR, DynamicEditorModel } from '../model/editor/dynamic-editor.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD,
     DynamicFileUploadModel
-} from "../model/file-upload/dynamic-file-upload.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_INPUT, DynamicInputModel } from "../model/input/dynamic-input.model";
+} from '../model/file-upload/dynamic-file-upload.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_INPUT, DynamicInputModel } from '../model/input/dynamic-input.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP,
     DynamicRadioGroupModel
-} from "../model/radio/dynamic-radio-group.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_RATING, DynamicRatingModel } from "../model/rating/dynamic-rating.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_SELECT, DynamicSelectModel } from "../model/select/dynamic-select.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_SLIDER, DynamicSliderModel } from "../model/slider/dynamic-slider.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_SWITCH, DynamicSwitchModel } from "../model/switch/dynamic-switch.model";
-import { DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA, DynamicTextAreaModel } from "../model/textarea/dynamic-textarea.model";
+} from '../model/radio/dynamic-radio-group.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_RATING, DynamicRatingModel } from '../model/rating/dynamic-rating.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_SELECT, DynamicSelectModel } from '../model/select/dynamic-select.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_SLIDER, DynamicSliderModel } from '../model/slider/dynamic-slider.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_SWITCH, DynamicSwitchModel } from '../model/switch/dynamic-switch.model';
+import { DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA, DynamicTextAreaModel } from '../model/textarea/dynamic-textarea.model';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_TIMEPICKER,
     DynamicTimePickerModel
-} from "../model/timepicker/dynamic-timepicker.model";
-import { DynamicFormValidationService } from "./dynamic-form-validation.service";
-import { DynamicFormModel, DynamicUnionFormModel } from "../model/dynamic-form.model";
-import { DynamicPathable } from "../model/misc/dynamic-form-control-path.model";
-import { DynamicFormHook, DynamicValidatorsConfig } from "../model/misc/dynamic-form-control-validation.model";
-import { parseReviver } from "../utils/json.utils";
-import { isString } from "../utils/core.utils";
-import { DynamicFormComponent } from "../component/dynamic-form.component";
-import { DynamicFormComponentService } from "./dynamic-form-component.service";
+} from '../model/timepicker/dynamic-timepicker.model';
+import { DynamicFormValidationService } from './dynamic-form-validation.service';
+import { DynamicFormModel, DynamicUnionFormModel } from '../model/dynamic-form.model';
+import { DynamicPathable } from '../model/misc/dynamic-form-control-path.model';
+import { DynamicFormHook, DynamicValidatorsConfig } from '../model/misc/dynamic-form-control-validation.model';
+import { parseReviver } from '../utils/json.utils';
+import { isString } from '../utils/core.utils';
+import { DynamicFormComponent } from '../component/dynamic-form.component';
+import { DynamicFormComponentService } from './dynamic-form-component.service';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormService {
+    private componentService = inject(DynamicFormComponentService);
+    private validationService = inject(DynamicFormValidationService);
 
-    constructor(private componentService: DynamicFormComponentService, private validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
     }
 
     private createAbstractControlOptions(validatorsConfig: DynamicValidatorsConfig | null = null,
@@ -98,21 +106,23 @@ export class DynamicFormService {
                     break;
 
                 case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
-                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
+                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP: {
                     const groupModel = model as DynamicFormGroupModel;
                     const groupOptions = this.createAbstractControlOptions(groupModel.validators,
                         groupModel.asyncValidators, groupModel.updateOn);
 
                     controls[model.id] = this.createFormGroup(groupModel.group, groupOptions, groupModel);
                     break;
+                }
 
-                default:
+                default: {
                     const controlModel = model as DynamicFormValueControlModel<any>;
                     const controlState = {value: controlModel.value, disabled: controlModel.disabled};
                     const controlOptions = this.createAbstractControlOptions(controlModel.validators,
                         controlModel.asyncValidators, controlModel.updateOn);
 
                     controls[model.id] = new UntypedFormControl(controlState, controlOptions);
+                }
             }
         });
 
@@ -132,7 +142,7 @@ export class DynamicFormService {
             parent = parent.parent;
         }
 
-        return join ? path.join(".") : path;
+        return join ? path.join('.') : path;
     }
 
     addFormGroupControl(formGroup: UntypedFormGroup, formModel: DynamicUnionFormModel, ...models: DynamicFormModel): void {
@@ -286,7 +296,7 @@ export class DynamicFormService {
 
             switch (model.type) {
 
-                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
+                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY: {
                     const formArrayModel = model as DynamicFormArrayModel;
 
                     if (Array.isArray(formArrayModel.groups)) {
@@ -299,6 +309,7 @@ export class DynamicFormService {
 
                     formModel.push(new DynamicFormArrayModel(model, layout));
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX:
                     formModel.push(new DynamicCheckboxModel(model, layout));
@@ -321,15 +332,17 @@ export class DynamicFormService {
                     formModel.push(new DynamicEditorModel(model, layout));
                     break;
 
-                case DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD:
+                case DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD: {
                     model.value = null;
                     formModel.push(new DynamicFileUploadModel(model, layout));
                     break;
+                }
 
-                case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
+                case DYNAMIC_FORM_CONTROL_TYPE_GROUP: {
                     model.group = this.fromJSON(model.group);
                     formModel.push(new DynamicFormGroupModel(model, layout));
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
                     formModel.push(new DynamicInputModel(model, layout));

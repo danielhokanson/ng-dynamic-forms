@@ -1,8 +1,8 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement, SimpleChange } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { By } from "@angular/platform-browser";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement, SimpleChange } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
 import {
     DynamicFormService,
     DynamicCheckboxModel,
@@ -22,41 +22,41 @@ import {
     DynamicSwitchModel,
     DynamicTextAreaModel,
     DynamicTimePickerModel
-} from "@danielhokanson/ng-dynamic-forms-core";
+} from '@danielhokanson/ng-dynamic-forms-core';
 import {
     DynamicMaterialFormArrayComponent,
     DynamicMaterialFormControlContainerComponent,
     DynamicMaterialFormGroupComponent,
     materialUIFormControlMapFn
-} from "./dynamic-material-form-control-container.component";
-import { DynamicMaterialCheckboxComponent } from "./checkbox/dynamic-material-checkbox.component";
-import { DynamicMaterialDatePickerComponent } from "./datepicker/dynamic-material-datepicker.component";
-import { DynamicMaterialInputComponent } from "./input/dynamic-material-input.component";
-import { DynamicMaterialRadioGroupComponent } from "./radio-group/dynamic-material-radio-group.component";
-import { DynamicMaterialSelectComponent } from "./select/dynamic-material-select.component";
-import { DynamicMaterialSliderComponent } from "./slider/dynamic-material-slider.component";
-import { DynamicMaterialSlideToggleComponent } from "./slide-toggle/dynamic-material-slide-toggle.component";
-import { DynamicMaterialTextAreaComponent } from "./textarea/dynamic-material-textarea.component";
+} from './dynamic-material-form-control-container.component';
+import { DynamicMaterialCheckboxComponent } from './checkbox/dynamic-material-checkbox.component';
+import { DynamicMaterialDatePickerComponent } from './datepicker/dynamic-material-datepicker.component';
+import { DynamicMaterialInputComponent } from './input/dynamic-material-input.component';
+import { DynamicMaterialRadioGroupComponent } from './radio-group/dynamic-material-radio-group.component';
+import { DynamicMaterialSelectComponent } from './select/dynamic-material-select.component';
+import { DynamicMaterialSliderComponent } from './slider/dynamic-material-slider.component';
+import { DynamicMaterialSlideToggleComponent } from './slide-toggle/dynamic-material-slide-toggle.component';
+import { DynamicMaterialTextAreaComponent } from './textarea/dynamic-material-textarea.component';
 
-describe("DynamicMaterialFormControlContainerComponent test suite", () => {
-    const inputModel = new DynamicInputModel({id: "input", maxLength: 51});
+describe('DynamicMaterialFormControlContainerComponent test suite', () => {
+    const inputModel = new DynamicInputModel({id: 'input', maxLength: 51});
     const formModel = [
-        new DynamicCheckboxModel({id: "checkbox"}),
-        new DynamicCheckboxGroupModel({id: "checkboxGroup", group: []}),
-        new DynamicColorPickerModel({id: "colorpicker"}),
-        new DynamicDatePickerModel({id: "datepicker"}),
-        new DynamicEditorModel({id: "editor"}),
-        new DynamicFileUploadModel({id: "upload", url: ""}),
-        new DynamicFormArrayModel({id: "formArray", groupFactory: () => []}),
-        new DynamicFormGroupModel({id: "formGroup", group: []}),
+        new DynamicCheckboxModel({id: 'checkbox'}),
+        new DynamicCheckboxGroupModel({id: 'checkboxGroup', group: []}),
+        new DynamicColorPickerModel({id: 'colorpicker'}),
+        new DynamicDatePickerModel({id: 'datepicker'}),
+        new DynamicEditorModel({id: 'editor'}),
+        new DynamicFileUploadModel({id: 'upload', url: ''}),
+        new DynamicFormArrayModel({id: 'formArray', groupFactory: () => []}),
+        new DynamicFormGroupModel({id: 'formGroup', group: []}),
         inputModel,
-        new DynamicRadioGroupModel({id: "radioGroup"}),
-        new DynamicRatingModel({id: "rating"}),
-        new DynamicSelectModel({id: "select", options: [{value: "One"}, {value: "Two"}], value: "One"}),
-        new DynamicSliderModel({id: "slider"}),
-        new DynamicSwitchModel({id: "switch"}),
-        new DynamicTextAreaModel({id: "textarea"}),
-        new DynamicTimePickerModel({id: "timepicker"})
+        new DynamicRadioGroupModel({id: 'radioGroup'}),
+        new DynamicRatingModel({id: 'rating'}),
+        new DynamicSelectModel({id: 'select', options: [{value: 'One'}, {value: 'Two'}], value: 'One'}),
+        new DynamicSliderModel({id: 'slider'}),
+        new DynamicSwitchModel({id: 'switch'}),
+        new DynamicTextAreaModel({id: 'textarea'}),
+        new DynamicTimePickerModel({id: 'timepicker'})
     ];
 
     let formGroup: UntypedFormGroup;
@@ -96,7 +96,7 @@ describe("DynamicMaterialFormControlContainerComponent test suite", () => {
         testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.context).toBeNull();
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
@@ -109,39 +109,39 @@ describe("DynamicMaterialFormControlContainerComponent test suite", () => {
         expect(component.componentType).toBe(DynamicMaterialInputComponent);
     });
 
-    it("should have an input element", () => {
+    it('should have an input element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should detect material form fields", () => {
+    it('should detect material form fields', () => {
         expect(component.hasMatFormField).toBe(true);
     });
 
-    it("should update model value when control value changes", () => {
-        spyOn(component, "onControlValueChanges");
+    it('should update model value when control value changes', () => {
+        spyOn(component, 'onControlValueChanges');
 
-        component.control.setValue("test");
+        component.control.setValue('test');
 
         expect(component.onControlValueChanges).toHaveBeenCalled();
     });
 
-    it("should update control value when model value changes", () => {
-        spyOn(component, "onModelValueUpdates");
+    it('should update control value when model value changes', () => {
+        spyOn(component, 'onModelValueUpdates');
 
-        inputModel.value = "test";
+        inputModel.value = 'test';
 
         expect(component.onModelValueUpdates).toHaveBeenCalled();
     });
 
-    it("should update control activation when model disabled property changes", () => {
-        spyOn(component, "onModelDisabledUpdates");
+    it('should update control activation when model disabled property changes', () => {
+        spyOn(component, 'onModelDisabledUpdates');
 
         inputModel.disabled = true;
 
         expect(component.onModelDisabledUpdates).toHaveBeenCalled();
     });
 
-    it("should map a form control model to a form control component", () => {
+    it('should map a form control model to a form control component', () => {
         expect(materialUIFormControlMapFn(formModel[0])).toBe(DynamicMaterialCheckboxComponent);
         expect(materialUIFormControlMapFn(formModel[1])).toBe(DynamicMaterialFormGroupComponent);
         expect(materialUIFormControlMapFn(formModel[2])).toBeNull();

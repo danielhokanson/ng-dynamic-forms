@@ -1,9 +1,9 @@
-import { DynamicFileControlModelConfig, DynamicFileControlModel } from "../dynamic-file-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isNumber } from "../../utils/core.utils";
+import { DynamicFileControlModelConfig, DynamicFileControlModel } from '../dynamic-file-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isNumber } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD = "FILE_UPLOAD";
+export const DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD = 'FILE_UPLOAD';
 
 export interface DynamicFileUploadModelConfig extends DynamicFileControlModelConfig {
     accept?: string[];

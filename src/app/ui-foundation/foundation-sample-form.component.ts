@@ -1,21 +1,21 @@
-import { Component, ViewEncapsulation } from "@angular/core";
-import { ReactiveFormsModule, UntypedFormArray } from "@angular/forms";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
     DynamicFormArrayModel,
     DynamicFormControlEvent,
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicFormService, DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { FOUNDATION_SAMPLE_FORM_MODEL } from "./foundation-sample-form.model";
-import { FOUNDATION_SAMPLE_FORM_LAYOUT } from "./foundation-sample-form.layout";
-import { DynamicFoundationFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-foundation";
-import { JsonPipe } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { FOUNDATION_SAMPLE_FORM_MODEL } from './foundation-sample-form.model';
+import { FOUNDATION_SAMPLE_FORM_LAYOUT } from './foundation-sample-form.layout';
+import { DynamicFoundationFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-foundation';
+import { JsonPipe } from '@angular/common';
 
 @Component({
-    selector: "dynamic-foundation-sample-form",
-    styleUrls: ["../../../node_modules/foundation-sites/dist/css/foundation.css"],
-    templateUrl: "./foundation-sample-form.component.html",
+    selector: 'dynamic-foundation-sample-form',
+    styleUrls: ['../../../node_modules/foundation-sites/dist/css/foundation.css'],
+    templateUrl: './foundation-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, DynamicFoundationFormComponent, DynamicTemplateDirective]
@@ -25,9 +25,11 @@ export class FoundationSampleFormComponent {
     formLayout: DynamicFormLayout = FOUNDATION_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
 
-    arrayModel = this.formService.findModelById<DynamicFormArrayModel>("foundationFormArray", this.formModel) as DynamicFormArrayModel;
-    arrayControl = this.formService.findControlByModel <UntypedFormArray>(this.arrayModel, this.formGroup) as UntypedFormArray;
+    arrayModel = this.formService.findModelById<DynamicFormArrayModel>('foundationFormArray', this.formModel) as DynamicFormArrayModel;
+    arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel, this.formGroup) as UntypedFormArray;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
@@ -44,14 +46,14 @@ export class FoundationSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.debug(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.debug(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.debug(`FOCUS event on ${$event.model.id}: `, $event);
     }
 }

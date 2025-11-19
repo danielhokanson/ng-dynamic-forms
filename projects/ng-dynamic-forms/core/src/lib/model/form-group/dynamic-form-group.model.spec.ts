@@ -1,13 +1,13 @@
-import { DYNAMIC_FORM_CONTROL_TYPE_GROUP, DynamicFormGroupModel } from "./dynamic-form-group.model";
-import { DynamicInputModel } from "../input/dynamic-input.model";
+import { DYNAMIC_FORM_CONTROL_TYPE_GROUP, DynamicFormGroupModel } from './dynamic-form-group.model';
+import { DynamicInputModel } from '../input/dynamic-input.model';
 
-describe("DynamicFormGroupModel test suite", () => {
+describe('DynamicFormGroupModel test suite', () => {
     let model: DynamicFormGroupModel;
     const config: any = {
-        id: "formGroup",
+        id: 'formGroup',
         group: [
             new DynamicInputModel({
-                id: "input"
+                id: 'input'
             })
         ],
         validators: {
@@ -17,7 +17,7 @@ describe("DynamicFormGroupModel test suite", () => {
 
     beforeEach(() => model = new DynamicFormGroupModel(config));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(model.id).toEqual(config.id);
         expect(model.group.length).toBe(config.group.length);
         expect(model.size()).toBe(model.group.length);
@@ -26,31 +26,31 @@ describe("DynamicFormGroupModel test suite", () => {
         expect(model.disabledChanges).toBeDefined();
     });
 
-    it("should get the correct DynamicFormControlModel of group", () => {
+    it('should get the correct DynamicFormControlModel of group', () => {
         expect(model.get(0) === model.group[0]).toBe(true);
     });
 
-    it("should correctly set a DynamicFormControlModel", () => {
-        const newModel = new DynamicInputModel({id: "setInput"});
+    it('should correctly set a DynamicFormControlModel', () => {
+        const newModel = new DynamicInputModel({id: 'setInput'});
 
         model.set(0, newModel);
 
         expect(model.get(0) === newModel).toBe(true);
     });
 
-    it("should correctly add a DynamicFormControlModel", () => {
-        const newModel = new DynamicInputModel({id: "addInput"});
+    it('should correctly add a DynamicFormControlModel', () => {
+        const newModel = new DynamicInputModel({id: 'addInput'});
 
         model.add(newModel);
 
         expect(model.get(model.size() - 1) === newModel).toBe(true);
     });
 
-    it("should serialize correctly", () => {
+    it('should serialize correctly', () => {
         const json = JSON.parse(JSON.stringify(model));
 
         expect(json.id).toEqual(model.id);
         expect(json.type).toEqual(DYNAMIC_FORM_CONTROL_TYPE_GROUP);
-        expect(Object.keys(json.validators)[0]).toEqual("required");
+        expect(Object.keys(json.validators)[0]).toEqual('required');
     });
 });

@@ -9,200 +9,200 @@ import {
     DynamicTextAreaModel,
     MATCH_DISABLED,
     MATCH_REQUIRED
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { BehaviorSubject } from "rxjs";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { BehaviorSubject } from 'rxjs';
 
 export const STATES_AUTOCOMPLETE_LIST = [
-    "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
-    "District of Columbia", "Federated States of Micronesia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
-    "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland",
-    "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
-    "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
-    "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island",
-    "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
-    "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    'Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+    'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
+    'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
+    'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
+    'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+    'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
+    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
+    'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
 export const MATERIAL_SAMPLE_FORM_MODEL = [
     new DynamicFormGroupModel({
-        id: "stay",
+        id: 'stay',
         group: [
             new DynamicDatePickerModel({
-                id: "arrivalDate",
+                id: 'arrivalDate',
                 inline: false,
-                placeholder: "Date of Arrival"
+                placeholder: 'Date of Arrival'
             }),
             new DynamicDatePickerModel({
-                id: "departureDate",
+                id: 'departureDate',
                 inline: false,
-                placeholder: "Date of Departure"
+                placeholder: 'Date of Departure'
             })
         ],
         validators: {
             customDateRangeValidator: null
         },
         errorMessages: {
-            customDateRangeValidator: "Invalid period of time selected"
+            customDateRangeValidator: 'Invalid period of time selected'
         }
     }),
     new DynamicFormGroupModel({
-        id: "room",
+        id: 'room',
         group: [
             new DynamicSelectModel<string>({
-                id: "roomSize",
-                placeholder: "Room Size",
-                hint: "Choose a room type",
+                id: 'roomSize',
+                placeholder: 'Room Size',
+                hint: 'Choose a room type',
                 options: [
-                    {label: "Single Room", value: "single-room"},
-                    {label: "Double Room", value: "double-room"},
-                    {label: "Business Suite", value: "business-suite"},
-                    {label: "Presidential Suite", value: "presidential-suite"},
-                    {label: "Storeroom", value: "storeroom"}
+                    {label: 'Single Room', value: 'single-room'},
+                    {label: 'Double Room', value: 'double-room'},
+                    {label: 'Business Suite', value: 'business-suite'},
+                    {label: 'Presidential Suite', value: 'presidential-suite'},
+                    {label: 'Storeroom', value: 'storeroom'}
                 ]
             }),
             new DynamicInputModel({
-                id: "roomQuantity",
-                inputType: "number",
-                placeholder: "Room Quantity",
-                hint: "Maximum: 5",
+                id: 'roomQuantity',
+                inputType: 'number',
+                placeholder: 'Room Quantity',
+                hint: 'Maximum: 5',
                 max: 5,
                 min: 0
             })
         ]
     }),
     new DynamicInputModel({
-        id: "firstName",
+        id: 'firstName',
         maxLength: 25,
-        placeholder: "First Name",
+        placeholder: 'First Name',
         validators: {
             required: null
         },
         errorMessages: {
-            required: "Field is required"
+            required: 'Field is required'
         }
     }),
     new DynamicInputModel({
-        id: "lastName",
+        id: 'lastName',
         maxLength: 50,
-        placeholder: "Last Name",
+        placeholder: 'Last Name',
         validators: {
             required: null
         },
         errorMessages: {
-            required: "Field is required"
+            required: 'Field is required'
         },
         additional: {
-            color: "accent"
+            color: 'accent'
         }
     }),
     new DynamicInputModel({
-        id: "email",
-        placeholder: "E-Mail",
+        id: 'email',
+        placeholder: 'E-Mail',
         validators: {
             email: null
         },
         errorMessages: {
-            email: "Field has no valid email"
+            email: 'Field has no valid email'
         }
     }),
     new DynamicInputModel({
-        id: "phone",
-        inputType: "tel",
-        placeholder: "Phone Number",
-        hint: "Add your country code first",
-        prefix: "+",
+        id: 'phone',
+        inputType: 'tel',
+        placeholder: 'Phone Number',
+        hint: 'Add your country code first',
+        prefix: '+',
         validators: {
             required: null
         },
         errorMessages: {
-            required: "Field is required"
+            required: 'Field is required'
         }
     }),
     new DynamicFormGroupModel({
-        id: "addressStreet",
+        id: 'addressStreet',
         group: [
             new DynamicInputModel({
-                id: "streetName",
-                placeholder: "Street Name"
+                id: 'streetName',
+                placeholder: 'Street Name'
             }),
             new DynamicInputModel({
-                id: "streetNumber",
-                placeholder: "Street Number"
+                id: 'streetNumber',
+                placeholder: 'Street Number'
             })
         ]
     }),
     new DynamicFormGroupModel({
-        id: "addressLocation",
+        id: 'addressLocation',
         group: [
             new DynamicInputModel({
-                id: "zipCode",
-                placeholder: "ZIP"
+                id: 'zipCode',
+                placeholder: 'ZIP'
             }),
             new DynamicInputModel({
-                id: "state",
-                hint: "Autocomplete",
-                placeholder: "State",
+                id: 'state',
+                hint: 'Autocomplete',
+                placeholder: 'State',
                 list: new BehaviorSubject(STATES_AUTOCOMPLETE_LIST)
             }),
             new DynamicInputModel({
-                id: "city",
-                placeholder: "City"
+                id: 'city',
+                placeholder: 'City'
             })
         ]
     }),
     new DynamicSelectModel<string>({
-        id: "extras",
-        placeholder: "Extras",
+        id: 'extras',
+        placeholder: 'Extras',
         multiple: true,
         options: [
-            {label: "Breakfast", value: "extraBreakfast"},
-            {label: "TV", value: "extraTV"},
-            {label: "WiFi", value: "extraWiFi"},
-            {label: "Parking Lot", value: "extraParking"},
-            {label: "Balcony", value: "extraBalcony"}
+            {label: 'Breakfast', value: 'extraBreakfast'},
+            {label: 'TV', value: 'extraTV'},
+            {label: 'WiFi', value: 'extraWiFi'},
+            {label: 'Parking Lot', value: 'extraParking'},
+            {label: 'Balcony', value: 'extraBalcony'}
         ]
     }),
     new DynamicRadioGroupModel<string>({
-        id: "payment",
+        id: 'payment',
         options: [
-            {label: "Credit Card", value: "cc"},
-            {label: "PayPal", value: "paypal"},
-            {label: "Cash", value: "cash"},
-            {label: "Bitcoin", value: "bitcoin"}
+            {label: 'Credit Card', value: 'cc'},
+            {label: 'PayPal', value: 'paypal'},
+            {label: 'Cash', value: 'cash'},
+            {label: 'Bitcoin', value: 'bitcoin'}
         ],
-        value: "cc"
+        value: 'cc'
     }),
 
     new DynamicTextAreaModel({
-        id: "note",
+        id: 'note',
         rows: 3,
-        placeholder: "Personal Note",
+        placeholder: 'Personal Note',
         relations: [
-            {match: MATCH_DISABLED, when: [{id: "payment", value: "bitcoin"}]},
-            {match: MATCH_REQUIRED, when: [{id: "payment", value: "paypal"}]}
+            {match: MATCH_DISABLED, when: [{id: 'payment', value: 'bitcoin'}]},
+            {match: MATCH_REQUIRED, when: [{id: 'payment', value: 'paypal'}]}
         ]
     }),
     new DynamicInputModel({
-        id: "tags",
-        placeholder: "Tags",
+        id: 'tags',
+        placeholder: 'Tags',
         multiple: true,
-        value: ["hotel", "booking"]
+        value: ['hotel', 'booking']
     }),
     new DynamicSwitchModel({
-        id: "reminder",
-        offLabel: "Send me a reminder",
-        onLabel: "Send me a reminder",
+        id: 'reminder',
+        offLabel: 'Send me a reminder',
+        onLabel: 'Send me a reminder',
         value: false
 
     }),
     new DynamicSwitchModel({
-        id: "newsletter",
-        offLabel: "Subscribe to newsletter",
-        onLabel: "Subscribe to newsletter",
+        id: 'newsletter',
+        offLabel: 'Subscribe to newsletter',
+        onLabel: 'Subscribe to newsletter',
         value: true
     }),
     new DynamicCheckboxModel({
-        id: "confirm",
-        label: "I confirm the information given above"
+        id: 'confirm',
+        label: 'I confirm the information given above'
     })
 ];

@@ -1,15 +1,15 @@
-import { DYNAMIC_FORM_CONTROL_TYPE_COLORPICKER, DynamicColorPickerModel } from "./dynamic-colorpicker.model";
+import { DYNAMIC_FORM_CONTROL_TYPE_COLORPICKER, DynamicColorPickerModel } from './dynamic-colorpicker.model';
 
-describe("DynamicColorPickerModel test suite", () => {
+describe('DynamicColorPickerModel test suite', () => {
     let model: DynamicColorPickerModel;
     const config = {
-        id: "colorpicker",
-        value: "#ffffff"
+        id: 'colorpicker',
+        value: '#ffffff'
     };
 
     beforeEach(() => model = new DynamicColorPickerModel(config));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(model.disabled).toBe(false);
         expect(model.format).toBeNull();
         expect(model.hidden).toBe(false);
@@ -22,7 +22,7 @@ describe("DynamicColorPickerModel test suite", () => {
         expect(model.valueChanges).toBeDefined();
     });
 
-    it("should serialize correctly", () => {
+    it('should serialize correctly', () => {
         const json = JSON.parse(JSON.stringify(model));
 
         expect(json.id).toEqual(model.id);

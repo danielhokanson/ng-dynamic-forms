@@ -1,15 +1,15 @@
-import { DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER, DynamicDatePickerModel } from "./dynamic-datepicker.model";
+import { DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER, DynamicDatePickerModel } from './dynamic-datepicker.model';
 
-describe("DynamicDatepickerModel test suite", () => {
+describe('DynamicDatepickerModel test suite', () => {
     let model: DynamicDatePickerModel;
     const config = {
-        id: "datepicker",
+        id: 'datepicker',
         value: new Date()
     };
 
     beforeEach(() => model = new DynamicDatePickerModel(config));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
 
         expect(model.disabled).toBe(false);
         expect(model.focusedDate).toBeNull();
@@ -27,7 +27,7 @@ describe("DynamicDatepickerModel test suite", () => {
         expect(model.valueChanges).toBeDefined();
     });
 
-    it("should serialize correctly", () => {
+    it('should serialize correctly', () => {
         const json = JSON.parse(JSON.stringify(model));
 
         expect(json.id).toEqual(model.id);

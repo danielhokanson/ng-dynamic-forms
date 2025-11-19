@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { BsDatepickerDirective, BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerDirective, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {
     DynamicDatePickerModel,
     DynamicFormControlComponent,
@@ -9,17 +9,20 @@ import {
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-bootstrap-datepicker",
-    templateUrl: "./dynamic-bootstrap-datepicker.component.html",
+    selector: 'dynamic-bootstrap-datepicker',
+    templateUrl: './dynamic-bootstrap-datepicker.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, BsDatepickerModule, NgClass, NgIf]
 })
 export class DynamicBootstrapDatePickerComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -32,7 +35,18 @@ export class DynamicBootstrapDatePickerComponent extends DynamicFormControlCompo
 
     @ViewChild(BsDatepickerDirective, {static: true}) bsDatePicker!: BsDatepickerDirective;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

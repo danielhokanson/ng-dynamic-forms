@@ -1,9 +1,9 @@
-import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from "../dynamic-form-value-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isNumber } from "../../utils/core.utils";
+import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from '../dynamic-form-value-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isNumber } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_SLIDER = "SLIDER";
+export const DYNAMIC_FORM_CONTROL_TYPE_SLIDER = 'SLIDER';
 
 export interface DynamicSliderModelConfig extends DynamicFormValueControlModelConfig<number> {
     max?: number;

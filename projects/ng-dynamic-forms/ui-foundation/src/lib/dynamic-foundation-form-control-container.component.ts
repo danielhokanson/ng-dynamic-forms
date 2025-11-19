@@ -1,20 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ComponentFactoryResolver,
-    ContentChildren,
-    EventEmitter,
-    HostBinding,
-    Input,
-    Output,
-    QueryList,
-    Type,
-    ViewChild,
-    ViewChildren,
-    ViewContainerRef
-} from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList, Type, ViewChild, ViewChildren, ViewContainerRef, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX,
@@ -42,32 +27,41 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormGroupComponent,
     DynamicFormGroupModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicFoundationTextAreaComponent } from "./textarea/dynamic-foundation-textarea.component";
-import { DynamicFoundationSwitchComponent } from "./switch/dynamic-foundation-switch.component";
-import { DynamicFoundationSelectComponent } from "./select/dynamic-foundation-select.component";
-import { DynamicFoundationRadioGroupComponent } from "./radio-group/dynamic-foundation-radio-group.component";
-import { DynamicFoundationInputComponent } from "./input/dynamic-foundation-input.component";
-import { DynamicFoundationCheckboxComponent } from "./checkbox/dynamic-foundation-checkbox.component";
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicFoundationTextAreaComponent } from './textarea/dynamic-foundation-textarea.component';
+import { DynamicFoundationSwitchComponent } from './switch/dynamic-foundation-switch.component';
+import { DynamicFoundationSelectComponent } from './select/dynamic-foundation-select.component';
+import { DynamicFoundationRadioGroupComponent } from './radio-group/dynamic-foundation-radio-group.component';
+import { DynamicFoundationInputComponent } from './input/dynamic-foundation-input.component';
+import { DynamicFoundationCheckboxComponent } from './checkbox/dynamic-foundation-checkbox.component';
+import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-foundation-form-control",
-    templateUrl: "./dynamic-foundation-form-control-container.component.html",
+    selector: 'dynamic-foundation-form-control',
+    templateUrl: './dynamic-foundation-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor]
 })
 export class DynamicFoundationFormControlContainerComponent extends DynamicFormControlContainerComponent {
+    protected changeDetectorRef: ChangeDetectorRef;
+    protected componentFactoryResolver: ComponentFactoryResolver;
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+    protected componentService: DynamicFormComponentService;
+    protected relationService: DynamicFormRelationService;
+
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
-    @HostBinding("class") klass?: string;
+    @HostBinding('class') klass?: string;
 
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
+    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-input-rename
-    @Input("templates") inputTemplateList?: QueryList<DynamicTemplateDirective>;
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
 
@@ -75,15 +69,29 @@ export class DynamicFoundationFormControlContainerComponent extends DynamicFormC
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild("componentViewContainer", {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
-    constructor(protected changeDetectorRef: ChangeDetectorRef,
-                protected componentFactoryResolver: ComponentFactoryResolver,
-                protected layoutService: DynamicFormLayoutService,
-                protected validationService: DynamicFormValidationService,
-                protected componentService: DynamicFormComponentService,
-                protected relationService: DynamicFormRelationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const changeDetectorRef = inject(ChangeDetectorRef);
+        const componentFactoryResolver = inject(ComponentFactoryResolver);
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+        const componentService = inject(DynamicFormComponentService);
+        const relationService = inject(DynamicFormRelationService);
+
         super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
+    
+        this.changeDetectorRef = changeDetectorRef;
+        this.componentFactoryResolver = componentFactoryResolver;
+        this.layoutService = layoutService;
+        this.validationService = validationService;
+        this.componentService = componentService;
+        this.relationService = relationService;
     }
 
     get componentType(): Type<DynamicFormControl> | null {
@@ -126,12 +134,15 @@ export function foundationUIFormControlMapFn(model: DynamicFormControlModel): Ty
 }
 
 @Component({
-    selector: "dynamic-foundation-form-array",
-    templateUrl: "./dynamic-foundation-form-array.component.html",
+    selector: 'dynamic-foundation-form-array',
+    templateUrl: './dynamic-foundation-form-array.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicFoundationFormControlContainerComponent]
 })
 export class DynamicFoundationFormArrayComponent extends DynamicFormArrayComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -145,18 +156,32 @@ export class DynamicFoundationFormArrayComponent extends DynamicFormArrayCompone
 
     @ViewChildren(DynamicFoundationFormControlContainerComponent) components!: QueryList<DynamicFoundationFormControlContainerComponent>;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }
 
 @Component({
-    selector: "dynamic-foundation-form-group",
-    templateUrl: "./dynamic-foundation-form-group.component.html",
+    selector: 'dynamic-foundation-form-group',
+    templateUrl: './dynamic-foundation-form-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicFoundationFormControlContainerComponent]
 })
 export class DynamicFoundationFormGroupComponent extends DynamicFormGroupComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -170,7 +195,18 @@ export class DynamicFoundationFormGroupComponent extends DynamicFormGroupCompone
 
     @ViewChildren(DynamicFoundationFormControlContainerComponent) components!: QueryList<DynamicFoundationFormControlContainerComponent>;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

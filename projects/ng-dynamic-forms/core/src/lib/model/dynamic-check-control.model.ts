@@ -1,7 +1,7 @@
-import { DynamicFormValueControlModel, DynamicFormValueControlModelConfig } from "./dynamic-form-value-control.model";
-import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
-import { serializable } from "../decorator/serializable.decorator";
-import { isBoolean } from "../utils/core.utils";
+import { DynamicFormValueControlModel, DynamicFormValueControlModelConfig } from './dynamic-form-value-control.model';
+import { DynamicFormControlLayout } from './misc/dynamic-form-control-layout.model';
+import { serializable } from '../decorator/serializable.decorator';
+import { isBoolean } from '../utils/core.utils';
 
 export interface DynamicCheckControlModelConfig extends DynamicFormValueControlModelConfig<boolean> {
     labelPosition?: string;

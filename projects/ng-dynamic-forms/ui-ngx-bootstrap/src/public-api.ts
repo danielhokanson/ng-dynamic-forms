@@ -1,1 +1,1 @@
-export * from "./lib/ui-ngx-bootstrap";
+export * from './lib/ui-ngx-bootstrap';

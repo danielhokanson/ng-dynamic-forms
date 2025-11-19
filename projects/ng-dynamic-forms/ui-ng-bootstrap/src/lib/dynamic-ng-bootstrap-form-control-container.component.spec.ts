@@ -1,8 +1,8 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement, SimpleChange } from "@angular/core";
-import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { provideNgxMask } from "ngx-mask";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement, SimpleChange } from '@angular/core';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { provideNgxMask } from 'ngx-mask';
 import {
     DynamicFormService,
     DynamicCheckboxModel,
@@ -22,43 +22,43 @@ import {
     DynamicSwitchModel,
     DynamicTextAreaModel,
     DynamicTimePickerModel
-} from "@danielhokanson/ng-dynamic-forms-core";
+} from '@danielhokanson/ng-dynamic-forms-core';
 import {
     DynamicNGBootstrapFormArrayComponent,
     DynamicNGBootstrapFormControlContainerComponent,
     DynamicNGBootstrapFormGroupComponent,
     ngBootstrapUIFormControlMapFn
-} from "./dynamic-ng-bootstrap-form-control-container.component";
-import { DynamicNGBootstrapCheckboxComponent } from "./checkbox/dynamic-ng-bootstrap-checkbox.component";
+} from './dynamic-ng-bootstrap-form-control-container.component';
+import { DynamicNGBootstrapCheckboxComponent } from './checkbox/dynamic-ng-bootstrap-checkbox.component';
 // import { DynamicNGBootstrapCheckboxGroupComponent } from "./checkbox-group/dynamic-ng-bootstrap-checkbox-group.component";
-import { DynamicNGBootstrapDatePickerComponent } from "./datepicker/dynamic-ng-bootstrap-datepicker.component";
-import { DynamicNGBootstrapInputComponent } from "./input/dynamic-ng-bootstrap-input.component";
+import { DynamicNGBootstrapDatePickerComponent } from './datepicker/dynamic-ng-bootstrap-datepicker.component';
+import { DynamicNGBootstrapInputComponent } from './input/dynamic-ng-bootstrap-input.component';
 // import { DynamicNGBootstrapRadioGroupComponent } from "./radio-group/dynamic-ng-bootstrap-radio-group.component";
-import { DynamicNGBootstrapRatingComponent } from "./rating/dynamic-ng-bootstrap-rating.component";
-import { DynamicNGBootstrapSelectComponent } from "./select/dynamic-ng-bootstrap-select.component";
-import { DynamicNGBootstrapSwitchComponent } from "./switch/dynamic-ng-bootstrap-switch.component";
-import { DynamicNGBootstrapTextAreaComponent } from "./textarea/dynamic-ng-bootstrap-textarea.component";
-import { DynamicNGBootstrapTimePickerComponent } from "./timepicker/dynamic-ng-bootstrap-timepicker.component";
+import { DynamicNGBootstrapRatingComponent } from './rating/dynamic-ng-bootstrap-rating.component';
+import { DynamicNGBootstrapSelectComponent } from './select/dynamic-ng-bootstrap-select.component';
+import { DynamicNGBootstrapSwitchComponent } from './switch/dynamic-ng-bootstrap-switch.component';
+import { DynamicNGBootstrapTextAreaComponent } from './textarea/dynamic-ng-bootstrap-textarea.component';
+import { DynamicNGBootstrapTimePickerComponent } from './timepicker/dynamic-ng-bootstrap-timepicker.component';
 
-describe("DynamicNGBootstrapFormControlContainerComponent test suite", () => {
-    const inputModel = new DynamicInputModel({id: "input", maxLength: 51});
+describe('DynamicNGBootstrapFormControlContainerComponent test suite', () => {
+    const inputModel = new DynamicInputModel({id: 'input', maxLength: 51});
     const formModel = [
-        new DynamicCheckboxModel({id: "checkbox"}),
-        new DynamicCheckboxGroupModel({id: "checkboxGroup", group: []}),
-        new DynamicColorPickerModel({id: "colorpicker"}),
-        new DynamicDatePickerModel({id: "datepicker"}),
-        new DynamicEditorModel({id: "editor"}),
-        new DynamicFileUploadModel({id: "upload", url: ""}),
-        new DynamicFormArrayModel({id: "formArray", groupFactory: () => []}),
-        new DynamicFormGroupModel({id: "formGroup", group: []}),
+        new DynamicCheckboxModel({id: 'checkbox'}),
+        new DynamicCheckboxGroupModel({id: 'checkboxGroup', group: []}),
+        new DynamicColorPickerModel({id: 'colorpicker'}),
+        new DynamicDatePickerModel({id: 'datepicker'}),
+        new DynamicEditorModel({id: 'editor'}),
+        new DynamicFileUploadModel({id: 'upload', url: ''}),
+        new DynamicFormArrayModel({id: 'formArray', groupFactory: () => []}),
+        new DynamicFormGroupModel({id: 'formGroup', group: []}),
         inputModel,
-        new DynamicRadioGroupModel({id: "radioGroup"}),
-        new DynamicRatingModel({id: "rating"}),
-        new DynamicSelectModel({id: "select", options: [{value: "One"}, {value: "Two"}], value: "One"}),
-        new DynamicSliderModel({id: "slider"}),
-        new DynamicSwitchModel({id: "switch"}),
-        new DynamicTextAreaModel({id: "textarea"}),
-        new DynamicTimePickerModel({id: "timepicker"})
+        new DynamicRadioGroupModel({id: 'radioGroup'}),
+        new DynamicRatingModel({id: 'rating'}),
+        new DynamicSelectModel({id: 'select', options: [{value: 'One'}, {value: 'Two'}], value: 'One'}),
+        new DynamicSliderModel({id: 'slider'}),
+        new DynamicSwitchModel({id: 'switch'}),
+        new DynamicTextAreaModel({id: 'textarea'}),
+        new DynamicTimePickerModel({id: 'timepicker'})
     ];
 
     let formGroup: UntypedFormGroup;
@@ -95,7 +95,7 @@ describe("DynamicNGBootstrapFormControlContainerComponent test suite", () => {
         testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.asBootstrapFormGroup).toBe(true);
         expect(component.context).toBeNull();
         expect(component.control instanceof UntypedFormControl).toBe(true);
@@ -109,59 +109,59 @@ describe("DynamicNGBootstrapFormControlContainerComponent test suite", () => {
         expect(component.componentType).toBe(DynamicNGBootstrapInputComponent);
     });
 
-    it("should have an input element", () => {
+    it('should have an input element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should listen to native blur events", () => {
-        spyOn(component, "onBlur");
+    it('should listen to native blur events', () => {
+        spyOn(component, 'onBlur');
 
-        testElement.triggerEventHandler("blur", null);
+        testElement.triggerEventHandler('blur', null);
 
         expect(component.onBlur).toHaveBeenCalled();
     });
 
-    it("should listen to native focus events", () => {
-        spyOn(component, "onFocus");
+    it('should listen to native focus events', () => {
+        spyOn(component, 'onFocus');
 
-        testElement.triggerEventHandler("focus", null);
+        testElement.triggerEventHandler('focus', null);
 
         expect(component.onFocus).toHaveBeenCalled();
     });
 
-    it("should listen to native change event", () => {
-        spyOn(component, "onChange");
+    it('should listen to native change event', () => {
+        spyOn(component, 'onChange');
 
-        testElement.triggerEventHandler("change", null);
+        testElement.triggerEventHandler('change', null);
 
         expect(component.onChange).toHaveBeenCalled();
     });
 
-    it("should update model value when control value changes", () => {
-        spyOn(component, "onControlValueChanges");
+    it('should update model value when control value changes', () => {
+        spyOn(component, 'onControlValueChanges');
 
-        component.control.setValue("test");
+        component.control.setValue('test');
 
         expect(component.onControlValueChanges).toHaveBeenCalled();
     });
 
-    it("should update control value when model value changes", () => {
-        spyOn(component, "onModelValueUpdates");
+    it('should update control value when model value changes', () => {
+        spyOn(component, 'onModelValueUpdates');
 
-        inputModel.value = "test";
+        inputModel.value = 'test';
 
         expect(component.onModelValueUpdates).toHaveBeenCalled();
     });
 
-    it("should update control activation when model disabled property changes", () => {
-        spyOn(component, "onModelDisabledUpdates");
+    it('should update control activation when model disabled property changes', () => {
+        spyOn(component, 'onModelDisabledUpdates');
 
         inputModel.disabled = true;
 
         expect(component.onModelDisabledUpdates).toHaveBeenCalled();
     });
 
-    it("should map a form control model to a form control component", () => {
+    it('should map a form control model to a form control component', () => {
         expect(ngBootstrapUIFormControlMapFn(formModel[0])).toBe(DynamicNGBootstrapCheckboxComponent);
         // expect(ngBootstrapUIFormControlMapFn(formModel[1])).toBe(DynamicNGBootstrapCheckboxGroupComponent);
         expect(ngBootstrapUIFormControlMapFn(formModel[2])).toBeNull();

@@ -1,21 +1,21 @@
-import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlEvent,
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicInputModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NG_BOOTSTRAP_SAMPLE_FORM_MODEL } from "./ng-bootstrap-sample-form.model";
-import { NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from "./ng-bootstrap-sample-form.layout";
-import { DynamicNGBootstrapFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap";
-import { JsonPipe } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NG_BOOTSTRAP_SAMPLE_FORM_MODEL } from './ng-bootstrap-sample-form.model';
+import { NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from './ng-bootstrap-sample-form.layout';
+import { DynamicNGBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap';
+import { JsonPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-    selector: "dynamic-ng-bootstrap-sample-form",
+    selector: 'dynamic-ng-bootstrap-sample-form',
     styleUrls: [],
-    templateUrl: "./ng-bootstrap-sample-form.component.html",
+    templateUrl: './ng-bootstrap-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGBootstrapFormComponent]
@@ -27,32 +27,34 @@ export class NGBootstrapSampleFormComponent {
 
     @ViewChild(DynamicNGBootstrapFormComponent) formComponent!: DynamicNGBootstrapFormComponent;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
     onClick() {
-        const model = this.formService.findModelById("firstName", this.formModel) as DynamicInputModel;
+        const model = this.formService.findModelById('firstName', this.formModel) as DynamicInputModel;
 
-        model.label = "Updated Label";
+        model.label = 'Updated Label';
         this.formService.detectChanges();
 
-        model.value = "Test Value";
+        model.value = 'Test Value';
         model.disabled = true;
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
     }
 
     onNgbEvent($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
     }
 }

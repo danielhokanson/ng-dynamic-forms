@@ -1,7 +1,7 @@
-import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { Component, DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
-import { DynamicListDirective } from "./dynamic-list.directive";
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { DynamicListDirective } from './dynamic-list.directive';
 
 @Component({
     template: `
@@ -13,10 +13,10 @@ import { DynamicListDirective } from "./dynamic-list.directive";
 })
 class TestComponent {
     testList1 = null;
-    testList2 = "list";
+    testList2 = 'list';
 }
 
-describe("DynamicListDirective test suite", () => {
+describe('DynamicListDirective test suite', () => {
     let fixture: ComponentFixture<TestComponent>;
     let directives: DebugElement[];
 
@@ -31,12 +31,12 @@ describe("DynamicListDirective test suite", () => {
     });
 
 
-    it("should have two directives", () => {
+    it('should have two directives', () => {
         expect(directives.length).toBe(2);
     });
 
-    it("should have one set list", () => {
-        expect(directives[0].attributes["list"]).toBeUndefined();
-        expect(directives[1].attributes["list"]).toEqual(fixture.componentInstance.testList2);
+    it('should have one set list', () => {
+        expect(directives[0].attributes['list']).toBeUndefined();
+        expect(directives[1].attributes['list']).toEqual(fixture.componentInstance.testList2);
     });
 });

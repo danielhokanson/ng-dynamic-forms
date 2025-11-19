@@ -1,22 +1,25 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent, DynamicFormControlLayout,
     DynamicFormLayout,
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicRadioGroupModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgFor, AsyncPipe } from "@angular/common";
-import { ButtonsModule } from "ngx-bootstrap/buttons";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @Component({
-    selector: "dynamic-ngx-bootstrap-radio-group",
-    templateUrl: "./dynamic-ngx-bootstrap-radio-group.component.html",
+    selector: 'dynamic-ngx-bootstrap-radio-group',
+    templateUrl: './dynamic-ngx-bootstrap-radio-group.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, ButtonsModule, NgClass, NgFor, AsyncPipe]
 })
 export class DynamicNGxBootstrapRadioGroupComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -26,7 +29,18 @@ export class DynamicNGxBootstrapRadioGroupComponent extends DynamicFormControlCo
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }

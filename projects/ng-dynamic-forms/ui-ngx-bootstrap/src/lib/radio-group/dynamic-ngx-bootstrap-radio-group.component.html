@@ -7,6 +7,8 @@
          [tabindex]="model.tabIndex"
          (change)="onChange($event)">
 
+        <!-- TODO: Label is used as button wrapper for Bootstrap radio styling - review if label-has-associated-control can be ignored -->
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
         <label *ngFor="let option of model.options$ | async" class="btn" role="button"
                [btnRadio]="option.value"
                [disabled]="option.disabled"

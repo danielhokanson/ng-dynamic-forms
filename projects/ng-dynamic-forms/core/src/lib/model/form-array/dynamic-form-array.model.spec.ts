@@ -2,23 +2,23 @@ import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
     DynamicFormArrayModel,
     DynamicFormArrayGroupModel
-} from "./dynamic-form-array.model";
-import { DynamicInputModel } from "../input/dynamic-input.model";
+} from './dynamic-form-array.model';
+import { DynamicInputModel } from '../input/dynamic-input.model';
 
-describe("DynamicFormArrayModel test suite", () => {
+describe('DynamicFormArrayModel test suite', () => {
     let model: DynamicFormArrayModel;
     const config: any = {
-        id: "formArray",
+        id: 'formArray',
         initialCount: 3,
         groupFactory: () => [
             new DynamicInputModel({
-                id: "input"
+                id: 'input'
             }),
             new DynamicFormArrayModel({
-                id: "nestedFormArray",
+                id: 'nestedFormArray',
                 groupFactory: () => [
                     new DynamicInputModel({
-                        id: "nestedInput"
+                        id: 'nestedInput'
                     })
                 ]
             })
@@ -30,7 +30,7 @@ describe("DynamicFormArrayModel test suite", () => {
 
     beforeEach(() => model = new DynamicFormArrayModel(config));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(model.initialCount).toBe(config.initialCount);
         expect(model.size).toBe(model.initialCount);
         expect(model.id).toEqual(config.id);
@@ -40,29 +40,29 @@ describe("DynamicFormArrayModel test suite", () => {
         expect(model.disabledChanges).toBeDefined();
     });
 
-    it("should throw when no createGroup function is specified", () => {
-        expect(() => new DynamicFormArrayModel({id: "test"}))
-            .toThrow(new Error("group factory function must be specified for DynamicFormArrayModel"));
+    it('should throw when no createGroup function is specified', () => {
+        expect(() => new DynamicFormArrayModel({id: 'test'}))
+            .toThrow(new Error('group factory function must be specified for DynamicFormArrayModel'));
     });
 
-    it("should get the correct group model", () => {
+    it('should get the correct group model', () => {
         expect(model.get(0) instanceof DynamicFormArrayGroupModel).toBe(true);
         expect(model.get(1) instanceof DynamicFormArrayGroupModel).toBe(true);
     });
 
-    it("should add another form array group", () => {
+    it('should add another form array group', () => {
         model.addGroup();
 
         expect(model.size).toBe(config.initialCount + 1);
     });
 
-    it("should serialize correctly", () => {
+    it('should serialize correctly', () => {
         const json = JSON.parse(JSON.stringify(model));
 
         expect(json.asyncValidators).toBeNull();
         expect(json.id).toEqual(model.id);
         expect(json.groups.length).toEqual(model.size);
         expect(json.type).toEqual(DYNAMIC_FORM_CONTROL_TYPE_ARRAY);
-        expect(Object.keys(json.validators)[0]).toEqual("required");
+        expect(Object.keys(json.validators)[0]).toEqual('required');
     });
 });

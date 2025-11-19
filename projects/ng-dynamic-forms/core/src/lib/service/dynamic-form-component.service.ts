@@ -1,23 +1,30 @@
-import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Type } from "@angular/core";
-import { DynamicFormControl } from "../component/dynamic-form-control-interface";
-import { DynamicFormComponent } from "../component/dynamic-form.component";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { isFunction, isNumber } from "../utils/core.utils";
+import { ComponentRef, Injectable, InjectionToken, Type, inject } from '@angular/core';
+import { DynamicFormControl } from '../component/dynamic-form-control-interface';
+import { DynamicFormComponent } from '../component/dynamic-form.component';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { isFunction, isNumber } from '../utils/core.utils';
 
 export type DynamicFormControlRef = ComponentRef<DynamicFormControl>;
 export type DynamicFormControlMapFn = (model: DynamicFormControlModel) => Type<DynamicFormControl> | null;
 
-export const DYNAMIC_FORM_CONTROL_MAP_FN = new InjectionToken<DynamicFormControlMapFn>("DYNAMIC_FORM_CONTROL_MAP_FN");
+export const DYNAMIC_FORM_CONTROL_MAP_FN = new InjectionToken<DynamicFormControlMapFn>('DYNAMIC_FORM_CONTROL_MAP_FN');
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormComponentService {
+    private readonly dynamicFormControlMapFn = inject(DYNAMIC_FORM_CONTROL_MAP_FN, { optional: true });
+
     private forms: DynamicFormComponent[] = [];
     private formControls: { [key: string]: DynamicFormControlRef | DynamicFormControlRef[] } = {};
 
-    constructor(@Inject(DYNAMIC_FORM_CONTROL_MAP_FN) @Optional() private readonly DYNAMIC_FORM_CONTROL_MAP_FN: any) {
-        this.DYNAMIC_FORM_CONTROL_MAP_FN = DYNAMIC_FORM_CONTROL_MAP_FN as DynamicFormControlMapFn;
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
     }
 
     getForms(): IterableIterator<DynamicFormComponent> {
@@ -56,6 +63,7 @@ export class DynamicFormComponentService {
                 this.formControls[model.id] = arrayRef;
 
             } else {
+                // eslint-disable-next-line no-console
                 console.warn(`registerFormControlRef is called with index for a non-array form control: ${model.id}`);
             }
 
@@ -78,6 +86,6 @@ export class DynamicFormComponentService {
     }
 
     getCustomComponentType(model: DynamicFormControlModel): Type<DynamicFormControl> | null {
-        return isFunction(this.DYNAMIC_FORM_CONTROL_MAP_FN) ? this.DYNAMIC_FORM_CONTROL_MAP_FN(model) : null;
+        return isFunction(this.dynamicFormControlMapFn) ? this.dynamicFormControlMapFn(model) : null;
     }
 }

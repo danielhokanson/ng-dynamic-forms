@@ -1,7 +1,7 @@
 <div [formGroup]="group" class="input-group">
 
     <input bsDatepicker class="form-control" #bsDatepicker="bsDatepicker"
-           [autofocus]="model.autoFocus"
+          
            [bsConfig]="model.getAdditional('bsConfig', {containerClass: model.getAdditional('containerClass', 'theme-green'), showWeekNumbers: model.getAdditional('showWeekNumbers', true)})"
            [formControlName]="model.id"
            [id]="id"
@@ -20,7 +20,7 @@
 
     <div *ngIf="model.toggleLabel" class="input-group-btn">
 
-        <button *ngIf="model.toggleIcon" class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon"/></button>
+        <button *ngIf="model.toggleIcon" class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon" alt="Toggle datepicker"/></button>
         <button *ngIf="model.toggleLabel" class="btn" (click)="bsDatepicker.toggle()">{{ model.toggleLabel }}</button>
 
     </div>

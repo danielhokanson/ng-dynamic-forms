@@ -1,21 +1,21 @@
-import { Injectable, QueryList } from "@angular/core";
+import { Injectable, QueryList } from '@angular/core';
 import {
     DynamicFormControlLayout,
     DynamicFormControlLayoutConfig,
     DynamicFormControlLayoutContext,
     DynamicFormControlLayoutPlace
-} from "../model/misc/dynamic-form-control-layout.model";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormArrayGroupModel } from "../model/form-array/dynamic-form-array.model";
-import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from "../directive/dynamic-template.directive";
-import { isObject, isString } from "../utils/core.utils";
+} from '../model/misc/dynamic-form-control-layout.model';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormArrayGroupModel } from '../model/form-array/dynamic-form-array.model';
+import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from '../directive/dynamic-template.directive';
+import { isObject, isString } from '../utils/core.utils';
 
 export type DynamicFormLayout = { [id: string]: DynamicFormControlLayout };
 
 export type DynamicFormControlTemplates = QueryList<DynamicTemplateDirective> | DynamicTemplateDirective[] | undefined;
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormLayoutService {
 
@@ -36,7 +36,7 @@ export class DynamicFormLayoutService {
 
         if (isObject(formLayout)) {
             for (const key of Object.keys(formLayout)) {
-                key.split(",").forEach(substring => {
+                key.split(',').forEach(substring => {
                     const selector = substring.trim();
 
                     if (selector === model.id || selector === model.type) {
@@ -87,19 +87,19 @@ export class DynamicFormLayoutService {
     getClass(layout: DynamicFormControlLayout | null | undefined, context: DynamicFormControlLayoutContext,
              place: DynamicFormControlLayoutPlace): string {
 
-        if (isObject(layout) && layout.hasOwnProperty(context)) {
+        if (isObject(layout) && Object.prototype.hasOwnProperty.call(layout, context)) {
             const config = layout[context] as DynamicFormControlLayoutConfig;
-            if (config.hasOwnProperty(place)) {
+            if (Object.prototype.hasOwnProperty.call(config, place)) {
                 return config[place] as string;
             }
         }
 
-        return "";
+        return '';
     }
 
     getHostClass(layout: DynamicFormControlLayout | null | undefined): string {
-        const keys: (keyof DynamicFormControlLayout)[] = ["element", "grid"];
-        let cls = "";
+        const keys: (keyof DynamicFormControlLayout)[] = ['element', 'grid'];
+        let cls = '';
 
         if (isObject(layout)) {
             keys.forEach(key => {

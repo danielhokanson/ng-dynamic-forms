@@ -1,1 +1,1 @@
-export * from "./lib/ui-material";
+export * from './lib/ui-material';

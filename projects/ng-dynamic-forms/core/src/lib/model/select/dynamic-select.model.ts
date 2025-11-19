@@ -1,9 +1,9 @@
-import { DynamicOptionControlModel, DynamicOptionControlModelConfig } from "../dynamic-option-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isFunction } from "../../utils/core.utils";
+import { DynamicOptionControlModel, DynamicOptionControlModelConfig } from '../dynamic-option-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isFunction } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_SELECT = "SELECT";
+export const DYNAMIC_FORM_CONTROL_TYPE_SELECT = 'SELECT';
 
 export interface DynamicSelectModelConfig<T> extends DynamicOptionControlModelConfig<T> {
     compareWithFn?: (o1: any, o2: any) => boolean;
@@ -30,7 +30,7 @@ export class DynamicSelectModel<T> extends DynamicOptionControlModel<T> {
         this.compareWithFn = isFunction(config.compareWithFn) ? config.compareWithFn : Object.is;
         this.filterable = isBoolean(config.filterable) ? config.filterable : false;
         this.multiple = isBoolean(config.multiple) ? config.multiple : false;
-        this.placeholder = config.placeholder ?? "";
+        this.placeholder = config.placeholder ?? '';
         this.prefix = config.prefix ?? null;
         this.suffix = config.suffix ?? null;
     }

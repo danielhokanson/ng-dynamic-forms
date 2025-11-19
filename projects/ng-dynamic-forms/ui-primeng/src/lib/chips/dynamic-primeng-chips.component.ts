@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { Chips, ChipsModule } from "primeng/chips";
+import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Chips, ChipsModule } from 'primeng/chips';
 import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
@@ -9,18 +9,21 @@ import {
     DynamicFormValidationService,
     DynamicInputModel,
     DynamicTemplateDirective
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { PRIME_NG_TEMPLATE_DIRECTIVES } from "../dynamic-primeng-form.const";
-import { DynamicPrimeNGFormControlWithTemplateComponent } from "../dynamic-primeng-form-control-with-template.component";
-import { NgClass } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { PRIME_NG_TEMPLATE_DIRECTIVES } from '../dynamic-primeng-form.const';
+import { DynamicPrimeNGFormControlWithTemplateComponent } from '../dynamic-primeng-form-control-with-template.component';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: "dynamic-primeng-chips",
-    templateUrl: "./dynamic-primeng-chips.component.html",
+    selector: 'dynamic-primeng-chips',
+    templateUrl: './dynamic-primeng-chips.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, ChipsModule]
 })
 export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
     readonly templateDirectives = PRIME_NG_TEMPLATE_DIRECTIVES;
 
     @Input() formLayout?: DynamicFormLayout;
@@ -34,10 +37,21 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("pChips", {static: true}) pChips!: Chips;
+    @ViewChild('pChips', {static: true}) pChips!: Chips;
 
-    constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 
     get viewChild(): Chips {

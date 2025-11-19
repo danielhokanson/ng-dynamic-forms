@@ -1,9 +1,9 @@
-import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from "../dynamic-form-value-control.model";
-import { DynamicFormControlLayout } from "../misc/dynamic-form-control-layout.model";
-import { serializable } from "../../decorator/serializable.decorator";
-import { isBoolean, isString } from "../../utils/core.utils";
+import { DynamicFormValueControlModelConfig, DynamicFormValueControlModel } from '../dynamic-form-value-control.model';
+import { DynamicFormControlLayout } from '../misc/dynamic-form-control-layout.model';
+import { serializable } from '../../decorator/serializable.decorator';
+import { isBoolean, isString } from '../../utils/core.utils';
 
-export const DYNAMIC_FORM_CONTROL_TYPE_COLORPICKER = "COLORPICKER";
+export const DYNAMIC_FORM_CONTROL_TYPE_COLORPICKER = 'COLORPICKER';
 
 export interface DynamicColorPickerModelConfig extends DynamicFormValueControlModelConfig<string | object> {
     format?: string;

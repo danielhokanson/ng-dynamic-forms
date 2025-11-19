@@ -1,12 +1,12 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { UntypedFormGroup } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-import { DynamicCheckboxGroupModel, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
-import { DynamicNGxBootstrapCheckboxGroupComponent } from "./dynamic-ngx-bootstrap-checkbox-group.component";
+import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { DynamicCheckboxGroupModel, DynamicFormService } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicNGxBootstrapCheckboxGroupComponent } from './dynamic-ngx-bootstrap-checkbox-group.component';
 
-describe("DynamicNGxBootstrapCheckboxGroupComponent test suite", () => {
-    const testModel = new DynamicCheckboxGroupModel({id: "checkboxGroup", group: []});
+describe('DynamicNGxBootstrapCheckboxGroupComponent test suite', () => {
+    const testModel = new DynamicCheckboxGroupModel({id: 'checkboxGroup', group: []});
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -37,7 +37,7 @@ describe("DynamicNGxBootstrapCheckboxGroupComponent test suite", () => {
         testElement = debugElement.query(By.css(`div.btn-group`));
     }));
 
-    it("should initialize correctly", () => {
+    it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormGroup).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicCheckboxGroupModel).toBe(true);
@@ -56,28 +56,28 @@ describe("DynamicNGxBootstrapCheckboxGroupComponent test suite", () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it("should have an div.btn-group element", () => {
+    it('should have an div.btn-group element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
-    it("should emit blur event", () => {
-        spyOn(component.blur, "emit");
+    it('should emit blur event', () => {
+        spyOn(component.blur, 'emit');
 
         component.onBlur(null);
 
         expect(component.blur.emit).toHaveBeenCalled();
     });
 
-    it("should emit change event", () => {
-        spyOn(component.change, "emit");
+    it('should emit change event', () => {
+        spyOn(component.change, 'emit');
 
         component.onChange(null);
 
         expect(component.change.emit).toHaveBeenCalled();
     });
 
-    it("should emit focus event", () => {
-        spyOn(component.focus, "emit");
+    it('should emit focus event', () => {
+        spyOn(component.focus, 'emit');
 
         component.onFocus(null);
 

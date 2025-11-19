@@ -27,7 +27,9 @@
 
         <button class="btn btn-outline-secondary" type="button" (click)="datepicker.toggle()">
 
-            <img *ngIf="model.toggleIcon" [src]="model.toggleIcon" style="cursor: pointer;"/>
+            <!-- TODO: Add descriptive alt text based on model context -->
+            <!-- eslint-disable-next-line @angular-eslint/template/alt-text -->
+            <img *ngIf="model.toggleIcon" [src]="model.toggleIcon" alt="Toggle datepicker" style="cursor: pointer;"/>
             <span *ngIf="model.toggleLabel">{{ model.toggleLabel }}</span>
 
         </button>

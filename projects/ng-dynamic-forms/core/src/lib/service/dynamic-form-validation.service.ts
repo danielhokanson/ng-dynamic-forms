@@ -1,4 +1,4 @@
-import { Injectable, Inject, Optional } from "@angular/core";
+import { Injectable, inject } from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
@@ -6,38 +6,45 @@ import {
     Validators,
     NG_VALIDATORS,
     NG_ASYNC_VALIDATORS
-} from "@angular/forms";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
+} from '@angular/forms';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
 import {
     DynamicFormHook,
     DynamicValidatorDescriptor,
     DynamicValidatorsConfig
-} from "../model/misc/dynamic-form-control-validation.model";
-import { isObject, isString } from "../utils/core.utils";
-import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, ValidatorsToken } from "./dynamic-form-validators";
+} from '../model/misc/dynamic-form-control-validation.model';
+import { isObject, isString } from '../utils/core.utils';
+import { DYNAMIC_VALIDATORS, Validator, ValidatorFactory, ValidatorsToken } from './dynamic-form-validators';
 import {
     DEFAULT_ERROR_STATE_MATCHER,
     DYNAMIC_ERROR_MESSAGES_MATCHER,
     DynamicErrorMessagesMatcher
-} from "./dynamic-form-validation-matchers";
+} from './dynamic-form-validation-matchers';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DynamicFormValidationService {
+    private _NG_VALIDATORS = inject(NG_VALIDATORS, { optional: true });
+    private _NG_ASYNC_VALIDATORS = inject(NG_ASYNC_VALIDATORS, { optional: true });
+    private _DYNAMIC_VALIDATORS = inject<Map<string, Validator | ValidatorFactory>>(DYNAMIC_VALIDATORS, { optional: true });
+    private _DYNAMIC_ERROR_MESSAGES_MATCHER = inject<DynamicErrorMessagesMatcher>(DYNAMIC_ERROR_MESSAGES_MATCHER, { optional: true });
 
-    constructor(@Optional() @Inject(NG_VALIDATORS) private _NG_VALIDATORS: ValidatorFn[],
-                @Optional() @Inject(NG_ASYNC_VALIDATORS) private _NG_ASYNC_VALIDATORS: AsyncValidatorFn[],
-                @Optional() @Inject(DYNAMIC_VALIDATORS) private _DYNAMIC_VALIDATORS: Map<string, Validator | ValidatorFactory>,
-                @Optional() @Inject(DYNAMIC_ERROR_MESSAGES_MATCHER) private _DYNAMIC_ERROR_MESSAGES_MATCHER: DynamicErrorMessagesMatcher) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
     }
 
     private getValidatorFn(validatorName: string, validatorArgs: any = null,
-                           validatorsToken: ValidatorsToken = this._NG_VALIDATORS): Validator | never {
+                           validatorsToken: ValidatorsToken = (this._NG_VALIDATORS ? [...this._NG_VALIDATORS] as Validator[] : [])): Validator | never {
 
         let validatorFn: ValidatorFactory | Validator | undefined;
 
-        if (Validators.hasOwnProperty(validatorName)) { // Built-in Angular Validators
+        if (Object.prototype.hasOwnProperty.call(Validators, validatorName)) { // Built-in Angular Validators
             validatorFn = (Validators as any)[validatorName];
 
         } else { // Custom Validators
@@ -62,7 +69,7 @@ export class DynamicFormValidationService {
     }
 
     private getValidatorFns(validatorsConfig: DynamicValidatorsConfig,
-                            validatorsToken: ValidatorsToken = this._NG_VALIDATORS): Validator[] {
+                            validatorsToken: ValidatorsToken = (this._NG_VALIDATORS ? [...this._NG_VALIDATORS] as Validator[] : [])): Validator[] {
 
         let validatorFns: Validator[] = [];
 
@@ -89,7 +96,7 @@ export class DynamicFormValidationService {
     }
 
     getAsyncValidator(validatorName: string, validatorArgs: any = null): AsyncValidatorFn {
-        return this.getValidatorFn(validatorName, validatorArgs, this._NG_ASYNC_VALIDATORS) as AsyncValidatorFn;
+        return this.getValidatorFn(validatorName, validatorArgs, (this._NG_ASYNC_VALIDATORS ? [...this._NG_ASYNC_VALIDATORS] as Validator[] : [])) as AsyncValidatorFn;
     }
 
     getValidators(validatorsConfig: DynamicValidatorsConfig): ValidatorFn[] {
@@ -97,7 +104,7 @@ export class DynamicFormValidationService {
     }
 
     getAsyncValidators(asyncValidatorsConfig: DynamicValidatorsConfig): AsyncValidatorFn[] {
-        return this.getValidatorFns(asyncValidatorsConfig, this._NG_ASYNC_VALIDATORS) as AsyncValidatorFn[];
+        return this.getValidatorFns(asyncValidatorsConfig, (this._NG_ASYNC_VALIDATORS ? [...this._NG_ASYNC_VALIDATORS] as Validator[] : [])) as AsyncValidatorFn[];
     }
 
     updateValidators(validatorsConfig: DynamicValidatorsConfig | null, control: AbstractControl,
@@ -143,9 +150,9 @@ export class DynamicFormValidationService {
             let propertySource: any = model;
             let propertyName: string = expression;
 
-            if (expression.indexOf("validator.") >= 0 && error) {
+            if (expression.indexOf('validator.') >= 0 && error) {
                 propertySource = error;
-                propertyName = expression.replace("validator.", "");
+                propertyName = expression.replace('validator.', '');
             }
 
             return propertySource[propertyName] !== null && propertySource[propertyName] !== undefined ?
@@ -162,11 +169,11 @@ export class DynamicFormValidationService {
             Object.keys(control.errors || {}).forEach(validationErrorKey => {
                 let messageKey = validationErrorKey;
 
-                if (validationErrorKey === "minlength" || validationErrorKey === "maxlength") {
-                    messageKey = messageKey.replace("length", "Length");
+                if (validationErrorKey === 'minlength' || validationErrorKey === 'maxlength') {
+                    messageKey = messageKey.replace('length', 'Length');
                 }
 
-                if (messagesConfig.hasOwnProperty(messageKey)) {
+                if (Object.prototype.hasOwnProperty.call(messagesConfig, messageKey)) {
                     const validationError = control.getError(validationErrorKey);
                     const messageTemplate = messagesConfig[messageKey] as string;
 
@@ -184,7 +191,7 @@ export class DynamicFormValidationService {
 
     isValidatorDescriptor(value: any): boolean {
         if (isObject(value)) {
-            return value.hasOwnProperty("name") && value.hasOwnProperty("args");
+            return Object.prototype.hasOwnProperty.call(value, 'name') && Object.prototype.hasOwnProperty.call(value, 'args');
         }
 
         return false;

@@ -1,16 +1,20 @@
-import { MatInput } from "@angular/material/input";
+import { MatInput } from '@angular/material/input';
 import {
     DynamicFormControlComponent,
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicInputControlModel,
     DynamicInputModel
-} from "@danielhokanson/ng-dynamic-forms-core";
+} from '@danielhokanson/ng-dynamic-forms-core';
 
 export abstract class DynamicMaterialFormInputControlComponent extends DynamicFormControlComponent {
     matInput!: MatInput;
 
-    protected constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    // TODO: Migrate to inject() function - base class constructor, requires careful migration
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    protected constructor(protected layoutService: DynamicFormLayoutService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
+                          protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);
     }
 

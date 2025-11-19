@@ -1,1 +1,1 @@
-export * from "./lib/ui-primeng";
+export * from './lib/ui-primeng';

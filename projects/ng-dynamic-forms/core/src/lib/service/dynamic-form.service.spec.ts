@@ -1,4 +1,4 @@
-import { TestBed, inject } from "@angular/core/testing";
+import { TestBed, inject } from '@angular/core/testing';
 import {
     ReactiveFormsModule,
     UntypedFormGroup,
@@ -6,32 +6,32 @@ import {
     UntypedFormArray,
     NG_VALIDATORS,
     NG_ASYNC_VALIDATORS
-} from "@angular/forms";
-import { DynamicFormService } from "./dynamic-form.service";
-import { DynamicFormComponentService } from "./dynamic-form-component.service";
-import { DynamicFormValidationService } from "./dynamic-form-validation.service";
-import { DynamicFormModel } from "../model/dynamic-form.model";
-import { DynamicCheckboxModel } from "../model/checkbox/dynamic-checkbox.model";
-import { DynamicCheckboxGroupModel } from "../model/checkbox/dynamic-checkbox-group.model";
-import { DynamicColorPickerModel } from "../model/colorpicker/dynamic-colorpicker.model";
-import { DynamicDateControlModel } from "../model/dynamic-date-control.model";
-import { DynamicDatePickerModel } from "../model/datepicker/dynamic-datepicker.model";
-import { DynamicEditorModel } from "../model/editor/dynamic-editor.model";
-import { DynamicFileUploadModel } from "../model/file-upload/dynamic-file-upload.model";
-import { DynamicFormArrayModel } from "../model/form-array/dynamic-form-array.model";
-import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
-import { DynamicFormGroupModel } from "../model/form-group/dynamic-form-group.model";
-import { DynamicInputModel } from "../model/input/dynamic-input.model";
-import { DynamicRatingModel } from "../model/rating/dynamic-rating.model";
-import { DynamicRadioGroupModel } from "../model/radio/dynamic-radio-group.model";
-import { DynamicSelectModel } from "../model/select/dynamic-select.model";
-import { DynamicSliderModel } from "../model/slider/dynamic-slider.model";
-import { DynamicSwitchModel } from "../model/switch/dynamic-switch.model";
-import { DynamicTextAreaModel } from "../model/textarea/dynamic-textarea.model";
-import { DynamicTimePickerModel } from "../model/timepicker/dynamic-timepicker.model";
-import { DynamicFormValueControlModel } from "../model/dynamic-form-value-control.model";
+} from '@angular/forms';
+import { DynamicFormService } from './dynamic-form.service';
+import { DynamicFormComponentService } from './dynamic-form-component.service';
+import { DynamicFormValidationService } from './dynamic-form-validation.service';
+import { DynamicFormModel } from '../model/dynamic-form.model';
+import { DynamicCheckboxModel } from '../model/checkbox/dynamic-checkbox.model';
+import { DynamicCheckboxGroupModel } from '../model/checkbox/dynamic-checkbox-group.model';
+import { DynamicColorPickerModel } from '../model/colorpicker/dynamic-colorpicker.model';
+import { DynamicDateControlModel } from '../model/dynamic-date-control.model';
+import { DynamicDatePickerModel } from '../model/datepicker/dynamic-datepicker.model';
+import { DynamicEditorModel } from '../model/editor/dynamic-editor.model';
+import { DynamicFileUploadModel } from '../model/file-upload/dynamic-file-upload.model';
+import { DynamicFormArrayModel } from '../model/form-array/dynamic-form-array.model';
+import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
+import { DynamicFormGroupModel } from '../model/form-group/dynamic-form-group.model';
+import { DynamicInputModel } from '../model/input/dynamic-input.model';
+import { DynamicRatingModel } from '../model/rating/dynamic-rating.model';
+import { DynamicRadioGroupModel } from '../model/radio/dynamic-radio-group.model';
+import { DynamicSelectModel } from '../model/select/dynamic-select.model';
+import { DynamicSliderModel } from '../model/slider/dynamic-slider.model';
+import { DynamicSwitchModel } from '../model/switch/dynamic-switch.model';
+import { DynamicTextAreaModel } from '../model/textarea/dynamic-textarea.model';
+import { DynamicTimePickerModel } from '../model/timepicker/dynamic-timepicker.model';
+import { DynamicFormValueControlModel } from '../model/dynamic-form-value-control.model';
 
-describe("DynamicFormService test suite", () => {
+describe('DynamicFormService test suite', () => {
     let testModel: DynamicFormModel;
     let service: DynamicFormService;
 
@@ -58,33 +58,33 @@ describe("DynamicFormService test suite", () => {
         testModel = [
             new DynamicSelectModel<string>(
                 {
-                    id: "testSelect",
+                    id: 'testSelect',
                     options: [
-                        {label: "Option 1", value: "option-1"},
-                        {label: "Option 2", value: "option-2"}
+                        {label: 'Option 1', value: 'option-1'},
+                        {label: 'Option 2', value: 'option-2'}
                     ],
-                    value: "option-3"
+                    value: 'option-3'
                 }
             ),
             new DynamicInputModel(
                 {
-                    id: "testInput",
-                    mask: "00/00/00"
+                    id: 'testInput',
+                    mask: '00/00/00'
                 }
             ),
             new DynamicCheckboxGroupModel(
                 {
-                    id: "testCheckboxGroup",
+                    id: 'testCheckboxGroup',
                     group: [
                         new DynamicCheckboxModel(
                             {
-                                id: "testCheckboxGroup1",
+                                id: 'testCheckboxGroup1',
                                 value: true
                             }
                         ),
                         new DynamicCheckboxModel(
                             {
-                                id: "testCheckboxGroup2",
+                                id: 'testCheckboxGroup2',
                                 value: true
                             }
                         )
@@ -93,26 +93,26 @@ describe("DynamicFormService test suite", () => {
             ),
             new DynamicRadioGroupModel<string>(
                 {
-                    id: "testRadioGroup",
+                    id: 'testRadioGroup',
                     options: [
-                        {label: "Option 1", value: "option-1"},
-                        {label: "Option 2", value: "option-2"}
+                        {label: 'Option 1', value: 'option-1'},
+                        {label: 'Option 2', value: 'option-2'}
                     ],
-                    value: "option-3"
+                    value: 'option-3'
                 }
             ),
-            new DynamicTextAreaModel({id: "testTextArea"}),
-            new DynamicCheckboxModel({id: "testCheckbox"}),
+            new DynamicTextAreaModel({id: 'testTextArea'}),
+            new DynamicCheckboxModel({id: 'testCheckbox'}),
             new DynamicFormArrayModel(
                 {
-                    id: "testFormArray",
+                    id: 'testFormArray',
                     initialCount: 5,
                     groupFactory: () => {
                         return [
-                            new DynamicInputModel({id: "testFormArrayGroupInput"}),
+                            new DynamicInputModel({id: 'testFormArrayGroupInput'}),
                             new DynamicFormArrayModel({
-                                id: "testNestedFormArray", groupFactory: () => [
-                                    new DynamicInputModel({id: "testNestedFormArrayGroupInput"})
+                                id: 'testNestedFormArray', groupFactory: () => [
+                                    new DynamicInputModel({id: 'testNestedFormArrayGroupInput'})
                                 ]
                             })
                         ];
@@ -121,21 +121,21 @@ describe("DynamicFormService test suite", () => {
             ),
             new DynamicFormGroupModel(
                 {
-                    id: "testFormGroup",
+                    id: 'testFormGroup',
                     group: [
-                        new DynamicInputModel({id: "nestedTestInput"}),
-                        new DynamicTextAreaModel({id: "nestedTestTextArea"})
+                        new DynamicInputModel({id: 'nestedTestInput'}),
+                        new DynamicTextAreaModel({id: 'nestedTestTextArea'})
                     ]
                 }
             ),
-            new DynamicSliderModel({id: "testSlider"}),
-            new DynamicSwitchModel({id: "testSwitch"}),
-            new DynamicDatePickerModel({id: "testDatepicker", value: new Date()}),
-            new DynamicFileUploadModel({id: "testFileUpload"}),
-            new DynamicEditorModel({id: "testEditor"}),
-            new DynamicTimePickerModel({id: "testTimePicker"}),
-            new DynamicRatingModel({id: "testRating"}),
-            new DynamicColorPickerModel({id: "testColorPicker"})
+            new DynamicSliderModel({id: 'testSlider'}),
+            new DynamicSwitchModel({id: 'testSwitch'}),
+            new DynamicDatePickerModel({id: 'testDatepicker', value: new Date()}),
+            new DynamicFileUploadModel({id: 'testFileUpload'}),
+            new DynamicEditorModel({id: 'testEditor'}),
+            new DynamicTimePickerModel({id: 'testTimePicker'}),
+            new DynamicRatingModel({id: 'testRating'}),
+            new DynamicColorPickerModel({id: 'testColorPicker'})
         ];
     });
 
@@ -143,28 +143,28 @@ describe("DynamicFormService test suite", () => {
     beforeEach(inject([DynamicFormService], (formService: DynamicFormService) => service = formService));
 
 
-    it("should create create a form group", () => {
+    it('should create create a form group', () => {
         const formGroup = service.createFormGroup(testModel);
 
         expect(formGroup instanceof UntypedFormGroup).toBe(true);
 
-        expect(formGroup.get("testCheckbox") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testCheckboxGroup") instanceof UntypedFormGroup).toBe(true);
-        expect(formGroup.get("testDatepicker") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testFormArray") instanceof UntypedFormArray).toBe(true);
-        expect(formGroup.get("testInput") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testRadioGroup") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testSelect") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testTextArea") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testFileUpload") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testEditor") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testTimePicker") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testRating") instanceof UntypedFormControl).toBe(true);
-        expect(formGroup.get("testColorPicker") instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testCheckbox') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testCheckboxGroup') instanceof UntypedFormGroup).toBe(true);
+        expect(formGroup.get('testDatepicker') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testFormArray') instanceof UntypedFormArray).toBe(true);
+        expect(formGroup.get('testInput') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testRadioGroup') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testSelect') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testTextArea') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testFileUpload') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testEditor') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testTimePicker') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testRating') instanceof UntypedFormControl).toBe(true);
+        expect(formGroup.get('testColorPicker') instanceof UntypedFormControl).toBe(true);
     });
 
 
-    it("should parse dynamic form JSON", () => {
+    it('should parse dynamic form JSON', () => {
         const json = JSON.stringify(testModel);
         const formModel = service.fromJSON(json);
 
@@ -190,55 +190,55 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should throw when unknown DynamicFormControlModel id is specified in JSON", () => {
-        expect(() => service.fromJSON([{id: "test"}]))
+    it('should throw when unknown DynamicFormControlModel id is specified in JSON', () => {
+        expect(() => service.fromJSON([{id: 'test'}]))
             .toThrow(new Error(`unknown form control model type defined on JSON object with id "test"`));
     });
 
 
-    it("should find a dynamic form control model by id", () => {
-        expect(service.findById("testCheckbox", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testCheckboxGroup", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testDatepicker", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testFormArray", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testInput", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testRadioGroup", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testSelect", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testSlider", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testSwitch", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testTextArea", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testFileUpload", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testEditor", testModel) instanceof DynamicEditorModel).toBe(true);
-        expect(service.findById("testTimePicker", testModel) instanceof DynamicTimePickerModel).toBe(true);
-        expect(service.findById("testRating", testModel) instanceof DynamicRatingModel).toBe(true);
-        expect(service.findById("testColorPicker", testModel) instanceof DynamicColorPickerModel).toBe(true);
+    it('should find a dynamic form control model by id', () => {
+        expect(service.findById('testCheckbox', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testCheckboxGroup', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testDatepicker', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testFormArray', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testInput', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testRadioGroup', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testSelect', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testSlider', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testSwitch', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testTextArea', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testFileUpload', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testEditor', testModel) instanceof DynamicEditorModel).toBe(true);
+        expect(service.findById('testTimePicker', testModel) instanceof DynamicTimePickerModel).toBe(true);
+        expect(service.findById('testRating', testModel) instanceof DynamicRatingModel).toBe(true);
+        expect(service.findById('testColorPicker', testModel) instanceof DynamicColorPickerModel).toBe(true);
     });
 
 
-    it("should find a nested dynamic form control model by id", () => {
-        expect(service.findById("testCheckboxGroup1", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("testCheckboxGroup2", testModel) instanceof DynamicFormControlModel).toBe(true);
-        expect(service.findById("nestedTestInput", testModel) instanceof DynamicFormControlModel).toBe(true);
+    it('should find a nested dynamic form control model by id', () => {
+        expect(service.findById('testCheckboxGroup1', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('testCheckboxGroup2', testModel) instanceof DynamicFormControlModel).toBe(true);
+        expect(service.findById('nestedTestInput', testModel) instanceof DynamicFormControlModel).toBe(true);
     });
 
 
-    it("should resolve array group path", () => {
+    it('should resolve array group path', () => {
         service.createFormGroup(testModel);
 
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const nestedModel = (model.get(0).get(1) as DynamicFormArrayModel).get(0);
 
-        expect(service.getPath(model)).toEqual(["testFormArray"]);
-        expect(service.getPath(nestedModel)).toEqual(["testFormArray", "0", "testNestedFormArray", "0"]);
+        expect(service.getPath(model)).toEqual(['testFormArray']);
+        expect(service.getPath(nestedModel)).toEqual(['testFormArray', '0', 'testNestedFormArray', '0']);
     });
 
 
-    it("should add a form control to an existing form group", () => {
+    it('should add a form control to an existing form group', () => {
         const formGroup = service.createFormGroup(testModel);
-        const nestedFormGroup = formGroup.controls["testFormGroup"] as UntypedFormGroup;
+        const nestedFormGroup = formGroup.controls['testFormGroup'] as UntypedFormGroup;
         const nestedFormGroupModel = testModel[7] as DynamicFormGroupModel;
-        const newModel1 = new DynamicInputModel({id: "newInput1"});
-        const newModel2 = new DynamicInputModel({id: "newInput2"});
+        const newModel1 = new DynamicInputModel({id: 'newInput1'});
+        const newModel2 = new DynamicInputModel({id: 'newInput2'});
 
         service.addFormGroupControl(formGroup, testModel, newModel1);
         service.addFormGroupControl(nestedFormGroup, nestedFormGroupModel, newModel2);
@@ -246,32 +246,32 @@ describe("DynamicFormService test suite", () => {
         expect(formGroup.controls[newModel1.id]).toBeTruthy();
         expect(testModel[testModel.length - 1] === newModel1).toBe(true);
 
-        expect((formGroup.controls["testFormGroup"] as UntypedFormGroup).controls[newModel2.id]).toBeTruthy();
+        expect((formGroup.controls['testFormGroup'] as UntypedFormGroup).controls[newModel2.id]).toBeTruthy();
         expect(nestedFormGroupModel.get(nestedFormGroupModel.group.length - 1) === newModel2).toBe(true);
     });
 
 
-    it("should insert a form control to an existing form group", () => {
+    it('should insert a form control to an existing form group', () => {
         const formGroup = service.createFormGroup(testModel);
-        const nestedFormGroup = formGroup.controls["testFormGroup"] as UntypedFormGroup;
+        const nestedFormGroup = formGroup.controls['testFormGroup'] as UntypedFormGroup;
         const nestedFormGroupModel = testModel[7] as DynamicFormGroupModel;
-        const newModel1 = new DynamicInputModel({id: "newInput1"});
-        const newModel2 = new DynamicInputModel({id: "newInput2"});
+        const newModel1 = new DynamicInputModel({id: 'newInput1'});
+        const newModel2 = new DynamicInputModel({id: 'newInput2'});
 
         service.insertFormGroupControl(4, formGroup, testModel, newModel1);
         service.insertFormGroupControl(0, nestedFormGroup, nestedFormGroupModel, newModel2);
 
         expect(formGroup.controls[newModel1.id]).toBeTruthy();
         expect(testModel[4] === newModel1).toBe(true);
-        expect(service.getPath(testModel[4])).toEqual(["newInput1"]);
+        expect(service.getPath(testModel[4])).toEqual(['newInput1']);
 
-        expect((formGroup.controls["testFormGroup"] as UntypedFormGroup).controls[newModel2.id]).toBeTruthy();
+        expect((formGroup.controls['testFormGroup'] as UntypedFormGroup).controls[newModel2.id]).toBeTruthy();
         expect(nestedFormGroupModel.get(0) === newModel2).toBe(true);
-        expect(service.getPath(nestedFormGroupModel.get(0))).toEqual(["testFormGroup", "newInput2"]);
+        expect(service.getPath(nestedFormGroupModel.get(0))).toEqual(['testFormGroup', 'newInput2']);
     });
 
 
-    it("should move an existing form control to a different group position", () => {
+    it('should move an existing form control to a different group position', () => {
         const formGroup = service.createFormGroup(testModel);
         const nestedFormGroupModel = testModel[7] as DynamicFormGroupModel;
         const model1 = testModel[0];
@@ -284,14 +284,14 @@ describe("DynamicFormService test suite", () => {
 
         service.moveFormGroupControl(0, 1, nestedFormGroupModel);
 
-        expect((formGroup.controls["testFormGroup"] as UntypedFormGroup).controls[model2.id]).toBeTruthy();
+        expect((formGroup.controls['testFormGroup'] as UntypedFormGroup).controls[model2.id]).toBeTruthy();
         expect(nestedFormGroupModel.get(1) === model2).toBe(true);
     });
 
 
-    it("should remove a form control from an existing form group", () => {
+    it('should remove a form control from an existing form group', () => {
         const formGroup = service.createFormGroup(testModel);
-        const nestedFormGroup = formGroup.controls["testFormGroup"] as UntypedFormGroup;
+        const nestedFormGroup = formGroup.controls['testFormGroup'] as UntypedFormGroup;
         const nestedFormGroupModel = testModel[7] as DynamicFormGroupModel;
         const length = testModel.length;
         const size = nestedFormGroupModel.size();
@@ -317,21 +317,20 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should create a form array", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
-        let formArray;
+    it('should create a form array', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
 
         expect(service.createFormArray).toBeTruthy();
 
-        formArray = service.createFormArray(model);
+        const formArray = service.createFormArray(model);
 
         expect(formArray instanceof UntypedFormArray).toBe(true);
         expect(formArray.length).toBe(model.initialCount);
     });
 
 
-    it("should add a form array group", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should add a form array group', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
 
         service.addFormArrayGroup(formArray, model);
@@ -340,8 +339,8 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should insert a form array group", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should insert a form array group', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
 
         service.insertFormArrayGroup(0, formArray, model);
@@ -350,56 +349,56 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should move up a form array group", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should move up a form array group', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
         const index = 3;
         const step = 1;
 
-        (formArray.at(index) as UntypedFormGroup).controls["testFormArrayGroupInput"].setValue("next test value 1");
-        (formArray.at(index + step) as UntypedFormGroup).controls["testFormArrayGroupInput"].setValue("next test value 2");
+        (formArray.at(index) as UntypedFormGroup).controls['testFormArrayGroupInput'].setValue('next test value 1');
+        (formArray.at(index + step) as UntypedFormGroup).controls['testFormArrayGroupInput'].setValue('next test value 2');
 
-        (model.get(index).get(0) as DynamicFormValueControlModel<any>).value = "next test value 1";
-        (model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value = "next test value 2";
+        (model.get(index).get(0) as DynamicFormValueControlModel<any>).value = 'next test value 1';
+        (model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value = 'next test value 2';
 
         service.moveFormArrayGroup(index, step, formArray, model);
 
         expect(formArray.length).toBe(model.initialCount);
 
-        expect((formArray.at(index) as UntypedFormGroup).controls["testFormArrayGroupInput"].value).toEqual("next test value 2");
-        expect((formArray.at(index + step) as UntypedFormGroup).controls["testFormArrayGroupInput"].value).toEqual("next test value 1");
+        expect((formArray.at(index) as UntypedFormGroup).controls['testFormArrayGroupInput'].value).toEqual('next test value 2');
+        expect((formArray.at(index + step) as UntypedFormGroup).controls['testFormArrayGroupInput'].value).toEqual('next test value 1');
 
-        expect((model.get(index).get(0) as DynamicFormValueControlModel<any>).value).toEqual("next test value 2");
-        expect((model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value).toEqual("next test value 1");
+        expect((model.get(index).get(0) as DynamicFormValueControlModel<any>).value).toEqual('next test value 2');
+        expect((model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value).toEqual('next test value 1');
     });
 
 
-    it("should move down a form array group", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should move down a form array group', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
         const index = 3;
         const step = -1;
 
-        (formArray.at(index) as UntypedFormGroup).controls["testFormArrayGroupInput"].setValue("next test value 1");
-        (formArray.at(index + step) as UntypedFormGroup).controls["testFormArrayGroupInput"].setValue("next test value 2");
+        (formArray.at(index) as UntypedFormGroup).controls['testFormArrayGroupInput'].setValue('next test value 1');
+        (formArray.at(index + step) as UntypedFormGroup).controls['testFormArrayGroupInput'].setValue('next test value 2');
 
-        (model.get(index).get(0) as DynamicFormValueControlModel<any>).value = "next test value 1";
-        (model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value = "next test value 2";
+        (model.get(index).get(0) as DynamicFormValueControlModel<any>).value = 'next test value 1';
+        (model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value = 'next test value 2';
 
         service.moveFormArrayGroup(index, step, formArray, model);
 
         expect(formArray.length).toBe(model.initialCount);
 
-        expect((formArray.at(index) as UntypedFormGroup).controls["testFormArrayGroupInput"].value).toEqual("next test value 2");
-        expect((formArray.at(index + step) as UntypedFormGroup).controls["testFormArrayGroupInput"].value).toEqual("next test value 1");
+        expect((formArray.at(index) as UntypedFormGroup).controls['testFormArrayGroupInput'].value).toEqual('next test value 2');
+        expect((formArray.at(index + step) as UntypedFormGroup).controls['testFormArrayGroupInput'].value).toEqual('next test value 1');
 
-        expect((model.get(index).get(0) as DynamicFormValueControlModel<any>).value).toEqual("next test value 2");
-        expect((model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value).toEqual("next test value 1");
+        expect((model.get(index).get(0) as DynamicFormValueControlModel<any>).value).toEqual('next test value 2');
+        expect((model.get(index + step).get(0) as DynamicFormValueControlModel<any>).value).toEqual('next test value 1');
     });
 
 
-    it("should throw when form array group is to be moved out of bounds", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should throw when form array group is to be moved out of bounds', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
 
         expect(() => service.moveFormArrayGroup(2, -5, formArray, model))
@@ -407,8 +406,8 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should remove a form array group", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should remove a form array group', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
 
         service.removeFormArrayGroup(0, formArray, model);
@@ -420,8 +419,8 @@ describe("DynamicFormService test suite", () => {
     });
 
 
-    it("should clear a form array", () => {
-        const model = service.findById("testFormArray", testModel) as DynamicFormArrayModel;
+    it('should clear a form array', () => {
+        const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
         const formArray = service.createFormArray(model);
 
         service.clearFormArray(formArray, model);

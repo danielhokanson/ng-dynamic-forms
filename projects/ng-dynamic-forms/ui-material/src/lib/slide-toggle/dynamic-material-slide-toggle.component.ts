@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from "@angular/core";
-import { UntypedFormGroup, ReactiveFormsModule } from "@angular/forms";
-import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from "@angular/material/core";
-import { MatSlideToggle, MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
@@ -10,16 +10,20 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSwitchModel
-} from "@danielhokanson/ng-dynamic-forms-core";
-import { NgClass, NgIf } from "@angular/common";
+} from '@danielhokanson/ng-dynamic-forms-core';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-    selector: "dynamic-material-slide-toggle",
-    templateUrl: "./dynamic-material-slide-toggle.component.html",
+    selector: 'dynamic-material-slide-toggle',
+    templateUrl: './dynamic-material-slide-toggle.component.html',
     standalone: true,
     imports: [ReactiveFormsModule, MatSlideToggleModule, NgClass, NgIf]
 })
 export class DynamicMaterialSlideToggleComponent extends DynamicFormControlComponent {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+    RIPPLE_OPTIONS = inject<RippleGlobalOptions>(MAT_RIPPLE_GLOBAL_OPTIONS, { optional: true });
+
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -30,11 +34,20 @@ export class DynamicMaterialSlideToggleComponent extends DynamicFormControlCompo
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild("matSlideToggle", {static: true}) matSlideToggle!: MatSlideToggle;
+    @ViewChild('matSlideToggle', {static: true}) matSlideToggle!: MatSlideToggle;
 
-    constructor(protected layoutService: DynamicFormLayoutService,
-                protected validationService: DynamicFormValidationService,
-                @Inject(MAT_RIPPLE_GLOBAL_OPTIONS) @Optional() public RIPPLE_OPTIONS: RippleGlobalOptions) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
+    constructor(...args: unknown[]);
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor() {
+        const layoutService = inject(DynamicFormLayoutService);
+        const validationService = inject(DynamicFormValidationService);
+
         super(layoutService, validationService);
+    
+        this.layoutService = layoutService;
+        this.validationService = validationService;
     }
 }
