@@ -77,7 +77,9 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass!: string[];
+    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-input-rename
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
@@ -85,14 +87,18 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
     @Output() blur: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
+    // TODO: Output alias 'pEvent' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-output-rename
+    // eslint-disable-next-line @angular-eslint/no-output-rename
     @Output('pEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
     @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const changeDetectorRef = inject(ChangeDetectorRef);
         const componentFactoryResolver = inject(ComponentFactoryResolver);
@@ -139,7 +145,7 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
         case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
             return DynamicPrimeNGFormGroupComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+        case DYNAMIC_FORM_CONTROL_TYPE_INPUT: {
             const inputModel = model as DynamicInputModel;
 
             if (inputModel.inputType === DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER) {
@@ -157,6 +163,7 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
             } else {
                 return DynamicPrimeNGInputComponent;
             }
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
             return DynamicPrimeNGRadioGroupComponent;
@@ -164,9 +171,10 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
         case DYNAMIC_FORM_CONTROL_TYPE_RATING:
             return DynamicPrimeNGRatingComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_SELECT:
+        case DYNAMIC_FORM_CONTROL_TYPE_SELECT: {
             const selectModel = model as DynamicSelectModel<string>;
             return selectModel.multiple ? DynamicPrimeNGMultiSelectComponent : DynamicPrimeNGDropdownComponent;
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_SLIDER:
             return DynamicPrimeNGSliderComponent;
@@ -209,8 +217,10 @@ export class DynamicPrimeNGFormArrayComponent extends DynamicFormArrayComponent 
     @ViewChildren(DynamicPrimeNGFormControlContainerComponent) components!: QueryList<DynamicPrimeNGFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);
@@ -246,8 +256,10 @@ export class DynamicPrimeNGFormGroupComponent extends DynamicFormGroupComponent 
     @ViewChildren(DynamicPrimeNGFormControlContainerComponent) components!: QueryList<DynamicPrimeNGFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);

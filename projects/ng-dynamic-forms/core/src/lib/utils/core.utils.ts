@@ -3,6 +3,7 @@ export function isBoolean(value: any): value is boolean {
 }
 
 // tslint:disable-next-line:ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function isFunction(value: any): value is Function {
     return typeof value === 'function';
 }

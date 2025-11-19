@@ -24,5 +24,5 @@ export interface DynamicFormControlCustomEvent {
 }
 
 export function isDynamicFormControlEvent($event: any): $event is DynamicFormControlEvent {
-    return isObject($event) && $event.hasOwnProperty('$event');
+    return isObject($event) && Object.prototype.hasOwnProperty.call($event, '$event');
 }

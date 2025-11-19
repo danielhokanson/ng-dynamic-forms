@@ -15,7 +15,10 @@ export abstract class DynamicFormControlWithTemplateComponent extends DynamicFor
 
     templates?: QueryList<DynamicTemplateDirective> | DynamicTemplateDirective[];
 
+    // TODO: Migrate to inject() function - base class constructor, requires careful migration
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     protected constructor(protected layoutService: DynamicFormLayoutService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected validationService: DynamicFormValidationService) {
         super(layoutService, validationService);
     }

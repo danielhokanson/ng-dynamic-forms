@@ -31,9 +31,11 @@ export class DynamicFormValidationService {
     private _DYNAMIC_ERROR_MESSAGES_MATCHER = inject<DynamicErrorMessagesMatcher>(DYNAMIC_ERROR_MESSAGES_MATCHER, { optional: true });
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
 
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
     }
 
@@ -42,7 +44,7 @@ export class DynamicFormValidationService {
 
         let validatorFn: ValidatorFactory | Validator | undefined;
 
-        if (Validators.hasOwnProperty(validatorName)) { // Built-in Angular Validators
+        if (Object.prototype.hasOwnProperty.call(Validators, validatorName)) { // Built-in Angular Validators
             validatorFn = (Validators as any)[validatorName];
 
         } else { // Custom Validators
@@ -171,7 +173,7 @@ export class DynamicFormValidationService {
                     messageKey = messageKey.replace('length', 'Length');
                 }
 
-                if (messagesConfig.hasOwnProperty(messageKey)) {
+                if (Object.prototype.hasOwnProperty.call(messagesConfig, messageKey)) {
                     const validationError = control.getError(validationErrorKey);
                     const messageTemplate = messagesConfig[messageKey] as string;
 
@@ -189,7 +191,7 @@ export class DynamicFormValidationService {
 
     isValidatorDescriptor(value: any): boolean {
         if (isObject(value)) {
-            return value.hasOwnProperty('name') && value.hasOwnProperty('args');
+            return Object.prototype.hasOwnProperty.call(value, 'name') && Object.prototype.hasOwnProperty.call(value, 'args');
         }
 
         return false;

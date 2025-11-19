@@ -30,7 +30,11 @@ export abstract class DynamicFormControlComponent implements DynamicFormControl 
 
     private _hasFocus = false;
 
-    protected constructor(protected layoutService: DynamicFormLayoutService, protected validationService: DynamicFormValidationService) {
+    // TODO: Migrate to inject() function - base class constructor, requires careful migration
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    protected constructor(protected layoutService: DynamicFormLayoutService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
+                          protected validationService: DynamicFormValidationService) {
     }
 
     get control(): AbstractControl | never {

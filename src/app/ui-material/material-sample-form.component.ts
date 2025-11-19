@@ -26,22 +26,24 @@ export class MaterialSampleFormComponent {
     formGroup = this.formService.createFormGroup(this.formModel);
     formLayout: DynamicFormLayout = MATERIAL_SAMPLE_FORM_LAYOUT;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`Material blur event on: ${$event.model.id}: `, $event);
+        console.debug(`Material blur event on: ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`Material change event on: ${$event.model.id}: `, $event);
+        console.debug(`Material change event on: ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`Material focus event on: ${$event.model.id}: `, $event);
+        console.debug(`Material focus event on: ${$event.model.id}: `, $event);
     }
 
     onMatEvent($event: DynamicFormControlEvent) {
-        console.log(`Material ${$event.type} event on: ${$event.model.id}: `, $event);
+        console.debug(`Material ${$event.type} event on: ${$event.model.id}: `, $event);
     }
 }

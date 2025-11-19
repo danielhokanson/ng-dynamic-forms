@@ -35,8 +35,10 @@ export class DynamicNGBootstrapTimePickerComponent extends DynamicFormControlCom
     @ViewChild(NgbTimepicker, {static: true}) ngbTimePicker!: NgbTimepicker;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);

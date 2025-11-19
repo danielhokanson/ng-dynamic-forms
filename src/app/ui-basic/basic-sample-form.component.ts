@@ -27,6 +27,8 @@ export class BasicSampleFormComponent {
     arrayModel = this.formService.findModelById<DynamicFormArrayModel>('basicFormArray', this.formModel2) as DynamicFormArrayModel;
     arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel as DynamicFormArrayModel, this.formGroup2) as UntypedFormArray;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
@@ -43,14 +45,14 @@ export class BasicSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`BLUR event on ${$event.model.id}: `, $event);
+        console.debug(`BLUR event on ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`CHANGE event on ${$event.model.id}: `, $event);
+        console.debug(`CHANGE event on ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`FOCUS event on ${$event.model.id}: `, $event);
+        console.debug(`FOCUS event on ${$event.model.id}: `, $event);
     }
 }

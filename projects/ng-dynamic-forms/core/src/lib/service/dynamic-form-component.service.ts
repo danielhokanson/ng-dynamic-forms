@@ -19,8 +19,11 @@ export class DynamicFormComponentService {
     private formControls: { [key: string]: DynamicFormControlRef | DynamicFormControlRef[] } = {};
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
 
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
     }
 
@@ -60,6 +63,7 @@ export class DynamicFormComponentService {
                 this.formControls[model.id] = arrayRef;
 
             } else {
+                // eslint-disable-next-line no-console
                 console.warn(`registerFormControlRef is called with index for a non-array form control: ${model.id}`);
             }
 

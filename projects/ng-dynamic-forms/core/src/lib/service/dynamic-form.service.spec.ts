@@ -319,11 +319,10 @@ describe('DynamicFormService test suite', () => {
 
     it('should create a form array', () => {
         const model = service.findById('testFormArray', testModel) as DynamicFormArrayModel;
-        let formArray;
 
         expect(service.createFormArray).toBeTruthy();
 
-        formArray = service.createFormArray(model);
+        const formArray = service.createFormArray(model);
 
         expect(formArray instanceof UntypedFormArray).toBe(true);
         expect(formArray.length).toBe(model.initialCount);

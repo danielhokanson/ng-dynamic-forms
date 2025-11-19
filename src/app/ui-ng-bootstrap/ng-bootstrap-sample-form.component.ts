@@ -27,6 +27,8 @@ export class NGBootstrapSampleFormComponent {
 
     @ViewChild(DynamicNGBootstrapFormComponent) formComponent!: DynamicNGBootstrapFormComponent;
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 
@@ -41,18 +43,18 @@ export class NGBootstrapSampleFormComponent {
     }
 
     onBlur($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap blur event on: ${$event.model.id}: `, $event);
     }
 
     onChange($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap change event on: ${$event.model.id}: `, $event);
     }
 
     onFocus($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap focus event on: ${$event.model.id}: `, $event);
     }
 
     onNgbEvent($event: DynamicFormControlEvent) {
-        console.log(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
+        console.debug(`NG Bootstrap ${$event.type} event on: ${$event.model.id}: `, $event);
     }
 }

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
 
+// TODO: Consider renaming selector to match 'dynamic' prefix pattern for consistency
+// eslint-disable-next-line @angular-eslint/component-selector
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -14,6 +16,8 @@ export class AppComponent {
     routeData: any = {};
     url: string;
 
+    // TODO: Migrate to inject() function - requires manual review for Router injection
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(/*private mockBackend: MockBackend,*/ private router: Router) {
         /*
         this.mockBackend.connections.subscribe((connection: any) => {

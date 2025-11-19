@@ -56,7 +56,9 @@ export class DynamicBasicFormControlContainerComponent extends DynamicFormContro
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
+    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-input-rename
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('templates') inputTemplateList!: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
@@ -65,11 +67,14 @@ export class DynamicBasicFormControlContainerComponent extends DynamicFormContro
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', { read: ViewContainerRef, static: true }) componentViewContainerRef!: ViewContainerRef;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
 
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const changeDetectorRef = inject(ChangeDetectorRef);
         const componentFactoryResolver = inject(ComponentFactoryResolver);
@@ -79,7 +84,7 @@ export class DynamicBasicFormControlContainerComponent extends DynamicFormContro
         const relationService = inject(DynamicFormRelationService);
 
         super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
-    
+
         this.changeDetectorRef = changeDetectorRef;
         this.componentFactoryResolver = componentFactoryResolver;
         this.layoutService = layoutService;
@@ -150,14 +155,16 @@ export class DynamicBasicFormArrayComponent extends DynamicFormArrayComponent {
     components!: QueryList<DynamicBasicFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);
 
         super(layoutService, validationService);
-    
+
         this.layoutService = layoutService;
         this.validationService = validationService;
     }
@@ -187,14 +194,16 @@ export class DynamicBasicFormGroupComponent extends DynamicFormGroupComponent {
     @ViewChildren(DynamicFormControlContainerComponent) components!: QueryList<DynamicFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);
 
         super(layoutService, validationService);
-    
+
         this.layoutService = layoutService;
         this.validationService = validationService;
     }

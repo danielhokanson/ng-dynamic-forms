@@ -22,9 +22,11 @@ export class DynamicFormRelationService {
     private injector = inject(Injector);
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
 
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
     }
 
@@ -32,10 +34,14 @@ export class DynamicFormRelationService {
         const conditionReducer = (controls: DynamicRelatedFormControls, condition: DynamicFormControlCondition) => {
             const path = condition.rootPath ?? condition.id;
 
-            if (isString(path) && !controls.hasOwnProperty(path)) {
-                const control = condition.rootPath ? group.root.get(condition.rootPath) : group.get(condition.id!);
-                control instanceof UntypedFormControl ?
-                    controls[path] = control : console.warn(`No related form control with id ${condition.id} could be found`);
+            if (isString(path) && !Object.prototype.hasOwnProperty.call(controls, path)) {
+                const control = condition.rootPath ? group.root.get(condition.rootPath) : (condition.id ? group.get(condition.id) : null);
+                if (control instanceof UntypedFormControl) {
+                    controls[path] = control;
+                } else {
+                    // eslint-disable-next-line no-console
+                    console.warn(`No related form control with id ${condition.id} could be found`);
+                }
             }
 
             return controls;

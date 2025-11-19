@@ -20,7 +20,7 @@
 
     <div *ngIf="model.toggleLabel" class="input-group-btn">
 
-        <button *ngIf="model.toggleIcon" class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon"/></button>
+        <button *ngIf="model.toggleIcon" class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon" alt="Toggle datepicker"/></button>
         <button *ngIf="model.toggleLabel" class="btn" (click)="bsDatepicker.toggle()">{{ model.toggleLabel }}</button>
 
     </div>

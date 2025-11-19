@@ -22,7 +22,11 @@ export abstract class DynamicFormComponent implements OnInit, OnDestroy {
     change?: EventEmitter<DynamicFormControlEvent>;
     focus?: EventEmitter<DynamicFormControlEvent>;
 
-    protected constructor(protected changeDetectorRef: ChangeDetectorRef, protected componentService: DynamicFormComponentService) {
+    // TODO: Migrate to inject() function - base class constructor, requires careful migration
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    protected constructor(protected changeDetectorRef: ChangeDetectorRef,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
+                          protected componentService: DynamicFormComponentService) {
     }
 
     ngOnInit(): void {

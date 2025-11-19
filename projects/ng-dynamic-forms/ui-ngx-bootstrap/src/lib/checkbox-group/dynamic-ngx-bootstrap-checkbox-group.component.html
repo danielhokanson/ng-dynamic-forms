@@ -5,6 +5,8 @@
          [id]="id"
          [ngClass]="getClass('element', 'control')">
 
+        <!-- TODO: Label is used as button wrapper for Bootstrap checkbox styling - review if label-has-associated-control can be ignored -->
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
         <label *ngFor="let checkboxModel of model.group" btnCheckbox class="btn" role="button"
                [class.active]="checkboxModel.value"
                [formControlName]="checkboxModel.id"

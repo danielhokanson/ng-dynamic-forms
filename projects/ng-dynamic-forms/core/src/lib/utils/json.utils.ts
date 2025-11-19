@@ -27,6 +27,6 @@ export function maskFromString(mask: string | string[]): string | RegExp | (stri
 }
 
 export function parseReviver(_key: string, value: any): any {
-    const regexDateISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*))(?:Z|([+\-])([\d|:]*))?$/;
+    const regexDateISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*))(?:Z|([+-])([\d|:]*))?$/;
     return isString(value) && regexDateISO.test(value) ? new Date(value) : value;
 }

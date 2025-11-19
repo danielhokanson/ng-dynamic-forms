@@ -58,9 +58,11 @@ export class DynamicFormService {
     private validationService = inject(DynamicFormValidationService);
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
 
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
     }
 
@@ -104,21 +106,23 @@ export class DynamicFormService {
                     break;
 
                 case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
-                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
+                case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP: {
                     const groupModel = model as DynamicFormGroupModel;
                     const groupOptions = this.createAbstractControlOptions(groupModel.validators,
                         groupModel.asyncValidators, groupModel.updateOn);
 
                     controls[model.id] = this.createFormGroup(groupModel.group, groupOptions, groupModel);
                     break;
+                }
 
-                default:
+                default: {
                     const controlModel = model as DynamicFormValueControlModel<any>;
                     const controlState = {value: controlModel.value, disabled: controlModel.disabled};
                     const controlOptions = this.createAbstractControlOptions(controlModel.validators,
                         controlModel.asyncValidators, controlModel.updateOn);
 
                     controls[model.id] = new UntypedFormControl(controlState, controlOptions);
+                }
             }
         });
 
@@ -292,7 +296,7 @@ export class DynamicFormService {
 
             switch (model.type) {
 
-                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
+                case DYNAMIC_FORM_CONTROL_TYPE_ARRAY: {
                     const formArrayModel = model as DynamicFormArrayModel;
 
                     if (Array.isArray(formArrayModel.groups)) {
@@ -305,6 +309,7 @@ export class DynamicFormService {
 
                     formModel.push(new DynamicFormArrayModel(model, layout));
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX:
                     formModel.push(new DynamicCheckboxModel(model, layout));
@@ -327,15 +332,17 @@ export class DynamicFormService {
                     formModel.push(new DynamicEditorModel(model, layout));
                     break;
 
-                case DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD:
+                case DYNAMIC_FORM_CONTROL_TYPE_FILE_UPLOAD: {
                     model.value = null;
                     formModel.push(new DynamicFileUploadModel(model, layout));
                     break;
+                }
 
-                case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
+                case DYNAMIC_FORM_CONTROL_TYPE_GROUP: {
                     model.group = this.fromJSON(model.group);
                     formModel.push(new DynamicFormGroupModel(model, layout));
                     break;
+                }
 
                 case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
                     formModel.push(new DynamicInputModel(model, layout));

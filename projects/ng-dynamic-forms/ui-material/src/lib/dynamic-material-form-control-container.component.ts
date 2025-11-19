@@ -66,7 +66,9 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
+    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-input-rename
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
     @Input() model!: DynamicFormControlModel;
@@ -74,14 +76,18 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
     @Output() blur: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
+    // TODO: Output alias 'matEvent' may be for backward compatibility - review if safe to remove
     // tslint:disable-next-line:no-output-rename
+    // eslint-disable-next-line @angular-eslint/no-output-rename
     @Output('matEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
     @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const changeDetectorRef = inject(ChangeDetectorRef);
         const componentFactoryResolver = inject(ComponentFactoryResolver);
@@ -132,9 +138,10 @@ export function materialUIFormControlMapFn(model: DynamicFormControlModel): Type
         case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
             return DynamicMaterialFormGroupComponent;
 
-        case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+        case DYNAMIC_FORM_CONTROL_TYPE_INPUT: {
             const inputModel = model as DynamicInputModel;
             return inputModel.multiple ? DynamicMaterialChipsComponent : DynamicMaterialInputComponent;
+        }
 
         case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
             return DynamicMaterialRadioGroupComponent;
@@ -180,8 +187,10 @@ export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent
     @ViewChildren(DynamicMaterialFormControlContainerComponent) components!: QueryList<DynamicMaterialFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);
@@ -217,8 +226,10 @@ export class DynamicMaterialFormGroupComponent extends DynamicFormGroupComponent
     @ViewChildren(DynamicMaterialFormControlContainerComponent) components!: QueryList<DynamicMaterialFormControlContainerComponent>;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
     constructor(...args: unknown[]);
-
+    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);

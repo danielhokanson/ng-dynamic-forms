@@ -4,6 +4,7 @@ import { serializable } from '../../decorator/serializable.decorator';
 
 export const DYNAMIC_FORM_CONTROL_TYPE_EDITOR = 'EDITOR';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface DynamicEditorModelConfig extends DynamicInputControlModelConfig<string> {
 }
 

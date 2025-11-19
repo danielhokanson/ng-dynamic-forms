@@ -18,7 +18,7 @@ export class TestComponentRef extends ComponentRef<any> {
     onDestroy(): void {
     }
 
-    setInput(name: string, value: unknown) {
+    setInput(_name: string, _value: unknown) {
     }
 
     constructor() {
@@ -88,6 +88,7 @@ describe('DynamicFormInstanceService test suite', () => {
         service.registerFormControl(model, componentRef);
         service.registerFormControl(model, componentRef, 1);
 
+        // eslint-disable-next-line no-console
         expect(console.warn).toHaveBeenCalledWith(`registerFormControlRef is called with index for a non-array form control: ${model.id}`);
     });
 

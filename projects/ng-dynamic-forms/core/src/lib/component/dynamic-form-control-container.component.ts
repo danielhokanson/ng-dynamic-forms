@@ -75,11 +75,18 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     protected controlLayout?: DynamicFormControlLayout;
     protected subscriptions: Subscription[] = [];
 
+    // TODO: Migrate to inject() function - base class constructor with multiple dependencies, requires careful migration
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     protected constructor(protected changeDetectorRef: ChangeDetectorRef,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected componentFactoryResolver: ComponentFactoryResolver,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected layoutService: DynamicFormLayoutService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected validationService: DynamicFormValidationService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected componentService: DynamicFormComponentService,
+                          // eslint-disable-next-line @angular-eslint/prefer-inject
                           protected relationService: DynamicFormRelationService) {
     }
 
@@ -252,7 +259,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     onModelDisabledUpdates(disabled: boolean): void {
-        disabled ? this.control.disable() : this.control.enable();
+        if (disabled) {
+            this.control.disable();
+        } else {
+            this.control.enable();
+        }
     }
 
     onLayoutOrModelChange(): void {

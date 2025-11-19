@@ -113,7 +113,7 @@ describe('DynamicFormValidationService test suite', () => {
         service.updateValidators(config, control, model);
 
         expect(isFunction(control.validator)).toBe(true);
-        expect((model.validators as object).hasOwnProperty('testValidator')).toBe(true);
+        expect(Object.prototype.hasOwnProperty.call(model.validators as object, 'testValidator')).toBe(true);
 
         service.updateValidators(null, control, model);
 
@@ -133,7 +133,7 @@ describe('DynamicFormValidationService test suite', () => {
         service.updateAsyncValidators(config, control, model);
 
         expect(isFunction(control.asyncValidator)).toBe(true);
-        expect((model.asyncValidators as object).hasOwnProperty('testAsyncValidator')).toBe(true);
+        expect(Object.prototype.hasOwnProperty.call(model.asyncValidators as object, 'testAsyncValidator')).toBe(true);
 
         service.updateAsyncValidators(null, control, model);
 

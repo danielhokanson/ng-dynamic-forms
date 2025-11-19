@@ -15,6 +15,8 @@ export class LazyLoadedFormComponent {
     formModel: DynamicFormControlModel[] = LAZY_LOADED_FORM_MODEL;
     formGroup = this.formService.createFormGroup(this.formModel);
 
+    // TODO: Migrate to inject() function - demo app component, can be handled later
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(private formService: DynamicFormService) {
     }
 }
