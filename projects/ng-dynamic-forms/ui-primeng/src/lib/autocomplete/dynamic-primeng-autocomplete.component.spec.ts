@@ -14,7 +14,7 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
     let fixture: ComponentFixture<DynamicPrimeNGAutoCompleteComponent>;
     let component: DynamicPrimeNGAutoCompleteComponent;
     let debugElement: DebugElement;
-    let testElement: DebugElement;
+    //let testElement: DebugElement;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -35,7 +35,7 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-autocomplete[id="${testModel.id}"]`));
+        //testElement = debugElement.query(By.css(`p-autocomplete[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {

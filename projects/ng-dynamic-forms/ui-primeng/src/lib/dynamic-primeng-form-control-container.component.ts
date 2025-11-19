@@ -44,7 +44,7 @@ import { DynamicPrimeNGEditorComponent } from './editor/dynamic-primeng-editor.c
 import { DynamicPrimeNGSpinnerComponent } from './spinner/dynamic-primeng-spinner.component';
 import { DynamicPrimeNGInputMaskComponent } from './input-mask/dynamic-primeng-input-mask.component';
 import { DynamicPrimeNGAutoCompleteComponent } from './autocomplete/dynamic-primeng-autocomplete.component';
-import { DynamicPrimeNGChipsComponent } from './chips/dynamic-primeng-chips.component';
+//import { DynamicPrimeNGChipsComponent } from './chips/dynamic-primeng-chips.component';
 import { DynamicPrimeNGInputComponent } from './input/dynamic-primeng-input.component';
 import { DynamicPrimeNGRadioGroupComponent } from './radio-group/dynamic-primeng-radio-group.component';
 import { DynamicPrimeNGRatingComponent } from './rating/dynamic-primeng-rating.component';
@@ -92,7 +92,7 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
     // eslint-disable-next-line @angular-eslint/no-output-rename
     @Output('pEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
-    @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
+    @ViewChild('componentViewContainer', { read: ViewContainerRef, static: true }) componentViewContainerRef!: ViewContainerRef;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
@@ -108,7 +108,7 @@ export class DynamicPrimeNGFormControlContainerComponent extends DynamicFormCont
         const relationService = inject(DynamicFormRelationService);
 
         super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
-    
+
         this.changeDetectorRef = changeDetectorRef;
         this.componentFactoryResolver = componentFactoryResolver;
         this.layoutService = layoutService;
@@ -230,7 +230,7 @@ export class DynamicPrimeNGFormArrayComponent extends DynamicFormArrayComponent 
         const validationService = inject(DynamicFormValidationService);
 
         super(layoutService, validationService);
-    
+
         this.layoutService = layoutService;
         this.validationService = validationService;
     }
@@ -269,7 +269,7 @@ export class DynamicPrimeNGFormGroupComponent extends DynamicFormGroupComponent 
         const validationService = inject(DynamicFormValidationService);
 
         super(layoutService, validationService);
-    
+
         this.layoutService = layoutService;
         this.validationService = validationService;
     }
