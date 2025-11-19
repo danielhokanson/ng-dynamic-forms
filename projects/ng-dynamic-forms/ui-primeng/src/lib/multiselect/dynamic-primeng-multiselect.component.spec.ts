@@ -39,7 +39,7 @@ describe('DynamicPrimeNGMultiSelectComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-multiSelect[ng-reflect-id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-multiSelect[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
