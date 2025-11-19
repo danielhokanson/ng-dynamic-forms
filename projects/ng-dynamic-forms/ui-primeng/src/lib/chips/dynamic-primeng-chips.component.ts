@@ -1,3 +1,6 @@
+// TODO: PrimeNG v20 removed the Chips component. Need to find a replacement or alternative implementation.
+// This component is temporarily disabled. For multiple input values, consider using AutoComplete in multiple mode.
+/*
 import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Chips, ChipsModule } from 'primeng/chips';
@@ -39,11 +42,6 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
 
     @ViewChild('pChips', {static: true}) pChips!: Chips;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
         const layoutService = inject(DynamicFormLayoutService);
         const validationService = inject(DynamicFormValidationService);
@@ -57,4 +55,10 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
     get viewChild(): Chips {
         return this.pChips;
     }
+}
+*/
+
+// Stub export to prevent import errors
+export class DynamicPrimeNGChipsComponent {
+    // This is a stub - the component is disabled due to PrimeNG v20 removing Chips
 }

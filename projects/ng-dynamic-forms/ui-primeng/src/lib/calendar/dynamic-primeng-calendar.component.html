@@ -1,6 +1,6 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-calendar #pCalendar
+    <p-datepicker #pCalendar
                 [dateFormat]="model.format || 'mm/dd/yy'"
                 [defaultDate]="focusedDate"
                 [disabledDates]="model.getAdditional('disabledDates', undefined)"
@@ -13,7 +13,6 @@
                 [maxDate]="model.max"
                 [maxDateCount]="model.getAdditional('maxDateCount', undefined)"
                 [minDate]="model.min"
-                [monthNavigator]="model.getAdditional('monthNavigator', false)"
                 [ngClass]="getClass('element', 'control')"
                 [placeholder]="model.placeholder"
                 [selectionMode]="model.getAdditional('selectionMode', 'single')"
@@ -30,14 +29,12 @@
                 [stepSecond]="model.getAdditional('stepSecond', 1)"
                 [tabindex]="model.tabIndex"
                 [timeOnly]="model.type === 'TIMEPICKER'"
-                [yearNavigator]="model.getAdditional('yearNavigator', false)"
-                [yearRange]="model.getAdditional('yearRange', undefined)"
                 (onBlur)="onBlur($event)"
                 (onClearClick)="onCustomEvent($event, 'onClearClick')"
                 (onClose)="onCustomEvent($event, 'onClose')"
                 (onFocus)="onFocus($event)"
                 (onInput)="onChange($event)"
                 (onSelect)="onChange($event)"
-                (onTodayClick)="onCustomEvent($event, 'onTodayClick')"></p-calendar>
+                (onTodayClick)="onCustomEvent($event, 'onTodayClick')"></p-datepicker>
 
 </div>

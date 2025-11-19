@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Calendar, CalendarModule } from 'primeng/calendar';
+import { DatePicker, DatePickerModule } from 'primeng/datepicker';
 import {
     DynamicDatePickerModel,
     DynamicFormControlCustomEvent,
@@ -18,7 +18,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-calendar',
     templateUrl: './dynamic-primeng-calendar.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, CalendarModule]
+    imports: [ReactiveFormsModule, NgClass, DatePickerModule]
 })
 export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent {
     protected layoutService: DynamicFormLayoutService;
@@ -34,7 +34,7 @@ export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pCalendar', {static: true}) pCalendar!: Calendar;
+    @ViewChild('pCalendar', {static: true}) pCalendar!: DatePicker;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject

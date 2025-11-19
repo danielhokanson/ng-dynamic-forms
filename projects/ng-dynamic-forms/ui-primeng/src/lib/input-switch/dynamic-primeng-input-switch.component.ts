@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { InputSwitch, InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitch, ToggleSwitchModule } from 'primeng/toggleswitch';
 import {
     DynamicFormLayout,
     DynamicFormLayoutService,
@@ -15,7 +15,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-input-switch',
     templateUrl: './dynamic-primeng-input-switch.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, InputSwitchModule]
+    imports: [ReactiveFormsModule, NgClass, ToggleSwitchModule]
 })
 export class DynamicPrimeNGInputSwitchComponent extends DynamicFormControlComponent {
     protected layoutService: DynamicFormLayoutService;
@@ -30,7 +30,7 @@ export class DynamicPrimeNGInputSwitchComponent extends DynamicFormControlCompon
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pInputSwitch', {static: true}) pInputSwitch!: InputSwitch;
+    @ViewChild('pInputSwitch', {static: true}) pInputSwitch!: ToggleSwitch;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject

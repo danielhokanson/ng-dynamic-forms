@@ -1,6 +1,6 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-dropdown #pDropdown
+    <p-select #pDropdown
                 [dropdownIcon]="model.getAdditional('dropdownIcon', 'pi pi-caret-down')"
                 [editable]="model.getAdditional('editable', false)"
                 [filter]="model.filterable"
@@ -16,6 +16,6 @@
                 [tabindex]="model.tabIndex"
                 (onBlur)="onBlur($event)"
                 (onChange)="onChange($event)"
-                (onFocus)="onFocus($event)"></p-dropdown>
+                (onFocus)="onFocus($event)"></p-select>
 
 </div>
