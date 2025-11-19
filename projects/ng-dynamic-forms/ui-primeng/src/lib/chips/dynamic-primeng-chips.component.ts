@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Chips, ChipsModule } from 'primeng/chips';
+import { Chip, ChipModule } from 'primeng/chip';
 import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
@@ -18,7 +18,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-chips',
     templateUrl: './dynamic-primeng-chips.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, ChipsModule]
+    imports: [ReactiveFormsModule, NgClass, ChipModule]
 })
 export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
     protected layoutService: DynamicFormLayoutService;
@@ -37,7 +37,7 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pChips', {static: true}) pChips!: Chips;
+    @ViewChild('pChips', { static: true }) pChips!: Chip;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
@@ -49,12 +49,12 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
         const validationService = inject(DynamicFormValidationService);
 
         super(layoutService, validationService);
-    
+
         this.layoutService = layoutService;
         this.validationService = validationService;
     }
 
-    get viewChild(): Chips {
+    get viewChild(): Chip {
         return this.pChips;
     }
 }

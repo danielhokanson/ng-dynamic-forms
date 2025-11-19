@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/t
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Chips } from 'primeng/chips';
+import { Chip } from 'primeng/chip';
 import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGChipsComponent } from './dynamic-primeng-chips.component';
 
@@ -35,15 +35,15 @@ describe('DynamicPrimeNGChipsComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-chips[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-chip[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicInputModel).toBe(true);
-        expect(component.pChips instanceof Chips).toBe(true);
-        expect(component.viewChild instanceof Chips).toBe(true);
+        expect(component.pChips instanceof Chip).toBe(true);
+        expect(component.viewChild instanceof Chip).toBe(true);
 
         expect(component.blur).toBeDefined();
         expect(component.change).toBeDefined();
@@ -60,7 +60,7 @@ describe('DynamicPrimeNGChipsComponent test suite', () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it('should have an p-chips element', () => {
+    it('should have an p-chip element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 

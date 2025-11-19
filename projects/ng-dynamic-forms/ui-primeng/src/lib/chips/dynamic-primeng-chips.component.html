@@ -1,13 +1,12 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-chips #pChips
-             [allowDuplicate]="model.getAdditional('allowDuplicate', true)"
+    <p-chip #pChips
              [formControlName]="model.id"
              [id]="id"
              [ngClass]="getClass('element', 'control')"
              [tabindex]="model.tabIndex"
              (change)="onChange($event)"
              (onAdd)="onCustomEvent($event, 'onAdd')"
-             (onRemove)="onCustomEvent($event, 'onRemove')"></p-chips>
+             (onRemove)="onCustomEvent($event, 'onRemove')"></p-chip>
 
 </div>

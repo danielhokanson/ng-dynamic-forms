@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/t
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Dropdown } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { DynamicFormService, DynamicSelectModel } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGDropdownComponent } from './dynamic-primeng-dropdown.component';
 
@@ -35,15 +35,15 @@ describe('DynamicPrimeNGDropdownComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-dropdown[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-select[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicSelectModel).toBe(true);
-        expect(component.pDropdown instanceof Dropdown).toBe(true);
-        expect(component.viewChild instanceof Dropdown).toBe(true);
+        expect(component.pDropdown instanceof Select).toBe(true);
+        expect(component.viewChild instanceof Select).toBe(true);
 
         expect(component.blur).toBeDefined();
         expect(component.change).toBeDefined();
@@ -59,7 +59,7 @@ describe('DynamicPrimeNGDropdownComponent test suite', () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it('should have an p-dropdown element', () => {
+    it('should have an p-select element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
