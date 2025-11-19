@@ -158,7 +158,11 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
                 return DynamicPrimeNGAutoCompleteComponent;
 
             } else if (inputModel.multiple) {
-                return DynamicPrimeNGChipsComponent;
+                // TODO: PrimeNG v20 removed Chips component. Chip component is display-only and doesn't support formControlName.
+                // Need to find proper replacement for multiple input values (chips functionality).
+                // For now, falling back to AutoComplete component.
+                // return DynamicPrimeNGChipsComponent;
+                return DynamicPrimeNGAutoCompleteComponent;
 
             } else {
                 return DynamicPrimeNGInputComponent;

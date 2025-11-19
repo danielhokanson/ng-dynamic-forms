@@ -1,12 +1,13 @@
+<!-- TODO: PrimeNG v20 removed Chips component. Chip component is display-only and doesn't support formControlName. -->
+<!-- This template needs to be reimplemented with a proper PrimeNG v20 replacement for multiple input values. -->
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
-
-    <p-chip #pChips
+    <!-- Component temporarily disabled - see TODO in component TypeScript file -->
+    <!-- <p-chip #pChips
              [formControlName]="model.id"
              [id]="id"
              [ngClass]="getClass('element', 'control')"
              [tabindex]="model.tabIndex"
              (change)="onChange($event)"
              (onAdd)="onCustomEvent($event, 'onAdd')"
-             (onRemove)="onCustomEvent($event, 'onRemove')"></p-chip>
-
+             (onRemove)="onCustomEvent($event, 'onRemove')"></p-chip> -->
 </div>

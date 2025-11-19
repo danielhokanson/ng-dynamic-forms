@@ -1,6 +1,10 @@
+// TODO: PrimeNG v20 removed Chips component. Chip component is display-only and doesn't support formControlName.
+// This component needs to be reimplemented with a proper PrimeNG v20 replacement for multiple input values.
+// For now, this component is commented out and the form control container falls back to AutoComplete.
+
 import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Chip, ChipModule } from 'primeng/chip';
+// import { Chip, ChipModule } from 'primeng/chip'; // Chip is display-only, not a form input
 import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
@@ -12,13 +16,14 @@ import {
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { PRIME_NG_TEMPLATE_DIRECTIVES } from '../dynamic-primeng-form.const';
 import { DynamicPrimeNGFormControlWithTemplateComponent } from '../dynamic-primeng-form-control-with-template.component';
-import { NgClass } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
+// Component temporarily disabled - see TODO above
 @Component({
     selector: 'dynamic-primeng-chips',
     templateUrl: './dynamic-primeng-chips.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, ChipModule]
+    imports: [ReactiveFormsModule, NgClass] // AutoCompleteModule, AsyncPipe removed - component needs reimplementation
 })
 export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
     protected layoutService: DynamicFormLayoutService;
@@ -37,7 +42,7 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pChips', { static: true }) pChips!: Chip;
+    // @ViewChild('pChips', { static: true }) pChips!: Chip; // Disabled - needs PrimeNG v20 replacement
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
@@ -54,7 +59,8 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
         this.validationService = validationService;
     }
 
-    get viewChild(): Chip {
-        return this.pChips;
+    // Stub implementation - component needs PrimeNG v20 replacement
+    get viewChild(): any {
+        return null; // TODO: Return proper component when reimplemented
     }
 }
