@@ -102,6 +102,14 @@
           }
         ]
       }
+    },
+    {
+      "files": [
+        "src/app/app.component.ts"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": "off"
+      }
     }
   ]
 }

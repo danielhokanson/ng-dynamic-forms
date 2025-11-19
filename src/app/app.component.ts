@@ -4,10 +4,8 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
 
-// TODO: Consider renaming selector to match 'dynamic' prefix pattern for consistency
-// eslint-disable-next-line @angular-eslint/component-selector
 @Component({
-    selector: 'app-root',
+    selector: 'ng-dynamic-forms-app-root',
     templateUrl: './app.component.html',
     standalone: true,
     imports: [RouterOutlet, RouterLink, NgStyle]

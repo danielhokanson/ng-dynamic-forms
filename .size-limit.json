@@ -1,0 +1,47 @@
+[
+  {
+    "path": "dist/ng-dynamic-forms/core/bundles/core.umd.js",
+    "limit": "600 KB",
+    "name": "Core Library"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-basic/bundles/ui-basic.umd.js",
+    "limit": "200 KB",
+    "name": "UI Basic"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-bootstrap/bundles/ui-bootstrap.umd.js",
+    "limit": "250 KB",
+    "name": "UI Bootstrap"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-foundation/bundles/ui-foundation.umd.js",
+    "limit": "210 KB",
+    "name": "UI Foundation"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-ionic/bundles/ui-ionic.umd.js",
+    "limit": "240 KB",
+    "name": "UI Ionic"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-material/bundles/ui-material.umd.js",
+    "limit": "320 KB",
+    "name": "UI Material"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-ng-bootstrap/bundles/ui-ng-bootstrap.umd.js",
+    "limit": "270 KB",
+    "name": "UI NG Bootstrap"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-ngx-bootstrap/bundles/ui-ngx-bootstrap.umd.js",
+    "limit": "260 KB",
+    "name": "UI NGX Bootstrap"
+  },
+  {
+    "path": "dist/ng-dynamic-forms/ui-primeng/bundles/ui-primeng.umd.js",
+    "limit": "380 KB",
+    "name": "UI PrimeNG"
+  }
+]
