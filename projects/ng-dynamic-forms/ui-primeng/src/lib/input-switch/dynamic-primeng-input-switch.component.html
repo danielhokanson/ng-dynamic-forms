@@ -1,10 +1,10 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-inputSwitch #pInputSwitch
+    <p-toggleswitch #pInputSwitch
                    [formControlName]="model.id"
                    [id]="id"
                    [ngClass]="getClass('element', 'control')"
                    [tabindex]="model.tabIndex"
-                   (onChange)="onChange($event)"></p-inputSwitch>
+                   (onChange)="onChange($event)"></p-toggleswitch>
 
 </div>

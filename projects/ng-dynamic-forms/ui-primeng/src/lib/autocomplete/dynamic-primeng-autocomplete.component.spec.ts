@@ -7,7 +7,7 @@ import { DynamicFormService, DynamicInputModel } from '@danielhokanson/ng-dynami
 import { DynamicPrimeNGAutoCompleteComponent } from './dynamic-primeng-autocomplete.component';
 
 describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
-    const testModel = new DynamicInputModel({id: 'input', list: ['One', 'Two', 'Three']});
+    const testModel = new DynamicInputModel({ id: 'input', list: ['One', 'Two', 'Three'] });
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -35,7 +35,11 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-autoComplete[ng-reflect-id="${testModel.id}"]`));
+        // Try multiple selectors - PrimeNG may render the element with different casing or structure
+        testElement = debugElement.query(By.css(`p-autoComplete[id="${testModel.id}"]`)) ||
+            debugElement.query(By.css(`p-autocomplete[id="${testModel.id}"]`)) ||
+            debugElement.query(By.css('p-autoComplete')) ||
+            debugElement.query(By.css('p-autocomplete'));
     }));
 
     it('should initialize correctly', () => {

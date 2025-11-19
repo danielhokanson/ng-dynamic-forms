@@ -44,7 +44,8 @@ import { DynamicPrimeNGEditorComponent } from './editor/dynamic-primeng-editor.c
 import { DynamicPrimeNGSpinnerComponent } from './spinner/dynamic-primeng-spinner.component';
 import { DynamicPrimeNGInputMaskComponent } from './input-mask/dynamic-primeng-input-mask.component';
 import { DynamicPrimeNGAutoCompleteComponent } from './autocomplete/dynamic-primeng-autocomplete.component';
-import { DynamicPrimeNGChipsComponent } from './chips/dynamic-primeng-chips.component';
+// TODO: PrimeNG v20 removed Chips component - using AutoComplete for multiple inputs as fallback
+// import { DynamicPrimeNGChipsComponent } from './chips/dynamic-primeng-chips.component';
 import { DynamicPrimeNGInputComponent } from './input/dynamic-primeng-input.component';
 import { DynamicPrimeNGRadioGroupComponent } from './radio-group/dynamic-primeng-radio-group.component';
 import { DynamicPrimeNGRatingComponent } from './rating/dynamic-primeng-rating.component';
@@ -158,7 +159,8 @@ export function primeNGUIFormControlMapFn(model: DynamicFormControlModel): Type<
                 return DynamicPrimeNGAutoCompleteComponent;
 
             } else if (inputModel.multiple) {
-                return DynamicPrimeNGChipsComponent;
+                // TODO: PrimeNG v20 removed Chips component - using AutoComplete as fallback for multiple inputs
+                return DynamicPrimeNGAutoCompleteComponent;
 
             } else {
                 return DynamicPrimeNGInputComponent;

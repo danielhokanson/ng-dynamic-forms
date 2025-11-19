@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Dropdown, DropdownModule } from 'primeng/dropdown';
+import { Select, SelectModule } from 'primeng/select';
 import {
     DynamicFormControlLayout,
     DynamicFormLayout,
@@ -17,7 +17,7 @@ import { NgClass, AsyncPipe } from '@angular/common';
     selector: 'dynamic-primeng-dropdown',
     templateUrl: './dynamic-primeng-dropdown.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, DropdownModule, AsyncPipe]
+    imports: [ReactiveFormsModule, NgClass, SelectModule, AsyncPipe]
 })
 export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
     protected layoutService: DynamicFormLayoutService;
@@ -35,7 +35,7 @@ export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWi
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pDropdown', {static: true}) pDropdown!: Dropdown;
+    @ViewChild('pDropdown', {static: true}) pDropdown!: Select;
 
     /** Inserted by Angular inject() migration for backwards compatibility */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
@@ -52,7 +52,7 @@ export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWi
         this.validationService = validationService;
     }
 
-    get viewChild(): Dropdown {
+    get viewChild(): Select {
         return this.pDropdown;
     }
 }

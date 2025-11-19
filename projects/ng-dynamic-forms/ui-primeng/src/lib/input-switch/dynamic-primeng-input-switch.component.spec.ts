@@ -2,7 +2,7 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/t
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { InputSwitch } from 'primeng/inputswitch';
+import { ToggleSwitch } from 'primeng/toggleswitch';
 import { DynamicFormService, DynamicSwitchModel } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGInputSwitchComponent } from './dynamic-primeng-input-switch.component';
 
@@ -35,14 +35,14 @@ describe('DynamicPrimeNGInputSwitchComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-inputSwitch[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-toggleswitch[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicSwitchModel).toBe(true);
-        expect(component.pInputSwitch instanceof InputSwitch).toBe(true);
+        expect(component.pInputSwitch instanceof ToggleSwitch).toBe(true);
 
         expect(component.blur).toBeDefined();
         expect(component.change).toBeDefined();
@@ -58,7 +58,7 @@ describe('DynamicPrimeNGInputSwitchComponent test suite', () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it('should have an p-inputSwitch element', () => {
+    it('should have an p-toggleswitch element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 

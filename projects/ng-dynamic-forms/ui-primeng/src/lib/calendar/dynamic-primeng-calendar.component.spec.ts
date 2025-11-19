@@ -2,12 +2,12 @@ import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/t
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Calendar } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { DynamicDatePickerModel, DynamicFormService } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGCalendarComponent } from './dynamic-primeng-calendar.component';
 
 describe('DynamicPrimeNGCalendarComponent test suite', () => {
-    const testModel = new DynamicDatePickerModel({id: 'calendar'});
+    const testModel = new DynamicDatePickerModel({ id: 'calendar' });
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -35,14 +35,14 @@ describe('DynamicPrimeNGCalendarComponent test suite', () => {
 
         fixture.detectChanges();
 
-        testElement = debugElement.query(By.css(`p-calendar[id="${testModel.id}"]`));
+        testElement = debugElement.query(By.css(`p-datepicker[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {
         expect(component.control instanceof UntypedFormControl).toBe(true);
         expect(component.group instanceof UntypedFormGroup).toBe(true);
         expect(component.model instanceof DynamicDatePickerModel).toBe(true);
-        expect(component.pCalendar instanceof Calendar).toBe(true);
+        expect(component.pCalendar instanceof DatePicker).toBe(true);
 
         expect(component.blur).toBeDefined();
         expect(component.change).toBeDefined();
@@ -58,7 +58,7 @@ describe('DynamicPrimeNGCalendarComponent test suite', () => {
         expect(component.showErrorMessages).toBe(false);
     });
 
-    it('should have an p-calendar element', () => {
+    it('should have an p-datepicker element', () => {
         expect(testElement instanceof DebugElement).toBe(true);
     });
 
