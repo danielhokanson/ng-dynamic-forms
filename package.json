@@ -65,6 +65,7 @@
     "@angular/router": "^20.0.0",
     "@ionic/angular": "^8.7.0",
     "@ng-bootstrap/ng-bootstrap": "^19.0.0",
+    "@primeuix/utils": "^0.6.3",
     "bootstrap": "^5.3.3",
     "core-js": "^3.39.0",
     "foundation-sites": "^6.9.0",
