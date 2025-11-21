@@ -78,16 +78,16 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     // TODO: Migrate to inject() function - base class constructor with multiple dependencies, requires careful migration
     // eslint-disable-next-line @angular-eslint/prefer-inject
     protected constructor(protected changeDetectorRef: ChangeDetectorRef,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected componentFactoryResolver: ComponentFactoryResolver,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected layoutService: DynamicFormLayoutService,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected validationService: DynamicFormValidationService,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected componentService: DynamicFormComponentService,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected relationService: DynamicFormRelationService) {
+        // eslint-disable-next-line @angular-eslint/prefer-inject
+        protected componentFactoryResolver: ComponentFactoryResolver,
+        // eslint-disable-next-line @angular-eslint/prefer-inject
+        protected layoutService: DynamicFormLayoutService,
+        // eslint-disable-next-line @angular-eslint/prefer-inject
+        protected validationService: DynamicFormValidationService,
+        // eslint-disable-next-line @angular-eslint/prefer-inject
+        protected componentService: DynamicFormComponentService,
+        // eslint-disable-next-line @angular-eslint/prefer-inject
+        protected relationService: DynamicFormRelationService) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -109,11 +109,18 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     ngOnInit(): void {
-        this.subscriptions.push(this.control.statusChanges.pipe(
-            bufferCount(2, 1),
-            map(states => states[0]),
-            filter(previousState => previousState === 'PENDING')
-        ).subscribe(_status => this.markForCheck()));
+        // Setup statusChanges subscription when control is available
+        this.setupStatusChangesSubscription();
+    }
+
+    private setupStatusChangesSubscription(): void {
+        if (this.control) {
+            this.subscriptions.push(this.control.statusChanges.pipe(
+                bufferCount(2, 1),
+                map(states => states[0]),
+                filter(previousState => previousState === 'PENDING')
+            ).subscribe(_status => this.markForCheck()));
+        }
     }
 
     ngOnDestroy(): void {
@@ -124,6 +131,9 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     abstract get componentType(): Type<DynamicFormControl> | null;
 
     get id(): string {
+        if (!this.model) {
+            return '';
+        }
         return this.layoutService.getElementId(this.model);
     }
 
@@ -132,35 +142,47 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     get isInvalid(): boolean {
-        return this.control.invalid;
+        return this.control ? this.control.invalid : false;
     }
 
     get isValid(): boolean {
-        return this.control.valid;
+        return this.control ? this.control.valid : false;
     }
 
     get errorMessages(): string[] {
+        if (!this.control || !this.model) {
+            return [];
+        }
         return this.validationService.createErrorMessages(this.control, this.model);
     }
 
     get showErrorMessages(): boolean {
+        if (!this.control || !this.model) {
+            return false;
+        }
         return this.validationService.showErrorMessages(this.control, this.model, this.hasFocus);
     }
 
     get hasLabel(): boolean {
-        return isString(this.model.label);
+        return this.model ? isString(this.model.label) : false;
     }
 
     get hasHint(): boolean {
+        if (!this.model) {
+            return false;
+        }
         return isString((this.model as DynamicFormValueControlModel<any>).hint);
     }
 
     get hint(): string | null {
+        if (!this.model) {
+            return null;
+        }
         return (this.model as DynamicFormValueControlModel<any>).hint ?? null;
     }
 
     get isCheckbox(): boolean {
-        return this.model.type === DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX;
+        return this.model ? this.model.type === DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX : false;
     }
 
     get templates(): QueryList<DynamicTemplateDirective> | undefined {
@@ -168,11 +190,17 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     get startTemplate(): DynamicTemplateDirective | undefined {
+        if (!this.model) {
+            return undefined;
+        }
         return this.model.type !== DYNAMIC_FORM_CONTROL_TYPE_ARRAY ?
             this.layoutService.getStartTemplate(this.model, this.templates) : undefined;
     }
 
     get endTemplate(): DynamicTemplateDirective | undefined {
+        if (!this.model) {
+            return undefined;
+        }
         return this.model.type !== DYNAMIC_FORM_CONTROL_TYPE_ARRAY ?
             this.layoutService.getEndTemplate(this.model, this.templates) : undefined;
     }
@@ -194,7 +222,7 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     protected createFormControlComponent(): void {
         const componentType = this.componentType;
 
-        if (componentType !== null) {
+        if (componentType !== null && this.model && this.group) {
             const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
 
             this.componentViewContainerRef.clear();
@@ -235,7 +263,7 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     protected createDynamicFormControlEvent($event: any, type: string): DynamicFormControlEvent {
-        return {$event, context: this.context, control: this.control, group: this.group, model: this.model, type};
+        return { $event, context: this.context, control: this.control, group: this.group, model: this.model, type };
     }
 
     unsubscribe(): void {
@@ -247,18 +275,21 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     onControlValueChanges(value: any): void {
-        if (this.model instanceof DynamicFormValueControlModel && this.model.value !== value) {
+        if (this.model && this.model instanceof DynamicFormValueControlModel && this.model.value !== value) {
             this.model.value = value;
         }
     }
 
     onModelValueUpdates(value: any): void {
-        if (this.control.value !== value) {
+        if (this.control && this.control.value !== value) {
             this.control.setValue(value);
         }
     }
 
     onModelDisabledUpdates(disabled: boolean): void {
+        if (!this.control) {
+            return;
+        }
         if (disabled) {
             this.control.disable();
         } else {
@@ -267,6 +298,9 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     onLayoutOrModelChange(): void {
+        if (!this.model) {
+            return;
+        }
         this.controlLayout = this.layoutService.findByModel(this.model, this.layout) ?? this.model.layout as DynamicFormControlLayout;
         this.klass = `${Array.isArray(this.hostClass) ? this.hostClass.join(' ') : ''} ${this.layoutService.getHostClass(this.controlLayout)}`;
     }
@@ -282,7 +316,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
 
             if (this.group) {
                 this.control = this.group.get(this.model.id) as UntypedFormControl;
-                this.subscriptions.push(this.control.valueChanges.subscribe(value => this.onControlValueChanges(value)));
+                if (this.control) {
+                    this.subscriptions.push(this.control.valueChanges.subscribe(value => this.onControlValueChanges(value)));
+                    // Setup statusChanges subscription when control is available (needed for Angular 21)
+                    this.setupStatusChangesSubscription();
+                }
             }
 
             this.subscriptions.push(this.model.disabledChanges.subscribe(value => this.onModelDisabledUpdates(value)));
