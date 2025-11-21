@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,21 +29,21 @@ describe('DynamicMaterialChipsComponent test suite', () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, DynamicMaterialChipsComponent]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicMaterialChipsComponent);
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = testModel;
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`mat-chip-grid`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = testModel;
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`mat-chip-grid`));
     }));
 
     it('should initialize correctly', () => {
@@ -108,7 +108,7 @@ describe('DynamicMaterialChipsComponent test suite', () => {
     it('should add a chip to chip list on input token end', () => {
         const value = 'Test';
         const length = component.chips.length;
-        const $event = {input: document.createElement('input'), value};
+        const $event = { input: document.createElement('input'), value };
 
         component.onChipInputTokenEnd($event as MatChipInputEvent);
 
@@ -119,7 +119,7 @@ describe('DynamicMaterialChipsComponent test suite', () => {
     it('should add a chip to chip list on chip selected from autocomplete panel', () => {
         const value = 'Test';
         const length = component.chips.length;
-        const $event = new MatAutocompleteSelectedEvent(component.matAutocomplete, {value} as MatOption);
+        const $event = new MatAutocompleteSelectedEvent(component.matAutocomplete, { value } as MatOption);
 
         component.onChipSelected($event);
 

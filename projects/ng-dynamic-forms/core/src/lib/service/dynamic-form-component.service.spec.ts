@@ -1,4 +1,4 @@
-import { inject, TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ChangeDetectorRef, ComponentRef, ElementRef, Injector, Type, ViewRef } from '@angular/core';
 import { DynamicFormControlModel } from '../model/dynamic-form-control.model';
 import { DynamicInputModel } from '../model/input/dynamic-input.model';

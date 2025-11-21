@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -20,22 +20,22 @@ describe('DynamicPrimeNGSliderComponent test suite', () => {
         TestBed.configureTestingModule({
             imports: [DynamicPrimeNGSliderComponent]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicPrimeNGSliderComponent);
 
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = testModel;
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`p-slider[id="${testModel.id}"]`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = testModel;
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`p-slider[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {

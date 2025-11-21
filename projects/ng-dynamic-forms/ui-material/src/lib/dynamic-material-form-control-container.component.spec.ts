@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement, SimpleChange } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -73,27 +73,27 @@ describe('DynamicMaterialFormControlContainerComponent test suite', () => {
                 DynamicMaterialInputComponent
             ]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicMaterialFormControlContainerComponent);
 
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = inputModel;
+
+            component.ngOnChanges({
+                group: new SimpleChange(null, component.group, true),
+                model: new SimpleChange(null, component.model, true)
+            });
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = inputModel;
-
-        component.ngOnChanges({
-            group: new SimpleChange(null, component.group, true),
-            model: new SimpleChange(null, component.model, true)
-        });
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
     }));
 
     it('should initialize correctly', () => {
