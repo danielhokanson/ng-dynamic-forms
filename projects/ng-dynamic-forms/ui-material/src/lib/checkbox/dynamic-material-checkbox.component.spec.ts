@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -7,7 +7,7 @@ import { DynamicCheckboxModel, DynamicFormService } from '@danielhokanson/ng-dyn
 import { DynamicMaterialCheckboxComponent } from './dynamic-material-checkbox.component';
 
 describe('DynamicMaterialCheckboxComponent test suite', () => {
-    const testModel = new DynamicCheckboxModel({id: 'checkbox'});
+    const testModel = new DynamicCheckboxModel({ id: 'checkbox' });
     const formModel = [testModel];
 
     let formGroup: UntypedFormGroup;
@@ -20,22 +20,22 @@ describe('DynamicMaterialCheckboxComponent test suite', () => {
         TestBed.configureTestingModule({
             imports: [DynamicMaterialCheckboxComponent]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicMaterialCheckboxComponent);
 
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = testModel;
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`mat-checkbox[id="${testModel.id}"]`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = testModel;
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`mat-checkbox[id="${testModel.id}"]`));
     }));
 
     it('should initialize correctly', () => {

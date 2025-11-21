@@ -48,3 +48,4 @@ top -b -n 1 -p $PID 2>/dev/null | tail -1 || echo "Unable to get CPU info"
 echo ""
 echo "💡 Tip: If CPU > 0%, test is working (may just be slow)"
 echo "💡 Tip: 'Generating browser application bundles (phase: end)' can take 30-60+ seconds"
+

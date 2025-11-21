@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -20,26 +20,26 @@ describe('DynamicPrimeNGAutoCompleteComponent test suite', () => {
         TestBed.configureTestingModule({
             imports: [DynamicPrimeNGAutoCompleteComponent]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicPrimeNGAutoCompleteComponent);
 
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = testModel;
+
+            fixture.detectChanges();
+
+            // Try multiple selectors - PrimeNG may render the element with different casing or structure
+            testElement = debugElement.query(By.css(`p-autoComplete[id="${testModel.id}"]`)) ||
+                debugElement.query(By.css(`p-autocomplete[id="${testModel.id}"]`)) ||
+                debugElement.query(By.css('p-autoComplete')) ||
+                debugElement.query(By.css('p-autocomplete'));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = testModel;
-
-        fixture.detectChanges();
-
-        // Try multiple selectors - PrimeNG may render the element with different casing or structure
-        testElement = debugElement.query(By.css(`p-autoComplete[id="${testModel.id}"]`)) ||
-            debugElement.query(By.css(`p-autocomplete[id="${testModel.id}"]`)) ||
-            debugElement.query(By.css('p-autoComplete')) ||
-            debugElement.query(By.css('p-autocomplete'));
     }));
 
     it('should initialize correctly', () => {

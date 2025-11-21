@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement, SimpleChange } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -68,26 +68,26 @@ describe('DynamicFoundationFormControlContainerComponent test suite', () => {
             imports: [DynamicFoundationFormControlContainerComponent, DynamicFoundationInputComponent],
             providers: [provideNgxMask()]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicFoundationFormControlContainerComponent);
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = inputModel;
+
+            component.ngOnChanges({
+                group: new SimpleChange(null, component.group, true),
+                model: new SimpleChange(null, component.model, true)
+            });
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = inputModel;
-
-        component.ngOnChanges({
-            group: new SimpleChange(null, component.group, true),
-            model: new SimpleChange(null, component.model, true)
-        });
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
     }));
 
     it('should initialize correctly', () => {

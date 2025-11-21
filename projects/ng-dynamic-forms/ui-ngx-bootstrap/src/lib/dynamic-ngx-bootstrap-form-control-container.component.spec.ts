@@ -1,4 +1,4 @@
-import { TestBed, inject, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { DebugElement, SimpleChange } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -40,24 +40,24 @@ import { DynamicNGxBootstrapTextAreaComponent } from './textarea/dynamic-ngx-boo
 import { DynamicNGxBootstrapTimePickerComponent } from './timepicker/dynamic-ngx-bootstrap-timepicker.component';
 
 describe('DynamicNGxFormBootstrapComponent test suite', () => {
-    const inputModel = new DynamicInputModel({id: 'input', maxLength: 51});
+    const inputModel = new DynamicInputModel({ id: 'input', maxLength: 51 });
     const formModel = [
-        new DynamicCheckboxModel({id: 'checkbox'}),
-        new DynamicCheckboxGroupModel({id: 'checkboxGroup', group: []}),
-        new DynamicColorPickerModel({id: 'colorpicker'}),
-        new DynamicDatePickerModel({id: 'datepicker'}),
-        new DynamicEditorModel({id: 'editor'}),
-        new DynamicFileUploadModel({id: 'upload', url: ''}),
-        new DynamicFormArrayModel({id: 'formArray', groupFactory: () => []}),
-        new DynamicFormGroupModel({id: 'formGroup', group: []}),
+        new DynamicCheckboxModel({ id: 'checkbox' }),
+        new DynamicCheckboxGroupModel({ id: 'checkboxGroup', group: [] }),
+        new DynamicColorPickerModel({ id: 'colorpicker' }),
+        new DynamicDatePickerModel({ id: 'datepicker' }),
+        new DynamicEditorModel({ id: 'editor' }),
+        new DynamicFileUploadModel({ id: 'upload', url: '' }),
+        new DynamicFormArrayModel({ id: 'formArray', groupFactory: () => [] }),
+        new DynamicFormGroupModel({ id: 'formGroup', group: [] }),
         inputModel,
-        new DynamicRadioGroupModel({id: 'radioGroup'}),
-        new DynamicRatingModel({id: 'rating'}),
-        new DynamicSelectModel({id: 'select', options: [{value: 'One'}, {value: 'Two'}], value: 'One'}),
-        new DynamicSliderModel({id: 'slider'}),
-        new DynamicSwitchModel({id: 'switch'}),
-        new DynamicTextAreaModel({id: 'textarea'}),
-        new DynamicTimePickerModel({id: 'timepicker'})
+        new DynamicRadioGroupModel({ id: 'radioGroup' }),
+        new DynamicRatingModel({ id: 'rating' }),
+        new DynamicSelectModel({ id: 'select', options: [{ value: 'One' }, { value: 'Two' }], value: 'One' }),
+        new DynamicSliderModel({ id: 'slider' }),
+        new DynamicSwitchModel({ id: 'switch' }),
+        new DynamicTextAreaModel({ id: 'textarea' }),
+        new DynamicTimePickerModel({ id: 'timepicker' })
     ];
 
     let formGroup: UntypedFormGroup;
@@ -71,27 +71,27 @@ describe('DynamicNGxFormBootstrapComponent test suite', () => {
             imports: [DynamicNGxBootstrapFormControlContainerComponent, DynamicNGxBootstrapInputComponent],
             providers: [provideNgxMask()]
         }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
+
             fixture = TestBed.createComponent(DynamicNGxBootstrapFormControlContainerComponent);
 
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
+
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = inputModel;
+
+            component.ngOnChanges({
+                group: new SimpleChange(null, component.group, true),
+                model: new SimpleChange(null, component.model, true)
+            });
+
+            fixture.detectChanges();
+
+            testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
         });
-    }));
-
-    beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-        formGroup = service.createFormGroup(formModel);
-
-        component.group = formGroup;
-        component.model = inputModel;
-
-        component.ngOnChanges({
-            group: new SimpleChange(null, component.group, true),
-            model: new SimpleChange(null, component.model, true)
-        });
-
-        fixture.detectChanges();
-
-        testElement = debugElement.query(By.css(`input[id='${inputModel.id}']`));
     }));
 
     it('should initialize correctly', () => {
