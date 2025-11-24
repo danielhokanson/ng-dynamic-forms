@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-ui-foundation",
-  "version": "19.0.3",
+  "version": "21.0.0",
   "description": "Foundation UI package for NG Dynamic Forms",
   "keywords": [
     "angular",
@@ -29,7 +29,7 @@
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@danielhokanson/ng-dynamic-forms-core": "^19.0.3",
+    "@danielhokanson/ng-dynamic-forms-core": "^21.0.0",
     "foundation-sites": "^6.9.0",
     "ngx-mask": "^18.0.4"
   },

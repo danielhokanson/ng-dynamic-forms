@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-schematics",
-  "version": "18.0.1",
+  "version": "21.0.0",
   "description": "NG Dynamic Forms schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
