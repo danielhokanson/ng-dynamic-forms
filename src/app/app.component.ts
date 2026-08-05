@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 // import { Response, ResponseOptions } from "@angular/http";
 // import { MockBackend } from "@angular/http/testing";
 import { Router, NavigationEnd, RouterOutlet, RouterLink } from '@angular/router';
@@ -8,6 +8,7 @@ import { NgStyle } from '@angular/common';
     selector: 'ng-dynamic-forms-app-root',
     templateUrl: './app.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterOutlet, RouterLink, NgStyle]
 })
 export class AppComponent {

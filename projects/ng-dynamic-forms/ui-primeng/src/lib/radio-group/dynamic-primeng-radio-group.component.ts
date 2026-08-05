@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormLayout,
@@ -15,6 +15,7 @@ import { NgClass, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-primeng-radio-group',
     templateUrl: './dynamic-primeng-radio-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, RadioButtonModule, AsyncPipe]
 })
 export class DynamicPrimeNGRadioGroupComponent extends DynamicFormControlComponent {

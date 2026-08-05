@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 // TODO: Spinner component removed in PrimeNG 19, need to replace with InputNumber or remove
 // import { Spinner, SpinnerModule } from 'primeng/spinner';
@@ -17,6 +17,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-spinner',
     templateUrl: './dynamic-primeng-spinner.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, InputNumberModule]
 })
 export class DynamicPrimeNGSpinnerComponent extends DynamicFormControlComponent {

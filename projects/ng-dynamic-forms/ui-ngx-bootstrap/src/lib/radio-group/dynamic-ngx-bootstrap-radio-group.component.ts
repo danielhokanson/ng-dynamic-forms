@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent, DynamicFormControlLayout,
@@ -14,6 +14,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     selector: 'dynamic-ngx-bootstrap-radio-group',
     templateUrl: './dynamic-ngx-bootstrap-radio-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, ButtonsModule, NgClass, NgFor, AsyncPipe]
 })
 export class DynamicNGxBootstrapRadioGroupComponent extends DynamicFormControlComponent {

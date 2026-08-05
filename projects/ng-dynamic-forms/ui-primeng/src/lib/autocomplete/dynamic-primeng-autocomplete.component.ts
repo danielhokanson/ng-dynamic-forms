@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AutoComplete, AutoCompleteModule } from 'primeng/autocomplete';
 import {
@@ -18,6 +18,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-autocomplete',
     templateUrl: './dynamic-primeng-autocomplete.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, AutoCompleteModule]
 })
 export class DynamicPrimeNGAutoCompleteComponent extends DynamicPrimeNGFormControlWithTemplateComponent {

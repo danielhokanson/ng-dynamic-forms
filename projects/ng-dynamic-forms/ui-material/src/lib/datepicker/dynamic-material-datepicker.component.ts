@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
@@ -18,6 +18,7 @@ import { NgClass, NgIf, NgFor } from '@angular/common';
     selector: 'dynamic-material-datepicker',
     templateUrl: './dynamic-material-datepicker.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, NgIf, MatInputModule, MatDatepickerModule, NgFor]
 })
 export class DynamicMaterialDatePickerComponent extends DynamicFormControlComponent {

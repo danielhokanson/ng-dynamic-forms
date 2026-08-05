@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { JsonPipe, NgFor } from '@angular/common';
 import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
@@ -15,6 +15,7 @@ import { BASIC_SAMPLE_FORM_MODEL, BASIC_SAMPLE_FORM_ARRAY_MODEL } from './basic-
     selector: 'dynamic-basic-sample-form',
     templateUrl: './basic-sample-form.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgFor, JsonPipe, ReactiveFormsModule, DynamicBasicFormControlContainerComponent, DynamicTemplateDirective]
 })
 export class BasicSampleFormComponent {

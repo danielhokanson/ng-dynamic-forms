@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'dynamic-ng-bootstrap-checkbox',
     templateUrl: './dynamic-ng-bootstrap-checkbox.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass]
 })

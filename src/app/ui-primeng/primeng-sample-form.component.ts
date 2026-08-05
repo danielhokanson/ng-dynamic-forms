@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlModel,
@@ -17,6 +17,7 @@ import { DynamicPrimeNGFormComponent } from '@danielhokanson/ng-dynamic-forms-ui
     templateUrl: './primeng-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [JsonPipe, ReactiveFormsModule, DynamicPrimeNGFormComponent]
 })
 export class PrimeNGSampleFormComponent {

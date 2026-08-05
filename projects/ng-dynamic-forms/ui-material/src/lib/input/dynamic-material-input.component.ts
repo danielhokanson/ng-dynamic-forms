@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -23,6 +23,7 @@ import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-material-input',
     templateUrl: './dynamic-material-input.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, NgIf, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule,
         AsyncPipe]
 })

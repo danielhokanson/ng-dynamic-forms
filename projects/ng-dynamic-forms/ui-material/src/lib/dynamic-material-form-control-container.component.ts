@@ -167,6 +167,7 @@ export function materialUIFormControlMapFn(model: DynamicFormControlModel): Type
     selector: 'dynamic-material-form-array',
     templateUrl: './dynamic-material-form-array.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicMaterialFormControlContainerComponent]
 })
 export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent {
@@ -206,6 +207,7 @@ export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent
     selector: 'dynamic-material-form-group',
     templateUrl: './dynamic-material-form-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, DynamicMaterialFormControlContainerComponent]
 })
 export class DynamicMaterialFormGroupComponent extends DynamicFormGroupComponent {

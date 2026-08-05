@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, EventEmitter, OnDestroy, OnInit, QueryList } from '@angular/core';
+import { ChangeDetectorRef, Directive, EventEmitter, inject, OnDestroy, OnInit, QueryList } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { DynamicFormControlContainerComponent } from './dynamic-form-control-container.component';
 import { DynamicFormControlEvent } from './dynamic-form-control-event';
@@ -9,7 +9,6 @@ import { DynamicFormLayout } from '../service/dynamic-form-layout.service';
 import { DynamicFormComponentService } from '../service/dynamic-form-component.service';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
 export abstract class DynamicFormComponent implements OnInit, OnDestroy {
     group!: UntypedFormGroup;
     model!: DynamicFormModel;
@@ -22,11 +21,18 @@ export abstract class DynamicFormComponent implements OnInit, OnDestroy {
     change?: EventEmitter<DynamicFormControlEvent>;
     focus?: EventEmitter<DynamicFormControlEvent>;
 
-    // TODO: Migrate to inject() function - base class constructor, requires careful migration
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    protected constructor(protected changeDetectorRef: ChangeDetectorRef,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected componentService: DynamicFormComponentService) {
+    protected changeDetectorRef: ChangeDetectorRef;
+    protected componentService: DynamicFormComponentService;
+
+    /**
+     * All dependencies are resolved via inject() when not passed explicitly, so subclasses
+     * no longer need to declare a constructor. Passing them through super(...) remains
+     * supported for backward compatibility with existing custom UI stacks.
+     */
+    protected constructor(changeDetectorRef?: ChangeDetectorRef,
+                          componentService?: DynamicFormComponentService) {
+        this.changeDetectorRef = changeDetectorRef ?? inject(ChangeDetectorRef);
+        this.componentService = componentService ?? inject(DynamicFormComponentService);
     }
 
     ngOnInit(): void {

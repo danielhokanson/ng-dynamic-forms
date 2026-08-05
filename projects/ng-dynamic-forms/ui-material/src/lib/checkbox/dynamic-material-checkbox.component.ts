@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
@@ -17,6 +17,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-material-checkbox',
     templateUrl: './dynamic-material-checkbox.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, MatCheckboxModule, NgClass]
 })
 export class DynamicMaterialCheckboxComponent extends DynamicFormControlComponent {

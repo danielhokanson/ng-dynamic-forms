@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Slider, SliderModule } from 'primeng/slider';
 import {
@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-slider',
     templateUrl: './dynamic-primeng-slider.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, SliderModule]
 })
 export class DynamicPrimeNGSliderComponent extends DynamicFormControlComponent {

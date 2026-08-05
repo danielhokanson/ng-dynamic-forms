@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -17,6 +17,7 @@ import { NgClass, NgIf } from '@angular/common';
     selector: 'dynamic-material-slide-toggle',
     templateUrl: './dynamic-material-slide-toggle.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, MatSlideToggleModule, NgClass, NgIf]
 })
 export class DynamicMaterialSlideToggleComponent extends DynamicFormControlComponent {

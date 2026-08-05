@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
@@ -16,6 +16,7 @@ import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-ngx-bootstrap-input',
     templateUrl: './dynamic-ngx-bootstrap-input.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgIf, DynamicFormsCoreModule, NgClass, NgxMaskDirective, NgFor, AsyncPipe]
 })
 export class DynamicNGxBootstrapInputComponent extends DynamicFormControlComponent {

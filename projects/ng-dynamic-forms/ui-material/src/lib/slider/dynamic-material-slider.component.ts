@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSlider, MatSliderModule } from '@angular/material/slider';
 import {
@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-material-slider',
     templateUrl: './dynamic-material-slider.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, MatSliderModule, NgClass]
 })
 export class DynamicMaterialSliderComponent extends DynamicFormControlComponent {

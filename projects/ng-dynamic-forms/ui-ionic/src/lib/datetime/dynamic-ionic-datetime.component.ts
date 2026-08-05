@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonDatetime, IonicModule } from '@ionic/angular';
 import {
@@ -16,6 +16,7 @@ import { NgIf, NgClass } from '@angular/common';
     selector: 'dynamic-ionic-datetime',
     templateUrl: './dynamic-ionic-datetime.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IonicModule, ReactiveFormsModule, NgIf, NgClass]
 })
 export class DynamicIonicDateTimeComponent extends DynamicFormControlComponent {

@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'dynamic-ng-bootstrap-switch',
     templateUrl: './dynamic-ng-bootstrap-switch.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass]
 })

@@ -1,8 +1,8 @@
 import {
     ChangeDetectorRef,
-    ComponentFactoryResolver,
     ComponentRef, Directive,
     EventEmitter,
+    inject,
     OnChanges,
     OnDestroy,
     OnInit,
@@ -48,7 +48,6 @@ import { DynamicFormArrayComponent } from './dynamic-form-array.component';
 import { bufferCount, filter, map } from 'rxjs/operators';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
 export abstract class DynamicFormControlContainerComponent implements OnChanges, OnInit, OnDestroy {
     private _hasFocus = false;
 
@@ -74,20 +73,29 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     protected componentSubscriptions: Subscription[] = [];
     protected controlLayout?: DynamicFormControlLayout;
     protected subscriptions: Subscription[] = [];
+    private statusChangesSubscription?: Subscription;
 
-    // TODO: Migrate to inject() function - base class constructor with multiple dependencies, requires careful migration
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    protected constructor(protected changeDetectorRef: ChangeDetectorRef,
-        // eslint-disable-next-line @angular-eslint/prefer-inject
-        protected componentFactoryResolver: ComponentFactoryResolver,
-        // eslint-disable-next-line @angular-eslint/prefer-inject
-        protected layoutService: DynamicFormLayoutService,
-        // eslint-disable-next-line @angular-eslint/prefer-inject
-        protected validationService: DynamicFormValidationService,
-        // eslint-disable-next-line @angular-eslint/prefer-inject
-        protected componentService: DynamicFormComponentService,
-        // eslint-disable-next-line @angular-eslint/prefer-inject
-        protected relationService: DynamicFormRelationService) {
+    protected changeDetectorRef: ChangeDetectorRef;
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+    protected componentService: DynamicFormComponentService;
+    protected relationService: DynamicFormRelationService;
+
+    /**
+     * All dependencies are resolved via inject() when not passed explicitly, so subclasses
+     * no longer need to declare a constructor. Passing them through super(...) remains
+     * supported for backward compatibility with existing custom UI stacks.
+     */
+    protected constructor(changeDetectorRef?: ChangeDetectorRef,
+                          layoutService?: DynamicFormLayoutService,
+                          validationService?: DynamicFormValidationService,
+                          componentService?: DynamicFormComponentService,
+                          relationService?: DynamicFormRelationService) {
+        this.changeDetectorRef = changeDetectorRef ?? inject(ChangeDetectorRef);
+        this.layoutService = layoutService ?? inject(DynamicFormLayoutService);
+        this.validationService = validationService ?? inject(DynamicFormValidationService);
+        this.componentService = componentService ?? inject(DynamicFormComponentService);
+        this.relationService = relationService ?? inject(DynamicFormRelationService);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -109,17 +117,18 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     ngOnInit(): void {
-        // Setup statusChanges subscription when control is available
         this.setupStatusChangesSubscription();
     }
 
     private setupStatusChangesSubscription(): void {
+        this.statusChangesSubscription?.unsubscribe();
+
         if (this.control) {
-            this.subscriptions.push(this.control.statusChanges.pipe(
+            this.statusChangesSubscription = this.control.statusChanges.pipe(
                 bufferCount(2, 1),
                 map(states => states[0]),
                 filter(previousState => previousState === 'PENDING')
-            ).subscribe(_status => this.markForCheck()));
+            ).subscribe(() => this.markForCheck());
         }
     }
 
@@ -223,10 +232,8 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
         const componentType = this.componentType;
 
         if (componentType !== null && this.model && this.group) {
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
-
             this.componentViewContainerRef.clear();
-            this.componentRef = this.componentViewContainerRef.createComponent(componentFactory);
+            this.componentRef = this.componentViewContainerRef.createComponent(componentType);
 
             const component = this.componentRef.instance;
 
@@ -267,11 +274,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     unsubscribe(): void {
-        // this.componentSubscriptions.forEach(subscription => subscription.unsubscribe());
-        // this.componentSubscriptions = [];
-
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
         this.subscriptions = [];
+
+        this.statusChangesSubscription?.unsubscribe();
+        this.statusChangesSubscription = undefined;
     }
 
     onControlValueChanges(value: any): void {

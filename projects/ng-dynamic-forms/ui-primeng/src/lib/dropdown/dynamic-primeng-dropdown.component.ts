@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Select, SelectModule } from 'primeng/select';
 import {
@@ -17,6 +17,7 @@ import { NgClass, AsyncPipe } from '@angular/common';
     selector: 'dynamic-primeng-dropdown',
     templateUrl: './dynamic-primeng-dropdown.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, SelectModule, AsyncPipe]
 })
 export class DynamicPrimeNGDropdownComponent extends DynamicPrimeNGFormControlWithTemplateComponent {

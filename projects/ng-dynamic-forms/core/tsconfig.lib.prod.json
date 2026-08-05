@@ -4,7 +4,12 @@
     "declarationMap": false
   },
   "angularCompilerOptions": {
-    "enableIvy": true,
-    "compilationMode": "partial"
+    "compilationMode": "partial",
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
   }
 }

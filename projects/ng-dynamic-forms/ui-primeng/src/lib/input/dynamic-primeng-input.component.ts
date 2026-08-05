@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputText, InputTextModule } from 'primeng/inputtext';
 import {
@@ -16,6 +16,7 @@ import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-primeng-input',
     templateUrl: './dynamic-primeng-input.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, InputTextModule, DynamicFormsCoreModule, NgIf, NgFor, AsyncPipe]
 })
 export class DynamicPrimeNGInputComponent extends DynamicFormControlComponent {

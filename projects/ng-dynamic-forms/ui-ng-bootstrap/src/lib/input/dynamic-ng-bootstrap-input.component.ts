@@ -15,7 +15,7 @@ import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
 @Component({
     selector: 'dynamic-ng-bootstrap-input',
     templateUrl: './dynamic-ng-bootstrap-input.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
     imports: [ReactiveFormsModule, NgIf, DynamicFormsCoreModule, NgClass, NgxMaskDirective, NgFor, AsyncPipe]
 })

@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from './dynamic-template.directive';
 
 @Component({
@@ -7,6 +7,7 @@ import { DynamicTemplateDirective, DYNAMIC_TEMPLATE_DIRECTIVE_ALIGNMENT } from '
         <ng-template modelId="test1"></ng-template>
         <ng-template modelId="test2" as="test"></ng-template>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 class TestComponent {

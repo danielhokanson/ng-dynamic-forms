@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -21,58 +20,58 @@
     ],
     "paths": {
       "@danielhokanson/ng-dynamic-forms-core": [
-        "dist/ng-dynamic-forms/core"
+        "./dist/ng-dynamic-forms/core"
       ],
       "@danielhokanson/ng-dynamic-forms-core/*": [
-        "dist/ng-dynamic-forms/core/*"
+        "./dist/ng-dynamic-forms/core/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-basic": [
-        "dist/ng-dynamic-forms/ui-basic"
+        "./dist/ng-dynamic-forms/ui-basic"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-basic/*": [
-        "dist/ng-dynamic-forms/ui-basic/*"
+        "./dist/ng-dynamic-forms/ui-basic/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-bootstrap": [
-        "dist/ng-dynamic-forms/ui-bootstrap"
+        "./dist/ng-dynamic-forms/ui-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-bootstrap/*": [
-        "dist/ng-dynamic-forms/ui-bootstrap/*"
+        "./dist/ng-dynamic-forms/ui-bootstrap/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-foundation": [
-        "dist/ng-dynamic-forms/ui-foundation"
+        "./dist/ng-dynamic-forms/ui-foundation"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-foundation/*": [
-        "dist/ng-dynamic-forms/ui-foundation/*"
+        "./dist/ng-dynamic-forms/ui-foundation/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ionic": [
-        "dist/ng-dynamic-forms/ui-ionic"
+        "./dist/ng-dynamic-forms/ui-ionic"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ionic/*": [
-        "dist/ng-dynamic-forms/ui-ionic/*"
+        "./dist/ng-dynamic-forms/ui-ionic/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-material": [
-        "dist/ng-dynamic-forms/ui-material"
+        "./dist/ng-dynamic-forms/ui-material"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-material/*": [
-        "dist/ng-dynamic-forms/ui-material/*"
+        "./dist/ng-dynamic-forms/ui-material/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap": [
-        "dist/ng-dynamic-forms/ui-ng-bootstrap"
+        "./dist/ng-dynamic-forms/ui-ng-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap/*": [
-        "dist/ng-dynamic-forms/ui-ng-bootstrap/*"
+        "./dist/ng-dynamic-forms/ui-ng-bootstrap/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-primeng": [
-        "dist/ng-dynamic-forms/ui-primeng"
+        "./dist/ng-dynamic-forms/ui-primeng"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-primeng/*": [
-        "dist/ng-dynamic-forms/ui-primeng/*"
+        "./dist/ng-dynamic-forms/ui-primeng/*"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap": [
-        "dist/ng-dynamic-forms/ui-ngx-bootstrap"
+        "./dist/ng-dynamic-forms/ui-ngx-bootstrap"
       ],
       "@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap/*": [
-        "dist/ng-dynamic-forms/ui-ngx-bootstrap/*"
+        "./dist/ng-dynamic-forms/ui-ngx-bootstrap/*"
       ]
     },
     "useDefineForClassFields": false

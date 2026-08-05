@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonRadioGroup, IonicModule } from '@ionic/angular';
 import {
@@ -15,6 +15,7 @@ import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-ionic-radio-group',
     templateUrl: './dynamic-ionic-radio-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, IonicModule, NgClass, NgIf, NgFor, AsyncPipe]
 })
 export class DynamicIonicRadioGroupComponent extends DynamicFormControlComponent {

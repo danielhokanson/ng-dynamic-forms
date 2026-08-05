@@ -18,14 +18,6 @@ export class DynamicFormComponentService {
     private forms: DynamicFormComponent[] = [];
     private formControls: { [key: string]: DynamicFormControlRef | DynamicFormControlRef[] } = {};
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor() {
-    }
 
     getForms(): IterableIterator<DynamicFormComponent> {
         return this.forms.values();

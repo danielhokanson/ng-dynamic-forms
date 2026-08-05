@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
     DynamicFormArrayModel,
@@ -18,6 +18,7 @@ import { JsonPipe } from '@angular/common';
     templateUrl: './foundation-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [JsonPipe, ReactiveFormsModule, DynamicFoundationFormComponent, DynamicTemplateDirective]
 })
 export class FoundationSampleFormComponent {

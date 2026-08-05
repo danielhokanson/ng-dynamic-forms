@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 import {
@@ -15,6 +15,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-colorpicker',
     templateUrl: './dynamic-primeng-colorpicker.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, ColorPickerModule]
 })
 export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlComponent {

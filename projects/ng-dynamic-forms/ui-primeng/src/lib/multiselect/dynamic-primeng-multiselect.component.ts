@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
 import {
@@ -15,6 +15,7 @@ import { NgClass, AsyncPipe } from '@angular/common';
     selector: 'dynamic-primeng-multiselect',
     templateUrl: './dynamic-primeng-multiselect.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, MultiSelectModule, AsyncPipe]
 })
 export class DynamicPrimeNGMultiSelectComponent extends DynamicFormControlComponent {

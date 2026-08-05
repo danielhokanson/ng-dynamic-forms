@@ -1,6 +1,6 @@
 {
   "name": "@danielhokanson/ng-dynamic-forms-core",
-  "version": "21.0.2",
+  "version": "22.0.0",
   "description": "A rapid form development library for Angular",
   "keywords": [
     "angular",
@@ -20,25 +20,17 @@
     "email": "ng2-dynamic-forms@udos86.de",
     "url": "https://github.com/udos86/ng-dynamic-forms"
   },
-  "main": "./bundles/core.umd.js",
-  "module": "./fesm5/core.js",
-  "typings": "./core.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/danielhokanson/ng-dynamic-forms/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^21.0.2",
-    "@angular/core": "^21.0.2",
-    "@angular/forms": "^21.0.2",
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
     "core-js": "^3.39.0",
     "rxjs": "^7.8.1"
   },
-  "es2015": "./fesm2015/core.js",
-  "esm2015": "./esm2015/core.js",
-  "esm5": "./esm5/core.js",
-  "fesm2015": "./fesm2015/core.js",
-  "fesm5": "./fesm5/core.js",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^2.8.1"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ToggleSwitch, ToggleSwitchModule } from 'primeng/toggleswitch';
 import {
@@ -15,6 +15,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-input-switch',
     templateUrl: './dynamic-primeng-input-switch.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, ToggleSwitchModule]
 })
 export class DynamicPrimeNGInputSwitchComponent extends DynamicFormControlComponent {

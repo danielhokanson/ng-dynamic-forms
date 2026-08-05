@@ -13,7 +13,7 @@ import { NgClass, NgFor, AsyncPipe } from '@angular/common';
 @Component({
     selector: 'dynamic-ng-bootstrap-select',
     templateUrl: './dynamic-ng-bootstrap-select.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgFor, AsyncPipe]
 })

@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DynamicListDirective } from './dynamic-list.directive';
 
@@ -9,6 +9,7 @@ import { DynamicListDirective } from './dynamic-list.directive';
         <div [dynamicList]="testList2"></div>
     `,
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [DynamicListDirective]
 })
 class TestComponent {

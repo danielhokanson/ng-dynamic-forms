@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputMask, InputMaskModule } from 'primeng/inputmask';
 import {
@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-input-mask',
     templateUrl: './dynamic-primeng-input-mask.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, InputMaskModule]
 })
 export class DynamicPrimeNGInputMaskComponent extends DynamicFormControlComponent {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerDirective, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {
@@ -16,6 +16,7 @@ import { NgClass, NgIf } from '@angular/common';
     selector: 'dynamic-ngx-bootstrap-datepicker',
     templateUrl: './dynamic-ngx-bootstrap-datepicker.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, BsDatepickerModule, NgClass, NgIf]
 })
 export class DynamicNGxBootstrapDatePickerComponent extends DynamicFormControlComponent {

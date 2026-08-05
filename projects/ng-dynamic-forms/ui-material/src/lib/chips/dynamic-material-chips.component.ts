@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -27,6 +27,7 @@ import { NgClass, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-material-chips',
     templateUrl: './dynamic-material-chips.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, MatChipsModule, NgFor, MatIconModule, MatInputModule, MatAutocompleteModule,
         MatOptionModule, AsyncPipe]
 })

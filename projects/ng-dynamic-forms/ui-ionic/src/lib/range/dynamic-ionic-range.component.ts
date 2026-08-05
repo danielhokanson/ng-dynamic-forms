@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonRange, IonicModule } from '@ionic/angular';
 import {
@@ -15,6 +15,7 @@ import { NgIf, NgClass } from '@angular/common';
     selector: 'dynamic-ionic-range',
     templateUrl: './dynamic-ionic-range.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IonicModule, ReactiveFormsModule, NgIf, NgClass]
 })
 export class DynamicIonicRangeComponent extends DynamicFormControlComponent {

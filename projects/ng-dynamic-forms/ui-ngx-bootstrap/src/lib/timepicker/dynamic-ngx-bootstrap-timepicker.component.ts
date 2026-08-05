@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TimepickerComponent, TimepickerModule } from 'ngx-bootstrap/timepicker';
 import {
@@ -15,6 +15,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-ngx-bootstrap-timepicker',
     templateUrl: './dynamic-ngx-bootstrap-timepicker.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, TimepickerModule, NgClass]
 })
 export class DynamicNGxBootstrapTimePickerComponent extends DynamicFormControlComponent {

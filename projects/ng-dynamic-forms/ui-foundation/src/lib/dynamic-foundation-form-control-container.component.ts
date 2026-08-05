@@ -137,6 +137,7 @@ export function foundationUIFormControlMapFn(model: DynamicFormControlModel): Ty
     selector: 'dynamic-foundation-form-array',
     templateUrl: './dynamic-foundation-form-array.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicFoundationFormControlContainerComponent]
 })
 export class DynamicFoundationFormArrayComponent extends DynamicFormArrayComponent {
@@ -176,6 +177,7 @@ export class DynamicFoundationFormArrayComponent extends DynamicFormArrayCompone
     selector: 'dynamic-foundation-form-group',
     templateUrl: './dynamic-foundation-form-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicFoundationFormControlContainerComponent]
 })
 export class DynamicFoundationFormGroupComponent extends DynamicFormGroupComponent {

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormArray, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormArrayModel,
@@ -21,6 +21,7 @@ import { DynamicNGxBootstrapFormComponent } from '@danielhokanson/ng-dynamic-for
     templateUrl: './ngx-bootstrap-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
 })
 export class NgxBootstrapSampleFormComponent {

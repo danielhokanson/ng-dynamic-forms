@@ -134,7 +134,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/core/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/core/ng-package.json"
@@ -171,7 +171,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-basic/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-basic/ng-package.json"
@@ -208,7 +208,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-bootstrap/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-bootstrap/ng-package.json"
@@ -245,7 +245,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-foundation/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-foundation/ng-package.json"
@@ -282,7 +282,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-ionic/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-ionic/ng-package.json"
@@ -319,7 +319,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-material/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-material/ng-package.json"
@@ -356,7 +356,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-ng-bootstrap/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-ng-bootstrap/ng-package.json"
@@ -393,7 +393,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-primeng/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-primeng/ng-package.json"
@@ -430,7 +430,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-dynamic-forms/ui-ngx-bootstrap/tsconfig.lib.json",
             "project": "projects/ng-dynamic-forms/ui-ngx-bootstrap/ng-package.json"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DatePicker, DatePickerModule } from 'primeng/datepicker';
 import {
@@ -18,6 +18,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-calendar',
     templateUrl: './dynamic-primeng-calendar.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, DatePickerModule]
 })
 export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent {

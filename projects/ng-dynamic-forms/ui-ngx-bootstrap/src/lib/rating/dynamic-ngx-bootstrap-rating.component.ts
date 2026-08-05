@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormLayout,
@@ -15,6 +15,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     selector: 'dynamic-ngx-bootstrap-rating',
     templateUrl: './dynamic-ngx-bootstrap-rating.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, RatingModule, NgClass]
 })
 export class DynamicNGxBootstrapRatingComponent extends DynamicFormControlComponent {

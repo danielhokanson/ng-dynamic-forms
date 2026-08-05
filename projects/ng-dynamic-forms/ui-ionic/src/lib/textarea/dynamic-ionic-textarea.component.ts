@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonTextarea, IonicModule } from '@ionic/angular';
 import {
@@ -15,6 +15,7 @@ import { NgIf, NgClass } from '@angular/common';
     selector: 'dynamic-ionic-textarea',
     templateUrl: './dynamic-ionic-textarea.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IonicModule, ReactiveFormsModule, NgIf, NgClass]
 })
 export class DynamicIonicTextAreaComponent extends DynamicFormControlComponent {

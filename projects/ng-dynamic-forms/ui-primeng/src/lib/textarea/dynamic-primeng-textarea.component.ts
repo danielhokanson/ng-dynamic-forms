@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Textarea, TextareaModule } from 'primeng/textarea';
 import {
@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-textarea',
     templateUrl: './dynamic-primeng-textarea.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, TextareaModule]
 })
 export class DynamicPrimeNGTextAreaComponent extends DynamicFormControlComponent {

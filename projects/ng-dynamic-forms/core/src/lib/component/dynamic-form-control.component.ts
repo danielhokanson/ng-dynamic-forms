@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, inject } from '@angular/core';
 import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { DynamicFormControl } from './dynamic-form-control-interface';
 import { DynamicFormControlCustomEvent } from './dynamic-form-control-event';
@@ -30,11 +30,18 @@ export abstract class DynamicFormControlComponent implements DynamicFormControl 
 
     private _hasFocus = false;
 
-    // TODO: Migrate to inject() function - base class constructor, requires careful migration
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    protected constructor(protected layoutService: DynamicFormLayoutService,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected validationService: DynamicFormValidationService) {
+    protected layoutService: DynamicFormLayoutService;
+    protected validationService: DynamicFormValidationService;
+
+    /**
+     * All dependencies are resolved via inject() when not passed explicitly, so subclasses
+     * no longer need to declare a constructor. Passing them through super(...) remains
+     * supported for backward compatibility with existing custom UI stacks.
+     */
+    protected constructor(layoutService?: DynamicFormLayoutService,
+                          validationService?: DynamicFormValidationService) {
+        this.layoutService = layoutService ?? inject(DynamicFormLayoutService);
+        this.validationService = validationService ?? inject(DynamicFormValidationService);
     }
 
     get control(): AbstractControl | never {

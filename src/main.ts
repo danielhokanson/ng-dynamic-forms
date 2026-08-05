@@ -2,7 +2,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { enableProdMode } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppComponent } from './app/app.component';
-import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import { withInterceptorsFromDi, provideHttpClient, withXhr } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NG_VALIDATORS, NG_ASYNC_VALIDATORS } from '@angular/forms';
 import { provideRouter } from '@angular/router';
@@ -21,7 +21,7 @@ bootstrapApplication(AppComponent, {
     providers: [
         provideRouter(appRoutes),
         provideAnimations(),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         {
             provide: LocationStrategy,
             useClass: HashLocationStrategy

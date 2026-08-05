@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
 import {
@@ -16,6 +16,7 @@ import { NgClass, NgFor, AsyncPipe } from '@angular/common';
     selector: 'dynamic-material-radio-group',
     templateUrl: './dynamic-material-radio-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, MatRadioModule, NgClass, NgFor, AsyncPipe]
 })
 export class DynamicMaterialRadioGroupComponent extends DynamicFormControlComponent {

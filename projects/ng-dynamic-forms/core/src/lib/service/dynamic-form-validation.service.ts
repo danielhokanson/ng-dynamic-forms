@@ -30,14 +30,6 @@ export class DynamicFormValidationService {
     private _DYNAMIC_VALIDATORS = inject<Map<string, Validator | ValidatorFactory>>(DYNAMIC_VALIDATORS, { optional: true });
     private _DYNAMIC_ERROR_MESSAGES_MATCHER = inject<DynamicErrorMessagesMatcher>(DYNAMIC_ERROR_MESSAGES_MATCHER, { optional: true });
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor() {
-    }
 
     private getValidatorFn(validatorName: string, validatorArgs: any = null,
                            validatorsToken: ValidatorsToken = (this._NG_VALIDATORS ? [...this._NG_VALIDATORS] as Validator[] : [])): Validator | never {

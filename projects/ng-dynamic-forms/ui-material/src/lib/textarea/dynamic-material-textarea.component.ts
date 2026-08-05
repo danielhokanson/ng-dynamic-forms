@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import {
@@ -18,6 +18,7 @@ import { NgClass, NgIf, NgFor } from '@angular/common';
     selector: 'dynamic-material-textarea',
     templateUrl: './dynamic-material-textarea.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, NgIf, MatInputModule, TextFieldModule, NgFor]
 })
 export class DynamicMaterialTextAreaComponent extends DynamicMaterialFormInputControlComponent {

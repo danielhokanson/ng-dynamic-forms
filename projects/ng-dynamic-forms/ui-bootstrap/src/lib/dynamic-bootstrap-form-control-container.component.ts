@@ -152,6 +152,7 @@ export function bootstrapUIFormControlMapFn(model: DynamicFormControlModel): Typ
     selector: 'dynamic-bootstrap-form-array',
     templateUrl: './dynamic-bootstrap-form-array.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicBootstrapFormControlContainerComponent]
 })
 export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponent {
@@ -191,6 +192,7 @@ export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponen
     selector: 'dynamic-bootstrap-form-group',
     templateUrl: './dynamic-bootstrap-form-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicBootstrapFormControlContainerComponent]
 })
 export class DynamicBootstrapFormGroupComponent extends DynamicFormGroupComponent {

@@ -7,7 +7,6 @@ import { DynamicFormLayoutService } from '../service/dynamic-form-layout.service
 import { DynamicFormValidationService } from '../service/dynamic-form-validation.service';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
 export abstract class DynamicFormControlWithTemplateComponent extends DynamicFormControlComponent
     implements DynamicFormControlWithTemplate, AfterViewInit {
 
@@ -15,11 +14,12 @@ export abstract class DynamicFormControlWithTemplateComponent extends DynamicFor
 
     templates?: QueryList<DynamicTemplateDirective> | DynamicTemplateDirective[];
 
-    // TODO: Migrate to inject() function - base class constructor, requires careful migration
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    protected constructor(protected layoutService: DynamicFormLayoutService,
-                          // eslint-disable-next-line @angular-eslint/prefer-inject
-                          protected validationService: DynamicFormValidationService) {
+    /**
+     * Dependencies are resolved via inject() in the base class when not passed explicitly;
+     * passing them through super(...) remains supported for backward compatibility.
+     */
+    protected constructor(layoutService?: DynamicFormLayoutService,
+                          validationService?: DynamicFormValidationService) {
         super(layoutService, validationService);
     }
 

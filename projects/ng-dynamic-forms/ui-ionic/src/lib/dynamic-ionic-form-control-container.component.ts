@@ -155,6 +155,7 @@ export function ionicUIFormControlMapFn(model: DynamicFormControlModel): Type<Dy
     selector: 'dynamic-ionic-form-array',
     templateUrl: './dynamic-ionic-form-array.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicIonicFormControlContainerComponent]
 })
 export class DynamicIonicFormArrayComponent extends DynamicFormArrayComponent {
@@ -194,6 +195,7 @@ export class DynamicIonicFormArrayComponent extends DynamicFormArrayComponent {
     selector: 'dynamic-ionic-form-group',
     templateUrl: './dynamic-ionic-form-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicIonicFormControlContainerComponent]
 })
 export class DynamicIonicFormGroupComponent extends DynamicFormGroupComponent {

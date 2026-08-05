@@ -134,6 +134,7 @@ export function basicUIFormControlMapFn(model: DynamicFormControlModel): Type<Dy
     selector: 'dynamic-basic-form-array',
     templateUrl: './dynamic-basic-form-array.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicBasicFormControlContainerComponent]
 })
 export class DynamicBasicFormArrayComponent extends DynamicFormArrayComponent {
@@ -174,6 +175,7 @@ export class DynamicBasicFormArrayComponent extends DynamicFormArrayComponent {
     selector: 'dynamic-basic-form-group',
     templateUrl: './dynamic-basic-form-group.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicBasicFormControlContainerComponent]
 })
 export class DynamicBasicFormGroupComponent extends DynamicFormGroupComponent {

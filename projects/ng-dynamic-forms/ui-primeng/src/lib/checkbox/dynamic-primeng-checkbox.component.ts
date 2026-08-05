@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Checkbox, CheckboxModule } from 'primeng/checkbox';
 import {
@@ -15,6 +15,7 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-checkbox',
     templateUrl: './dynamic-primeng-checkbox.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ReactiveFormsModule, NgClass, CheckboxModule]
 })
 export class DynamicPrimeNGCheckboxComponent extends DynamicFormControlComponent {

@@ -5,7 +5,7 @@
         <div *ngFor="let groupModel of model.groups; let idx = index" role="group"
              [formGroupName]="idx" [ngClass]="[getClass('element', 'group'), getClass('grid', 'group')]">
 
-            <ng-container *ngTemplateOutlet="startTemplate?.templateRef; context: groupModel"></ng-container>
+            <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: groupModel"></ng-container>
 
             <dynamic-ng-bootstrap-form-control *ngFor="let _model of groupModel.group"
                                                [context]="groupModel"
@@ -20,7 +20,7 @@
                                                (focus)="onFocus($event)"
                                                (ngbEvent)="onCustomEvent($event, null, true)"></dynamic-ng-bootstrap-form-control>
 
-            <ng-container *ngTemplateOutlet="endTemplate?.templateRef; context: groupModel"></ng-container>
+            <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: groupModel"></ng-container>
 
         </div>
 

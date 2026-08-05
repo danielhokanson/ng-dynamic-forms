@@ -8,7 +8,7 @@
            [innerHTML]="model.label"
            [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
 
-    <ng-container *ngTemplateOutlet="startTemplate?.templateRef; context: model"></ng-container>
+    <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
 
     <div [ngClass]="getClass('grid', 'control')">
 
@@ -26,7 +26,7 @@
 
     </ul>
 
-    <ng-container *ngTemplateOutlet="endTemplate?.templateRef; context: model"></ng-container>
+    <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
 
     <ng-content></ng-content>
 

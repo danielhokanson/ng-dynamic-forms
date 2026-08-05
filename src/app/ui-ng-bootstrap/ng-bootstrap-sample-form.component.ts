@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlEvent,
@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     templateUrl: './ng-bootstrap-sample-form.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGBootstrapFormComponent]
 })
 export class NGBootstrapSampleFormComponent {
