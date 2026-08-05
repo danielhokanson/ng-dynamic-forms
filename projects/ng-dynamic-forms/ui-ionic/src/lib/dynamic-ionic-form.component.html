@@ -1,10 +1,12 @@
-<dynamic-ionic-form-control *ngFor="let controlModel of model; trackBy: trackByFn"
-                            [group]="group"
-                            [hidden]="controlModel.hidden"
-                            [layout]="layout"
-                            [model]="controlModel"
-                            [templates]="templates"
-                            (blur)="onBlur($event)"
-                            (change)="onChange($event)"
-                            (focus)="onFocus($event)"
-                            (ionEvent)="onCustomEvent($event, ionEvent)"></dynamic-ionic-form-control>
+@for (controlModel of model; track trackByFn($index, controlModel)) {
+  <dynamic-ionic-form-control
+    [group]="group"
+    [hidden]="controlModel.hidden"
+    [layout]="layout"
+    [model]="controlModel"
+    [templates]="templates"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+  (ionEvent)="onCustomEvent($event, ionEvent)"></dynamic-ionic-form-control>
+}

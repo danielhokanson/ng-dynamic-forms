@@ -8,22 +8,18 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicSelectModel
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'dynamic-material-select',
     templateUrl: './dynamic-material-select.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatFormFieldModule, NgClass, ReactiveFormsModule, NgIf, MatSelectModule, NgFor, MatOptionModule, AsyncPipe]
+    imports: [MatFormFieldModule, NgClass, ReactiveFormsModule, MatSelectModule, MatOptionModule, AsyncPipe]
 })
 export class DynamicMaterialSelectComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
     errorStateMatcher = inject<ErrorStateMatcher>(ErrorStateMatcher);
     FORM_FIELD_OPTIONS = inject<MatFormFieldDefaultOptions>(MAT_FORM_FIELD_DEFAULT_OPTIONS, { optional: true });
     RIPPLE_OPTIONS = inject<RippleGlobalOptions>(MAT_RIPPLE_GLOBAL_OPTIONS, { optional: true });
@@ -40,18 +36,7 @@ export class DynamicMaterialSelectComponent extends DynamicFormControlComponent 
 
     @ViewChild('matSelect', {static: true}) matSelect!: MatSelect;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

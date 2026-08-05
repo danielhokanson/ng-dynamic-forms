@@ -1,28 +1,23 @@
-import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicCheckboxModel,
     DynamicCheckboxGroupModel,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dynamic-ngx-bootstrap-checkbox-group',
     templateUrl: './dynamic-ngx-bootstrap-checkbox-group.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, NgFor, ButtonsModule]
+    imports: [ReactiveFormsModule, NgClass, ButtonsModule]
 })
 export class DynamicNGxBootstrapCheckboxGroupComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -32,22 +27,14 @@ export class DynamicNGxBootstrapCheckboxGroupComponent extends DynamicFormContro
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
-    }
-
     getCheckboxId(model: DynamicCheckboxModel) {
         return this.layoutService.getElementId(model);
+    }
+
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
+    constructor() {
+        super();
     }
 }

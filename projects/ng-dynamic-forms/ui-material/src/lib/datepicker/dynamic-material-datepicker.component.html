@@ -1,52 +1,60 @@
 <mat-form-field [appearance]="model.getAdditional('appearance', 'fill')"
-                [color]="model.getAdditional('color', 'primary')"
-                [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
-                [formGroup]="group"
-                [hideRequiredMarker]="model.getAdditional('hideRequiredMarker', false)"
-                [ngClass]="getClass('grid', 'control')">
+  [color]="model.getAdditional('color', 'primary')"
+  [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
+  [formGroup]="group"
+  [hideRequiredMarker]="model.getAdditional('hideRequiredMarker', false)"
+  [ngClass]="getClass('grid', 'control')">
 
-    <ng-container *ngIf="model.label" ngProjectAs="mat-label">
-
-        <mat-label [innerHTML]="model.label"></mat-label>
-
+  @if (model.label) {
+    <ng-container ngProjectAs="mat-label">
+      <mat-label [innerHTML]="model.label"></mat-label>
     </ng-container>
+  }
 
-    <span *ngIf="model.prefix" matPrefix [innerHTML]="model.prefix"></span>
+  @if (model.prefix) {
+    <span matPrefix [innerHTML]="model.prefix"></span>
+  }
 
-    <input matInput
-          
-           [formControlName]="model.id"
-           [id]="id"
-           [max]="model.max"
-           [matDatepicker]="matDatepicker"
-           [min]="model.min"
-           [name]="model.name"
-           [ngClass]="getClass('element', 'control')"
-           [placeholder]="model.placeholder || ''"
-           [readonly]="model.readOnly"
-           [required]="model.required"
-           (blur)="onBlur($event)"
-           (dateChange)="onChange($event)"
-           (dateInput)="onCustomEvent($event, 'dateInput')"
-           (focus)="onFocus($event)"/>
+  <input matInput
 
-    <span *ngIf="model.suffix" matSuffix [innerHTML]="model.suffix"></span>
+    [formControlName]="model.id"
+    [id]="id"
+    [max]="model.max"
+    [matDatepicker]="matDatepicker"
+    [min]="model.min"
+    [name]="model.name"
+    [ngClass]="getClass('element', 'control')"
+    [placeholder]="model.placeholder || ''"
+    [readonly]="model.readOnly"
+    [required]="model.required"
+    (blur)="onBlur($event)"
+    (dateChange)="onChange($event)"
+    (dateInput)="onCustomEvent($event, 'dateInput')"
+    (focus)="onFocus($event)"/>
 
-    <mat-hint *ngIf="model.hint !== null" align="start" [innerHTML]="model.hint"></mat-hint>
+  @if (model.suffix) {
+    <span matSuffix [innerHTML]="model.suffix"></span>
+  }
+
+  @if (model.hint !== null) {
+    <mat-hint align="start" [innerHTML]="model.hint"></mat-hint>
+  }
 
 
-    <mat-datepicker-toggle matSuffix [for]="matDatepicker"></mat-datepicker-toggle>
+  <mat-datepicker-toggle matSuffix [for]="matDatepicker"></mat-datepicker-toggle>
 
-    <mat-datepicker #matDatepicker
-                    [opened]="model.getAdditional('opened', false)"
-                    [startAt]="model.focusedDate"
-                    [startView]="model.getAdditional('startView', 'month')"
-                    [touchUi]="model.getAdditional('touchUi', false)"
-                    (closed)="onCustomEvent($event, 'closed')"
-                    (monthSelected)="onCustomEvent($event, 'monthSelected')"
-                    (opened)="onCustomEvent($event, 'opened')"
-                    (yearSelected)="onCustomEvent($event, 'yearSelected')"></mat-datepicker>
+  <mat-datepicker #matDatepicker
+    [opened]="model.getAdditional('opened', false)"
+    [startAt]="model.focusedDate"
+    [startView]="model.getAdditional('startView', 'month')"
+    [touchUi]="model.getAdditional('touchUi', false)"
+    (closed)="onCustomEvent($event, 'closed')"
+    (monthSelected)="onCustomEvent($event, 'monthSelected')"
+    (opened)="onCustomEvent($event, 'opened')"
+  (yearSelected)="onCustomEvent($event, 'yearSelected')"></mat-datepicker>
 
-    <mat-error *ngFor="let message of errorMessages">{{ message }}</mat-error>
+  @for (message of errorMessages; track message) {
+    <mat-error>{{ message }}</mat-error>
+  }
 
 </mat-form-field>

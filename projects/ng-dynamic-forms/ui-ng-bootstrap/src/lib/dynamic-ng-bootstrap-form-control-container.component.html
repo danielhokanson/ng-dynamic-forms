@@ -1,28 +1,36 @@
 <div [class.form-group]="(model.type !== 'GROUP' && asBootstrapFormGroup) || getClass('element', 'container').includes('form-group')"
-     [formGroup]="group"
-     [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
+  [formGroup]="group"
+  [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
 
-    <label *ngIf="!isCheckbox && hasLabel"
-           [for]="id"
-           [innerHTML]="model.label"
-           [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  @if (!isCheckbox && hasLabel) {
+    <label
+      [for]="id"
+      [innerHTML]="model.label"
+    [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
 
-    <div [ngClass]="getClass('grid', 'control')">
+  <div [ngClass]="getClass('grid', 'control')">
 
-        <ng-container #componentViewContainer></ng-container>
+    <ng-container #componentViewContainer></ng-container>
 
-        <small *ngIf="hasHint" class="text-muted" [innerHTML]="hint" [ngClass]="getClass('element', 'hint')"></small>
+    @if (hasHint) {
+      <small class="text-muted" [innerHTML]="hint" [ngClass]="getClass('element', 'hint')"></small>
+    }
 
-        <div *ngIf="showErrorMessages" [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
-            <small *ngFor="let message of errorMessages" class="invalid-feedback d-block">{{ message }}</small>
-        </div>
+    @if (showErrorMessages) {
+      <div [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
+        @for (message of errorMessages; track message) {
+          <small class="invalid-feedback d-block">{{ message }}</small>
+        }
+      </div>
+    }
 
-    </div>
+  </div>
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
 
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 
 </div>

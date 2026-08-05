@@ -16,24 +16,19 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicInputModel
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { MatIconModule } from '@angular/material/icon';
-import { NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'dynamic-material-chips',
     templateUrl: './dynamic-material-chips.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, MatChipsModule, NgFor, MatIconModule, MatInputModule, MatAutocompleteModule,
-        MatOptionModule, AsyncPipe]
+    imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, MatChipsModule, MatIconModule, MatInputModule, MatAutocompleteModule, MatOptionModule, AsyncPipe]
 })
 export class DynamicMaterialChipsComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
     AUTOCOMPLETE_OPTIONS = inject<MatAutocompleteDefaultOptions>(MAT_AUTOCOMPLETE_DEFAULT_OPTIONS);
     CHIPS_OPTIONS = inject<MatChipsDefaultOptions>(MAT_CHIPS_DEFAULT_OPTIONS);
     FORM_FIELD_OPTIONS = inject<MatFormFieldDefaultOptions>(MAT_FORM_FIELD_DEFAULT_OPTIONS, { optional: true });
@@ -53,19 +48,8 @@ export class DynamicMaterialChipsComponent extends DynamicFormControlComponent {
     @ViewChild('matChipGrid', {static: true}) matChipGrid!: MatChipGrid;
     @ViewChild(MatInput, {static: true}) matInput!: MatInput;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 
     get chips(): string[] {

@@ -1,41 +1,51 @@
 <mat-form-field [appearance]="model.getAdditional('appearance', 'fill')"
-                [color]="model.getAdditional('color', 'primary')"
-                [ngClass]="getClass('grid', 'control')"
-                [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
-                [formGroup]="group">
+  [color]="model.getAdditional('color', 'primary')"
+  [ngClass]="getClass('grid', 'control')"
+  [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
+  [formGroup]="group">
 
-    <ng-container *ngIf="model.label" ngProjectAs="mat-label">
-
-        <mat-label [innerHTML]="model.label"></mat-label>
-
+  @if (model.label) {
+    <ng-container ngProjectAs="mat-label">
+      <mat-label [innerHTML]="model.label"></mat-label>
     </ng-container>
+  }
 
-    <span *ngIf="model.prefix" matPrefix [innerHTML]="model.prefix"></span>
+  @if (model.prefix) {
+    <span matPrefix [innerHTML]="model.prefix"></span>
+  }
 
-    <mat-select #matSelect
-                [compareWith]="model.compareWithFn"
-                [disableOptionCentering]="model.getAdditional('disableOptionCentering', false)"
-                [disableRipple]="model.getAdditional('disableRipple', RIPPLE_OPTIONS && RIPPLE_OPTIONS['disabled'] || false)"
-                [errorStateMatcher]="model.getAdditional('errorStateMatcher', errorStateMatcher)"
-                [formControlName]="model.id"
-                [id]="id"
-                [multiple]="model.multiple"
-                [ngClass]="getClass('element', 'control')"
-                [placeholder]="model.placeholder"
-                [required]="model.required"
-                (openedChange)="onCustomEvent($event, 'openedChange')"
-                (selectionChange)="onChange($event)">
+  <mat-select #matSelect
+    [compareWith]="model.compareWithFn"
+    [disableOptionCentering]="model.getAdditional('disableOptionCentering', false)"
+    [disableRipple]="model.getAdditional('disableRipple', RIPPLE_OPTIONS && RIPPLE_OPTIONS['disabled'] || false)"
+    [errorStateMatcher]="model.getAdditional('errorStateMatcher', errorStateMatcher)"
+    [formControlName]="model.id"
+    [id]="id"
+    [multiple]="model.multiple"
+    [ngClass]="getClass('element', 'control')"
+    [placeholder]="model.placeholder"
+    [required]="model.required"
+    (openedChange)="onCustomEvent($event, 'openedChange')"
+    (selectionChange)="onChange($event)">
 
-        <mat-option *ngFor="let option of model.options$ | async"
-                    [disabled]="option.disabled"
-                    [ngClass]="getClass('element', 'option')"
-                    [value]="option.value"><span [innerHTML]="option.label"></span></mat-option>
+    @for (option of model.options$ | async; track option) {
+      <mat-option
+        [disabled]="option.disabled"
+        [ngClass]="getClass('element', 'option')"
+        [value]="option.value"><span [innerHTML]="option.label"></span></mat-option>
+      }
     </mat-select>
 
-    <span *ngIf="model.suffix" matSuffix [innerHTML]="model.suffix"></span>
+    @if (model.suffix) {
+      <span matSuffix [innerHTML]="model.suffix"></span>
+    }
 
-    <mat-hint *ngIf="model.hint !== null" align="start" [innerHTML]="model.hint"></mat-hint>
+    @if (model.hint !== null) {
+      <mat-hint align="start" [innerHTML]="model.hint"></mat-hint>
+    }
 
-    <mat-error *ngFor="let message of errorMessages">{{ message }}</mat-error>
+    @for (message of errorMessages; track message) {
+      <mat-error>{{ message }}</mat-error>
+    }
 
-</mat-form-field>
+  </mat-form-field>

@@ -1,11 +1,9 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 import {
     DynamicColorPickerModel,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicFormControlLayout
 } from '@danielhokanson/ng-dynamic-forms-core';
@@ -19,9 +17,6 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, ColorPickerModule]
 })
 export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -33,18 +28,12 @@ export class DynamicPrimeNGColorPickerComponent extends DynamicFormControlCompon
 
     @ViewChild('pColorPicker', {static: true}) pColorPicker!: ColorPicker;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
+        super();
+    }
 
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+    get format(): 'hex' | 'rgb' | 'hsb' {
+        const format = this.model.format;
+        return format === 'rgb' || format === 'hsb' ? format : 'hex';
     }
 }

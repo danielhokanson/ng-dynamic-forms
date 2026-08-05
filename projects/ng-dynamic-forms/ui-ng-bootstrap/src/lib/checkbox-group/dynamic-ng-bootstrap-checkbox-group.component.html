@@ -1,26 +1,28 @@
-<!-- <ng-container [formGroup]="group">
+<ng-container [formGroup]="group">
 
-    <div class="btn-group btn-group-toggle" data-toggle="buttons"
-         [formGroupName]="model.id"
-         [id]="id"
-         [ngClass]="getClass('element', 'control')">
+  <div class="btn-group" role="group"
+    [formGroupName]="model.id"
+    [id]="id"
+    [ngClass]="getClass('element', 'control')">
 
-        <label *ngFor="let checkboxModel of model.group" ngbButtonLabel
-               [hidden]="checkboxModel.hidden"
-               [ngClass]="getClass('element', 'control', checkboxModel)">
+    @for (checkboxModel of model.group; track checkboxModel) {
+      <input type="checkbox" class="btn-check"
+        [formControlName]="checkboxModel.id"
+        [hidden]="checkboxModel.hidden"
+        [id]="getCheckboxId(checkboxModel)"
+        [name]="checkboxModel.name"
+        [required]="checkboxModel.required"
+        [tabindex]="checkboxModel.tabIndex"
+        (blur)="onBlur($event)"
+        (change)="onCheckboxChange($event, checkboxModel)"
+        (focus)="onFocus($event)"/>
+      <label class="btn btn-outline-secondary"
+        [attr.for]="getCheckboxId(checkboxModel)"
+        [hidden]="checkboxModel.hidden"
+        [innerHTML]="checkboxModel.label"
+      [ngClass]="getClass('element', 'control', checkboxModel)"></label>
+    }
 
-            <input type="checkbox" ngbButton
-                   [checked]="checkboxModel.checked"
-                   [formControlName]="checkboxModel.id"
-                   [id]="getCheckboxId(checkboxModel)"
-                   [name]="checkboxModel.name"
-                   [required]="checkboxModel.required"
-                   [tabindex]="checkboxModel.tabIndex"
-                   [value]="checkboxModel.value"
-                   (blur)="onBlur($event)"
-                   (change)="onCheckboxChange($event, checkboxModel)"
-                   (focus)="onFocus($event)"/><span [ngClass]="getClass('element', 'label', checkboxModel)"
-                                                    [innerHTML]="checkboxModel.label"></span></label>
-    </div>
+  </div>
 
-</ng-container> -->
+</ng-container>

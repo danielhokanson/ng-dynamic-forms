@@ -1,26 +1,21 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormControlComponent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicSelectModel
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'dynamic-bootstrap-select',
     templateUrl: './dynamic-bootstrap-select.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, NgFor, AsyncPipe]
+    imports: [ReactiveFormsModule, NgClass, AsyncPipe]
 })
 export class DynamicBootstrapSelectComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -30,18 +25,10 @@ export class DynamicBootstrapSelectComponent extends DynamicFormControlComponent
     @Output() change: EventEmitter<any> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSlider, MatSliderModule } from '@angular/material/slider';
 import {
@@ -6,8 +6,6 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicSliderModel
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { NgClass } from '@angular/common';
@@ -20,9 +18,6 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, MatSliderModule, NgClass]
 })
 export class DynamicMaterialSliderComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -35,18 +30,7 @@ export class DynamicMaterialSliderComponent extends DynamicFormControlComponent 
 
     @ViewChild('matSlider', {static: true}) matSlider!: MatSlider;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

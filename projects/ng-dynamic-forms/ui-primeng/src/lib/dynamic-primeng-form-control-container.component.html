@@ -1,22 +1,26 @@
 <div [formGroup]="group"
-     [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
+  [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
 
-    <div *ngIf="!isCheckbox && hasLabel" [ngClass]="getClass('grid', 'label')">
-
-        <label [for]="id" [innerHTML]="model.label" [ngClass]="getClass('element', 'label')"></label>
-
+  @if (!isCheckbox && hasLabel) {
+    <div [ngClass]="getClass('grid', 'label')">
+      <label [for]="id" [innerHTML]="model.label" [ngClass]="getClass('element', 'label')"></label>
     </div>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="startTemplate?.templateRef ?? null; context: model"></ng-container>
 
-    <ng-container #componentViewContainer></ng-container>
+  <ng-container #componentViewContainer></ng-container>
 
-    <ul *ngIf="showErrorMessages" [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
-        <li *ngFor="let message of errorMessages" class="ui-message ui-messages-error ui-corner-all">{{ message }}</li>
+  @if (showErrorMessages) {
+    <ul [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
+      @for (message of errorMessages; track message) {
+        <li class="ui-message ui-messages-error ui-corner-all">{{ message }}</li>
+      }
     </ul>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="endTemplate?.templateRef ?? null; context: model"></ng-container>
 
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 
 </div>

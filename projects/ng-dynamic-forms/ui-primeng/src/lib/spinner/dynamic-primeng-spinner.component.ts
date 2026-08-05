@@ -1,12 +1,8 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-// TODO: Spinner component removed in PrimeNG 19, need to replace with InputNumber or remove
-// import { Spinner, SpinnerModule } from 'primeng/spinner';
 import { InputNumber, InputNumberModule } from 'primeng/inputnumber';
 import {
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicInputModel,
     DynamicFormControlLayout
@@ -21,9 +17,6 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, InputNumberModule]
 })
 export class DynamicPrimeNGSpinnerComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -35,18 +28,23 @@ export class DynamicPrimeNGSpinnerComponent extends DynamicFormControlComponent 
 
     @ViewChild('pSpinner', {static: true}) pSpinner!: InputNumber;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
+        super();
+    }
 
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+    get minValue(): number | undefined {
+        return DynamicPrimeNGSpinnerComponent.asNumber(this.model.min);
+    }
+
+    get maxValue(): number | undefined {
+        return DynamicPrimeNGSpinnerComponent.asNumber(this.model.max);
+    }
+
+    private static asNumber(value: string | number | Date | null | undefined): number | undefined {
+        if (value === null || value === undefined) {
+            return undefined;
+        }
+
+        return typeof value === 'number' ? value : Number(value);
     }
 }

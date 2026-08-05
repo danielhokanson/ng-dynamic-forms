@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
 import {
@@ -6,23 +6,18 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicRadioGroupModel
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'dynamic-material-radio-group',
     templateUrl: './dynamic-material-radio-group.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, MatRadioModule, NgClass, NgFor, AsyncPipe]
+    imports: [ReactiveFormsModule, MatRadioModule, NgClass, AsyncPipe]
 })
 export class DynamicMaterialRadioGroupComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -35,18 +30,7 @@ export class DynamicMaterialRadioGroupComponent extends DynamicFormControlCompon
 
     @ViewChild('matRadioGroup', {static: true}) matRadioGroup!: MatRadioGroup;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

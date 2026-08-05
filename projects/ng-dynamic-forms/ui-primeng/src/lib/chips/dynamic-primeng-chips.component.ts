@@ -1,15 +1,10 @@
-// TODO: PrimeNG v20 removed the Chips component. Need to find a replacement or alternative implementation.
-// This component is temporarily disabled. For multiple input values, consider using AutoComplete in multiple mode.
-/*
-import { Component, EventEmitter, Input, Output, QueryList, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, QueryList, ViewChild } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Chips, ChipsModule } from 'primeng/chips';
+import { InputTags, InputTagsModule } from 'primeng/inputtags';
 import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicInputModel,
     DynamicTemplateDirective
 } from '@danielhokanson/ng-dynamic-forms-core';
@@ -21,12 +16,10 @@ import { NgClass } from '@angular/common';
     selector: 'dynamic-primeng-chips',
     templateUrl: './dynamic-primeng-chips.component.html',
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, ChipsModule]
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [ReactiveFormsModule, NgClass, InputTagsModule]
 })
 export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithTemplateComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     readonly templateDirectives = PRIME_NG_TEMPLATE_DIRECTIVES;
 
     @Input() formLayout?: DynamicFormLayout;
@@ -40,25 +33,13 @@ export class DynamicPrimeNGChipsComponent extends DynamicPrimeNGFormControlWithT
     @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
     @Output() focus: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('pChips', {static: true}) pChips!: Chips;
+    @ViewChild('pChips', {static: true}) pChips!: InputTags;
 
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 
-    get viewChild(): Chips {
+    get viewChild(): InputTags {
         return this.pChips;
     }
-}
-*/
-
-// Stub export to prevent import errors
-export class DynamicPrimeNGChipsComponent {
-    // This is a stub - the component is disabled due to PrimeNG v20 removing Chips
 }

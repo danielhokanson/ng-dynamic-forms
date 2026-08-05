@@ -1,10 +1,12 @@
-<dynamic-primeng-form-control *ngFor="let controlModel of model; trackBy: trackByFn"
-                              [group]="group"
-                              [hidden]="controlModel.hidden"
-                              [layout]="layout"
-                              [model]="controlModel"
-                              [templates]="templates"
-                              (blur)="onBlur($event)"
-                              (change)="onChange($event)"
-                              (focus)="onFocus($event)"
-                              (pEvent)="onCustomEvent($event, pEvent)"></dynamic-primeng-form-control>
+@for (controlModel of model; track trackByFn($index, controlModel)) {
+  <dynamic-primeng-form-control
+    [group]="group"
+    [hidden]="controlModel.hidden"
+    [layout]="layout"
+    [model]="controlModel"
+    [templates]="templates"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+  (pEvent)="onCustomEvent($event, pEvent)"></dynamic-primeng-form-control>
+}

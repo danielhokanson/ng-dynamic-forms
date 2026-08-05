@@ -1,28 +1,23 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputText, InputTextModule } from 'primeng/inputtext';
 import {
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicInputModel,
     DynamicFormControlLayout,
     DynamicFormsCoreModule
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'dynamic-primeng-input',
     templateUrl: './dynamic-primeng-input.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, InputTextModule, DynamicFormsCoreModule, NgIf, NgFor, AsyncPipe]
+    imports: [ReactiveFormsModule, NgClass, InputTextModule, DynamicFormsCoreModule, AsyncPipe]
 })
 export class DynamicPrimeNGInputComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -34,18 +29,7 @@ export class DynamicPrimeNGInputComponent extends DynamicFormControlComponent {
 
     @ViewChild('pInputText', {static: true}) pInputText!: InputText;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

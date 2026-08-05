@@ -1,10 +1,12 @@
-<dynamic-material-form-control *ngFor="let controlModel of model; trackBy: trackByFn"
-                               [group]="group"
-                               [hidden]="controlModel.hidden"
-                               [layout]="layout"
-                               [model]="controlModel"
-                               [templates]="templates"
-                               (blur)="onBlur($event)"
-                               (change)="onChange($event)"
-                               (focus)="onFocus($event)"
-                               (matEvent)="onCustomEvent($event, matEvent)"></dynamic-material-form-control>
+@for (controlModel of model; track trackByFn($index, controlModel)) {
+  <dynamic-material-form-control
+    [group]="group"
+    [hidden]="controlModel.hidden"
+    [layout]="layout"
+    [model]="controlModel"
+    [templates]="templates"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+  (matEvent)="onCustomEvent($event, matEvent)"></dynamic-material-form-control>
+}

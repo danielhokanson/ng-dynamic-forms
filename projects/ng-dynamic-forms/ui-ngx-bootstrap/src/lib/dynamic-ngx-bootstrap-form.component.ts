@@ -1,27 +1,22 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import {
     DynamicFormComponent,
-    DynamicFormComponentService,
     DynamicFormControlEvent,
     DynamicFormLayout,
     DynamicFormModel,
     DynamicTemplateDirective
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicNGxBootstrapFormControlContainerComponent } from './dynamic-ngx-bootstrap-form-control-container.component';
-import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'dynamic-ngx-bootstrap-form',
     templateUrl: './dynamic-ngx-bootstrap-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor, DynamicNGxBootstrapFormControlContainerComponent]
+    imports: [DynamicNGxBootstrapFormControlContainerComponent]
 })
 export class DynamicNGxBootstrapFormComponent extends DynamicFormComponent {
-    protected changeDetectorRef: ChangeDetectorRef;
-    protected componentService: DynamicFormComponentService;
-
     @Input() group!: UntypedFormGroup;
     @Input() model!: DynamicFormModel;
     @Input() layout?: DynamicFormLayout;
@@ -37,18 +32,10 @@ export class DynamicNGxBootstrapFormComponent extends DynamicFormComponent {
     @ViewChildren(DynamicNGxBootstrapFormControlContainerComponent)
     components!: QueryList<DynamicNGxBootstrapFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const changeDetectorRef = inject(ChangeDetectorRef);
-        const componentService = inject(DynamicFormComponentService);
-
-        super(changeDetectorRef, componentService);
-    
-        this.changeDetectorRef = changeDetectorRef;
-        this.componentService = componentService;
+        super();
     }
 }

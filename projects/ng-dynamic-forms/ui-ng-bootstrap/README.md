@@ -6,19 +6,25 @@ npm i @danielhokanson/ng-dynamic-forms-ui-ng-bootstrap -S
 ```
 
 ## Import
+
+All components are standalone — import them directly into your standalone component (the former `DynamicFormsNGBootstrapUIModule` NgModule no longer exists):
+
 ```ts
-@NgModule({
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicNGBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ng-bootstrap';
 
-    imports: [DynamicFormsNGBootstrapUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicNGBootstrapFormComponent],
+    // ...
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicNGBootstrapFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-ng-bootstrap-form [group]="myFormGroup"
@@ -26,15 +32,20 @@ with **`DynamicNGBootstrapFormComponent`**:
 </form>
 ```
 
-with **`DynamicNGBootstrapFormControlComponent`**:
-```ts
+with **`DynamicNGBootstrapFormControlContainerComponent`** (import it as `DynamicNGBootstrapFormControlContainerComponent`, selector `dynamic-ng-bootstrap-form-control`):
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-ng-bootstrap-form-control *ngFor="let controlModel of myFormModel"
-                                       [group]="myFormGroup"
-                                       [model]="controlModel"></dynamic-ng-bootstrap-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-ng-bootstrap-form-control [group]="myFormGroup"
+                                           [model]="controlModel"></dynamic-ng-bootstrap-form-control>
+    }
 </form>
 ```
+
+> **Note:** ng-bootstrap removed its buttons API (`NgbButtonsModule`) in version 12, so
+> `DynamicRadioGroupModel` and `DynamicCheckboxGroupModel` are rendered with plain
+> [Bootstrap 5 markup](https://getbootstrap.com/docs/5.3/forms/checks-radios/#radio-toggle-buttons).
 
 ## Form Controls
 

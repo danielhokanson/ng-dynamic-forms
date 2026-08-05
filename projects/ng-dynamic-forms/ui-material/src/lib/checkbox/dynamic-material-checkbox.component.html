@@ -7,7 +7,7 @@
                   [formControlName]="model.id"
                   [id]="id"
                   [indeterminate]="model.indeterminate"
-                  [labelPosition]="model.labelPosition || 'after'"
+                  [labelPosition]="labelPosition"
                   [name]="model.name"
                   [ngClass]="[getClass('element', 'control'), getClass('grid', 'control')]"
                   (blur)="onBlur($event)"

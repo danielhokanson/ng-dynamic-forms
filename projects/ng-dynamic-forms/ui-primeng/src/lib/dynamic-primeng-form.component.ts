@@ -1,27 +1,22 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import {
     DynamicFormComponent,
-    DynamicFormComponentService,
     DynamicFormControlEvent,
     DynamicFormLayout,
     DynamicFormModel,
     DynamicTemplateDirective
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicPrimeNGFormControlContainerComponent } from './dynamic-primeng-form-control-container.component';
-import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'dynamic-primeng-form',
     templateUrl: './dynamic-primeng-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor, DynamicPrimeNGFormControlContainerComponent]
+    imports: [DynamicPrimeNGFormControlContainerComponent]
 })
 export class DynamicPrimeNGFormComponent extends DynamicFormComponent {
-    protected changeDetectorRef: ChangeDetectorRef;
-    protected componentService: DynamicFormComponentService;
-
     @Input() group!: UntypedFormGroup;
     @Input() model!: DynamicFormModel;
     @Input() layout?: DynamicFormLayout;
@@ -36,18 +31,7 @@ export class DynamicPrimeNGFormComponent extends DynamicFormComponent {
 
     @ViewChildren(DynamicPrimeNGFormControlContainerComponent) components!: QueryList<DynamicPrimeNGFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const changeDetectorRef = inject(ChangeDetectorRef);
-        const componentService = inject(DynamicFormComponentService);
-
-        super(changeDetectorRef, componentService);
-    
-        this.changeDetectorRef = changeDetectorRef;
-        this.componentService = componentService;
+        super();
     }
 }

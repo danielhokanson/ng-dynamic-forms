@@ -1,21 +1,23 @@
 <ng-container [formGroup]="group">
 
-    <mat-radio-group #matRadioGroup
-                     [formControlName]="model.id"
-                     [id]="id"
-                     [labelPosition]="model.getAdditional('labelPosition', 'after')"
-                     [name]="model.name"
-                     [ngClass]="[getClass('element', 'control'), getClass('grid', 'control')]"
-                     [required]="model.required"
-                     (blur)="onBlur($event)"
-                     (change)="onChange($event)"
-                     (focus)="onFocus($event)">
+  <mat-radio-group #matRadioGroup
+    [formControlName]="model.id"
+    [id]="id"
+    [labelPosition]="model.getAdditional('labelPosition', 'after')"
+    [name]="model.name"
+    [ngClass]="[getClass('element', 'control'), getClass('grid', 'control')]"
+    [required]="model.required"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)">
 
-        <mat-radio-button *ngFor="let option of model.options$ | async"
-                          [name]="model.name"
-                          [ngClass]="getClass('element', 'option')"
-                          [value]="option.value"><span [innerHTML]="option.label"></span></mat-radio-button>
+    @for (option of model.options$ | async; track option) {
+      <mat-radio-button
+        [name]="model.name"
+        [ngClass]="getClass('element', 'option')"
+        [value]="option.value"><span [innerHTML]="option.label"></span></mat-radio-button>
+      }
 
     </mat-radio-group>
 
-</ng-container>
+  </ng-container>

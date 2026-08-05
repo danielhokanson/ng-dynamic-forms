@@ -1,29 +1,29 @@
 <ng-container [formGroup]="group">
 
-    <div [formArrayName]="model.id" [id]="id" [ngClass]="getClass('element', 'control')">
+  <div [formArrayName]="model.id" [id]="id" [ngClass]="getClass('element', 'control')">
 
-        <div *ngFor="let groupModel of model.groups; let idx = index" role="group"
-             [formGroupName]="idx" [ngClass]="[getClass('element', 'group'), getClass('grid', 'group')]">
+    @for (groupModel of model.groups; track groupModel; let idx = $index) {
+      <div role="group"
+        [formGroupName]="idx" [ngClass]="[getClass('element', 'group'), getClass('grid', 'group')]">
+        <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: groupModel"></ng-container>
+        @for (_model of groupModel.group; track _model) {
+          <dynamic-bootstrap-form-control
+            [context]="groupModel"
+            [group]="$any(array.at(idx))"
+            [hidden]="_model.hidden"
+            [layout]="formLayout"
+            [model]="_model"
+            [templates]="templates"
+            [hostClass]="[getClass('element','children'), getClass('grid','children')]"
+            (blur)="onBlur($event)"
+            (change)="onChange($event)"
+            (focus)="onFocus($event)"
+          (bsEvent)="onCustomEvent($event, null, true)"></dynamic-bootstrap-form-control>
+        }
+        <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: groupModel"></ng-container>
+      </div>
+    }
 
-            <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: groupModel"></ng-container>
-
-            <dynamic-bootstrap-form-control *ngFor="let _model of groupModel.group"
-                                            [context]="groupModel"
-                                            [group]="array.at(idx)"
-                                            [hidden]="_model.hidden"
-                                            [layout]="formLayout"
-                                            [model]="_model"
-                                            [templates]="templates"
-                                            [hostClass]="[getClass('element','children'), getClass('grid','children')]"
-                                            (blur)="onBlur($event)"
-                                            (change)="onChange($event)"
-                                            (focus)="onFocus($event)"
-                                            (bsEvent)="onCustomEvent($event, null, true)"></dynamic-bootstrap-form-control>
-
-            <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: groupModel"></ng-container>
-
-        </div>
-
-    </div>
+  </div>
 
 </ng-container>

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, inject } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlModel,
@@ -21,14 +21,12 @@ import { DynamicPrimeNGFormComponent } from '@danielhokanson/ng-dynamic-forms-ui
     imports: [JsonPipe, ReactiveFormsModule, DynamicPrimeNGFormComponent]
 })
 export class PrimeNGSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel: DynamicFormControlModel[] = PRIME_NG_SAMPLE_FORM_MODEL;
     formLayout: DynamicFormLayout = PRIME_NG_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     onChange($event: DynamicFormControlEvent) {
         console.debug(`PrimeNG change event on ${$event.model.id}: `, $event);

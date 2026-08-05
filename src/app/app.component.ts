@@ -1,6 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-// import { Response, ResponseOptions } from "@angular/http";
-// import { MockBackend } from "@angular/http/testing";
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
 
@@ -12,29 +10,12 @@ import { NgStyle } from '@angular/common';
     imports: [RouterOutlet, RouterLink, NgStyle]
 })
 export class AppComponent {
+    private router = inject(Router);
+
     routeData: any = {};
     url: string;
 
-    // TODO: Migrate to inject() function - requires manual review for Router injection
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(/*private mockBackend: MockBackend,*/ private router: Router) {
-        /*
-        this.mockBackend.connections.subscribe((connection: any) => {
-
-            let response = new Response({status: 200} as ResponseOptions);
-
-            if (connection.request.url === "saveUrl") {
-
-                connection.mockDownload(response);
-
-                setTimeout(() => connection.mockRespond(response), 1500);
-
-            } else if (connection.request.url === "removeUrl") {
-                connection.mockRespond(response);
-            }
-        });
-        */
-
+    constructor() {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 if (this.url !== '/' && this.url !== event.url) {

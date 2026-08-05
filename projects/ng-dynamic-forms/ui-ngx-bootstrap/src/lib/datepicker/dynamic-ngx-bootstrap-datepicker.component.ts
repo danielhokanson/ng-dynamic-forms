@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerDirective, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {
@@ -6,23 +6,18 @@ import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
-    DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService
+    DynamicFormLayout
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dynamic-ngx-bootstrap-datepicker',
     templateUrl: './dynamic-ngx-bootstrap-datepicker.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, BsDatepickerModule, NgClass, NgIf]
+    imports: [ReactiveFormsModule, BsDatepickerModule, NgClass]
 })
 export class DynamicNGxBootstrapDatePickerComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -35,18 +30,10 @@ export class DynamicNGxBootstrapDatePickerComponent extends DynamicFormControlCo
 
     @ViewChild(BsDatepickerDirective, {static: true}) bsDatePicker!: BsDatepickerDirective;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

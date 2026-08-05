@@ -19,7 +19,7 @@ describe('DynamicBootstrapRatingComponent test suite', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
-                RatingModule.forRoot(),
+                RatingModule,
                 DynamicBootstrapRatingComponent
             ]
         }).compileComponents().then(() => {

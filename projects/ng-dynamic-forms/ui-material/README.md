@@ -6,19 +6,27 @@ npm i @danielhokanson/ng-dynamic-forms-ui-material -S
 ```
 
 ## Import
+
+All components are standalone and are imported directly by the components that use them:
 ```ts
-@NgModule({
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+    DynamicMaterialFormComponent,
+    DynamicMaterialFormControlContainerComponent
+} from '@danielhokanson/ng-dynamic-forms-ui-material';
 
-    imports: [DynamicFormsMaterialUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicMaterialFormComponent, DynamicMaterialFormControlContainerComponent],
+    templateUrl: './my-form.component.html'
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicMaterialFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-material-form [group]="myFormGroup"
@@ -26,13 +34,14 @@ with **`DynamicMaterialFormComponent`**:
 </form>
 ```
 
-with **`DynamicMaterialFormControlComponent`**:
-```ts
+with **`DynamicMaterialFormControlContainerComponent`**:
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-material-form-control *ngFor="let controlModel of myFormModel"
-                                   [group]="myFormGroup"
-                                   [model]="controlModel"></dynamic-material-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-material-form-control [group]="myFormGroup"
+                                       [model]="controlModel"></dynamic-material-form-control>
+    }
 </form>
 ```
 

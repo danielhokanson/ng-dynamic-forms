@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DatePicker, DatePickerModule } from 'primeng/datepicker';
 import {
@@ -6,8 +6,6 @@ import {
     DynamicFormControlCustomEvent,
     DynamicDateControlValue,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicTimePickerModel,
     DynamicFormControlLayout
@@ -22,9 +20,6 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgClass, DatePickerModule]
 })
 export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -37,23 +32,20 @@ export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent
 
     @ViewChild('pCalendar', {static: true}) pCalendar!: DatePicker;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 
-    get focusedDate(): DynamicDateControlValue | null {
-        return (this.model as DynamicDatePickerModel).focusedDate ?? null;
+    get focusedDate(): Date | null {
+        return DynamicPrimeNGCalendarComponent.asDate((this.model as DynamicDatePickerModel).focusedDate);
+    }
+
+    get maxDate(): Date | null {
+        return DynamicPrimeNGCalendarComponent.asDate(this.model.max);
+    }
+
+    get minDate(): Date | null {
+        return DynamicPrimeNGCalendarComponent.asDate(this.model.min);
     }
 
     get inline(): boolean {
@@ -62,5 +54,17 @@ export class DynamicPrimeNGCalendarComponent extends DynamicFormControlComponent
 
     get showSeconds(): boolean {
         return (this.model as DynamicTimePickerModel).showSeconds ?? false;
+    }
+
+    private static asDate(value: DynamicDateControlValue | null | undefined): Date | null {
+        if (value === null || value === undefined) {
+            return null;
+        }
+
+        if (typeof value === 'string') {
+            return new Date(value);
+        }
+
+        return value as Date;
     }
 }

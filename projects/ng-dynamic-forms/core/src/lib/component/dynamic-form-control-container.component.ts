@@ -86,11 +86,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
      * no longer need to declare a constructor. Passing them through super(...) remains
      * supported for backward compatibility with existing custom UI stacks.
      */
-    protected constructor(changeDetectorRef?: ChangeDetectorRef,
-                          layoutService?: DynamicFormLayoutService,
-                          validationService?: DynamicFormValidationService,
-                          componentService?: DynamicFormComponentService,
-                          relationService?: DynamicFormRelationService) {
+    constructor(changeDetectorRef?: ChangeDetectorRef,
+                layoutService?: DynamicFormLayoutService,
+                validationService?: DynamicFormValidationService,
+                componentService?: DynamicFormComponentService,
+                relationService?: DynamicFormRelationService) {
         this.changeDetectorRef = changeDetectorRef ?? inject(ChangeDetectorRef);
         this.layoutService = layoutService ?? inject(DynamicFormLayoutService);
         this.validationService = validationService ?? inject(DynamicFormValidationService);

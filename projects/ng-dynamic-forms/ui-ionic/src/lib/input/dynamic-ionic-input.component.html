@@ -1,29 +1,31 @@
 <ion-item [formGroup]="group">
 
-    <ion-label *ngIf="model.label !== null"
-               [innerHTML]="model.label"
-               [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></ion-label>
+  @if (model.label !== null) {
+    <ion-label
+      [innerHTML]="model.label"
+    [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></ion-label>
+  }
 
-    <ion-input #ionInput
-               [autocapitalize]="model.getAdditional('autocapitalize', 'off')"
-               [autocomplete]="model.autoComplete"
-               [autocorrect]="model.getAdditional('autocorrect', 'off')"
-               [clearInput]="model.getAdditional('clearInput', true)"
-               [clearOnEdit]="model.getAdditional('clearOnEdit', false)"
-               [debounce]="model.getAdditional('debounce', 0)"
-               [formControlName]="model.id"
-               [id]="id"
-               [max]="model.max"
-               [min]="model.min"
-               [ngClass]="getClass('element', 'control')"
-               [pattern]="model.pattern"
-               [placeholder]="model.placeholder"
-               [readonly]="model.readOnly"
-               [spellcheck]="model.spellCheck"
-               [step]="model.step"
-               [type]="model.inputType"
-               (ionBlur)="onBlur($event)"
-               (ionChange)="onChange($event)"
-               (ionFocus)="onFocus($event)"></ion-input>
+  <ion-input #ionInput
+    [autocapitalize]="model.getAdditional('autocapitalize', 'off')"
+    [autocomplete]="model.autoComplete"
+    [autocorrect]="model.getAdditional('autocorrect', 'off')"
+    [clearInput]="model.getAdditional('clearInput', true)"
+    [clearOnEdit]="model.getAdditional('clearOnEdit', false)"
+    [debounce]="model.getAdditional('debounce', 0)"
+    [formControlName]="model.id"
+    [id]="id"
+    [max]="model.max"
+    [min]="model.min"
+    [ngClass]="getClass('element', 'control')"
+    [pattern]="model.pattern ?? ''"
+    [placeholder]="model.placeholder"
+    [readonly]="model.readOnly"
+    [spellcheck]="model.spellCheck"
+    [step]="model.step"
+    [type]="model.inputType"
+    (ionBlur)="onBlur($event)"
+    (ionChange)="onChange($event)"
+  (ionFocus)="onFocus($event)"></ion-input>
 
 </ion-item>

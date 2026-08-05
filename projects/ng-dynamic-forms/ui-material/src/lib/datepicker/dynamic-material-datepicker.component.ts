@@ -6,24 +6,21 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import {
     DynamicDatePickerModel,
     DynamicFormControlComponent,
-    DynamicFormControlCustomEvent, DynamicFormControlLayout,
-    DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService
+    DynamicFormControlCustomEvent,
+    DynamicFormControlLayout,
+    DynamicFormLayout
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { MatFormFieldDefaultOptions } from '@angular/material/form-field';
-import { NgClass, NgIf, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dynamic-material-datepicker',
     templateUrl: './dynamic-material-datepicker.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, NgIf, MatInputModule, MatDatepickerModule, NgFor]
+    imports: [MatFormFieldModule, ReactiveFormsModule, NgClass, MatInputModule, MatDatepickerModule]
 })
 export class DynamicMaterialDatePickerComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
     FORM_FIELD_OPTIONS = inject<MatFormFieldDefaultOptions>(MAT_FORM_FIELD_DEFAULT_OPTIONS, { optional: true });
 
     @Input() formLayout?: DynamicFormLayout;
@@ -39,18 +36,7 @@ export class DynamicMaterialDatePickerComponent extends DynamicFormControlCompon
     @ViewChild('matDatepicker', {static: true}) matDatePicker!: MatDatepicker<any>;
     @ViewChild(MatInput, {static: true}) matInput!: MatInput;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

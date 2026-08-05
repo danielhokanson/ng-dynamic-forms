@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList, Type, ViewChild, ViewChildren, ViewContainerRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList, Type, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
@@ -21,13 +21,9 @@ import {
     DynamicFormControlEvent,
     DynamicFormControlLayout,
     DynamicFormControlModel,
-    DynamicFormComponentService,
     DynamicFormGroupComponent,
     DynamicFormGroupModel,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormRelationService,
-    DynamicFormValidationService,
     DynamicFormValueControlModel,
     DynamicInputModel,
     DynamicTemplateDirective
@@ -42,23 +38,16 @@ import { DynamicMaterialRadioGroupComponent } from './radio-group/dynamic-materi
 import { DynamicMaterialChipsComponent } from './chips/dynamic-material-chips.component';
 import { DynamicMaterialSelectComponent } from './select/dynamic-material-select.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: 'dynamic-material-form-control',
     templateUrl: './dynamic-material-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor, MatFormFieldModule]
+    imports: [ReactiveFormsModule, NgClass, NgTemplateOutlet, MatFormFieldModule]
 })
 export class DynamicMaterialFormControlContainerComponent extends DynamicFormControlContainerComponent {
-    protected changeDetectorRef: ChangeDetectorRef;
-    protected componentFactoryResolver: ComponentFactoryResolver;
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-    protected componentService: DynamicFormComponentService;
-    protected relationService: DynamicFormRelationService;
-
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
     @HostBinding('class') klass?: string;
@@ -66,8 +55,6 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
-    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
-    // tslint:disable-next-line:no-input-rename
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
@@ -76,34 +63,13 @@ export class DynamicMaterialFormControlContainerComponent extends DynamicFormCon
     @Output() blur: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
-    // TODO: Output alias 'matEvent' may be for backward compatibility - review if safe to remove
-    // tslint:disable-next-line:no-output-rename
     // eslint-disable-next-line @angular-eslint/no-output-rename
     @Output('matEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
     @ViewChild('componentViewContainer', {read: ViewContainerRef, static: true}) componentViewContainerRef!: ViewContainerRef;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const changeDetectorRef = inject(ChangeDetectorRef);
-        const componentFactoryResolver = inject(ComponentFactoryResolver);
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-        const componentService = inject(DynamicFormComponentService);
-        const relationService = inject(DynamicFormRelationService);
-
-        super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
-    
-        this.changeDetectorRef = changeDetectorRef;
-        this.componentFactoryResolver = componentFactoryResolver;
-        this.layoutService = layoutService;
-        this.validationService = validationService;
-        this.componentService = componentService;
-        this.relationService = relationService;
+        super();
     }
 
     get componentType(): Type<DynamicFormControl> | null {
@@ -168,12 +134,9 @@ export function materialUIFormControlMapFn(model: DynamicFormControlModel): Type
     templateUrl: './dynamic-material-form-array.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicMaterialFormControlContainerComponent]
+    imports: [ReactiveFormsModule, NgClass, NgTemplateOutlet, DynamicMaterialFormControlContainerComponent]
 })
 export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -187,19 +150,12 @@ export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent
 
     @ViewChildren(DynamicMaterialFormControlContainerComponent) components!: QueryList<DynamicMaterialFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
+        super();
+    }
 
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+    getGroup(index: number): UntypedFormGroup {
+        return this.array.at(index) as UntypedFormGroup;
     }
 }
 
@@ -208,12 +164,9 @@ export class DynamicMaterialFormArrayComponent extends DynamicFormArrayComponent
     templateUrl: './dynamic-material-form-group.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, NgFor, DynamicMaterialFormControlContainerComponent]
+    imports: [ReactiveFormsModule, NgClass, DynamicMaterialFormControlContainerComponent]
 })
 export class DynamicMaterialFormGroupComponent extends DynamicFormGroupComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -227,18 +180,15 @@ export class DynamicMaterialFormGroupComponent extends DynamicFormGroupComponent
 
     @ViewChildren(DynamicMaterialFormControlContainerComponent) components!: QueryList<DynamicMaterialFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
+        super();
+    }
 
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+    get controlGroup(): UntypedFormGroup {
+        return this.control as UntypedFormGroup;
+    }
+
+    get templateList(): QueryList<DynamicTemplateDirective> | undefined {
+        return this.templates as QueryList<DynamicTemplateDirective> | undefined;
     }
 }

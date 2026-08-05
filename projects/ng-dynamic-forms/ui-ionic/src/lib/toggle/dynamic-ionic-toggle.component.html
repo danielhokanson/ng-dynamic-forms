@@ -1,17 +1,19 @@
 <ion-item [formGroup]="group">
 
-    <ion-label *ngIf="model.label !== null"
-               [innerHTML]="model.label"
-               [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></ion-label>
+  @if (model.label !== null) {
+    <ion-label
+      [innerHTML]="model.label"
+    [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></ion-label>
+  }
 
-    <ion-toggle #ionToggle
-                [checked]="model.checked"
-                [color]="model.getAdditional('color', undefined)"
-                [formControlName]="model.id"
-                [id]="id"
-                [ngClass]="getClass('element', 'control')"
-                (ionBlur)="onBlur($event)"
-                (ionChange)="onChange($event)"
-                (ionFocus)="onFocus($event)"></ion-toggle>
+  <ion-toggle #ionToggle
+    [checked]="model.checked"
+    [color]="model.getAdditional('color', undefined)"
+    [formControlName]="model.id"
+    [id]="id"
+    [ngClass]="getClass('element', 'control')"
+    (ionBlur)="onBlur($event)"
+    (ionChange)="onChange($event)"
+  (ionFocus)="onFocus($event)"></ion-toggle>
 
 </ion-item>

@@ -18,8 +18,8 @@ export abstract class DynamicFormControlWithTemplateComponent extends DynamicFor
      * Dependencies are resolved via inject() in the base class when not passed explicitly;
      * passing them through super(...) remains supported for backward compatibility.
      */
-    protected constructor(layoutService?: DynamicFormLayoutService,
-                          validationService?: DynamicFormValidationService) {
+    constructor(layoutService?: DynamicFormLayoutService,
+                validationService?: DynamicFormValidationService) {
         super(layoutService, validationService);
     }
 

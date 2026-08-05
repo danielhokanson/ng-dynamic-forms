@@ -1,94 +1,112 @@
-// import { TestBed, ComponentFixture, waitForAsync } from "@angular/core/testing";
-// import { DebugElement } from "@angular/core";
-// import { ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
-// import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-// import { By } from "@angular/platform-browser";
-// import { ButtonsModule } from "ngx-bootstrap/buttons";
-// import { DynamicCheckboxGroupModel, DynamicFormsCoreModule, DynamicFormService } from "@danielhokanson/ng-dynamic-forms-core";
-// import { DynamicNGBootstrapCheckboxGroupComponent } from "./dynamic-ng-bootstrap-checkbox-group.component";
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { DynamicCheckboxGroupModel, DynamicCheckboxModel, DynamicFormService } from '@danielhokanson/ng-dynamic-forms-core';
+import { DynamicNGBootstrapCheckboxGroupComponent } from './dynamic-ng-bootstrap-checkbox-group.component';
 
-// describe("DynamicNGBootstrapCheckboxGroupComponent test suite", () => {
-//     const testModel = new DynamicCheckboxGroupModel({id: "checkboxGroup", group: []});
-//     const formModel = [testModel];
+describe('DynamicNGBootstrapCheckboxGroupComponent test suite', () => {
+    const testModel = new DynamicCheckboxGroupModel({
+        id: 'checkboxGroup',
+        group: [new DynamicCheckboxModel({id: 'checkbox1'}), new DynamicCheckboxModel({id: 'checkbox2'})]
+    });
+    const formModel = [testModel];
 
-//     let formGroup: UntypedFormGroup;
-//     let fixture: ComponentFixture<DynamicNGBootstrapCheckboxGroupComponent>;
-//     let component: DynamicNGBootstrapCheckboxGroupComponent;
-//     let debugElement: DebugElement;
-//     let testElement: DebugElement;
+    let formGroup: UntypedFormGroup;
+    let fixture: ComponentFixture<DynamicNGBootstrapCheckboxGroupComponent>;
+    let component: DynamicNGBootstrapCheckboxGroupComponent;
+    let debugElement: DebugElement;
+    let testElement: DebugElement;
 
-//     beforeEach(waitForAsync(() => {
-//         TestBed.configureTestingModule({
-//     imports: [
-//         ReactiveFormsModule,
-//         NoopAnimationsModule,
-//         ButtonsModule,
-//         DynamicFormsCoreModule,
-//         DynamicNGBootstrapCheckboxGroupComponent
-//     ]
-// }).compileComponents().then(() => {
-//             fixture = TestBed.createComponent(DynamicNGBootstrapCheckboxGroupComponent);
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [DynamicNGBootstrapCheckboxGroupComponent]
+        }).compileComponents().then(() => {
+            const service = TestBed.inject(DynamicFormService);
+            formGroup = service.createFormGroup(formModel);
 
-//             component = fixture.componentInstance;
-//             debugElement = fixture.debugElement;
-//         });
-//     }));
+            fixture = TestBed.createComponent(DynamicNGBootstrapCheckboxGroupComponent);
 
-//     beforeEach(inject([DynamicFormService], (service: DynamicFormService) => {
-//         formGroup = service.createFormGroup(formModel);
+            component = fixture.componentInstance;
+            debugElement = fixture.debugElement;
 
-//         component.group = formGroup;
-//         component.model = testModel;
+            // Initialize group and model before any change detection
+            component.group = formGroup;
+            component.model = testModel;
 
-//         fixture.detectChanges();
+            fixture.detectChanges();
 
-//         testElement = debugElement.query(By.css(`div.btn-group`));
-//     }));
+            testElement = debugElement.query(By.css('div.btn-group'));
+        });
+    }));
 
-//     it("should initialize correctly", () => {
-//         expect(component.control instanceof UntypedFormGroup).toBe(true);
-//         expect(component.group instanceof UntypedFormGroup).toBe(true);
-//         expect(component.model instanceof DynamicCheckboxGroupModel).toBe(true);
+    it('should initialize correctly', () => {
+        expect(component.control instanceof UntypedFormGroup).toBe(true);
+        expect(component.group instanceof UntypedFormGroup).toBe(true);
+        expect(component.model instanceof DynamicCheckboxGroupModel).toBe(true);
 
-//         expect(component.blur).toBeDefined();
-//         expect(component.change).toBeDefined();
-//         expect(component.focus).toBeDefined();
+        expect(component.blur).toBeDefined();
+        expect(component.change).toBeDefined();
+        expect(component.focus).toBeDefined();
 
-//         expect(component.onBlur).toBeDefined();
-//         expect(component.onChange).toBeDefined();
-//         expect(component.onFocus).toBeDefined();
+        expect(component.onBlur).toBeDefined();
+        expect(component.onChange).toBeDefined();
+        expect(component.onFocus).toBeDefined();
 
-//         expect(component.hasFocus).toBe(false);
-//         expect(component.isValid).toBe(true);
-//         expect(component.isInvalid).toBe(false);
-//         expect(component.showErrorMessages).toBe(false);
-//     });
+        expect(component.hasFocus).toBe(false);
+        expect(component.isValid).toBe(true);
+        expect(component.isInvalid).toBe(false);
+        expect(component.showErrorMessages).toBe(false);
+    });
 
-//     it("should have an div.btn-group element", () => {
-//         expect(testElement instanceof DebugElement).toBe(true);
-//     });
+    it('should have a div.btn-group element', () => {
+        expect(testElement instanceof DebugElement).toBe(true);
+    });
 
-//     it("should emit blur event", () => {
-//         spyOn(component.blur, "emit");
+    it('should render a checkbox input for every group member', () => {
+        const checkboxInputs = debugElement.queryAll(By.css('input[type="checkbox"]'));
 
-//         component.onBlur(null);
+        expect(checkboxInputs.length).toBe(2);
+    });
 
-//         expect(component.blur.emit).toHaveBeenCalled();
-//     });
+    it('should resolve a checkbox id via getCheckboxId', () => {
+        const checkboxModel = testModel.group[0];
 
-//     it("should emit change event", () => {
-//         spyOn(component.change, "emit");
+        expect(component.getCheckboxId(checkboxModel)).toEqual(jasmine.any(String));
+    });
 
-//         component.onChange(null);
+    it('should update the checkbox model value on onCheckboxChange', () => {
+        const checkboxModel = testModel.group[0];
+        const checkboxInput = debugElement.query(By.css(`input[id="${component.getCheckboxId(checkboxModel)}"]`));
 
-//         expect(component.change.emit).toHaveBeenCalled();
-//     });
+        spyOn(component.change, 'emit');
 
-//     it("should emit focus event", () => {
-//         spyOn(component.focus, "emit");
+        checkboxInput.nativeElement.checked = true;
+        checkboxInput.triggerEventHandler('change', {target: checkboxInput.nativeElement});
 
-//         component.onFocus(null);
+        expect(component.change.emit).toHaveBeenCalled();
+        expect(checkboxModel.value).toBe(true);
+    });
 
-//         expect(component.focus.emit).toHaveBeenCalled();
-//     });
-// });
+    it('should listen to and emit blur event', () => {
+        const checkboxInput = debugElement.query(By.css('input[type="checkbox"]'));
+
+        spyOn(component.blur, 'emit');
+
+        component.onBlur(null);
+        checkboxInput.triggerEventHandler('blur', null);
+
+        expect(component.blur.emit).toHaveBeenCalledTimes(2);
+    });
+
+    it('should listen to and emit focus event', () => {
+        const checkboxInput = debugElement.query(By.css('input[type="checkbox"]'));
+
+        spyOn(component.focus, 'emit');
+
+        component.onFocus(null);
+        checkboxInput.triggerEventHandler('focus', null);
+
+        expect(component.focus.emit).toHaveBeenCalledTimes(2);
+    });
+});

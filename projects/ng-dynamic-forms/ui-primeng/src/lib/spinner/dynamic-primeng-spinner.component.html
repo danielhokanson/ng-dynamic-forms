@@ -1,16 +1,16 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-inputNumber #pSpinner
+    <p-inputnumber #pSpinner
                [formControlName]="model.id"
                [id]="id"
-               [min]="model.min === null ? undefined : model.min"
-               [max]="model.max === null ? undefined : model.max"
+               [min]="minValue"
+               [max]="maxValue"
                [ngClass]="getClass('element', 'control')"
                [placeholder]="model.placeholder"
                [step]="model.step || 1"
                [tabindex]="model.tabIndex"
                (onBlur)="onBlur($event)"
                (onChange)="onChange($event)"
-               (onFocus)="onFocus($event)"></p-inputNumber>
+               (onFocus)="onFocus($event)"></p-inputnumber>
 
 </div>

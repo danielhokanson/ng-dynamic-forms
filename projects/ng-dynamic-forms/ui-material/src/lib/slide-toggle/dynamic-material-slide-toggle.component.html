@@ -1,21 +1,25 @@
 <ng-container [formGroup]="group">
 
-    <mat-slide-toggle #matSlideToggle
-                      [checked]="model.checked"
-                      [color]="model.getAdditional('color', 'accent')"
-                      [disableRipple]="model.getAdditional('disableRipple', RIPPLE_OPTIONS && RIPPLE_OPTIONS['disabled'] || false)"
-                      [formControlName]="model.id"
-                      [id]="id"
-                      [labelPosition]="model.labelPosition || 'after'"
-                      [name]="model.name"
-                      [ngClass]="[getClass('element','control'), getClass('grid','control')]"
-                      (change)="onChange($event)"
-                      (toggleChange)="onCustomEvent($event, 'toggleChange')">
+  <mat-slide-toggle #matSlideToggle
+    [checked]="model.checked"
+    [color]="model.getAdditional('color', 'accent')"
+    [disableRipple]="model.getAdditional('disableRipple', RIPPLE_OPTIONS && RIPPLE_OPTIONS['disabled'] || false)"
+    [formControlName]="model.id"
+    [id]="id"
+    [labelPosition]="labelPosition"
+    [name]="model.name"
+    [ngClass]="[getClass('element','control'), getClass('grid','control')]"
+    (change)="onChange($event)"
+    (toggleChange)="onCustomEvent($event, 'toggleChange')">
 
-        <span *ngIf="!model.checked" [innerHTML]="model.offLabel"></span>
+    @if (!model.checked) {
+      <span [innerHTML]="model.offLabel"></span>
+    }
 
-        <span *ngIf="model.checked" [innerHTML]="model.onLabel"></span>
+    @if (model.checked) {
+      <span [innerHTML]="model.onLabel"></span>
+    }
 
-    </mat-slide-toggle>
+  </mat-slide-toggle>
 
 </ng-container>

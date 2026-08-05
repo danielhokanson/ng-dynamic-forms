@@ -1,28 +1,32 @@
 <div [formGroup]="group" class="input-group">
 
-    <input bsDatepicker class="form-control" #bsDatepicker="bsDatepicker"
-          
-           [bsConfig]="model.getAdditional('bsConfig', {containerClass: model.getAdditional('containerClass', 'theme-green'), showWeekNumbers: model.getAdditional('showWeekNumbers', true)})"
-           [formControlName]="model.id"
-           [id]="id"
-           [maxDate]="model.max"
-           [minDate]="model.min"
-           [name]="model.name"
-           [ngClass]="getClass('element', 'control')"
-           [outsideClick]="model.getAdditional('outsideClick', true)"
-           [placeholder]="model.placeholder"
-           [placement]="model.getAdditional('placement', 'bottom')"
-           [readonly]="model.readOnly"
-           [required]="model.required"
-           (bsValueChange)="onChange($event)"
-           (onHidden)="onCustomEvent($event, 'onHidden')"
-           (onShown)="onCustomEvent($event, 'onShown')">
+  <input bsDatepicker class="form-control" #bsDatepicker="bsDatepicker"
 
-    <div *ngIf="model.toggleLabel" class="input-group-btn">
+    [bsConfig]="model.getAdditional('bsConfig', {containerClass: model.getAdditional('containerClass', 'theme-green'), showWeekNumbers: model.getAdditional('showWeekNumbers', true)})"
+    [formControlName]="model.id"
+    [id]="id"
+    [maxDate]="$any(model.max)"
+    [minDate]="$any(model.min)"
+    [name]="model.name"
+    [ngClass]="getClass('element', 'control')"
+    [outsideClick]="model.getAdditional('outsideClick', true)"
+    [placeholder]="model.placeholder"
+    [placement]="model.getAdditional('placement', 'bottom')"
+    [readonly]="model.readOnly"
+    [required]="model.required"
+    (bsValueChange)="onChange($event)"
+    (onHidden)="onCustomEvent($event, 'onHidden')"
+    (onShown)="onCustomEvent($event, 'onShown')">
 
-        <button *ngIf="model.toggleIcon" class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon" alt="Toggle datepicker"/></button>
-        <button *ngIf="model.toggleLabel" class="btn" (click)="bsDatepicker.toggle()">{{ model.toggleLabel }}</button>
-
+  @if (model.toggleLabel) {
+    <div class="input-group-btn">
+      @if (model.toggleIcon) {
+        <button class="btn" (click)="bsDatepicker.toggle()"><img [src]="model.toggleIcon" alt="Toggle datepicker"/></button>
+      }
+      @if (model.toggleLabel) {
+        <button class="btn" (click)="bsDatepicker.toggle()">{{ model.toggleLabel }}</button>
+      }
     </div>
+  }
 
 </div>

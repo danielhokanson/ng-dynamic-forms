@@ -6,19 +6,26 @@ npm i @danielhokanson/ng-dynamic-forms-ui-foundation -S
 ```
 
 ## Import
+
+All components are standalone. Import the form component (or the form control container component) directly:
+
 ```ts
-@NgModule({
+import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicFoundationFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-foundation';
 
-    imports: [DynamicFormsFoundationUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicFoundationFormComponent],
+    templateUrl: './my-form.component.html'
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicFoundationFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-foundation-form [group]="myFormGroup"
@@ -26,13 +33,14 @@ with **`DynamicFoundationFormComponent`**:
 </form>
 ```
 
-with **`DynamicFoundationFormControlComponent`**:
-```ts
+with **`DynamicFoundationFormControlContainerComponent`** (import `DynamicFoundationFormControlContainerComponent` instead):
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-foundation-form-control *ngFor="let controlModel of myFormModel"
-                                     [group]="myFormGroup"
-                                     [model]="controlModel"></dynamic-foundation-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-foundation-form-control [group]="myFormGroup"
+                                         [model]="controlModel"></dynamic-foundation-form-control>
+    }
 </form>
 ```
 

@@ -1,18 +1,20 @@
 <ng-container [formGroup]="group">
 
-    <div class="btn-group"
-         [formGroupName]="model.id"
-         [id]="id"
-         [ngClass]="getClass('element', 'control')">
+  <div class="btn-group"
+    [formGroupName]="model.id"
+    [id]="id"
+    [ngClass]="getClass('element', 'control')">
 
-        <!-- TODO: Label is used as button wrapper for Bootstrap checkbox styling - review if label-has-associated-control can be ignored -->
-        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
-        <label *ngFor="let checkboxModel of model.group" btnCheckbox class="btn" role="button"
-               [class.active]="checkboxModel.value"
-               [formControlName]="checkboxModel.id"
-               [id]="getCheckboxId(checkboxModel)"
-               [innerHTML]="checkboxModel.label"
-               [ngClass]="[getClass('element', 'control', checkboxModel)]"></label>
-    </div>
+    @for (checkboxModel of model.group; track checkboxModel) {
+      <!-- the label itself hosts the btnCheckbox form control (Bootstrap toggle-button pattern) -->
+      <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+      <label btnCheckbox class="btn" role="button"
+        [class.active]="checkboxModel.value"
+        [formControlName]="checkboxModel.id"
+        [id]="getCheckboxId(checkboxModel)"
+        [innerHTML]="checkboxModel.label"
+      [ngClass]="[getClass('element', 'control', checkboxModel)]"></label>
+    }
+  </div>
 
 </ng-container>

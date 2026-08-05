@@ -6,19 +6,25 @@ npm i @danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap -S
 ```
 
 ## Import
+
+All components are standalone — import them directly into your standalone component (the former `DynamicFormsNGxBootstrapUIModule` NgModule no longer exists):
+
 ```ts
-@NgModule({
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicNGxBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap';
 
-    imports: [DynamicFormsNGxBootstrapUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicNGxBootstrapFormComponent],
+    // ...
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicNGxBootstrapFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-ngx-bootstrap-form [group]="myFormGroup"
@@ -26,13 +32,14 @@ with **`DynamicNGxBootstrapFormComponent`**:
 </form>
 ```
 
-with **`DynamicNGxBootstrapFormControlComponent`**:
-```ts
+with **`DynamicNGxBootstrapFormControlContainerComponent`** (import it as `DynamicNGxBootstrapFormControlContainerComponent`, selector `dynamic-ngx-bootstrap-form-control`):
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-ngx-bootstrap-form-control *ngFor="let controlModel of myFormModel"
-                                        [group]="myFormGroup"
-                                        [model]="controlModel"></dynamic-ngx-bootstrap-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-ngx-bootstrap-form-control [group]="myFormGroup"
+                                            [model]="controlModel"></dynamic-ngx-bootstrap-form-control>
+    }
 </form>
 ```
 

@@ -29,8 +29,8 @@ export abstract class DynamicFormComponent implements OnInit, OnDestroy {
      * no longer need to declare a constructor. Passing them through super(...) remains
      * supported for backward compatibility with existing custom UI stacks.
      */
-    protected constructor(changeDetectorRef?: ChangeDetectorRef,
-                          componentService?: DynamicFormComponentService) {
+    constructor(changeDetectorRef?: ChangeDetectorRef,
+                componentService?: DynamicFormComponentService) {
         this.changeDetectorRef = changeDetectorRef ?? inject(ChangeDetectorRef);
         this.componentService = componentService ?? inject(DynamicFormComponentService);
     }

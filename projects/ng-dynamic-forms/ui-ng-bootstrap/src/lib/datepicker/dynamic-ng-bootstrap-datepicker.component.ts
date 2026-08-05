@@ -6,22 +6,18 @@ import {
     DynamicFormControlComponent,
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
-    DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService
+    DynamicFormLayout
 } from '@danielhokanson/ng-dynamic-forms-core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dynamic-ng-bootstrap-datepicker',
     templateUrl: './dynamic-ng-bootstrap-datepicker.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
-    imports: [ReactiveFormsModule, NgbDatepickerModule, NgClass, NgIf]
+    imports: [ReactiveFormsModule, NgbDatepickerModule, NgClass]
 })
 export class DynamicNGBootstrapDatePickerComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
     config = inject(NgbDatepickerConfig);
 
     @Input() formLayout?: DynamicFormLayout;
@@ -36,18 +32,10 @@ export class DynamicNGBootstrapDatePickerComponent extends DynamicFormControlCom
 
     @ViewChild(NgbDatepicker) ngbDatePicker!: NgbDatepicker;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

@@ -1,40 +1,46 @@
 <mat-form-field [appearance]="model.getAdditional('appearance', 'fill')"
-                [color]="model.getAdditional('color', 'primary')"
-                [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
-                [formGroup]="group"
-                [hideRequiredMarker]="model.getAdditional('hideRequiredMarker', false)"
-                [ngClass]="getClass('grid', 'control')">
+  [color]="model.getAdditional('color', 'primary')"
+  [floatLabel]="model.getAdditional('floatLabel', FORM_FIELD_OPTIONS && FORM_FIELD_OPTIONS['floatLabel'] || 'auto')"
+  [formGroup]="group"
+  [hideRequiredMarker]="model.getAdditional('hideRequiredMarker', false)"
+  [ngClass]="getClass('grid', 'control')">
 
-    <ng-container *ngIf="model.label" ngProjectAs="mat-label">
-
-        <mat-label [innerHTML]="model.label"></mat-label>
-
+  @if (model.label) {
+    <ng-container ngProjectAs="mat-label">
+      <mat-label [innerHTML]="model.label"></mat-label>
     </ng-container>
+  }
 
-    <textarea matInput
-              [cdkTextareaAutosize]="model.getAdditional('cdkTextareaAutosize', true)"
-              [cols]="model.cols"
-              [formControlName]="model.id"
-              [id]="id"
-              [maxlength]="model.maxLength"
-              [minlength]="model.minLength"
-              [name]="model.name"
-              [ngClass]="getClass('element', 'control')"
-              [placeholder]="model.placeholder"
-              [readonly]="model.readOnly"
-              [required]="model.required"
-              [rows]="model.rows"
-              [spellcheck]="model.spellCheck"
-              [tabindex]="model.tabIndex"
-              [wrap]="model.wrap"
-              (blur)="onBlur($event)"
-              (change)="onChange($event)"
-              (focus)="onFocus($event)"></textarea>
+  <textarea matInput
+    [cdkTextareaAutosize]="model.getAdditional('cdkTextareaAutosize', true)"
+    [cols]="model.cols"
+    [formControlName]="model.id"
+    [id]="id"
+    [maxlength]="model.maxLength"
+    [minlength]="model.minLength"
+    [name]="model.name"
+    [ngClass]="getClass('element', 'control')"
+    [placeholder]="model.placeholder"
+    [readonly]="model.readOnly"
+    [required]="model.required"
+    [rows]="model.rows"
+    [spellcheck]="model.spellCheck"
+    [tabindex]="model.tabIndex"
+    [wrap]="model.wrap"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+  (focus)="onFocus($event)"></textarea>
 
-    <mat-hint *ngIf="model.hint !== null" align="start" [innerHTML]="model.hint"></mat-hint>
+  @if (model.hint !== null) {
+    <mat-hint align="start" [innerHTML]="model.hint"></mat-hint>
+  }
 
-    <mat-hint *ngIf="showCharacterHint" align="end">{{ characterHint }}</mat-hint>
+  @if (showCharacterHint) {
+    <mat-hint align="end">{{ characterHint }}</mat-hint>
+  }
 
-    <mat-error *ngFor="let message of errorMessages">{{ message }}</mat-error>
+  @for (message of errorMessages; track message) {
+    <mat-error>{{ message }}</mat-error>
+  }
 
 </mat-form-field>

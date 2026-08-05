@@ -6,19 +6,27 @@ npm i @danielhokanson/ng-dynamic-forms-ui-primeng -S
 ```
 
 ## Import
+
+All components are standalone and are imported directly by the components that use them:
 ```ts
-@NgModule({
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+    DynamicPrimeNGFormComponent,
+    DynamicPrimeNGFormControlContainerComponent
+} from '@danielhokanson/ng-dynamic-forms-ui-primeng';
 
-    imports: [DynamicFormsPrimeNGUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicPrimeNGFormComponent, DynamicPrimeNGFormControlContainerComponent],
+    templateUrl: './my-form.component.html'
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicPrimeNGFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-primeng-form [group]="myFormGroup"
@@ -26,13 +34,14 @@ with **`DynamicPrimeNGFormComponent`**:
 </form>
 ```
 
-with **`DynamicPrimeNGFormControlComponent`**:
-```ts
+with **`DynamicPrimeNGFormControlContainerComponent`**:
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-primeng-form-control *ngFor="let controlModel of myFormModel"
-                                  [group]="myFormGroup"
-                                  [model]="controlModel"></dynamic-primeng-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-primeng-form-control [group]="myFormGroup"
+                                      [model]="controlModel"></dynamic-primeng-form-control>
+    }
 </form>
 ```
 

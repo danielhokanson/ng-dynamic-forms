@@ -1,6 +1,6 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-autoComplete #pAutoComplete
+    <p-autocomplete #pAutoComplete
                     [autoHighlight]="model.getAdditional('autoHighlight', false)"
                     [delay]="model.getAdditional('delay', 300)"
                     [dropdown]="model.getAdditional('dropdown', false)"
@@ -8,13 +8,13 @@
                     [forceSelection]="model.getAdditional('forceSelection', false)"
                     [formControlName]="model.id"
                     [id]="id"
-                    [minLength]="model.getAdditional('minLength', 1)"
+                    [minQueryLength]="model.getAdditional('minLength', 1)"
                     [multiple]="!!model.multiple"
                     [ngClass]="getClass('element', 'control')"
                     [placeholder]="model.placeholder"
                     [scrollHeight]="model.getAdditional('scrollHeight', '200px')"
                     [suggestions]="suggestions"
-                    [tabindex]="model.tabIndex"
+                    [tabindex]="model.tabIndex ?? undefined"
                     (onBlur)="onBlur($event)"
                     (change)="onChange($event)"
                     (onClear)="onCustomEvent($event, 'onClear')"
@@ -22,6 +22,6 @@
                     (onFocus)="onFocus($event)"
                     (onSelect)="onCustomEvent($event, 'onSelect')"
                     (onUnselect)="onCustomEvent($event, 'onUnselect')"
-                    (completeMethod)="onAutoComplete($event)"></p-autoComplete>
+                    (completeMethod)="onAutoComplete($event)"></p-autocomplete>
 
 </div>

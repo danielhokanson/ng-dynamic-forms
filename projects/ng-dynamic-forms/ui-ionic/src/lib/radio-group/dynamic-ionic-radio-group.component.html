@@ -1,25 +1,26 @@
 <ng-container [formGroup]="group">
 
-    <ion-list>
+  <ion-list>
 
-        <ion-radio-group #ionRadioGroup
-                         [formControlName]="model.id"
-                         [id]="id"
-                         [ngClass]="getClass('element', 'control')"
-                         (ionChange)="onChange($event)">
+    <ion-radio-group #ionRadioGroup
+      [formControlName]="model.id"
+      [id]="id"
+      [ngClass]="getClass('element', 'control')"
+      (ionChange)="onChange($event)">
 
-            <ion-list-header *ngIf="model.label !== null">{{ model.label }}</ion-list-header>
+      @if (model.label !== null) {
+        <ion-list-header>{{ model.label }}</ion-list-header>
+      }
 
-            <ion-item *ngFor="let option of model.options$ | async" [ngClass]="getClass('element', 'option')">
+      @for (option of model.options$ | async; track option) {
+        <ion-item [ngClass]="getClass('element', 'option')">
+          <ion-label>{{ option.label }}</ion-label>
+          <ion-radio [value]="option.value"></ion-radio>
+        </ion-item>
+      }
 
-                <ion-label>{{ option.label }}</ion-label>
+    </ion-radio-group>
 
-                <ion-radio [value]="option.value"></ion-radio>
-
-            </ion-item>
-
-        </ion-radio-group>
-
-    </ion-list>
+  </ion-list>
 
 </ng-container>

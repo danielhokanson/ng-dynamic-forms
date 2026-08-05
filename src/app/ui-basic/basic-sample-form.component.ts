@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { JsonPipe, NgFor } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
     DynamicFormService,
@@ -16,9 +16,11 @@ import { BASIC_SAMPLE_FORM_MODEL, BASIC_SAMPLE_FORM_ARRAY_MODEL } from './basic-
     templateUrl: './basic-sample-form.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [NgFor, JsonPipe, ReactiveFormsModule, DynamicBasicFormControlContainerComponent, DynamicTemplateDirective]
+    imports: [JsonPipe, ReactiveFormsModule, DynamicBasicFormControlContainerComponent, DynamicTemplateDirective]
 })
 export class BasicSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel1 = this.formService.fromJSON(JSON.stringify(BASIC_SAMPLE_FORM_MODEL));
     formModel2 = this.formService.fromJSON(JSON.stringify(BASIC_SAMPLE_FORM_ARRAY_MODEL));
 
@@ -28,10 +30,6 @@ export class BasicSampleFormComponent {
     arrayModel = this.formService.findModelById<DynamicFormArrayModel>('basicFormArray', this.formModel2) as DynamicFormArrayModel;
     arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel as DynamicFormArrayModel, this.formGroup2) as UntypedFormArray;
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     add() {
         this.formService.addFormArrayGroup(this.arrayControl, this.arrayModel);

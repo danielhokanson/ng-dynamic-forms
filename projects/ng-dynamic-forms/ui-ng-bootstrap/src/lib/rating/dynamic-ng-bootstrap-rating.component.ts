@@ -6,8 +6,6 @@ import {
     DynamicFormControlCustomEvent,
     DynamicFormControlLayout,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormValidationService,
     DynamicRatingModel
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { NgClass } from '@angular/common';
@@ -20,8 +18,6 @@ import { NgClass } from '@angular/common';
     imports: [ReactiveFormsModule, NgbRatingModule, NgClass]
 })
 export class DynamicNGBootstrapRatingComponent extends DynamicFormControlComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
     config = inject(NgbRatingConfig);
 
     @Input() formLayout?: DynamicFormLayout;
@@ -36,18 +32,10 @@ export class DynamicNGBootstrapRatingComponent extends DynamicFormControlCompone
 
     @ViewChild(NgbRating, {static: true}) ngbRating!: NgbRating;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

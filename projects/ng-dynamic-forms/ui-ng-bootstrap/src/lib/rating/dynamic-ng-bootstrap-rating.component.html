@@ -2,7 +2,7 @@
 
     <ngb-rating [formControlName]="model.id"
                 [id]="id"
-                [max]="model.max"
+                [max]="$any(model.max)"
                 [ngClass]="getClass('element', 'control')"
                 [resettable]="model.getAdditional('resettable', config['resettable'])"
                 (hover)="onCustomEvent($event, 'hover')"

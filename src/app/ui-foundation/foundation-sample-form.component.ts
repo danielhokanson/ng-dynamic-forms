@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import {
     DynamicFormArrayModel,
@@ -22,6 +22,8 @@ import { JsonPipe } from '@angular/common';
     imports: [JsonPipe, ReactiveFormsModule, DynamicFoundationFormComponent, DynamicTemplateDirective]
 })
 export class FoundationSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel: DynamicFormControlModel[] = FOUNDATION_SAMPLE_FORM_MODEL;
     formLayout: DynamicFormLayout = FOUNDATION_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
@@ -29,10 +31,6 @@ export class FoundationSampleFormComponent {
     arrayModel = this.formService.findModelById<DynamicFormArrayModel>('foundationFormArray', this.formModel) as DynamicFormArrayModel;
     arrayControl = this.formService.findControlByModel<UntypedFormArray>(this.arrayModel, this.formGroup) as UntypedFormArray;
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     insert(context: DynamicFormArrayModel, index: number) {
         this.formService.insertFormArrayGroup(index, this.arrayControl, context);

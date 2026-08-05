@@ -6,8 +6,9 @@ test.describe('NG Dynamic Forms - Basic Form', () => {
     });
 
     test('should display the form', async ({ page }) => {
-        // Check that form elements are rendered
-        await expect(page.locator('form')).toBeVisible();
+        // The basic sample page renders two forms
+        await expect(page.locator('form').first()).toBeVisible();
+        expect(await page.locator('form').count()).toBeGreaterThan(0);
     });
 
     test('should have form controls', async ({ page }) => {

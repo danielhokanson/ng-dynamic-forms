@@ -1,6 +1,6 @@
 <div [formGroup]="group" [ngClass]="getClass('grid', 'control')">
 
-    <p-inputMask #pInputMask
+    <p-inputmask #pInputMask
                  [autoClear]="model.getAdditional('autoClear', true)"
                  [formControlName]="model.id"
                  [id]="id"
@@ -9,10 +9,10 @@
                  [placeholder]="model.placeholder"
                  [readonly]="model.readOnly"
                  [slotChar]="model.getAdditional('slotChar', '_')"
-                 [tabindex]="model.tabIndex"
+                 [tabindex]="model.tabIndex?.toString()"
                  (change)="onChange($event)"
                  (onBlur)="onBlur($event)"
                  (onComplete)="onCustomEvent($event, 'onComplete')"
-                 (onFocus)="onFocus($event)"></p-inputMask>
+                 (onFocus)="onFocus($event)"></p-inputmask>
 
 </div>

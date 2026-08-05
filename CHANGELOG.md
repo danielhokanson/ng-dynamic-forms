@@ -1,3 +1,28 @@
+# 22.0.0
+
+### **Features**
+
+* Migration to Angular 22 (TypeScript 6.0, `@angular/build` application builder, built-in `@if`/`@for` control flow, `strictTemplates` enabled for all library builds)
+* UI dependencies upgraded: Angular Material 22, PrimeNG 22, NG Bootstrap 21, ngx-mask 22, ngx-bootstrap 21.2, Ionic 8.8
+* Abstract base classes (`DynamicFormComponent`, `DynamicFormControlComponent`, `DynamicFormControlContainerComponent`, `DynamicFormControlWithTemplateComponent`) now resolve their dependencies via `inject()`; subclasses no longer need to pass services through `super(...)` (still supported for backward compatibility)
+* ui-basic and ui-foundation: new `customEvent` output on the form and form-control-container components — custom events from controls nested in form groups/arrays now propagate correctly (previously bound to a non-existent `bsEvent` output and silently dropped)
+* ui-ng-bootstrap: `RADIO_GROUP` and `CHECKBOX_GROUP` model types render again (rewritten with Bootstrap 5 `btn-check` markup after ng-bootstrap removed `NgbButtonsModule` in v12) — parity with ui-ngx-bootstrap restored
+* Sample app: new Bootstrap UI sample page; app migrated to `inject()` and the application builder
+
+### **Fixes**
+
+* Fixed duplicate `statusChanges` subscription in `DynamicFormControlContainerComponent` (subscribed from both `ngOnInit` and group/model changes)
+* ui-basic: nested form-group `ViewChildren` query now targets the concrete container component, so the `components` QueryList populates
+* Null-safe `maskConfig` template bindings in ui-basic, ui-bootstrap, ui-foundation, ui-ng-bootstrap and ui-ngx-bootstrap (runtime NPE when no mask was configured)
+* Library package.json files no longer declare stale pre-Ivy entry points (`bundles/*.umd.js`, `fesm5`, `esm5`)
+
+### **Breaking Changes**
+
+* Angular >= 22 is required (`ComponentFactoryResolver` was removed by Angular; custom UI stacks that passed it through `super(...)` must drop that argument — all other constructor arguments remain accepted)
+* ngx-bootstrap has no Angular 22 release yet; ui-ngx-bootstrap consumers must force its Angular peer dependencies via npm `overrides` (see README)
+
+***
+
 # 18.0.0
 
 ### **Features**

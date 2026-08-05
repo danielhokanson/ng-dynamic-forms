@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, inject } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -23,14 +23,12 @@ import { MATERIAL_SAMPLE_FORM_LAYOUT } from './material-sample-form.layout';
     imports: [JsonPipe, MatNativeDateModule, MatCardModule, ReactiveFormsModule, DynamicMaterialFormComponent]
 })
 export class MaterialSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel: DynamicFormControlModel[] = MATERIAL_SAMPLE_FORM_MODEL;
     formGroup = this.formService.createFormGroup(this.formModel);
     formLayout: DynamicFormLayout = MATERIAL_SAMPLE_FORM_LAYOUT;
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     onBlur($event: DynamicFormControlEvent) {
         console.debug(`Material blur event on: ${$event.model.id}: `, $event);

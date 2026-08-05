@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy, inject } from '@angular/core';
 import {
     DynamicFormService,
     DynamicFormControlEvent,
@@ -22,16 +22,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [JsonPipe, ReactiveFormsModule, DynamicNGBootstrapFormComponent]
 })
 export class NGBootstrapSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel: DynamicFormControlModel[] = NG_BOOTSTRAP_SAMPLE_FORM_MODEL;
     formLayout: DynamicFormLayout = NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
 
     @ViewChild(DynamicNGBootstrapFormComponent) formComponent!: DynamicNGBootstrapFormComponent;
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     onClick() {
         const model = this.formService.findModelById('firstName', this.formModel) as DynamicInputModel;

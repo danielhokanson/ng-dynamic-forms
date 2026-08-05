@@ -18,7 +18,7 @@ describe('DynamicBootstrapTimePickerComponent test suite', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [TimepickerModule.forRoot(), DynamicBootstrapTimePickerComponent]
+            imports: [TimepickerModule, DynamicBootstrapTimePickerComponent]
         }).compileComponents().then(() => {
             const service = TestBed.inject(DynamicFormService);
             formGroup = service.createFormGroup(formModel);

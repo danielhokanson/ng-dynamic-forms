@@ -81,18 +81,20 @@ ng serve
 
 ## Basic Usage
 
-**1. Import the UI module**:
+**1. Import the standalone form component of your UI package**:
 ```typescript
-import { DynamicFormsMaterialUIModule } from "@danielhokanson/ng-dynamic-forms-ui-material";
+import { ReactiveFormsModule } from "@angular/forms";
+import { DynamicMaterialFormComponent } from "@danielhokanson/ng-dynamic-forms-ui-material";
 
-@NgModule({
+@Component({
+    standalone: true,
     imports: [
         ReactiveFormsModule,
-        DynamicFormsMaterialUIModule
-    ]
+        DynamicMaterialFormComponent
+    ],
+    // ...
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 **2. Define your form model**:
@@ -172,19 +174,20 @@ package and its peer dependencies**:
 npm i @danielhokanson/ng-dynamic-forms-ui-<library-name> -S
 ```
 
-**Now just import the UI module**:
+**Now just import the standalone form component**:
 ```typescript
-@NgModule({
+@Component({
+    standalone: true,
     imports: [
         ReactiveFormsModule,
-        DynamicFormsMaterialUIModule
-    ]
+        DynamicMaterialFormComponent
+    ],
+    // ...
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
-For creating the form markup all UI modules come with a `DynamicFormComponent` that **can easily be added** to
+For creating the form markup all UI packages come with a `DynamicFormComponent` that **can easily be added** to
 your component template:
 ```html
 <form [formGroup]="formGroup">
@@ -751,14 +754,13 @@ export function myCustomValidator(control: AbstractControl): ValidationErrors | 
 }
 ```
 
-Just **provide your validator functions via default** `NG_VALIDATORS` **or** `NG_ASYNC_VALIDATORS` **token**:
+Just **provide your validator functions via default** `NG_VALIDATORS` **or** `NG_ASYNC_VALIDATORS` **token**, e.g. in your `bootstrapApplication` providers:
 ```typescript
-@NgModule({
-    // ...
+bootstrapApplication(AppComponent, {
     providers: [
         {provide: NG_VALIDATORS, useValue: myCustomValidator, multi: true}
     ]
-})
+});
 ``` 
 
 > **Note:** thoughtram.io - [Custom Validators in Angular 2](http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html)

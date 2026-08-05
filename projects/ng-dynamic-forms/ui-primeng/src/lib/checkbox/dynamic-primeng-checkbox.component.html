@@ -6,7 +6,7 @@
                 [id]="id"
                 [name]="model.name"
                 [ngClass]="getClass('element', 'control')"
-                [tabindex]="model.tabIndex"
+                [tabindex]="model.tabIndex ?? undefined"
                 [value]="model.value"
                 (onChange)="onChange($event)">{{ model.label }}</p-checkbox>
 

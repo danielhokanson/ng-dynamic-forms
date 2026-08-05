@@ -70,8 +70,8 @@ describe('DynamicFormBootstrapComponent test suite', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
-                BsDatepickerModule.forRoot(),
-                TimepickerModule.forRoot(),
+                BsDatepickerModule,
+                TimepickerModule,
                 DynamicBootstrapFormControlContainerComponent,
                 DynamicBootstrapInputComponent
             ],

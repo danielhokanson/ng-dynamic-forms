@@ -18,7 +18,7 @@ describe('DynamicBootstrapDatePickerComponent test suite', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [BsDatepickerModule.forRoot(), DynamicBootstrapDatePickerComponent]
+            imports: [BsDatepickerModule, DynamicBootstrapDatePickerComponent]
         }).compileComponents().then(() => {
             const service = TestBed.inject(DynamicFormService);
             formGroup = service.createFormGroup(formModel);

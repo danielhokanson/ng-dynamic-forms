@@ -1,23 +1,25 @@
 <div [formGroup]="group"
-     [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
+  [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
 
-    <label *ngIf="!hasMatFormField && !isCheckbox && hasLabel"
-           [for]="id"
-           [innerHTML]="model.label"
-           [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  @if (!hasMatFormField && !isCheckbox && hasLabel) {
+    <label
+      [for]="id"
+      [innerHTML]="model.label"
+    [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="startTemplate?.templateRef ?? null; context: model"></ng-container>
 
-    <ng-container #componentViewContainer></ng-container>
+  <ng-container #componentViewContainer></ng-container>
 
-    <ng-container *ngIf="!hasMatFormField">
+  @if (!hasMatFormField) {
+    @for (message of errorMessages; track message) {
+      <mat-error>{{ message }}</mat-error>
+    }
+  }
 
-        <mat-error *ngFor="let message of errorMessages">{{ message }}</mat-error>
+  <ng-container *ngTemplateOutlet="endTemplate?.templateRef ?? null; context: model"></ng-container>
 
-    </ng-container>
-
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
-
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 
 </div>

@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { BasicSampleFormComponent } from './ui-basic/basic-sample-form.component';
+import { BootstrapSampleFormComponent } from './ui-bootstrap/bootstrap-sample-form.component';
 import { FoundationSampleFormComponent } from './ui-foundation/foundation-sample-form.component';
 import { MaterialSampleFormComponent } from './ui-material/material-sample-form.component';
 import { NGBootstrapSampleFormComponent } from './ui-ng-bootstrap/ng-bootstrap-sample-form.component';
@@ -22,6 +23,15 @@ export const appRoutes: Route[] = [
         }
     },
     {
+        path: 'bootstrap-sample-form',
+        component: BootstrapSampleFormComponent,
+        data: {
+            title: 'Bootstrap UI',
+            href: 'https://github.com/danielhokanson/ng-dynamic-forms/blob/master/src/app/ui-bootstrap/bootstrap-sample-form.model.ts',
+            bgColor: '#7952b3'
+        }
+    },
+    {
         path: 'ngx-bootstrap-sample-form',
         component: NgxBootstrapSampleFormComponent,
         data: {
@@ -35,7 +45,6 @@ export const appRoutes: Route[] = [
         component: FoundationSampleFormComponent,
         data: {
             title: 'Foundation UI',
-            // tslint:disable-next-line:max-line-length
             href: 'https://github.com/udos86/ng-dynamic-forms/blob/master/sample/app/foundation-sample-form/foundation-sample-form.model.ts',
             bgColor: '#2199e8'
         }

@@ -1,16 +1,17 @@
 <div role="radiogroup"
-     [formGroup]="group"
-     [id]="id"
-     [ngClass]="[getClass('element', 'control'), getClass('grid', 'control')]"
-     [tabindex]="model.tabIndex">
+  [formGroup]="group"
+  [id]="id"
+  [ngClass]="[getClass('element', 'control'), getClass('grid', 'control')]"
+  [tabindex]="model.tabIndex">
 
-    <div *ngFor="let option of model.options$ | async" [ngClass]="getClass('grid', 'option')">
-
-        <p-radioButton [formControlName]="model.id"
-                       [name]="model.id"
-                       [ngClass]="getClass('element', 'option')"
-                       [value]="option.value"
-                       (click)="onChange($event)">{{ option.label }}</p-radioButton>
+  @for (option of model.options$ | async; track option) {
+    <div [ngClass]="getClass('grid', 'option')">
+      <p-radiobutton [formControlName]="model.id"
+        [name]="model.id"
+        [ngClass]="getClass('element', 'option')"
+        [value]="option.value"
+      (click)="onChange($event)">{{ option.label }}</p-radiobutton>
     </div>
+  }
 
 </div>

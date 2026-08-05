@@ -6,19 +6,27 @@ npm i @danielhokanson/ng-dynamic-forms-ui-ionic -S
 ```
 
 ## Import
+
+All components are standalone and are imported directly by the components that use them:
 ```ts
-@NgModule({
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+    DynamicIonicFormComponent,
+    DynamicIonicFormControlContainerComponent
+} from '@danielhokanson/ng-dynamic-forms-ui-ionic';
 
-    imports: [DynamicFormsIonicUIModule]
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, DynamicIonicFormComponent, DynamicIonicFormControlContainerComponent],
+    templateUrl: './my-form.component.html'
 })
-
-export class AppModule {}
+export class MyFormComponent {}
 ```
 
 ## Usage
 
 with **`DynamicIonicFormComponent`**:
-```ts
+```html
 <form [formGroup]="myFormGroup">
 
     <dynamic-ionic-form [group]="myFormGroup"
@@ -26,13 +34,14 @@ with **`DynamicIonicFormComponent`**:
 </form>
 ```
 
-with **`DynamicIonicFormControlComponent`**:
-```ts
+with **`DynamicIonicFormControlContainerComponent`**:
+```html
 <form [formGroup]="myFormGroup">
 
-    <dynamic-ionic-form-control *ngFor="let controlModel of myFormModel"
-                                [group]="myFormGroup"
-                                [model]="controlModel"></dynamic-ionic-form-control>
+    @for (controlModel of myFormModel; track controlModel.id) {
+        <dynamic-ionic-form-control [group]="myFormGroup"
+                                    [model]="controlModel"></dynamic-ionic-form-control>
+    }
 </form>
 ```
 

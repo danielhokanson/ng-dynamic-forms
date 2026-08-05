@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormGroup, UntypedFormArray, ReactiveFormsModule } from '@angular/forms';
 import {
     DynamicFormArrayModel,
@@ -12,8 +12,7 @@ import {
 } from '@danielhokanson/ng-dynamic-forms-core';
 import { NGX_BOOTSTRAP_SAMPLE_FORM_MODEL } from './ngx-bootstrap-sample-form.model';
 import { NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT } from './ngx-bootstrap-sample-form.layout';
-import { DynamicFormControlEvent } from '../../../projects/ng-dynamic-forms/core/src/lib/component/dynamic-form-control-event';
-import { JsonPipe } from '@angular/common';
+import { DynamicFormControlEvent } from '@danielhokanson/ng-dynamic-forms-core';
 import { DynamicNGxBootstrapFormComponent } from '@danielhokanson/ng-dynamic-forms-ui-ngx-bootstrap';
 
 @Component({
@@ -22,9 +21,11 @@ import { DynamicNGxBootstrapFormComponent } from '@danielhokanson/ng-dynamic-for
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [JsonPipe, ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
+    imports: [ReactiveFormsModule, DynamicNGxBootstrapFormComponent, DynamicTemplateDirective]
 })
 export class NgxBootstrapSampleFormComponent {
+    private formService = inject(DynamicFormService);
+
     formModel: DynamicFormControlModel[] = NGX_BOOTSTRAP_SAMPLE_FORM_MODEL;
     formLayout: DynamicFormLayout = NGX_BOOTSTRAP_SAMPLE_FORM_LAYOUT;
     formGroup = this.formService.createFormGroup(this.formModel);
@@ -34,10 +35,6 @@ export class NgxBootstrapSampleFormComponent {
     formArrayModel = this.formService.findModelById<DynamicFormArrayModel>('bsFormArray', this.formModel) as DynamicFormArrayModel;
     formArray = this.formService.findControlByModel<UntypedFormArray>(this.formArrayModel, this.formGroup) as UntypedFormArray;
 
-    // TODO: Migrate to inject() function - demo app component, can be handled later
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    constructor(private formService: DynamicFormService) {
-    }
 
     getFormArray(model: DynamicFormArrayModel, group: UntypedFormGroup): UntypedFormArray {
         return this.formService.findControlByModel(model, group) as UntypedFormArray;

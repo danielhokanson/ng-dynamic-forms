@@ -4,14 +4,14 @@
                     [firstDayOfWeek]="model.getAdditional('firstDayOfWeek', config['firstDayOfWeek'])"
                     [formControlName]="model.id"
                     [id]="id"
-                    [maxDate]="model.max"
-                    [minDate]="model.min"
+                    [maxDate]="$any(model.max)"
+                    [minDate]="$any(model.min)"
                     [navigation]="model.getAdditional('navigation', config['navigation'])"
                     [ngClass]="getClass('element', 'control')"
                     [outsideDays]="model.getAdditional('outsideDays', config['outsideDays'])"
                     [showWeekNumbers]="model.getAdditional('showWeekNumbers', config['showWeekNumbers'])"
                     [weekdays]="model.getAdditional('showWeekdays', config['weekdays'])"
-                    [startDate]="model.focusedDate"
+                    [startDate]="$any(model.focusedDate)"
                     (select)="onChange($event)"></ngb-datepicker>
 
 </ng-container>

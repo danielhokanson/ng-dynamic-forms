@@ -1,4 +1,4 @@
-import { EventEmitter, inject } from '@angular/core';
+import { Directive, EventEmitter, inject } from '@angular/core';
 import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { DynamicFormControl } from './dynamic-form-control-interface';
 import { DynamicFormControlCustomEvent } from './dynamic-form-control-event';
@@ -16,6 +16,7 @@ import {
 } from '../service/dynamic-form-layout.service';
 import { isString } from '../utils/core.utils';
 
+@Directive()
 export abstract class DynamicFormControlComponent implements DynamicFormControl {
     formLayout?: DynamicFormLayout;
     group!: UntypedFormGroup;
@@ -38,8 +39,8 @@ export abstract class DynamicFormControlComponent implements DynamicFormControl 
      * no longer need to declare a constructor. Passing them through super(...) remains
      * supported for backward compatibility with existing custom UI stacks.
      */
-    protected constructor(layoutService?: DynamicFormLayoutService,
-                          validationService?: DynamicFormValidationService) {
+    constructor(layoutService?: DynamicFormLayoutService,
+                validationService?: DynamicFormValidationService) {
         this.layoutService = layoutService ?? inject(DynamicFormLayoutService);
         this.validationService = validationService ?? inject(DynamicFormValidationService);
     }

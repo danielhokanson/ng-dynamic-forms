@@ -1,40 +1,40 @@
 <div class="overflow-hidden content-margin content-padding" style="width: 50%;">
 
-    <form [formGroup]="formGroup1">
+  <form [formGroup]="formGroup1">
 
-        <dynamic-basic-form-control *ngFor="let controlModel of formModel1" class="form-row"
-                                    [group]="formGroup1"
-                                    [model]="controlModel"
-                                    (blur)="onBlur($event)"
-                                    (change)="onChange($event)"
-                                    (focus)="onFocus($event)"></dynamic-basic-form-control>
-    </form>
+    @for (controlModel of formModel1; track controlModel) {
+      <dynamic-basic-form-control class="form-row"
+        [group]="formGroup1"
+        [model]="controlModel"
+        (blur)="onBlur($event)"
+        (change)="onChange($event)"
+      (focus)="onFocus($event)"></dynamic-basic-form-control>
+    }
+  </form>
 
-    <pre>{{formGroup1.value | json}}</pre>
+  <pre>{{formGroup1.value | json}}</pre>
 
 
-    <form [formGroup]="formGroup2">
+  <form [formGroup]="formGroup2">
 
-        <dynamic-basic-form-control *ngFor="let controlModel of formModel2" class="form-row"
-                                    [group]="formGroup2"
-                                    [model]="controlModel"
-                                    (blur)="onBlur($event)"
-                                    (change)="onChange($event)"
-                                    (focus)="onFocus($event)">
+    @for (controlModel of formModel2; track controlModel) {
+      <dynamic-basic-form-control class="form-row"
+        [group]="formGroup2"
+        [model]="controlModel"
+        (blur)="onBlur($event)"
+        (change)="onChange($event)"
+        (focus)="onFocus($event)">
+        <ng-template modelId="basicFormArray" let-index="index">
+          <button type="button" (click)="remove(index)">Remove Item</button>
+        </ng-template>
+      </dynamic-basic-form-control>
+    }
 
-            <ng-template modelId="basicFormArray" let-index="index">
+    <button type="button" (click)="add()">Add Item</button>
+    <button type="button" (click)="clear()">Remove All</button>
 
-                <button type="button" (click)="remove(index)">Remove Item</button>
+  </form>
 
-            </ng-template>
-
-        </dynamic-basic-form-control>
-
-        <button type="button" (click)="add()">Add Item</button>
-        <button type="button" (click)="clear()">Remove All</button>
-
-    </form>
-
-    <pre>{{formGroup2.value | json}}</pre>
+  <pre>{{formGroup2.value | json}}</pre>
 
 </div>

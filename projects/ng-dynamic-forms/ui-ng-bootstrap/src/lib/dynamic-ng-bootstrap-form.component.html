@@ -1,10 +1,12 @@
-<dynamic-ng-bootstrap-form-control *ngFor="let controlModel of model; trackBy: trackByFn"
-                                   [group]="group"
-                                   [hidden]="controlModel.hidden"
-                                   [layout]="layout"
-                                   [model]="controlModel"
-                                   [templates]="templates"
-                                   (blur)="onBlur($event)"
-                                   (change)="onChange($event)"
-                                   (focus)="onFocus($event)"
-                                   (ngbEvent)="onCustomEvent($event, ngbEvent)"></dynamic-ng-bootstrap-form-control>
+@for (controlModel of model; track trackByFn($index, controlModel)) {
+  <dynamic-ng-bootstrap-form-control
+    [group]="group"
+    [hidden]="controlModel.hidden"
+    [layout]="layout"
+    [model]="controlModel"
+    [templates]="templates"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+  (ngbEvent)="onCustomEvent($event, ngbEvent)"></dynamic-ng-bootstrap-form-control>
+}

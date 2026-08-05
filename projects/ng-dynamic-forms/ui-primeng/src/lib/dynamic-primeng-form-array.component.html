@@ -1,33 +1,33 @@
 <ng-container [formGroup]="group">
 
-    <div [ngClass]="getClass('grid', 'control')">
+  <div [ngClass]="getClass('grid', 'control')">
 
-        <div [formArrayName]="model.id" [id]="id" [ngClass]="getClass('element', 'control')">
+    <div [formArrayName]="model.id" [id]="id" [ngClass]="getClass('element', 'control')">
 
-            <div *ngFor="let groupModel of model.groups; let idx = index" role="group"
-                 [formGroupName]="idx" [ngClass]="[getClass('element', 'group'), getClass('grid', 'group')]">
-
-                <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: groupModel"></ng-container>
-
-                <dynamic-primeng-form-control *ngFor="let _model of groupModel.group"
-                                              [context]="groupModel"
-                                              [group]="array.at(idx)"
-                                              [hidden]="_model.hidden"
-                                              [layout]="formLayout"
-                                              [model]="_model"
-                                              [templates]="templates"
-                                              [hostClass]="[getClass('element','children'), getClass('grid','children')]"
-                                              (blur)="onBlur($event)"
-                                              (change)="onChange($event)"
-                                              (focus)="onFocus($event)"
-                                              (pEvent)="onCustomEvent($event, null, true)"></dynamic-primeng-form-control>
-
-                <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: groupModel"></ng-container>
-
-            </div>
-
+      @for (groupModel of model.groups; track groupModel; let idx = $index) {
+        <div role="group"
+          [formGroupName]="idx" [ngClass]="[getClass('element', 'group'), getClass('grid', 'group')]">
+          <ng-container *ngTemplateOutlet="startTemplate?.templateRef ?? null; context: groupModel"></ng-container>
+          @for (_model of groupModel.group; track _model) {
+            <dynamic-primeng-form-control
+              [context]="groupModel"
+              [group]="getGroup(idx)"
+              [hidden]="_model.hidden"
+              [layout]="formLayout"
+              [model]="_model"
+              [templates]="templates"
+              [hostClass]="[getClass('element','children'), getClass('grid','children')]"
+              (blur)="onBlur($event)"
+              (change)="onChange($event)"
+              (focus)="onFocus($event)"
+            (pEvent)="onCustomEvent($event, null, true)"></dynamic-primeng-form-control>
+          }
+          <ng-container *ngTemplateOutlet="endTemplate?.templateRef ?? null; context: groupModel"></ng-container>
         </div>
+      }
 
     </div>
+
+  </div>
 
 </ng-container>

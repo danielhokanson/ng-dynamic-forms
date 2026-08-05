@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList, Type, ViewChild, ViewChildren, ViewContainerRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList, Type, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
     DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
@@ -17,11 +17,7 @@ import {
     DynamicFormControlContainerComponent,
     DynamicFormControlEvent,
     DynamicFormControlModel,
-    DynamicFormComponentService,
     DynamicFormLayout,
-    DynamicFormLayoutService,
-    DynamicFormRelationService,
-    DynamicFormValidationService,
     DynamicTemplateDirective,
     DynamicFormArrayComponent,
     DynamicFormControlLayout,
@@ -38,23 +34,16 @@ import { DynamicBootstrapRatingComponent } from './rating/dynamic-bootstrap-rati
 import { DynamicBootstrapSelectComponent } from './select/dynamic-bootstrap-select.component';
 import { DynamicBootstrapTextAreaComponent } from './textarea/dynamic-bootstrap-textarea.component';
 import { DynamicBootstrapTimePickerComponent } from './timepicker/dynamic-bootstrap-timepicker.component';
-import { NgClass, NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: 'dynamic-bootstrap-form-control',
     templateUrl: './dynamic-bootstrap-form-control-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor]
+    imports: [ReactiveFormsModule, NgClass, NgTemplateOutlet]
 })
 export class DynamicBootstrapFormControlContainerComponent extends DynamicFormControlContainerComponent {
-    protected changeDetectorRef: ChangeDetectorRef;
-    protected componentFactoryResolver: ComponentFactoryResolver;
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-    protected componentService: DynamicFormComponentService;
-    protected relationService: DynamicFormRelationService;
-
     @ContentChildren(DynamicTemplateDirective) contentTemplateList!: QueryList<DynamicTemplateDirective>;
 
     @HostBinding('class') klass?: string;
@@ -63,8 +52,6 @@ export class DynamicBootstrapFormControlContainerComponent extends DynamicFormCo
     @Input() context: DynamicFormArrayGroupModel | null = null;
     @Input() group!: UntypedFormGroup;
     @Input() hostClass?: string[];
-    // TODO: Input alias 'templates' may be for backward compatibility - review if safe to remove
-    // tslint:disable-next-line:no-input-rename
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('templates') inputTemplateList?: QueryList<DynamicTemplateDirective>;
     @Input() layout?: DynamicFormLayout;
@@ -73,8 +60,6 @@ export class DynamicBootstrapFormControlContainerComponent extends DynamicFormCo
     @Output() blur: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() focus: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
-    // TODO: Output alias 'bsEvent' may be for backward compatibility - review if safe to remove
-    // tslint:disable-next-line:no-output-rename
     // eslint-disable-next-line @angular-eslint/no-output-rename
     @Output('bsEvent') customEvent: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
 
@@ -84,27 +69,11 @@ export class DynamicBootstrapFormControlContainerComponent extends DynamicFormCo
         return this.componentService.getCustomComponentType(this.model) || bootstrapUIFormControlMapFn(this.model);
     }
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const changeDetectorRef = inject(ChangeDetectorRef);
-        const componentFactoryResolver = inject(ComponentFactoryResolver);
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-        const componentService = inject(DynamicFormComponentService);
-        const relationService = inject(DynamicFormRelationService);
-
-        super(changeDetectorRef, componentFactoryResolver, layoutService, validationService, componentService, relationService);
-    
-        this.changeDetectorRef = changeDetectorRef;
-        this.componentFactoryResolver = componentFactoryResolver;
-        this.layoutService = layoutService;
-        this.validationService = validationService;
-        this.componentService = componentService;
-        this.relationService = relationService;
+        super();
     }
 }
 
@@ -153,12 +122,9 @@ export function bootstrapUIFormControlMapFn(model: DynamicFormControlModel): Typ
     templateUrl: './dynamic-bootstrap-form-array.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, NgFor, NgTemplateOutlet, DynamicBootstrapFormControlContainerComponent]
+    imports: [ReactiveFormsModule, NgClass, NgTemplateOutlet, DynamicBootstrapFormControlContainerComponent]
 })
 export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -172,19 +138,11 @@ export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponen
 
     @ViewChildren(DynamicBootstrapFormControlContainerComponent) components!: QueryList<DynamicBootstrapFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }
 
@@ -193,12 +151,9 @@ export class DynamicBootstrapFormArrayComponent extends DynamicFormArrayComponen
     templateUrl: './dynamic-bootstrap-form-group.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, DynamicBootstrapFormControlContainerComponent]
+    imports: [ReactiveFormsModule, NgClass, DynamicBootstrapFormControlContainerComponent]
 })
 export class DynamicBootstrapFormGroupComponent extends DynamicFormGroupComponent {
-    protected layoutService: DynamicFormLayoutService;
-    protected validationService: DynamicFormValidationService;
-
     @Input() formLayout?: DynamicFormLayout;
     @Input() group!: UntypedFormGroup;
     @Input() layout?: DynamicFormControlLayout;
@@ -212,18 +167,10 @@ export class DynamicBootstrapFormGroupComponent extends DynamicFormGroupComponen
 
     @ViewChildren(DynamicBootstrapFormControlContainerComponent) components!: QueryList<DynamicBootstrapFormControlContainerComponent>;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@angular-eslint/prefer-inject
-    constructor(...args: unknown[]);
-    // TODO: Constructor uses inject() internally - prefer-inject warning can be ignored
-    // eslint-disable-next-line @angular-eslint/prefer-inject
+    // An explicit public constructor is required: the abstract base classes of
+    // @danielhokanson/ng-dynamic-forms-core resolve all dependencies via inject()
+    // but declare their constructors as protected.
     constructor() {
-        const layoutService = inject(DynamicFormLayoutService);
-        const validationService = inject(DynamicFormValidationService);
-
-        super(layoutService, validationService);
-    
-        this.layoutService = layoutService;
-        this.validationService = validationService;
+        super();
     }
 }

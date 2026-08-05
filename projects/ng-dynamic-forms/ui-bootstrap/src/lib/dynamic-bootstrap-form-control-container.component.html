@@ -1,33 +1,39 @@
 <div [class.form-group]="asBootstrapFormGroup || getClass('element', 'container').includes('form-group')"
-     [class.has-error]="showErrorMessages"
-     [formGroup]="group"
-     [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
+  [class.has-error]="showErrorMessages"
+  [formGroup]="group"
+  [ngClass]="['ng-dynamic-forms-'+model.type.toLowerCase(), getClass('element', 'container'), getClass('grid', 'container')]">
 
-    <label *ngIf="!isCheckbox && hasLabel"
-           [for]="id"
-           [innerHTML]="model.label"
-           [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  @if (!isCheckbox && hasLabel) {
+    <label
+      [for]="id"
+      [innerHTML]="model.label"
+    [ngClass]="[getClass('element', 'label'), getClass('grid', 'label')]"></label>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="$safeNavigationMigration(startTemplate?.templateRef); context: model"></ng-container>
 
-    <div [ngClass]="getClass('grid', 'control')">
+  <div [ngClass]="getClass('grid', 'control')">
 
-        <ng-container #componentViewContainer></ng-container>
+    <ng-container #componentViewContainer></ng-container>
 
-        <span *ngIf="hasHint" class="help-block" [innerHTML]="hint"
-              [ngClass]="getClass('element', 'hint')"></span>
+    @if (hasHint) {
+      <span class="help-block" [innerHTML]="hint"
+      [ngClass]="getClass('element', 'hint')"></span>
+    }
 
-    </div>
+  </div>
 
-    <ul *ngIf="showErrorMessages" class="has-error"
-        [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
-
-        <li *ngFor="let message of errorMessages" class="help-block">{{ message }}</li>
-
+  @if (showErrorMessages) {
+    <ul class="has-error"
+      [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
+      @for (message of errorMessages; track message) {
+        <li class="help-block">{{ message }}</li>
+      }
     </ul>
+  }
 
-    <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
+  <ng-container *ngTemplateOutlet="$safeNavigationMigration(endTemplate?.templateRef); context: model"></ng-container>
 
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 
 </div>
